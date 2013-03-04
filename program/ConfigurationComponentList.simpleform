@@ -1,0 +1,13 @@
+FORM ConfigurationComponentList
+{
+	list
+	{
+		ConfigurationComponent []
+		{
+			id @int
+			name string
+			categoryName string
+			quantity int
+		}
+	}
+}

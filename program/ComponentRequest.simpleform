@@ -1,0 +1,7 @@
+FORM ComponentRequest
+{
+	component
+	{
+		id @int
+	}
+}

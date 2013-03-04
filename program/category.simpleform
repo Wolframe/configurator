@@ -1,0 +1,12 @@
+FORM Category
+{
+	id @int
+	parentID @int
+	name string
+	normalizedName string
+	description string
+	picture []
+	{
+		id @int
+	}
+}
