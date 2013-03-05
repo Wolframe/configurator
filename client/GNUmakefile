@@ -1,4 +1,4 @@
-TOPDIR = ../../../..
+TOPDIR = ..
 
 SUBDIRS =
 
@@ -7,13 +7,13 @@ SUBDIRS =
 -include $(TOPDIR)/makefiles/gmake/sub.mk
 
 local_all:
-	
+
 %.qm : %.ts
 	$(QT_LRELEASE) $< -qm $@
 
 %.rcc : %.qrc
 	$(QT_RCC) -binary $< -o $@
-	
+
 I18NS = \
 	i18n/categories.de_CH.qm \
 	i18n/categories_features_add.de_CH.qm \

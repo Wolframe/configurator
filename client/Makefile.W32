@@ -1,4 +1,4 @@
-TOPDIR = ..\..
+TOPDIR = ..
 
 # do this manually, nmake is broken!
 #SUBDIRS = plugins

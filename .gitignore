@@ -1,0 +1,4 @@
+qtclient.pro.user
+qtclient-build
+makefiles/gmake/platform.mk.vars
+makefiles/gmake/platform.vars
