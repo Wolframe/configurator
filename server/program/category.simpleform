@@ -2,6 +2,7 @@ FORM Category
 {
 	id @int
 	parentID @int
+	root ?string
 	name string
 	normalizedName string
 	description string
