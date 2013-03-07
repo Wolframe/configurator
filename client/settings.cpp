@@ -167,7 +167,8 @@ void ApplicationSettings::read( QSettings &settings )
 	}
 	settings.endArray();
 
-	mdi = settings.value( "mdi", false ).toBool( );
+	//mdi = settings.value( "mdi", false ).toBool( );
+	mdi = true;
 	debug = settings.value( "debug", false ).toBool( );
 	locale = settings.value( "locale", SYSTEM_LANGUAGE ).toString( );
 	uiLoadMode = LoadModeFromStr( settings.value( "uiLoadMode", LoadModeToStr( DEFAULT_UILOADMODE ) ).toString( ) );

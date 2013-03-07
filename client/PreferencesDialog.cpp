@@ -64,16 +64,16 @@ void PreferencesDialog::initialize( )
 	setupUi( this );
 	
 	m_interface = new PreferencesDialogInterface( this );
-	m_developer = new PreferencesDialogDeveloper( this );
+	//~ m_developer = new PreferencesDialogDeveloper( this );
 
 	stackedWidget->addWidget( m_interface );
-	stackedWidget->addWidget( m_developer );
+	//~ stackedWidget->addWidget( m_developer );
 	stackedWidget->setCurrentIndex( 0 );
 
 	listWidget->addItem( new QListWidgetItem( QIcon( QString( ":/images/interface.png") ),
 		tr( "Interface" ), listWidget ) );
-	listWidget->addItem( new QListWidgetItem( QIcon( QString( ":/images/development.png") ),
-		tr( "Developer" ), listWidget ) );
+	//~ listWidget->addItem( new QListWidgetItem( QIcon( QString( ":/images/development.png") ),
+		//~ tr( "Developer" ), listWidget ) );
 	listWidget->setCurrentRow( 0 );
 	
 	connect( buttonBox->button( QDialogButtonBox::Save ), SIGNAL( clicked( ) ),
@@ -102,24 +102,24 @@ void PreferencesDialog::initialize( )
 	
 	// developer
 	
-	connect( m_developer->uiLoadModeLocalFile, SIGNAL( toggled( bool ) ),
-		this, SLOT( toggleLoadMode( bool ) ) );
-		
-	connect( m_developer->uiLoadModeNetwork, SIGNAL( toggled( bool ) ),
-		this, SLOT( toggleLoadMode( bool ) ) );
-
-	connect( m_developer->dataLoadModeLocalFile, SIGNAL( toggled( bool ) ),
-		this, SLOT( toggleLoadMode( bool ) ) );
-		
-	connect( m_developer->dataLoadModeNetwork, SIGNAL( toggled( bool ) ),
-		this, SLOT( toggleLoadMode( bool ) ) );	
+	//~ connect( m_developer->uiLoadModeLocalFile, SIGNAL( toggled( bool ) ),
+		//~ this, SLOT( toggleLoadMode( bool ) ) );
+		//~ 
+	//~ connect( m_developer->uiLoadModeNetwork, SIGNAL( toggled( bool ) ),
+		//~ this, SLOT( toggleLoadMode( bool ) ) );
+//~ 
+	//~ connect( m_developer->dataLoadModeLocalFile, SIGNAL( toggled( bool ) ),
+		//~ this, SLOT( toggleLoadMode( bool ) ) );
+		//~ 
+	//~ connect( m_developer->dataLoadModeNetwork, SIGNAL( toggled( bool ) ),
+		//~ this, SLOT( toggleLoadMode( bool ) ) );	
 }
 
 void PreferencesDialog::loadSettings( )
 {	
 	// interface
 
-	m_interface->mdi->setChecked( m_settings.mdi );
+	//~ m_interface->mdi->setChecked( m_settings.mdi );
 
 	if( !m_languages.empty( ) ) {
 		QString lang = m_settings.locale;
@@ -142,58 +142,59 @@ void PreferencesDialog::loadSettings( )
 	
 	// developer
 	
-	m_developer->uiLoadModeLocalFile->setChecked( false );
-	m_developer->uiLoadModeNetwork->setChecked( false );
-	m_developer->dataLoadModeLocalFile->setChecked( false );
-	m_developer->dataLoadModeNetwork->setChecked( false );
-	m_developer->uiFormsDir->setEnabled( false );
-	m_developer->uiFormTranslationsDir->setEnabled( false );
-	m_developer->uiFormResourcesDir->setEnabled( false );
-	m_developer->dataLoaderDir->setEnabled( false );
-	switch( m_settings.uiLoadMode ) {
-		case LocalFile:			
-			m_developer->uiLoadModeLocalFile->setChecked( true );
-			m_developer->uiFormsDir->setEnabled( true );
-			m_developer->uiFormTranslationsDir->setEnabled( true );
-			m_developer->uiFormResourcesDir->setEnabled( true );
-			break;
-
-		case Network:
-			m_developer->uiLoadModeNetwork->setChecked( true );
-			break;
-		
-		case Unknown:
-			break;
-	}
-	switch( m_settings.dataLoadMode ) {
-		case LocalFile:			
-			m_developer->dataLoadModeLocalFile->setChecked( true );
-			m_developer->dataLoaderDir->setEnabled( true );
-			break;
-
-		case Network:
-			m_developer->dataLoadModeNetwork->setChecked( true );
-			break;
-
-		case Unknown:
-			break;
-	}
-	
-	m_developer->debug->setChecked( m_settings.debug );
-	m_developer->developer->setChecked( m_settings.developEnabled );
-	m_developer->autoLogin->setChecked( m_settings.autoLogin );
-	
-	m_developer->uiFormsDir->setFileName( m_settings.uiFormsDir );
-	m_developer->uiFormTranslationsDir->setFileName( m_settings.uiFormTranslationsDir );
-	m_developer->uiFormResourcesDir->setFileName( m_settings.uiFormResourcesDir );
-	m_developer->dataLoaderDir->setFileName( m_settings.dataLoaderDir );
+	//~ m_developer->uiLoadModeLocalFile->setChecked( false );
+	//~ m_developer->uiLoadModeNetwork->setChecked( false );
+	//~ m_developer->dataLoadModeLocalFile->setChecked( false );
+	//~ m_developer->dataLoadModeNetwork->setChecked( false );
+	//~ m_developer->uiFormsDir->setEnabled( false );
+	//~ m_developer->uiFormTranslationsDir->setEnabled( false );
+	//~ m_developer->uiFormResourcesDir->setEnabled( false );
+	//~ m_developer->dataLoaderDir->setEnabled( false );
+	//~ switch( m_settings.uiLoadMode ) {
+		//~ case LocalFile:			
+			//~ m_developer->uiLoadModeLocalFile->setChecked( true );
+			//~ m_developer->uiFormsDir->setEnabled( true );
+			//~ m_developer->uiFormTranslationsDir->setEnabled( true );
+			//~ m_developer->uiFormResourcesDir->setEnabled( true );
+			//~ break;
+//~ 
+		//~ case Network:
+			//~ m_developer->uiLoadModeNetwork->setChecked( true );
+			//~ break;
+		//~ 
+		//~ case Unknown:
+			//~ break;
+	//~ }
+	//~ switch( m_settings.dataLoadMode ) {
+		//~ case LocalFile:			
+			//~ m_developer->dataLoadModeLocalFile->setChecked( true );
+			//~ m_developer->dataLoaderDir->setEnabled( true );
+			//~ break;
+//~ 
+		//~ case Network:
+			//~ m_developer->dataLoadModeNetwork->setChecked( true );
+			//~ break;
+//~ 
+		//~ case Unknown:
+			//~ break;
+	//~ }
+	//~ 
+	//~ m_developer->debug->setChecked( m_settings.debug );
+	//~ m_developer->developer->setChecked( m_settings.developEnabled );
+	//~ m_developer->autoLogin->setChecked( m_settings.autoLogin );
+	//~ 
+	//~ m_developer->uiFormsDir->setFileName( m_settings.uiFormsDir );
+	//~ m_developer->uiFormTranslationsDir->setFileName( m_settings.uiFormTranslationsDir );
+	//~ m_developer->uiFormResourcesDir->setFileName( m_settings.uiFormResourcesDir );
+	//~ m_developer->dataLoaderDir->setFileName( m_settings.dataLoaderDir );
 }
 
 void PreferencesDialog::apply( )
 {
 	// interface
 
-	m_settings.mdi = m_interface->mdi->isChecked( );
+	//~ m_settings.mdi = m_interface->mdi->isChecked( );
+	m_settings.mdi = true;
 
 	if( !m_languages.empty( ) ) {
 		if( m_interface->systemLocale->isChecked( ) ) {
@@ -210,23 +211,23 @@ void PreferencesDialog::apply( )
 	
 	// developer
 	
-	if( m_developer->uiLoadModeLocalFile->isChecked( ) ) {
-		m_settings.uiLoadMode = LocalFile;
-	} else if( m_developer->uiLoadModeNetwork->isChecked( ) ) {
-		m_settings.uiLoadMode = Network;
-	}
-	if( m_developer->dataLoadModeLocalFile->isChecked( ) ) {
-		m_settings.dataLoadMode = LocalFile;
-	} else if( m_developer->dataLoadModeNetwork->isChecked( ) ) {
-		m_settings.dataLoadMode = Network;
-	}
-	m_settings.debug = m_developer->debug->isChecked( );
-	m_settings.developEnabled = m_developer->developer->isChecked( );
-	m_settings.autoLogin = m_developer->autoLogin->isChecked( );
-	m_settings.uiFormsDir = m_developer->uiFormsDir->fileName( );
-	m_settings.uiFormTranslationsDir = m_developer->uiFormTranslationsDir->fileName( );
-	m_settings.uiFormResourcesDir = m_developer->uiFormResourcesDir->fileName( );
-	m_settings.dataLoaderDir = m_developer->dataLoaderDir->fileName( );
+	//~ if( m_developer->uiLoadModeLocalFile->isChecked( ) ) {
+		//~ m_settings.uiLoadMode = LocalFile;
+	//~ } else if( m_developer->uiLoadModeNetwork->isChecked( ) ) {
+		//~ m_settings.uiLoadMode = Network;
+	//~ }
+	//~ if( m_developer->dataLoadModeLocalFile->isChecked( ) ) {
+		//~ m_settings.dataLoadMode = LocalFile;
+	//~ } else if( m_developer->dataLoadModeNetwork->isChecked( ) ) {
+		//~ m_settings.dataLoadMode = Network;
+	//~ }
+	//~ m_settings.debug = m_developer->debug->isChecked( );
+	//~ m_settings.developEnabled = m_developer->developer->isChecked( );
+	//~ m_settings.autoLogin = m_developer->autoLogin->isChecked( );
+	//~ m_settings.uiFormsDir = m_developer->uiFormsDir->fileName( );
+	//~ m_settings.uiFormTranslationsDir = m_developer->uiFormTranslationsDir->fileName( );
+	//~ m_settings.uiFormResourcesDir = m_developer->uiFormResourcesDir->fileName( );
+	//~ m_settings.dataLoaderDir = m_developer->dataLoaderDir->fileName( );
 	
 	accept( );	
 }
@@ -235,7 +236,7 @@ void PreferencesDialog::restoreDefaults( )
 {
 	// interface
 
-	m_interface->mdi->setChecked( DEFAULT_MDI );
+	//~ m_interface->mdi->setChecked( DEFAULT_MDI );
 
 	m_interface->systemLocale->setChecked( false );
 	m_interface->manualLocale->setChecked( true );
@@ -249,48 +250,48 @@ void PreferencesDialog::restoreDefaults( )
 
 	// developer
 
-	m_developer->uiLoadModeLocalFile->setChecked( false );
-	m_developer->uiLoadModeNetwork->setChecked( false );
-	m_developer->dataLoadModeLocalFile->setChecked( false );
-	m_developer->dataLoadModeNetwork->setChecked( false );
-	m_developer->uiFormsDir->setEnabled( false );
-	m_developer->uiFormTranslationsDir->setEnabled( false );
-	m_developer->uiFormResourcesDir->setEnabled( false );
-	m_developer->dataLoaderDir->setEnabled( false );
-	switch( DEFAULT_UILOADMODE ) {
-		case LocalFile:			
-			m_developer->uiLoadModeLocalFile->setChecked( true );
-			m_developer->uiFormsDir->setEnabled( true );
-			m_developer->uiFormTranslationsDir->setEnabled( true );
-			m_developer->uiFormResourcesDir->setEnabled( true );
-			break;
-
-		case Network:
-			m_developer->uiLoadModeNetwork->setChecked( true );
-			break;
-		
-		case Unknown:
-			break;
-	}
-	switch( DEFAULT_DATALOADMODE ) {
-		case LocalFile:			
-			m_developer->dataLoadModeLocalFile->setChecked( true );
-			m_developer->dataLoaderDir->setEnabled( true );
-			break;
-
-		case Network:
-			m_developer->dataLoadModeNetwork->setChecked( true );
-			break;
-
-		case Unknown:
-			break;
-	}
-	m_developer->debug->setChecked( false );
-	m_developer->developer->setChecked( false );
-	m_developer->uiFormsDir->setFileName( DEFAULT_UI_FORMS_DIR );
-	m_developer->uiFormTranslationsDir->setFileName( DEFAULT_UI_FORM_TRANSLATIONS_DIR );
-	m_developer->uiFormResourcesDir->setFileName( DEFAULT_UI_FORM_RESOURCES_DIR );
-	m_developer->dataLoaderDir->setFileName( DEFAULT_DATA_LOADER_DIR );
+	//~ m_developer->uiLoadModeLocalFile->setChecked( false );
+	//~ m_developer->uiLoadModeNetwork->setChecked( false );
+	//~ m_developer->dataLoadModeLocalFile->setChecked( false );
+	//~ m_developer->dataLoadModeNetwork->setChecked( false );
+	//~ m_developer->uiFormsDir->setEnabled( false );
+	//~ m_developer->uiFormTranslationsDir->setEnabled( false );
+	//~ m_developer->uiFormResourcesDir->setEnabled( false );
+	//~ m_developer->dataLoaderDir->setEnabled( false );
+	//~ switch( DEFAULT_UILOADMODE ) {
+		//~ case LocalFile:			
+			//~ m_developer->uiLoadModeLocalFile->setChecked( true );
+			//~ m_developer->uiFormsDir->setEnabled( true );
+			//~ m_developer->uiFormTranslationsDir->setEnabled( true );
+			//~ m_developer->uiFormResourcesDir->setEnabled( true );
+			//~ break;
+//~ 
+		//~ case Network:
+			//~ m_developer->uiLoadModeNetwork->setChecked( true );
+			//~ break;
+		//~ 
+		//~ case Unknown:
+			//~ break;
+	//~ }
+	//~ switch( DEFAULT_DATALOADMODE ) {
+		//~ case LocalFile:			
+			//~ m_developer->dataLoadModeLocalFile->setChecked( true );
+			//~ m_developer->dataLoaderDir->setEnabled( true );
+			//~ break;
+//~ 
+		//~ case Network:
+			//~ m_developer->dataLoadModeNetwork->setChecked( true );
+			//~ break;
+//~ 
+		//~ case Unknown:
+			//~ break;
+	//~ }
+	//~ m_developer->debug->setChecked( false );
+	//~ m_developer->developer->setChecked( false );
+	//~ m_developer->uiFormsDir->setFileName( DEFAULT_UI_FORMS_DIR );
+	//~ m_developer->uiFormTranslationsDir->setFileName( DEFAULT_UI_FORM_TRANSLATIONS_DIR );
+	//~ m_developer->uiFormResourcesDir->setFileName( DEFAULT_UI_FORM_RESOURCES_DIR );
+	//~ m_developer->dataLoaderDir->setFileName( DEFAULT_DATA_LOADER_DIR );
 }
 
 void PreferencesDialog::cancel( )
@@ -300,10 +301,10 @@ void PreferencesDialog::cancel( )
 
 void PreferencesDialog::toggleLoadMode( bool /* checked */ )
 {
-	m_developer->uiFormsDir->setEnabled( m_developer->uiLoadModeLocalFile->isChecked( ) );
-	m_developer->uiFormTranslationsDir->setEnabled( m_developer->uiLoadModeLocalFile->isChecked( ) );
-	m_developer->uiFormResourcesDir->setEnabled( m_developer->uiLoadModeLocalFile->isChecked( ) );
-	m_developer->dataLoaderDir->setEnabled( m_developer->dataLoadModeLocalFile->isChecked( ) );
+	//~ m_developer->uiFormsDir->setEnabled( m_developer->uiLoadModeLocalFile->isChecked( ) );
+	//~ m_developer->uiFormTranslationsDir->setEnabled( m_developer->uiLoadModeLocalFile->isChecked( ) );
+	//~ m_developer->uiFormResourcesDir->setEnabled( m_developer->uiLoadModeLocalFile->isChecked( ) );
+	//~ m_developer->dataLoaderDir->setEnabled( m_developer->dataLoadModeLocalFile->isChecked( ) );
 }
 
 void PreferencesDialog::toggleLocale( bool /* checked */ )

@@ -3,8 +3,6 @@ makefiles/gmake/platform.mk.vars
 makefiles/gmake/platform.vars
 *.d
 *.o
-*.sho++
-ui_*.h
 moc_*.cpp
 client/i18n/*.qm
 client/qrc_qtclient.cpp

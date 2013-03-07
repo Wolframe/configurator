@@ -41,6 +41,8 @@
 #include <QFrame>
 #include <QList>
 
+#include "include_forms.h"
+
 FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, QUiLoader *_uiLoader, QWidget *_parent, bool _debug )
 	: QWidget( _parent ), m_form( ),
 	  m_uiLoader( _uiLoader ), m_formLoader( _formLoader ),
@@ -296,7 +298,8 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 // read the form and construct it from the UI file
 	QWidget *oldUi = m_ui;
 	QBuffer buf( &formXml );
-	m_ui = m_uiLoader->load( &buf, this );
+//	m_ui = m_uiLoader->load( &buf, this );
+	#include "switch.cpp"
 	if( m_ui == 0 ) {
 // something went wrong loading or constructing the form
 		m_ui = oldUi;

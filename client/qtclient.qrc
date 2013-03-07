@@ -26,4 +26,28 @@
         <file>images/interface.png</file>
         <file>images/debug.png</file>
     </qresource>
+  <qresource prefix="images">
+    <file>images/link_edit.png</file>
+    <file>images/link_add.png</file>
+    <file>images/link.png</file>
+    <file>images/chart_organisation_add.png</file>
+    <file>images/chart_organisation_edit.png</file>
+    <file>images/chart_organisation.png</file>
+    <file>images/folder_add.png</file>
+    <file>images/folder_edit.png</file>
+    <file>images/folders.png</file>
+    <file>images/brick_add.png</file>
+    <file>images/brick_edit.png</file>
+    <file>images/picture_add.png</file>
+    <file>images/picture_edit.png</file>
+    <file>images/picture.png</file>
+    <file>images/building_add.png</file>
+    <file>images/building_edit.png</file>
+    <file>images/tag_blue_add.png</file>
+    <file>images/tag_blue_edit.png</file>
+    <file>images/building.png</file>
+    <file>images/color_swatches.png</file>
+    <file>images/bricks.png</file>
+    <file>images/tag_blue.png</file>
+  </qresource>
 </RCC>
