@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created: Thu Mar 7 07:26:53 2013
+** Created: Thu Mar 7 16:32:07 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,6 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actionOpen;
     QAction *actionExit;
     QAction *actionAbout;
     QAction *actionAboutQt;
@@ -34,6 +35,21 @@ public:
     QAction *actionPreferences;
     QAction *actionManageStorage;
     QAction *actionRestart;
+    QAction *action_categories_features;
+    QAction *action_categories;
+    QAction *action_components_features;
+    QAction *action_components;
+    QAction *action_configuration_components;
+    QAction *action_configurations;
+    QAction *action_configuration_subconfigs;
+    QAction *action_features;
+    QAction *action_manufacturers;
+    QAction *action_pictures;
+    QAction *action_recipe_content;
+    QAction *action_recipes;
+    QAction *action_tags;
+    QAction *actionOpenForm;
+    QAction *actionOpenFormNewWindow;
     QAction *actionContents;
     QAction *actionIndex;
     QAction *actionContextHelp;
@@ -65,27 +81,12 @@ public:
     QMenu *menuHelp;
     QMenu *menuEdit;
     QMenu *menuWindow;
-    QMenu *menuForms;
     QMenu *menuFile;
-    //~ QMenu *menuSettings;
-    //~ QMenu *menuLanguages;
+    QMenu *menuForms;
     QStatusBar *statusbar;
     QToolBar *toolBarConnection;
     QToolBar *toolBarEdit;
     QToolBar *toolBarWindow;
-    QAction *action_categories_features;	
-    QAction *action_categories;	
-    QAction *action_components_features;	
-    QAction *action_components;	
-    QAction *action_configuration_components;	
-    QAction *action_configurations;	
-    QAction *action_configuration_subconfigs;	
-    QAction *action_features;	
-    QAction *action_manufacturers;	
-    QAction *action_pictures;	
-    QAction *action_recipe_content;	
-    QAction *action_recipes;	
-    QAction *action_tags;	
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -94,6 +95,11 @@ public:
         MainWindow->setEnabled(true);
         MainWindow->resize(607, 395);
         MainWindow->setDocumentMode(true);
+        actionOpen = new QAction(MainWindow);
+        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8("../../../../../../../../../../home/abaumann/.designer/backup/open.png"), QSize(), QIcon::Normal, QIcon::Off);
+        actionOpen->setIcon(icon);
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QString::fromUtf8("actionExit"));
         QIcon icon1;
@@ -121,6 +127,38 @@ public:
         actionManageStorage->setObjectName(QString::fromUtf8("actionManageStorage"));
         actionRestart = new QAction(MainWindow);
         actionRestart->setObjectName(QString::fromUtf8("actionRestart"));
+        action_categories_features = new QAction(MainWindow);
+        action_categories_features->setObjectName(QString::fromUtf8("action_categories_features"));
+        action_categories = new QAction(MainWindow);
+        action_categories->setObjectName(QString::fromUtf8("action_categories"));
+        action_components_features = new QAction(MainWindow);
+        action_components_features->setObjectName(QString::fromUtf8("action_components_features"));
+        action_components = new QAction(MainWindow);
+        action_components->setObjectName(QString::fromUtf8("action_components"));
+        action_configuration_components = new QAction(MainWindow);
+        action_configuration_components->setObjectName(QString::fromUtf8("action_configuration_components"));
+        action_configurations = new QAction(MainWindow);
+        action_configurations->setObjectName(QString::fromUtf8("action_configurations"));
+        action_configuration_subconfigs = new QAction(MainWindow);
+        action_configuration_subconfigs->setObjectName(QString::fromUtf8("action_configuration_subconfigs"));
+        action_features = new QAction(MainWindow);
+        action_features->setObjectName(QString::fromUtf8("action_features"));
+        action_manufacturers = new QAction(MainWindow);
+        action_manufacturers->setObjectName(QString::fromUtf8("action_manufacturers"));
+        action_pictures = new QAction(MainWindow);
+        action_pictures->setObjectName(QString::fromUtf8("action_pictures"));
+        action_recipe_content = new QAction(MainWindow);
+        action_recipe_content->setObjectName(QString::fromUtf8("action_recipe_content"));
+        action_recipes = new QAction(MainWindow);
+        action_recipes->setObjectName(QString::fromUtf8("action_recipes"));
+        action_tags = new QAction(MainWindow);
+        action_tags->setObjectName(QString::fromUtf8("action_tags"));
+        actionOpenForm = new QAction(MainWindow);
+        actionOpenForm->setObjectName(QString::fromUtf8("actionOpenForm"));
+        actionOpenForm->setEnabled(false);
+        actionOpenFormNewWindow = new QAction(MainWindow);
+        actionOpenFormNewWindow->setObjectName(QString::fromUtf8("actionOpenFormNewWindow"));
+        actionOpenFormNewWindow->setEnabled(false);
         actionContents = new QAction(MainWindow);
         actionContents->setObjectName(QString::fromUtf8("actionContents"));
         actionContents->setEnabled(false);
@@ -261,14 +299,10 @@ public:
         menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
         menuWindow = new QMenu(menuBar);
         menuWindow->setObjectName(QString::fromUtf8("menuWindow"));
-	menuForms = new QMenu(menuBar);
-	menuForms->setObjectName(QString::fromUtf8("menuForms"));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
-        //~ menuSettings = new QMenu(menuBar);
-        //~ menuSettings->setObjectName(QString::fromUtf8("menuSettings"));
-        //~ menuLanguages = new QMenu(menuSettings);
-        //~ menuLanguages->setObjectName(QString::fromUtf8("menuLanguages"));
+        menuForms = new QMenu(menuBar);
+        menuForms->setObjectName(QString::fromUtf8("menuForms"));
         MainWindow->setMenuBar(menuBar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -284,63 +318,9 @@ public:
         toolBarWindow->setObjectName(QString::fromUtf8("toolBarWindow"));
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBarWindow);
 
-	action_categories_features = new QAction(MainWindow);
-	action_categories_features->setObjectName(QString::fromUtf8("action_categories_features"));
-	action_categories_features->setEnabled(true);
-	menuForms->addAction(action_categories_features);
-	action_categories = new QAction(MainWindow);
-	action_categories->setObjectName(QString::fromUtf8("action_categories"));
-	action_categories->setEnabled(true);
-	menuForms->addAction(action_categories);
-	action_components_features = new QAction(MainWindow);
-	action_components_features->setObjectName(QString::fromUtf8("action_components_features"));
-	action_components_features->setEnabled(true);
-	menuForms->addAction(action_components_features);
-	action_components = new QAction(MainWindow);
-	action_components->setObjectName(QString::fromUtf8("action_components"));
-	action_components->setEnabled(true);
-	menuForms->addAction(action_components);
-	action_configuration_components = new QAction(MainWindow);
-	action_configuration_components->setObjectName(QString::fromUtf8("action_configuration_components"));
-	action_configuration_components->setEnabled(true);
-	menuForms->addAction(action_configuration_components);
-	action_configurations = new QAction(MainWindow);
-	action_configurations->setObjectName(QString::fromUtf8("action_configurations"));
-	action_configurations->setEnabled(true);
-	menuForms->addAction(action_configurations);
-	action_configuration_subconfigs = new QAction(MainWindow);
-	action_configuration_subconfigs->setObjectName(QString::fromUtf8("action_configuration_subconfigs"));
-	action_configuration_subconfigs->setEnabled(true);
-	menuForms->addAction(action_configuration_subconfigs);
-	action_features = new QAction(MainWindow);
-	action_features->setObjectName(QString::fromUtf8("action_features"));
-	action_features->setEnabled(true);
-	menuForms->addAction(action_features);
-	action_manufacturers = new QAction(MainWindow);
-	action_manufacturers->setObjectName(QString::fromUtf8("action_manufacturers"));
-	action_manufacturers->setEnabled(true);
-	menuForms->addAction(action_manufacturers);
-	action_pictures = new QAction(MainWindow);
-	action_pictures->setObjectName(QString::fromUtf8("action_pictures"));
-	action_pictures->setEnabled(true);
-	menuForms->addAction(action_pictures);
-	action_recipe_content = new QAction(MainWindow);
-	action_recipe_content->setObjectName(QString::fromUtf8("action_recipe_content"));
-	action_recipe_content->setEnabled(true);
-	menuForms->addAction(action_recipe_content);
-	action_recipes = new QAction(MainWindow);
-	action_recipes->setObjectName(QString::fromUtf8("action_recipes"));
-	action_recipes->setEnabled(true);
-	menuForms->addAction(action_recipes);
-	action_tags = new QAction(MainWindow);
-	action_tags->setObjectName(QString::fromUtf8("action_tags"));
-	action_tags->setEnabled(true);
-	menuForms->addAction(action_tags);
-	
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuForms->menuAction());
         menuBar->addAction(menuEdit->menuAction());
-        //~ menuBar->addAction(menuSettings->menuAction());
         menuBar->addAction(menuWindow->menuAction());
         menuBar->addAction(menuHelp->menuAction());
         menuHelp->addAction(actionContents);
@@ -383,9 +363,19 @@ public:
         menuFile->addSeparator();
         menuFile->addAction(actionRestart);
         menuFile->addAction(actionExit);
-        //~ menuSettings->addAction(actionPreferences);
-        //~ menuSettings->addAction(menuLanguages->menuAction());
-        //~ menuLanguages->addAction(actionTest);
+        menuForms->addAction(action_categories_features);
+        menuForms->addAction(action_categories);
+        menuForms->addAction(action_components_features);
+        menuForms->addAction(action_components);
+        menuForms->addAction(action_configuration_components);
+        menuForms->addAction(action_configurations);
+        menuForms->addAction(action_configuration_subconfigs);
+        menuForms->addAction(action_features);
+        menuForms->addAction(action_manufacturers);
+        menuForms->addAction(action_pictures);
+        menuForms->addAction(action_recipe_content);
+        menuForms->addAction(action_recipes);
+        menuForms->addAction(action_tags);
         toolBarConnection->addAction(actionLogin);
         toolBarConnection->addAction(actionLogout);
         toolBarEdit->addAction(actionUndo);
@@ -409,6 +399,8 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Wolframe Qt Client", 0, QApplication::UnicodeUTF8));
         MainWindow->setProperty("themeAuthor", QVariant(QApplication::translate("MainWindow", "Andreas Baumann", 0, QApplication::UnicodeUTF8)));
         MainWindow->setProperty("themeBaseStyle", QVariant(QApplication::translate("MainWindow", "plastique", 0, QApplication::UnicodeUTF8)));
+        actionOpen->setText(QApplication::translate("MainWindow", "&Open", 0, QApplication::UnicodeUTF8));
+        actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", 0, QApplication::UnicodeUTF8));
         actionExit->setText(QApplication::translate("MainWindow", "&Exit", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         actionExit->setToolTip(QApplication::translate("MainWindow", "Exit the Wolframe client", 0, QApplication::UnicodeUTF8));
@@ -428,6 +420,23 @@ public:
 #ifndef QT_NO_TOOLTIP
         actionRestart->setToolTip(QApplication::translate("MainWindow", "Restart the Wolframe client", 0, QApplication::UnicodeUTF8));
 #endif // QT_NO_TOOLTIP
+        action_categories_features->setText(QApplication::translate("MainWindow", "action_categories_features", 0, QApplication::UnicodeUTF8));
+        action_categories->setText(QApplication::translate("MainWindow", "action_categories", 0, QApplication::UnicodeUTF8));
+        action_components_features->setText(QApplication::translate("MainWindow", "action_components_features", 0, QApplication::UnicodeUTF8));
+        action_components->setText(QApplication::translate("MainWindow", "action_components", 0, QApplication::UnicodeUTF8));
+        action_configuration_components->setText(QApplication::translate("MainWindow", "action_configuration_components", 0, QApplication::UnicodeUTF8));
+        action_configurations->setText(QApplication::translate("MainWindow", "action_configurations", 0, QApplication::UnicodeUTF8));
+        action_configuration_subconfigs->setText(QApplication::translate("MainWindow", "action_configuration_subconfigs", 0, QApplication::UnicodeUTF8));
+        action_features->setText(QApplication::translate("MainWindow", "action_features", 0, QApplication::UnicodeUTF8));
+        action_manufacturers->setText(QApplication::translate("MainWindow", "action_manufacturers", 0, QApplication::UnicodeUTF8));
+        action_pictures->setText(QApplication::translate("MainWindow", "action_pictures", 0, QApplication::UnicodeUTF8));
+        action_recipe_content->setText(QApplication::translate("MainWindow", "action_recipe_content", 0, QApplication::UnicodeUTF8));
+        action_recipes->setText(QApplication::translate("MainWindow", "action_recipes", 0, QApplication::UnicodeUTF8));
+        action_tags->setText(QApplication::translate("MainWindow", "action_tags", 0, QApplication::UnicodeUTF8));
+        actionOpenForm->setText(QApplication::translate("MainWindow", "&Open form..", 0, QApplication::UnicodeUTF8));
+        actionOpenForm->setProperty("defaultShortcut", QVariant(QApplication::translate("MainWindow", "QKeySequence::Open", 0, QApplication::UnicodeUTF8)));
+        actionOpenFormNewWindow->setText(QApplication::translate("MainWindow", "Open form in &new window..", 0, QApplication::UnicodeUTF8));
+        actionOpenFormNewWindow->setProperty("defaultShortcut", QVariant(QApplication::translate("MainWindow", "QKeySequence::New", 0, QApplication::UnicodeUTF8)));
         actionContents->setText(QApplication::translate("MainWindow", "Contents", 0, QApplication::UnicodeUTF8));
         actionIndex->setText(QApplication::translate("MainWindow", "Index", 0, QApplication::UnicodeUTF8));
         actionContextHelp->setText(QApplication::translate("MainWindow", "Context Help", 0, QApplication::UnicodeUTF8));
@@ -513,27 +522,11 @@ public:
         menuHelp->setTitle(QApplication::translate("MainWindow", "&Help", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "&Edit", 0, QApplication::UnicodeUTF8));
         menuWindow->setTitle(QApplication::translate("MainWindow", "&Window", 0, QApplication::UnicodeUTF8));
-        menuForms->setTitle(QApplication::translate("MainWindow", "F&orms", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "&File", 0, QApplication::UnicodeUTF8));
-        //~ menuSettings->setTitle(QApplication::translate("MainWindow", "&Settings", 0, QApplication::UnicodeUTF8));
-        //~ menuLanguages->setTitle(QApplication::translate("MainWindow", "&Language", 0, QApplication::UnicodeUTF8));
+        menuForms->setTitle(QApplication::translate("MainWindow", "F&orms", 0, QApplication::UnicodeUTF8));
         toolBarConnection->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", 0, QApplication::UnicodeUTF8));
         toolBarEdit->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
         toolBarWindow->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
-        
-        action_categories_features->setText(QApplication::translate("MainWindow", "action_categories_features", 0, QApplication::UnicodeUTF8));
-        action_categories->setText(QApplication::translate("MainWindow", "action_categories", 0, QApplication::UnicodeUTF8));
-        action_components_features->setText(QApplication::translate("MainWindow", "action_components_features", 0, QApplication::UnicodeUTF8));
-        action_components->setText(QApplication::translate("MainWindow", "action_components", 0, QApplication::UnicodeUTF8));
-        action_configuration_components->setText(QApplication::translate("MainWindow", "action_configuration_components", 0, QApplication::UnicodeUTF8));
-        action_configurations->setText(QApplication::translate("MainWindow", "action_configurations", 0, QApplication::UnicodeUTF8));
-        action_configuration_subconfigs->setText(QApplication::translate("MainWindow", "action_configuration_subconfigs", 0, QApplication::UnicodeUTF8));
-        action_features->setText(QApplication::translate("MainWindow", "action_features", 0, QApplication::UnicodeUTF8));
-        action_manufacturers->setText(QApplication::translate("MainWindow", "action_manufacturers", 0, QApplication::UnicodeUTF8));
-        action_pictures->setText(QApplication::translate("MainWindow", "action_pictures", 0, QApplication::UnicodeUTF8));
-        action_recipe_content->setText(QApplication::translate("MainWindow", "action_recipe_content", 0, QApplication::UnicodeUTF8));
-        action_recipes->setText(QApplication::translate("MainWindow", "action_recipes", 0, QApplication::UnicodeUTF8));
-        action_tags->setText(QApplication::translate("MainWindow", "action_tags", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

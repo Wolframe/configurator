@@ -60,54 +60,6 @@ HEADERS += \
 	HistoryLineEdit.hpp \
 	FileChooser.hpp \
 	PictureChooser.hpp \
-	ui_categories_features_add.h \
-	ui_categories_features_edit.h \
-	ui_categories_features.h \
-	ui_categories.h \
-	ui_category_add.h \
-	ui_category_edit.h \
-	ui_component_add.h \
-	ui_component_edit.h \
-	ui_components_features_add.h \
-	ui_components_features_edit.h \
-	ui_components_features.h \
-	ui_components.h \
-	ui_configuration_add.h \
-	ui_configuration_component_add.h \
-	ui_configuration_component_edit.h \
-	ui_configuration_components.h \
-	ui_configuration_edit.h \
-	ui_configurations.h \
-	ui_configuration_subconfig_add.h \
-	ui_configuration_subconfig_edit.h \
-	ui_configuration_subconfigs.h \
-	ui_feature_add.h \
-	ui_feature_edit.h \
-	ui_features.h \
-	ui_loginDialog.h \
-	ui_MainWindow.h \
-	ui_manageServersDialog.h \
-	ui_manufacturer_add.h \
-	ui_manufacturer_edit.h \
-	ui_manufacturers.h \
-	ui_picture_add.h \
-	ui_picture_edit.h \
-	ui_picture_info.h \
-	ui_pictures.h \
-	ui_PreferencesDialogDeveloper.h \
-	ui_PreferencesDialog.h \
-	ui_PreferencesDialogInterface.h \
-	ui_recipe_add.h \
-	ui_recipe_content_add.h \
-	ui_recipe_content_edit.h \
-	ui_recipe_content.h \
-	ui_recipe_edit.h \
-	ui_recipes.h \
-	ui_serverDefinitionDialog.h \
-	ui_serverDefinitionDialogNoSSL.h \
-	ui_tag_add.h \
-	ui_tag_edit.h \
-	ui_tags.h \
 	categories_features_add_form.h \
 	categories_features_edit_form.h \
 	categories_features_form.h \
@@ -188,6 +140,56 @@ HEADERS += \
 	tag_add_form.h \
 	tag_edit_form.h \
 	tags_form.h
+
+FORMS += \
+	loginDialog.ui \
+	MainWindow.ui \
+	manageServersDialog.ui \
+	PreferencesDialogDeveloper.ui \
+	PreferencesDialogInterface.ui \
+	PreferencesDialog.ui \
+	serverDefinitionDialogNoSSL.ui \
+	serverDefinitionDialog.ui \
+	forms/categories_features_add.ui \
+	forms/categories_features_edit.ui \
+	forms/categories_features.ui \
+	forms/categories.ui \
+	forms/category_add.ui \
+	forms/category_edit.ui \
+	forms/component_add.ui \
+	forms/component_edit.ui \
+	forms/components_features_add.ui \
+	forms/components_features_edit.ui \
+	forms/components_features.ui \
+	forms/components.ui \
+	forms/configuration_add.ui \
+	forms/configuration_component_add.ui \
+	forms/configuration_component_edit.ui \
+	forms/configuration_components.ui \
+	forms/configuration_edit.ui \
+	forms/configuration_subconfig_add.ui \
+	forms/configuration_subconfig_edit.ui \
+	forms/configuration_subconfigs.ui \
+	forms/configurations.ui \
+	forms/feature_add.ui \
+	forms/feature_edit.ui \
+	forms/features.ui \
+	forms/manufacturer_add.ui \
+	forms/manufacturer_edit.ui \
+	forms/manufacturers.ui \
+	forms/picture_add.ui \
+	forms/picture_edit.ui \
+	forms/picture_info.ui \
+	forms/pictures.ui \
+	forms/recipe_add.ui \
+	forms/recipe_content_add.ui \
+	forms/recipe_content_edit.ui \
+	forms/recipe_content.ui \
+	forms/recipe_edit.ui \
+	forms/recipes.ui \
+	forms/tag_add.ui \
+	forms/tag_edit.ui \
+	forms/tags.ui
 
 RESOURCES = \
 	qtclient.qrc

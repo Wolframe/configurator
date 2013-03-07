@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'components_features.ui'
 **
-** Created: Thu Mar 7 08:48:29 2013
+** Created: Thu Mar 7 16:32:07 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -33,7 +33,7 @@ public:
     QPushButton *add;
     QPushButton *add_3;
     QPushButton *add_2;
-    //~ QPushButton *reload_2;
+    QPushButton *reload_2;
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
@@ -81,12 +81,12 @@ public:
 
         horizontalLayout->addWidget(add_2);
 
-        //~ reload_2 = new QPushButton(components_features_form);
-        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        //~ reload_2->setProperty("global.componentState", QVariant(QString::fromUtf8("{component.state}")));
+        reload_2 = new QPushButton(components_features_form);
+        reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        reload_2->setProperty("global.componentState", QVariant(QString::fromUtf8("{component.state}")));
 
-        //~ horizontalLayout->addWidget(reload_2);
+        horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -212,7 +212,7 @@ public:
         QWidget::setTabOrder(pushButton, add);
         QWidget::setTabOrder(add, add_3);
         QWidget::setTabOrder(add_3, add_2);
-        //~ QWidget::setTabOrder(add_2, reload_2);
+        QWidget::setTabOrder(add_2, reload_2);
 
         retranslateUi(components_features_form);
         QObject::connect(ComponentFeature, SIGNAL(doubleClicked(QModelIndex)), add_3, SLOT(click()));
@@ -235,8 +235,8 @@ public:
         add_2->setProperty("global.ComponentFeatureState", QVariant(QApplication::translate("components_features_form", "{ComponentFeature.state}", 0, QApplication::UnicodeUTF8)));
         add_2->setProperty("component_id", QVariant(QApplication::translate("components_features_form", "{component.id}", 0, QApplication::UnicodeUTF8)));
         add_2->setProperty("feature_id", QVariant(QApplication::translate("components_features_form", "{ComponentFeature.id}", 0, QApplication::UnicodeUTF8)));
-        //~ reload_2->setText(QApplication::translate("components_features_form", "Main Menu", 0, QApplication::UnicodeUTF8));
-        //~ reload_2->setProperty("global.ComponentFeatureState", QVariant(QApplication::translate("components_features_form", "{ComponentFeature.state}", 0, QApplication::UnicodeUTF8)));
+        reload_2->setText(QApplication::translate("components_features_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        reload_2->setProperty("global.ComponentFeatureState", QVariant(QApplication::translate("components_features_form", "{ComponentFeature.state}", 0, QApplication::UnicodeUTF8)));
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QString());

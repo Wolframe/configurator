@@ -43,9 +43,9 @@
 #include <QComboBox>
 #include <QStackedWidget>
 
-//#include <QDesignerExportWidget>
+#include <QDesignerExportWidget>
 
-class /*QDESIGNER_WIDGET_EXPORT*/ FileChooser : public QWidget
+class QDESIGNER_WIDGET_EXPORT FileChooser : public QWidget
 {
 	Q_OBJECT
 	Q_ENUMS( SelectionMode )

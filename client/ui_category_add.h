@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'category_add.ui'
 **
-** Created: Thu Mar 7 08:48:29 2013
+** Created: Thu Mar 7 16:32:07 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCheckBox>
 #include <QtGui/QFormLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -24,7 +25,6 @@
 #include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QWidget>
-#include <QCheckBox>
 
 QT_BEGIN_NAMESPACE
 
@@ -34,8 +34,6 @@ public:
     QFormLayout *formLayout;
     QLabel *label_name;
     QLineEdit *name;
-    QLabel *label_root;
-    QCheckBox *root;
     QLabel *label_description;
     QPlainTextEdit *description;
     QTableWidget *picture;
@@ -52,6 +50,8 @@ public:
     QLabel *label_picture;
     QLabel *label;
     QLabel *label_3;
+    QCheckBox *root;
+    QLabel *label_4;
 
     void setupUi(QWidget *category_add_form)
     {
@@ -72,13 +72,6 @@ public:
         name->setProperty("initialFocus", QVariant(true));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, name);
-
-	label_root = new QLabel(category_add_form);
-	label_root->setObjectName(QString::fromUtf8("label_root"));
-	formLayout->setWidget(2, QFormLayout::LabelRole, label_root);
-        root = new QCheckBox(category_add_form);
-        root->setObjectName(QString::fromUtf8("root"));
-        formLayout->setWidget(2, QFormLayout::FieldRole, root);
 
         label_description = new QLabel(category_add_form);
         label_description->setObjectName(QString::fromUtf8("label_description"));
@@ -200,16 +193,28 @@ public:
 
         formLayout->setWidget(0, QFormLayout::FieldRole, label_3);
 
+        root = new QCheckBox(category_add_form);
+        root->setObjectName(QString::fromUtf8("root"));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, root);
+
+        label_4 = new QLabel(category_add_form);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_4);
+
 #ifndef QT_NO_SHORTCUT
         label_name->setBuddy(name);
         label_description->setBuddy(description);
         label_picture->setBuddy(picture);
+        label_4->setBuddy(root);
 #endif // QT_NO_SHORTCUT
         QWidget::setTabOrder(name, root);
-        QWidget::setTabOrder(root, description);        
+        QWidget::setTabOrder(root, description);
         QWidget::setTabOrder(description, search);
         QWidget::setTabOrder(search, searchButton);
-        QWidget::setTabOrder(searchButton, picture);
+        QWidget::setTabOrder(searchButton, infoButton);
+        QWidget::setTabOrder(infoButton, picture);
         QWidget::setTabOrder(picture, add);
         QWidget::setTabOrder(add, cancel);
 
@@ -224,7 +229,6 @@ public:
     {
         category_add_form->setWindowTitle(QApplication::translate("category_add_form", "Add category", 0, QApplication::UnicodeUTF8));
         label_name->setText(QApplication::translate("category_add_form", "Name:", 0, QApplication::UnicodeUTF8));
-        label_root->setText(QApplication::translate("feature_add_form", "Add to root:", 0, QApplication::UnicodeUTF8));
         name->setProperty("state", QVariant(QApplication::translate("category_add_form", "{global.stateName}", 0, QApplication::UnicodeUTF8)));
         label_description->setText(QApplication::translate("category_add_form", "Description:", 0, QApplication::UnicodeUTF8));
         description->setProperty("state", QVariant(QApplication::translate("category_add_form", "{global.stateDescription}", 0, QApplication::UnicodeUTF8)));
@@ -248,6 +252,8 @@ public:
         label_picture->setText(QApplication::translate("category_add_form", "Pictures:", 0, QApplication::UnicodeUTF8));
         label->setText(QString());
         label_3->setText(QApplication::translate("category_add_form", "Add category..", 0, QApplication::UnicodeUTF8));
+        root->setText(QString());
+        label_4->setText(QApplication::translate("category_add_form", "As Root:", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'tag_add.ui'
 **
-** Created: Thu Mar 7 08:48:30 2013
+** Created: Thu Mar 7 16:32:08 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,6 +14,7 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
+#include <QtGui/QCheckBox>
 #include <QtGui/QFormLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -23,7 +24,6 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QWidget>
-#include <QCheckBox>
 
 QT_BEGIN_NAMESPACE
 
@@ -33,8 +33,6 @@ public:
     QFormLayout *formLayout;
     QLabel *label_name;
     QLineEdit *name;
-    QLabel *label_root;
-    QCheckBox *root;
     QLabel *label_description;
     QPlainTextEdit *description;
     QHBoxLayout *horizontalLayout_2;
@@ -44,6 +42,8 @@ public:
     QPushButton *cancel;
     QLabel *label;
     QLabel *label_2;
+    QLabel *label_5;
+    QCheckBox *root;
 
     void setupUi(QWidget *tag_add_form)
     {
@@ -62,13 +62,6 @@ public:
         name->setProperty("initialFocus", QVariant(true));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, name);
-
-	label_root = new QLabel(tag_add_form);
-	label_root->setObjectName(QString::fromUtf8("label_root"));
-	formLayout->setWidget(2, QFormLayout::LabelRole, label_root);
-        root = new QCheckBox(tag_add_form);
-        root->setObjectName(QString::fromUtf8("root"));
-        formLayout->setWidget(2, QFormLayout::FieldRole, root);
 
         label_description = new QLabel(tag_add_form);
         label_description->setObjectName(QString::fromUtf8("label_description"));
@@ -121,8 +114,20 @@ public:
 
         formLayout->setWidget(0, QFormLayout::FieldRole, label_2);
 
+        label_5 = new QLabel(tag_add_form);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_5);
+
+        root = new QCheckBox(tag_add_form);
+        root->setObjectName(QString::fromUtf8("root"));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, root);
+
 #ifndef QT_NO_SHORTCUT
         label_name->setBuddy(name);
+        label_description->setBuddy(description);
+        label_5->setBuddy(root);
 #endif // QT_NO_SHORTCUT
         QWidget::setTabOrder(name, root);
         QWidget::setTabOrder(root, description);
@@ -138,12 +143,13 @@ public:
     {
         tag_add_form->setWindowTitle(QApplication::translate("tag_add_form", "Add tag", 0, QApplication::UnicodeUTF8));
         label_name->setText(QApplication::translate("tag_add_form", "Name:", 0, QApplication::UnicodeUTF8));
-        label_root->setText(QApplication::translate("tag_add_form", "Add to root:", 0, QApplication::UnicodeUTF8));
         label_description->setText(QApplication::translate("tag_add_form", "Description:", 0, QApplication::UnicodeUTF8));
         add->setText(QApplication::translate("tag_add_form", "Add", 0, QApplication::UnicodeUTF8));
         cancel->setText(QApplication::translate("tag_add_form", "Cancel", 0, QApplication::UnicodeUTF8));
         label->setText(QString());
         label_2->setText(QApplication::translate("tag_add_form", "Add new tag..", 0, QApplication::UnicodeUTF8));
+        label_5->setText(QApplication::translate("tag_add_form", "As Root:", 0, QApplication::UnicodeUTF8));
+        root->setText(QString());
     } // retranslateUi
 
 };

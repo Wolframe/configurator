@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'pictures.ui'
 **
-** Created: Thu Mar 7 08:48:30 2013
+** Created: Thu Mar 7 16:32:08 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,7 +36,7 @@ public:
     QPushButton *edit;
     QPushButton *reset_2;
     QPushButton *form1;
-    //~ QPushButton *reload_2;
+    QPushButton *reload_2;
     QSpacerItem *horizontalSpacer;
     QTableWidget *picture;
     QHBoxLayout *horizontalLayout_2;
@@ -96,11 +96,11 @@ public:
 
         horizontalLayout->addWidget(form1);
 
-        //~ reload_2 = new QPushButton(pictures_form);
-        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        reload_2 = new QPushButton(pictures_form);
+        reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
 
-        //~ horizontalLayout->addWidget(reload_2);
+        horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -178,7 +178,7 @@ public:
         QWidget::setTabOrder(delete_2, edit);
         QWidget::setTabOrder(edit, reset_2);
         QWidget::setTabOrder(reset_2, form1);
-        //~ QWidget::setTabOrder(form1, reload_2);
+        QWidget::setTabOrder(form1, reload_2);
 
         retranslateUi(pictures_form);
         QObject::connect(search, SIGNAL(returnPressed()), searchButton, SLOT(click()));
@@ -201,8 +201,8 @@ public:
         reset_2->setProperty("global.pictureState", QVariant(QApplication::translate("pictures_form", "{picture.state}", 0, QApplication::UnicodeUTF8)));
         form1->setText(QApplication::translate("pictures_form", "Manage Tags", 0, QApplication::UnicodeUTF8));
         form1->setProperty("global.pictureState", QVariant(QApplication::translate("pictures_form", "{picture.state}", 0, QApplication::UnicodeUTF8)));
-        //~ reload_2->setText(QApplication::translate("pictures_form", "Main Menu", 0, QApplication::UnicodeUTF8));
-        //~ reload_2->setProperty("global.pictureState", QVariant(QApplication::translate("pictures_form", "{picture.state}", 0, QApplication::UnicodeUTF8)));
+        reload_2->setText(QApplication::translate("pictures_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        reload_2->setProperty("global.pictureState", QVariant(QApplication::translate("pictures_form", "{picture.state}", 0, QApplication::UnicodeUTF8)));
         QTableWidgetItem *___qtablewidgetitem = picture->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("pictures_form", "thumbnail", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = picture->horizontalHeaderItem(1);

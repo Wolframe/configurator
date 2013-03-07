@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'recipe_content.ui'
 **
-** Created: Thu Mar 7 08:48:30 2013
+** Created: Thu Mar 7 16:32:08 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -33,7 +33,7 @@ public:
     QPushButton *add;
     QPushButton *add_3;
     QPushButton *add_2;
-    //~ QPushButton *reload_2;
+    QPushButton *reload_2;
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
@@ -81,12 +81,12 @@ public:
 
         horizontalLayout->addWidget(add_2);
 
-        //~ reload_2 = new QPushButton(recipe_content_form);
-        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        //~ reload_2->setProperty("global.recipeState", QVariant(QString::fromUtf8("{recipe.state}")));
+        reload_2 = new QPushButton(recipe_content_form);
+        reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        reload_2->setProperty("global.recipeState", QVariant(QString::fromUtf8("{recipe.state}")));
 
-        //~ horizontalLayout->addWidget(reload_2);
+        horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -201,7 +201,7 @@ public:
         QWidget::setTabOrder(pushButton, add);
         QWidget::setTabOrder(add, add_3);
         QWidget::setTabOrder(add_3, add_2);
-        //~ QWidget::setTabOrder(add_2, reload_2);
+        QWidget::setTabOrder(add_2, reload_2);
 
         retranslateUi(recipe_content_form);
         QObject::connect(RecipeContent, SIGNAL(doubleClicked(QModelIndex)), add_3, SLOT(click()));
@@ -224,8 +224,8 @@ public:
         add_2->setProperty("global.RecipeContentState", QVariant(QApplication::translate("recipe_content_form", "{RecipeContent.state}", 0, QApplication::UnicodeUTF8)));
         add_2->setProperty("recipe_id", QVariant(QApplication::translate("recipe_content_form", "{recipe.id}", 0, QApplication::UnicodeUTF8)));
         add_2->setProperty("category_id", QVariant(QApplication::translate("recipe_content_form", "{RecipeContent.id}", 0, QApplication::UnicodeUTF8)));
-        //~ reload_2->setText(QApplication::translate("recipe_content_form", "Main Menu", 0, QApplication::UnicodeUTF8));
-        //~ reload_2->setProperty("global.RecipeContentState", QVariant(QApplication::translate("recipe_content_form", "{RecipeContent.state}", 0, QApplication::UnicodeUTF8)));
+        reload_2->setText(QApplication::translate("recipe_content_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        reload_2->setProperty("global.RecipeContentState", QVariant(QApplication::translate("recipe_content_form", "{RecipeContent.state}", 0, QApplication::UnicodeUTF8)));
         label_2->setText(QString());
         label_3->setText(QString());
         label_4->setText(QString());

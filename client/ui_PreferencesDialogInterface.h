@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'PreferencesDialogInterface.ui'
 **
-** Created: Thu Mar 7 07:26:53 2013
+** Created: Thu Mar 7 16:32:07 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -39,7 +39,7 @@ public:
     QRadioButton *manualLocale;
     QComboBox *locales;
     QLabel *label;
-    //QCheckBox *mdi;
+    QCheckBox *mdi;
     QCheckBox *rememberLogin;
     QCheckBox *saveRestoreState;
     QCheckBox *errorsMessageBoxes;
@@ -94,10 +94,12 @@ public:
 
         gridLayout_3->addWidget(label, 0, 0, 1, 1);
 
-        //~ mdi = new QCheckBox(groupBox_3);
-        //~ mdi->setObjectName(QString::fromUtf8("mdi"));
-//~ 
-        //~ gridLayout_3->addWidget(mdi, 1, 0, 1, 1);
+        mdi = new QCheckBox(groupBox_3);
+        mdi->setObjectName(QString::fromUtf8("mdi"));
+        mdi->setEnabled(false);
+        mdi->setChecked(true);
+
+        gridLayout_3->addWidget(mdi, 1, 0, 1, 1);
 
         rememberLogin = new QCheckBox(groupBox_3);
         rememberLogin->setObjectName(QString::fromUtf8("rememberLogin"));
@@ -117,7 +119,7 @@ public:
 
         gridLayout->addWidget(groupBox_3, 0, 0, 1, 1);
 
-        //~ QWidget::setTabOrder(mdi, systemLocale);
+        QWidget::setTabOrder(mdi, systemLocale);
         QWidget::setTabOrder(systemLocale, manualLocale);
         QWidget::setTabOrder(manualLocale, locales);
         QWidget::setTabOrder(locales, rememberLogin);
@@ -135,7 +137,7 @@ public:
         systemLocale->setText(QApplication::translate("PreferencesDialogInterface", "&System locale (as set by the operating system environment)", 0, QApplication::UnicodeUTF8));
         manualLocale->setText(QApplication::translate("PreferencesDialogInterface", "&Manually set locale to:", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("PreferencesDialogInterface", "Set the language and the visual appearance of the client.", 0, QApplication::UnicodeUTF8));
-        //~ mdi->setText(QApplication::translate("PreferencesDialogInterface", "&MDI interface", 0, QApplication::UnicodeUTF8));
+        mdi->setText(QApplication::translate("PreferencesDialogInterface", "&MDI interface", 0, QApplication::UnicodeUTF8));
         rememberLogin->setText(QApplication::translate("PreferencesDialogInterface", "&Remember login (server and username, not credentials)", 0, QApplication::UnicodeUTF8));
         saveRestoreState->setText(QApplication::translate("PreferencesDialogInterface", "S&ave and restore state, position and size of (sub)windows", 0, QApplication::UnicodeUTF8));
         errorsMessageBoxes->setText(QApplication::translate("PreferencesDialogInterface", "&Show errors as message boxes (default: in status bar)", 0, QApplication::UnicodeUTF8));

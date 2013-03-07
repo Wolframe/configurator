@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'configurations.ui'
 **
-** Created: Thu Mar 7 08:48:29 2013
+** Created: Thu Mar 7 16:32:08 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -35,7 +35,7 @@ public:
     QPushButton *edit;
     QPushButton *edit_2;
     QPushButton *edit_3;
-    //~ QPushButton *reload_2;
+    QPushButton *reload_2;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
@@ -46,7 +46,7 @@ public:
     {
         if (configurations_form->objectName().isEmpty())
             configurations_form->setObjectName(QString::fromUtf8("configurations_form"));
-        configurations_form->resize(556, 318);
+        configurations_form->resize(636, 318);
         gridLayout = new QGridLayout(configurations_form);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout = new QHBoxLayout();
@@ -93,12 +93,12 @@ public:
 
         horizontalLayout->addWidget(edit_3);
 
-        //~ reload_2 = new QPushButton(configurations_form);
-        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        //~ reload_2->setProperty("global.configurationState", QVariant(QString::fromUtf8("{configuration.state}")));
+        reload_2 = new QPushButton(configurations_form);
+        reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        reload_2->setProperty("global.configurationState", QVariant(QString::fromUtf8("{configuration.state}")));
 
-        //~ horizontalLayout->addWidget(reload_2);
+        horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -156,7 +156,7 @@ public:
         QWidget::setTabOrder(delete_2, edit);
         QWidget::setTabOrder(edit, edit_2);
         QWidget::setTabOrder(edit_2, edit_3);
-        //~ QWidget::setTabOrder(edit_3, reload_2);
+        QWidget::setTabOrder(edit_3, reload_2);
 
         retranslateUi(configurations_form);
         QObject::connect(configuration, SIGNAL(doubleClicked(QModelIndex)), edit, SLOT(click()));
@@ -173,7 +173,7 @@ public:
         edit->setText(QApplication::translate("configurations_form", "Edit", 0, QApplication::UnicodeUTF8));
         edit_2->setText(QApplication::translate("configurations_form", "Manage Components", 0, QApplication::UnicodeUTF8));
         edit_3->setText(QApplication::translate("configurations_form", "Manage Subconfigs", 0, QApplication::UnicodeUTF8));
-        //~ reload_2->setText(QApplication::translate("configurations_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        reload_2->setText(QApplication::translate("configurations_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         label_2->setText(QString());
         label->setText(QApplication::translate("configurations_form", "Manage configurations", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = configuration->horizontalHeaderItem(0);

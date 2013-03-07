@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'features.ui'
 **
-** Created: Thu Mar 7 08:48:30 2013
+** Created: Thu Mar 7 16:32:08 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -37,10 +37,9 @@ public:
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *add;
-    //~ QPushButton *addRoot;
     QPushButton *delete_2;
     QPushButton *edit;
-    //~ QPushButton *reload_2;
+    QPushButton *reload_2;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_2;
     QLabel *label;
@@ -92,14 +91,6 @@ public:
 
         horizontalLayout->addWidget(add);
 
-        //~ addRoot = new QPushButton(features_form);
-        //~ addRoot->setObjectName(QString::fromUtf8("addRoot"));
-        //~ addRoot->setProperty("form", QVariant(QString::fromUtf8("feature_add")));
-        //~ addRoot->setProperty("global.id", QVariant(QString::fromUtf8("1")));
-        //~ addRoot->setProperty("global.featureState", QVariant(QString::fromUtf8("{feature.state}")));
-
-        //~ horizontalLayout->addWidget(addRoot);
-
         delete_2 = new QPushButton(features_form);
         delete_2->setObjectName(QString::fromUtf8("delete_2"));
         delete_2->setProperty("doctype", QVariant(QString::fromUtf8("Feature.simpleform")));
@@ -118,12 +109,12 @@ public:
 
         horizontalLayout->addWidget(edit);
 
-        //~ reload_2 = new QPushButton(features_form);
-        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        //~ reload_2->setProperty("global.featureState", QVariant(QString::fromUtf8("{feature.state}")));
+        reload_2 = new QPushButton(features_form);
+        reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        reload_2->setProperty("global.featureState", QVariant(QString::fromUtf8("{feature.state}")));
 
-        //~ horizontalLayout->addWidget(reload_2);
+        horizontalLayout->addWidget(reload_2);
 
 
         gridLayout->addLayout(horizontalLayout, 4, 0, 1, 1);
@@ -148,10 +139,9 @@ public:
         QWidget::setTabOrder(feature, radioButton);
         QWidget::setTabOrder(radioButton, radioButton_2);
         QWidget::setTabOrder(radioButton_2, add);
-        //~ QWidget::setTabOrder(add, addRoot);
-        //~ QWidget::setTabOrder(addRoot, delete_2);
+        QWidget::setTabOrder(add, delete_2);
         QWidget::setTabOrder(delete_2, edit);
-        //~ QWidget::setTabOrder(edit, reload_2);
+        QWidget::setTabOrder(edit, reload_2);
 
         retranslateUi(features_form);
         QObject::connect(radioButton, SIGNAL(toggled(bool)), feature, SLOT(expandAll()));
@@ -170,11 +160,10 @@ public:
         radioButton->setText(QApplication::translate("features_form", "expand all", 0, QApplication::UnicodeUTF8));
         radioButton_2->setText(QApplication::translate("features_form", "collapse all", 0, QApplication::UnicodeUTF8));
         add->setText(QApplication::translate("features_form", "Add", 0, QApplication::UnicodeUTF8));
-        //~ addRoot->setText(QApplication::translate("features_form", "Add Root", 0, QApplication::UnicodeUTF8));
         delete_2->setText(QApplication::translate("features_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("features_form", "{feature.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("features_form", "Edit", 0, QApplication::UnicodeUTF8));
-        //~ reload_2->setText(QApplication::translate("features_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        reload_2->setText(QApplication::translate("features_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         label_2->setText(QString());
         label->setText(QApplication::translate("features_form", "Manage features", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

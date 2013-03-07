@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'component_edit.ui'
 **
-** Created: Thu Mar 7 08:48:29 2013
+** Created: Thu Mar 7 16:32:07 2013
 **      by: Qt User Interface Compiler version 4.8.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
