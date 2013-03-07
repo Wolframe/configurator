@@ -27,7 +27,6 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionOpen;
     QAction *actionExit;
     QAction *actionAbout;
     QAction *actionAboutQt;
@@ -66,14 +65,15 @@ public:
     QMenu *menuHelp;
     QMenu *menuEdit;
     QMenu *menuWindow;
+    QMenu *menuForms;
     QMenu *menuFile;
     //~ QMenu *menuSettings;
     //~ QMenu *menuLanguages;
-    QMenu *menuForms;
     QStatusBar *statusbar;
     QToolBar *toolBarConnection;
     QToolBar *toolBarEdit;
     QToolBar *toolBarWindow;
+    QAction *action_tags;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -82,11 +82,6 @@ public:
         MainWindow->setEnabled(true);
         MainWindow->resize(607, 395);
         MainWindow->setDocumentMode(true);
-        actionOpen = new QAction(MainWindow);
-        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8("../../../../../../../../../../home/abaumann/.designer/backup/open.png"), QSize(), QIcon::Normal, QIcon::Off);
-        actionOpen->setIcon(icon);
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QString::fromUtf8("actionExit"));
         QIcon icon1;
@@ -277,12 +272,13 @@ public:
         toolBarWindow->setObjectName(QString::fromUtf8("toolBarWindow"));
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBarWindow);
 
-	QAction *action_tags = new QAction(MainWindow);
+	action_tags = new QAction(MainWindow);
 	action_tags->setObjectName(QString::fromUtf8("action_tags"));
 	action_tags->setEnabled(true);
 	menuForms->addAction(action_tags);
 	
         menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuForms->menuAction());
         menuBar->addAction(menuEdit->menuAction());
         //~ menuBar->addAction(menuSettings->menuAction());
         menuBar->addAction(menuWindow->menuAction());
@@ -353,8 +349,6 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Wolframe Qt Client", 0, QApplication::UnicodeUTF8));
         MainWindow->setProperty("themeAuthor", QVariant(QApplication::translate("MainWindow", "Andreas Baumann", 0, QApplication::UnicodeUTF8)));
         MainWindow->setProperty("themeBaseStyle", QVariant(QApplication::translate("MainWindow", "plastique", 0, QApplication::UnicodeUTF8)));
-        actionOpen->setText(QApplication::translate("MainWindow", "&Open", 0, QApplication::UnicodeUTF8));
-        actionOpen->setShortcut(QApplication::translate("MainWindow", "Ctrl+O", 0, QApplication::UnicodeUTF8));
         actionExit->setText(QApplication::translate("MainWindow", "&Exit", 0, QApplication::UnicodeUTF8));
 #ifndef QT_NO_TOOLTIP
         actionExit->setToolTip(QApplication::translate("MainWindow", "Exit the Wolframe client", 0, QApplication::UnicodeUTF8));
@@ -459,12 +453,15 @@ public:
         menuHelp->setTitle(QApplication::translate("MainWindow", "&Help", 0, QApplication::UnicodeUTF8));
         menuEdit->setTitle(QApplication::translate("MainWindow", "&Edit", 0, QApplication::UnicodeUTF8));
         menuWindow->setTitle(QApplication::translate("MainWindow", "&Window", 0, QApplication::UnicodeUTF8));
+        menuForms->setTitle(QApplication::translate("MainWindow", "F&orms", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "&File", 0, QApplication::UnicodeUTF8));
         //~ menuSettings->setTitle(QApplication::translate("MainWindow", "&Settings", 0, QApplication::UnicodeUTF8));
         //~ menuLanguages->setTitle(QApplication::translate("MainWindow", "&Language", 0, QApplication::UnicodeUTF8));
         toolBarConnection->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", 0, QApplication::UnicodeUTF8));
         toolBarEdit->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
         toolBarWindow->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
+        
+        actionPrint->setText(QApplication::translate("MainWindow", "action_tags", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

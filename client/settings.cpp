@@ -138,7 +138,8 @@ void ApplicationSettings::read( QSettings &settings )
 {
 	mainWindowPos = settings.value( "position", QPoint( 200, 200 ) ).toPoint();
 	mainWindowSize = settings.value( "size", QSize( 400, 400 ) ).toSize();
-	developEnabled = settings.value( "developer", false ).toBool();
+//	developEnabled = settings.value( "developer", false ).toBool();
+	developEnabled = false;
 
 	settings.beginGroup( "Login" );
 	saveUsername = settings.value( "remember", true ).toBool();
