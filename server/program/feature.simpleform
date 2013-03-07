@@ -2,6 +2,7 @@ FORM Feature
 {
 	id @int
 	parentID @int
+	root ?int
 	name string
 	normalizedName string
 	description string

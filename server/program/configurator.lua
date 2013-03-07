@@ -216,9 +216,12 @@ local function create_node( tablename, itr)
 	local parentID = nil
 	local description = nil
 	local pictures = nil
+	local root = nil
 	for v,t in itr do
 		if t == "parentID" then
 			parentID = v
+		elseif t == "root" then
+			root = content_value(scope(itr))
 		elseif t ==  "name" then
 			if v then
 				name = v
@@ -235,6 +238,9 @@ local function create_node( tablename, itr)
 		elseif t ==  "picture" then
 			pictures = pictures_value( pictures, scope( itr))
 		end
+	end
+	if root and root == "true" then
+		parentID = 1
 	end
 	insert_topnode( tablename, name, description, pictures, parentID)
 end
