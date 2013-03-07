@@ -42,9 +42,9 @@
 #include <QByteArray>
 #include <QLabel>
 
-#include <QDesignerExportWidget>
+//~ #include <QDesignerExportWidget>
 
-class QDESIGNER_WIDGET_EXPORT PictureChooser : public QWidget
+class /*QDESIGNER_WIDGET_EXPORT*/ PictureChooser : public QWidget
 {
 	Q_OBJECT
 	Q_PROPERTY( QString fileName READ fileName WRITE setFileName )
