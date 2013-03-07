@@ -379,6 +379,7 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	QBuffer buf( &formXml );
 //	m_ui = m_uiLoader->load( &buf, this );
 
+	m_ui = 0;
 	if( name == "categories_features_add" ) {
 		m_ui = new categories_features_add_form( this );
 	}
