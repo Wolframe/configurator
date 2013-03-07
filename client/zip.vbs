@@ -9,4 +9,4 @@ Set source = shellObj.NameSpace( InputFolder ).Items
 
 shellObj.NameSpace( ZipFile ).CopyHere( source )
 
-wScript.Sleep 60000
+wScript.Sleep 15000
