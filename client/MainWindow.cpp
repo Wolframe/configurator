@@ -551,7 +551,7 @@ void MainWindow::languageCodesLoaded( QStringList languages )
 //~ // does the menu exist?
 	QMenu *languageMenu = qFindChild<QMenu *>( this, "menuLanguages" );
 	if( !languageMenu ) return;
-//~ 
+//~
 //~ // construct a menu showing all languages
 	//~ languageMenu->clear( );
 	//~ QActionGroup *languageGroup = new QActionGroup( languageMenu );
@@ -614,19 +614,13 @@ void MainWindow::loadLanguage( QString language )
 void MainWindow::changeEvent( QEvent* _event )
 {
 	if( _event ) {
-		switch( _event->type( ) ) {
-
-			case QEvent::LanguageChange:
-				m_ui.retranslateUi( this );
-				break;
-
-			case QEvent::LocaleChange:
-			{
-				QString locale = QLocale::system( ).name( );
-				locale.truncate( locale.lastIndexOf( '_' ) );
-				loadLanguage( locale );
-			}
-			break;
+		if ( _event->type( ) == QEvent::LanguageChange ) {
+			m_ui.retranslateUi( this );
+		}
+		else if ( _event->type( ) == QEvent::LocaleChange )	{
+			QString locale = QLocale::system( ).name( );
+			locale.truncate( locale.lastIndexOf( '_' ) );
+			loadLanguage( locale );
 		}
 	}
 
@@ -704,7 +698,7 @@ void MainWindow::formModal( QString name )
 	m_modalDialog->show( );
 }
 
-void MainWindow::formLoaded( QString name )
+void MainWindow::formLoaded( QString /*name*/ )
 {
 // in MDI mode update the title of the sub window, otherwise update window title
 	if( settings.mdi ) {
@@ -1066,31 +1060,31 @@ void MainWindow::updateMdiMenusAndToolbars( )
 			this, SLOT( subWindowSelected( QAction * ) ) );
 	}
 
-	
+
 	m_ui.action_categories_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_categories->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_components_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_components->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_configuration_components->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_configurations->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_configuration_subconfigs->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_manufacturers->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_pictures->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_recipe_content->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_recipes->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-	
+
 	m_ui.action_tags->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 }

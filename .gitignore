@@ -1,4 +1,4 @@
-qtclient.pro.user
+configurator.pro.user
 makefiles/gmake/platform.mk.vars
 makefiles/gmake/platform.vars
 *.d
