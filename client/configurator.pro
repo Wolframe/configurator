@@ -8,10 +8,6 @@ DEFINES += QCOMMANDLINE_STATIC WITH_SSL
 
 INCLUDEPATH += .
 
-#LIBS += plugins/release\wolframewidgets.lib
-#LIBS += plugins/build/Release/libwolframewidgets.dylib
-LIBS += plugins/libwolframewidgets.so
-
 QT += core gui network sql
 
 SOURCES += \
@@ -36,7 +32,9 @@ SOURCES += \
 	LoadMode.cpp \
 	DebugTerminal.cpp \
 	HistoryLineEdit.cpp \
-	qtclient.cpp
+	qtclient.cpp \
+	FileChooser.cpp \
+	PictureChooser.cpp
 
 HEADERS += \
 	MainWindow.hpp \
@@ -60,6 +58,8 @@ HEADERS += \
 	LoadMode.hpp \
 	DebugTerminal.hpp \
 	HistoryLineEdit.hpp \
+	FileChooser.hpp \
+	PictureChooser.hpp \
 	ui_categories_features_add.h \
 	ui_categories_features_edit.h \
 	ui_categories_features.h \
