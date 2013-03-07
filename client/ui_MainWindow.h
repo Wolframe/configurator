@@ -67,8 +67,8 @@ public:
     QMenu *menuEdit;
     QMenu *menuWindow;
     QMenu *menuFile;
-    QMenu *menuSettings;
-    QMenu *menuLanguages;
+    //~ QMenu *menuSettings;
+    //~ QMenu *menuLanguages;
     QStatusBar *statusbar;
     QToolBar *toolBarConnection;
     QToolBar *toolBarEdit;
@@ -255,10 +255,10 @@ public:
         menuWindow->setObjectName(QString::fromUtf8("menuWindow"));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
-        menuSettings = new QMenu(menuBar);
-        menuSettings->setObjectName(QString::fromUtf8("menuSettings"));
-        menuLanguages = new QMenu(menuSettings);
-        menuLanguages->setObjectName(QString::fromUtf8("menuLanguages"));
+        //~ menuSettings = new QMenu(menuBar);
+        //~ menuSettings->setObjectName(QString::fromUtf8("menuSettings"));
+        //~ menuLanguages = new QMenu(menuSettings);
+        //~ menuLanguages->setObjectName(QString::fromUtf8("menuLanguages"));
         MainWindow->setMenuBar(menuBar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -276,7 +276,7 @@ public:
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
-        menuBar->addAction(menuSettings->menuAction());
+        //~ menuBar->addAction(menuSettings->menuAction());
         menuBar->addAction(menuWindow->menuAction());
         menuBar->addAction(menuHelp->menuAction());
         menuHelp->addAction(actionContents);
@@ -313,14 +313,15 @@ public:
         menuFile->addAction(actionLogout);
         menuFile->addAction(actionManageServers);
         menuFile->addSeparator();
+        menuFile->addAction(actionPreferences);
         menuFile->addSeparator();
         menuFile->addAction(actionPrint);
         menuFile->addSeparator();
         menuFile->addAction(actionRestart);
         menuFile->addAction(actionExit);
-        menuSettings->addAction(actionPreferences);
-        menuSettings->addAction(menuLanguages->menuAction());
-        menuLanguages->addAction(actionTest);
+        //~ menuSettings->addAction(actionPreferences);
+        //~ menuSettings->addAction(menuLanguages->menuAction());
+        //~ menuLanguages->addAction(actionTest);
         toolBarConnection->addAction(actionLogin);
         toolBarConnection->addAction(actionLogout);
         toolBarEdit->addAction(actionUndo);
@@ -451,8 +452,8 @@ public:
         menuEdit->setTitle(QApplication::translate("MainWindow", "&Edit", 0, QApplication::UnicodeUTF8));
         menuWindow->setTitle(QApplication::translate("MainWindow", "&Window", 0, QApplication::UnicodeUTF8));
         menuFile->setTitle(QApplication::translate("MainWindow", "&File", 0, QApplication::UnicodeUTF8));
-        menuSettings->setTitle(QApplication::translate("MainWindow", "&Settings", 0, QApplication::UnicodeUTF8));
-        menuLanguages->setTitle(QApplication::translate("MainWindow", "&Language", 0, QApplication::UnicodeUTF8));
+        //~ menuSettings->setTitle(QApplication::translate("MainWindow", "&Settings", 0, QApplication::UnicodeUTF8));
+        //~ menuLanguages->setTitle(QApplication::translate("MainWindow", "&Language", 0, QApplication::UnicodeUTF8));
         toolBarConnection->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", 0, QApplication::UnicodeUTF8));
         toolBarEdit->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
         toolBarWindow->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));

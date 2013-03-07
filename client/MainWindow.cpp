@@ -548,24 +548,24 @@ void MainWindow::languageCodesLoaded( QStringList languages )
 // remember languages for preferences dialog
 	m_languages = languageCodes;
 
-// does the menu exist?
+//~ // does the menu exist?
 	QMenu *languageMenu = qFindChild<QMenu *>( this, "menuLanguages" );
 	if( !languageMenu ) return;
-
-// construct a menu showing all languages
-	languageMenu->clear( );
-	QActionGroup *languageGroup = new QActionGroup( languageMenu );
-	languageGroup->setExclusive( true );
-	foreach( QString language, m_languages ) {
-		QLocale myLocale( language );
-		QAction *action = new QAction( myLocale.languageToString( myLocale.language( ) ) + " (" + language + ")", languageGroup );
-		action->setCheckable( true );
-		action->setData( QVariant( language ) );
-		languageGroup->addAction( action );
-		if( language == m_language ) action->setChecked( true );
-	}
-	languageMenu->addActions( languageGroup->actions( ) );
-	connect( languageGroup, SIGNAL( triggered( QAction * ) ), this, SLOT( languageSelected( QAction * ) ) );
+//~ 
+//~ // construct a menu showing all languages
+	//~ languageMenu->clear( );
+	//~ QActionGroup *languageGroup = new QActionGroup( languageMenu );
+	//~ languageGroup->setExclusive( true );
+	//~ foreach( QString language, m_languages ) {
+		//~ QLocale myLocale( language );
+		//~ QAction *action = new QAction( myLocale.languageToString( myLocale.language( ) ) + " (" + language + ")", languageGroup );
+		//~ action->setCheckable( true );
+		//~ action->setData( QVariant( language ) );
+		//~ languageGroup->addAction( action );
+		//~ if( language == m_language ) action->setChecked( true );
+	//~ }
+	//~ languageMenu->addActions( languageGroup->actions( ) );
+	//~ connect( languageGroup, SIGNAL( triggered( QAction * ) ), this, SLOT( languageSelected( QAction * ) ) );
 }
 
 void MainWindow::languageSelected( QAction *action )
