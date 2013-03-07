@@ -173,6 +173,19 @@ class MainWindow : public QMainWindow
 		void on_actionLogin_triggered( );
 		void on_actionLogout_triggered( );
 		void on_actionManageServers_triggered( );
+		void on_action_categories_features_triggered( );
+		void on_action_categories_triggered( );
+		void on_action_components_features_triggered( );
+		void on_action_components_triggered( );
+		void on_action_configuration_components_triggered( );
+		void on_action_configurations_triggered( );
+		void on_action_configuration_subconfigs_triggered( );
+		void on_action_features_triggered( );
+		void on_action_manufacturers_triggered( );
+		void on_action_pictures_triggered( );
+		void on_action_recipe_content_triggered( );
+		void on_action_recipes_triggered( );
+		void on_action_tags_triggered( );
 };
 
 #endif // _MAIN_WINDOW_HPP_INCLUDED

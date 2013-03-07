@@ -1240,3 +1240,69 @@ void MainWindow::addDeveloperMenu( )
 	connect( m_debugTerminalAction, SIGNAL( toggled( bool ) ), this,
 		SLOT( showDebugTerminal( bool ) ) );
 }
+
+void MainWindow::on_action_categories_features_triggered( )
+{
+	(void)CreateMdiSubWindow( "categories_features" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_categories_triggered( )
+{
+	(void)CreateMdiSubWindow( "categories" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_components_features_triggered( )
+{
+	(void)CreateMdiSubWindow( "components_features" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_components_triggered( )
+{
+	(void)CreateMdiSubWindow( "components" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_configuration_components_triggered( )
+{
+	(void)CreateMdiSubWindow( "configuration_components" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_configurations_triggered( )
+{
+	(void)CreateMdiSubWindow( "configurations" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_configuration_subconfigs_triggered( )
+{
+	(void)CreateMdiSubWindow( "configuration_subconfigs" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_features_triggered( )
+{
+	(void)CreateMdiSubWindow( "features" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_manufacturers_triggered( )
+{
+	(void)CreateMdiSubWindow( "manufacturers" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_pictures_triggered( )
+{
+	(void)CreateMdiSubWindow( "pictures" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_recipe_content_triggered( )
+{
+	(void)CreateMdiSubWindow( "recipe_content" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_recipes_triggered( )
+{
+	(void)CreateMdiSubWindow( "recipes" );
+	updateMenusAndToolbars( );
+}
+void MainWindow::on_action_tags_triggered( )
+{
+	(void)CreateMdiSubWindow( "tags" );
+	updateMenusAndToolbars( );
+}
