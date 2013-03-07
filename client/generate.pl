@@ -3,7 +3,7 @@
 # for f in `cat forms`; do sed -i "s/<class>Form<\/class>/<class>${f}_form<\/class>/g" $f.ui; sed -i "s/name=\"Form\"/name=\"${f}_form\"/g" $f.ui; done
 # for f in `cat forms`; do uic-qt4 -o ui_$f.h $f.ui; done
 
-open FORMS, "<forms";
+open FORMS, "<forms.lst";
 open SWITCH, ">switch.cpp";
 open INCLUDE_FORMS, ">include_forms.h";
 
