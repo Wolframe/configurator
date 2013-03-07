@@ -38,7 +38,7 @@ public:
     QPushButton *addParent;
     QPushButton *delete_2;
     QPushButton *edit;
-    QPushButton *reload_2;
+    //~ QPushButton *reload_2;
     QSpacerItem *horizontalSpacer;
     QTreeWidget *category;
     QHBoxLayout *horizontalLayout_2;
@@ -103,12 +103,12 @@ public:
 
         horizontalLayout->addWidget(edit);
 
-        reload_2 = new QPushButton(categories_form);
-        reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        reload_2->setProperty("global.categoryState", QVariant(QString::fromUtf8("{category.state}")));
+        //~ reload_2 = new QPushButton(categories_form);
+        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        //~ reload_2->setProperty("global.categoryState", QVariant(QString::fromUtf8("{category.state}")));
 
-        horizontalLayout->addWidget(reload_2);
+        //~ horizontalLayout->addWidget(reload_2);
 
 
         gridLayout->addLayout(horizontalLayout, 5, 0, 1, 1);
@@ -150,7 +150,7 @@ public:
         QWidget::setTabOrder(add, addParent);
         QWidget::setTabOrder(addParent, delete_2);
         QWidget::setTabOrder(delete_2, edit);
-        QWidget::setTabOrder(edit, reload_2);
+        //~ QWidget::setTabOrder(edit, reload_2);
 
         retranslateUi(categories_form);
         QObject::connect(radioButton, SIGNAL(toggled(bool)), category, SLOT(expandAll()));
@@ -170,7 +170,7 @@ public:
         delete_2->setText(QApplication::translate("categories_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("categories_form", "{category.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("categories_form", "Edit", 0, QApplication::UnicodeUTF8));
-        reload_2->setText(QApplication::translate("categories_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        //~ reload_2->setText(QApplication::translate("categories_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         QTreeWidgetItem *___qtreewidgetitem = category->headerItem();
         ___qtreewidgetitem->setText(1, QApplication::translate("categories_form", "description", 0, QApplication::UnicodeUTF8));
         ___qtreewidgetitem->setText(0, QApplication::translate("categories_form", "category", 0, QApplication::UnicodeUTF8));

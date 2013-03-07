@@ -33,7 +33,6 @@ public:
     QPushButton *add;
     QPushButton *delete_2;
     QPushButton *edit;
-    QPushButton *reload_2;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
@@ -74,13 +73,6 @@ public:
         edit->setProperty("global.recipeState", QVariant(QString::fromUtf8("{recipe.state}")));
 
         horizontalLayout->addWidget(edit);
-
-        reload_2 = new QPushButton(recipes_form);
-        reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        reload_2->setProperty("global.recipeState", QVariant(QString::fromUtf8("{recipe.state}")));
-
-        horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -137,7 +129,6 @@ public:
 
         QWidget::setTabOrder(add, delete_2);
         QWidget::setTabOrder(delete_2, edit);
-        QWidget::setTabOrder(edit, reload_2);
 
         retranslateUi(recipes_form);
         QObject::connect(recipe, SIGNAL(doubleClicked(QModelIndex)), edit, SLOT(click()));
@@ -152,7 +143,6 @@ public:
         delete_2->setText(QApplication::translate("recipes_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("recipes_form", "{recipe.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("recipes_form", "Edit", 0, QApplication::UnicodeUTF8));
-        reload_2->setText(QApplication::translate("recipes_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         label_2->setText(QString());
         label->setText(QApplication::translate("recipes_form", "Manage recipes", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = recipe->horizontalHeaderItem(0);

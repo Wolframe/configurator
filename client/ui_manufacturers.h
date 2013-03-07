@@ -33,7 +33,7 @@ public:
     QPushButton *add;
     QPushButton *delete_2;
     QPushButton *edit;
-    QPushButton *reload_2;
+    //~ QPushButton *reload_2;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
@@ -75,12 +75,12 @@ public:
 
         horizontalLayout->addWidget(edit);
 
-        reload_2 = new QPushButton(manufacturers_form);
-        reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        reload_2->setProperty("global.manufacturerState", QVariant(QString::fromUtf8("{manufacturer.state}")));
+        //~ reload_2 = new QPushButton(manufacturers_form);
+        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        //~ reload_2->setProperty("global.manufacturerState", QVariant(QString::fromUtf8("{manufacturer.state}")));
 
-        horizontalLayout->addWidget(reload_2);
+        //~ horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -135,7 +135,7 @@ public:
         QWidget::setTabOrder(manufacturer, add);
         QWidget::setTabOrder(add, delete_2);
         QWidget::setTabOrder(delete_2, edit);
-        QWidget::setTabOrder(edit, reload_2);
+        //~ QWidget::setTabOrder(edit, reload_2);
 
         retranslateUi(manufacturers_form);
         QObject::connect(manufacturer, SIGNAL(cellDoubleClicked(int,int)), edit, SLOT(click()));
@@ -150,7 +150,7 @@ public:
         delete_2->setText(QApplication::translate("manufacturers_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("manufacturers_form", "{manufacturer.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("manufacturers_form", "Edit", 0, QApplication::UnicodeUTF8));
-        reload_2->setText(QApplication::translate("manufacturers_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        //~ reload_2->setText(QApplication::translate("manufacturers_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         label->setText(QString());
         label_2->setText(QApplication::translate("manufacturers_form", "Manage manufacturers", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = manufacturer->horizontalHeaderItem(0);

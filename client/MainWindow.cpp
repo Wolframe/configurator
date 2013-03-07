@@ -1065,6 +1065,34 @@ void MainWindow::updateMdiMenusAndToolbars( )
 		connect( m_subWinGroup, SIGNAL( triggered( QAction * ) ),
 			this, SLOT( subWindowSelected( QAction * ) ) );
 	}
+
+	
+	m_ui.action_categories_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_categories->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_components_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_components->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_configuration_components->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_configurations->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_configuration_subconfigs->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_manufacturers->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_pictures->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_recipe_content->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_recipes->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	
+	m_ui.action_tags->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+
 }
 
 void MainWindow::updateMenusAndToolbars( )

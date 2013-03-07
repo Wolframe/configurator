@@ -35,7 +35,7 @@ public:
     QPushButton *edit;
     QPushButton *edit_2;
     QPushButton *edit_3;
-    QPushButton *reload_2;
+    //~ QPushButton *reload_2;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
@@ -93,12 +93,12 @@ public:
 
         horizontalLayout->addWidget(edit_3);
 
-        reload_2 = new QPushButton(configurations_form);
-        reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        reload_2->setProperty("global.configurationState", QVariant(QString::fromUtf8("{configuration.state}")));
+        //~ reload_2 = new QPushButton(configurations_form);
+        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        //~ reload_2->setProperty("global.configurationState", QVariant(QString::fromUtf8("{configuration.state}")));
 
-        horizontalLayout->addWidget(reload_2);
+        //~ horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -156,7 +156,7 @@ public:
         QWidget::setTabOrder(delete_2, edit);
         QWidget::setTabOrder(edit, edit_2);
         QWidget::setTabOrder(edit_2, edit_3);
-        QWidget::setTabOrder(edit_3, reload_2);
+        //~ QWidget::setTabOrder(edit_3, reload_2);
 
         retranslateUi(configurations_form);
         QObject::connect(configuration, SIGNAL(doubleClicked(QModelIndex)), edit, SLOT(click()));
@@ -173,7 +173,7 @@ public:
         edit->setText(QApplication::translate("configurations_form", "Edit", 0, QApplication::UnicodeUTF8));
         edit_2->setText(QApplication::translate("configurations_form", "Manage Components", 0, QApplication::UnicodeUTF8));
         edit_3->setText(QApplication::translate("configurations_form", "Manage Subconfigs", 0, QApplication::UnicodeUTF8));
-        reload_2->setText(QApplication::translate("configurations_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        //~ reload_2->setText(QApplication::translate("configurations_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         label_2->setText(QString());
         label->setText(QApplication::translate("configurations_form", "Manage configurations", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = configuration->horizontalHeaderItem(0);

@@ -33,7 +33,7 @@ public:
     QPushButton *add;
     QPushButton *delete_2;
     QPushButton *edit;
-    QPushButton *reload_2;
+    //~ QPushButton *reload_2;
     QSpacerItem *horizontalSpacer_2;
     QTableWidget *component;
     QHBoxLayout *horizontalLayout_2;
@@ -75,12 +75,12 @@ public:
 
         horizontalLayout->addWidget(edit);
 
-        reload_2 = new QPushButton(components_form);
-        reload_2->setObjectName(QString::fromUtf8("reload_2"));
-        reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
-        reload_2->setProperty("global.componentState", QVariant(QString::fromUtf8("{component.state}")));
+        //~ reload_2 = new QPushButton(components_form);
+        //~ reload_2->setObjectName(QString::fromUtf8("reload_2"));
+        //~ reload_2->setProperty("form", QVariant(QString::fromUtf8("init")));
+        //~ reload_2->setProperty("global.componentState", QVariant(QString::fromUtf8("{component.state}")));
 
-        horizontalLayout->addWidget(reload_2);
+        //~ horizontalLayout->addWidget(reload_2);
 
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -145,7 +145,7 @@ public:
         QWidget::setTabOrder(component, add);
         QWidget::setTabOrder(add, delete_2);
         QWidget::setTabOrder(delete_2, edit);
-        QWidget::setTabOrder(edit, reload_2);
+        //~ QWidget::setTabOrder(edit, reload_2);
 
         retranslateUi(components_form);
         QObject::connect(component, SIGNAL(cellDoubleClicked(int,int)), edit, SLOT(click()));
@@ -160,7 +160,7 @@ public:
         delete_2->setText(QApplication::translate("components_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("components_form", "{component.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("components_form", "Edit", 0, QApplication::UnicodeUTF8));
-        reload_2->setText(QApplication::translate("components_form", "Main Menu", 0, QApplication::UnicodeUTF8));
+        //~ reload_2->setText(QApplication::translate("components_form", "Main Menu", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = component->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("components_form", "code", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem1 = component->horizontalHeaderItem(1);

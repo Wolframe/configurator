@@ -145,7 +145,8 @@ void ApplicationSettings::read( QSettings &settings )
 	saveUsername = settings.value( "remember", true ).toBool();
 	lastUsername = settings.value( "user" ).toString();
 	lastConnection = settings.value( "connection" ).toString();
-	autoLogin = settings.value( "auto", false ).toBool( );
+//	autoLogin = settings.value( "auto", false ).toBool( );
+	autoLogin = false;
 	settings.endGroup();
 
 	int size = settings.beginReadArray( "Connections" );
