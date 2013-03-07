@@ -69,6 +69,7 @@ public:
     QMenu *menuFile;
     //~ QMenu *menuSettings;
     //~ QMenu *menuLanguages;
+    QMenu *menuForms;
     QStatusBar *statusbar;
     QToolBar *toolBarConnection;
     QToolBar *toolBarEdit;
@@ -253,6 +254,8 @@ public:
         menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
         menuWindow = new QMenu(menuBar);
         menuWindow->setObjectName(QString::fromUtf8("menuWindow"));
+	menuForms = new QMenu(menuBar);
+	menuForms->setObjectName(QString::fromUtf8("menuForms"));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         //~ menuSettings = new QMenu(menuBar);
@@ -274,6 +277,11 @@ public:
         toolBarWindow->setObjectName(QString::fromUtf8("toolBarWindow"));
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBarWindow);
 
+	QAction *action_tags = new QAction(MainWindow);
+	action_tags->setObjectName(QString::fromUtf8("action_tags"));
+	action_tags->setEnabled(true);
+	menuForms->addAction(action_tags);
+	
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuEdit->menuAction());
         //~ menuBar->addAction(menuSettings->menuAction());
