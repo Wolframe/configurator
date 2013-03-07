@@ -1,6 +1,6 @@
 @echo off
--del qtclient.zip
--del /s /q C:\qtclient\*
+del qtclient.zip
+del /s /q C:\qtclient\*
 rmdir C:\qtclient\imageformats
 rmdir C:\qtclient
 mkdir C:\qtclient
