@@ -442,7 +442,7 @@
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>
-  <include location="../resources/configurator.qrc"/>
+  <include location="./qtclient.qrc"/>
  </resources>
  <connections>
   <connection>

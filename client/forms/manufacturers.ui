@@ -74,19 +74,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="reload_2">
-       <property name="text">
-        <string>Main Menu</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">init</string>
-       </property>
-       <property name="global.manufacturerState" stdset="0">
-        <string notr="true">{manufacturer.state}</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -193,11 +180,10 @@
   <tabstop>add</tabstop>
   <tabstop>delete_2</tabstop>
   <tabstop>edit</tabstop>
-  <tabstop>reload_2</tabstop>
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>
-  <include location="../resources/configurator.qrc"/>
+  <include location="../qtclient.qrc"/>
  </resources>
  <connections>
   <connection>
