@@ -23,6 +23,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QSpacerItem>
 #include <QtGui/QWidget>
+#include <QCheckBox>
 
 QT_BEGIN_NAMESPACE
 
@@ -32,6 +33,8 @@ public:
     QFormLayout *formLayout;
     QLabel *label_name;
     QLineEdit *name;
+    QLabel *label_root;
+    QCheckBox *root;
     QLabel *label_description;
     QPlainTextEdit *description;
     QHBoxLayout *horizontalLayout_2;
@@ -60,15 +63,22 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, name);
 
+	label_root = new QLabel(tag_add_form);
+	label_root->setObjectName(QString::fromUtf8("label_root"));
+	formLayout->setWidget(2, QFormLayout::LabelRole, label_root);
+        root = new QCheckBox(tag_add_form);
+        root->setObjectName(QString::fromUtf8("root"));
+        formLayout->setWidget(2, QFormLayout::FieldRole, root);
+
         label_description = new QLabel(tag_add_form);
         label_description->setObjectName(QString::fromUtf8("label_description"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_description);
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_description);
 
         description = new QPlainTextEdit(tag_add_form);
         description->setObjectName(QString::fromUtf8("description"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, description);
+        formLayout->setWidget(3, QFormLayout::FieldRole, description);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -98,7 +108,7 @@ public:
         horizontalLayout_2->addLayout(horizontalLayout);
 
 
-        formLayout->setLayout(3, QFormLayout::FieldRole, horizontalLayout_2);
+        formLayout->setLayout(4, QFormLayout::FieldRole, horizontalLayout_2);
 
         label = new QLabel(tag_add_form);
         label->setObjectName(QString::fromUtf8("label"));
@@ -114,7 +124,8 @@ public:
 #ifndef QT_NO_SHORTCUT
         label_name->setBuddy(name);
 #endif // QT_NO_SHORTCUT
-        QWidget::setTabOrder(name, description);
+        QWidget::setTabOrder(name, root);
+        QWidget::setTabOrder(root, description);
         QWidget::setTabOrder(description, add);
         QWidget::setTabOrder(add, cancel);
 
@@ -127,6 +138,7 @@ public:
     {
         tag_add_form->setWindowTitle(QApplication::translate("tag_add_form", "Add tag", 0, QApplication::UnicodeUTF8));
         label_name->setText(QApplication::translate("tag_add_form", "Name:", 0, QApplication::UnicodeUTF8));
+        label_root->setText(QApplication::translate("tag_add_form", "Add to root:", 0, QApplication::UnicodeUTF8));
         label_description->setText(QApplication::translate("tag_add_form", "Description:", 0, QApplication::UnicodeUTF8));
         add->setText(QApplication::translate("tag_add_form", "Add", 0, QApplication::UnicodeUTF8));
         cancel->setText(QApplication::translate("tag_add_form", "Cancel", 0, QApplication::UnicodeUTF8));

@@ -35,7 +35,7 @@ public:
     QRadioButton *radioButton_2;
     QHBoxLayout *horizontalLayout;
     QPushButton *add;
-    QPushButton *addParent;
+    //~ QPushButton *addParent;
     QPushButton *delete_2;
     QPushButton *edit;
     //~ QPushButton *reload_2;
@@ -77,13 +77,13 @@ public:
 
         horizontalLayout->addWidget(add);
 
-        addParent = new QPushButton(categories_form);
-        addParent->setObjectName(QString::fromUtf8("addParent"));
-        addParent->setProperty("form", QVariant(QString::fromUtf8("category_add")));
-        addParent->setProperty("global.id", QVariant(QString::fromUtf8("1")));
-        addParent->setProperty("global.categoryState", QVariant(QString::fromUtf8("{category.state}")));
+        //~ addParent = new QPushButton(categories_form);
+        //~ addParent->setObjectName(QString::fromUtf8("addParent"));
+        //~ addParent->setProperty("form", QVariant(QString::fromUtf8("category_add")));
+        //~ addParent->setProperty("global.id", QVariant(QString::fromUtf8("1")));
+        //~ addParent->setProperty("global.categoryState", QVariant(QString::fromUtf8("{category.state}")));
 
-        horizontalLayout->addWidget(addParent);
+        //~ horizontalLayout->addWidget(addParent);
 
         delete_2 = new QPushButton(categories_form);
         delete_2->setObjectName(QString::fromUtf8("delete_2"));
@@ -147,8 +147,8 @@ public:
         QWidget::setTabOrder(category, radioButton);
         QWidget::setTabOrder(radioButton, radioButton_2);
         QWidget::setTabOrder(radioButton_2, add);
-        QWidget::setTabOrder(add, addParent);
-        QWidget::setTabOrder(addParent, delete_2);
+        //~ QWidget::setTabOrder(add, addParent);
+        //~ QWidget::setTabOrder(addParent, delete_2);
         QWidget::setTabOrder(delete_2, edit);
         //~ QWidget::setTabOrder(edit, reload_2);
 
@@ -166,7 +166,7 @@ public:
         radioButton->setText(QApplication::translate("categories_form", "expand all", 0, QApplication::UnicodeUTF8));
         radioButton_2->setText(QApplication::translate("categories_form", "collapse all", 0, QApplication::UnicodeUTF8));
         add->setText(QApplication::translate("categories_form", "Add", 0, QApplication::UnicodeUTF8));
-        addParent->setText(QApplication::translate("categories_form", "Add Root", 0, QApplication::UnicodeUTF8));
+        //~ addParent->setText(QApplication::translate("categories_form", "Add Root", 0, QApplication::UnicodeUTF8));
         delete_2->setText(QApplication::translate("categories_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("categories_form", "{category.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("categories_form", "Edit", 0, QApplication::UnicodeUTF8));

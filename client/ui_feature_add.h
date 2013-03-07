@@ -24,6 +24,7 @@
 #include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QWidget>
+#include <QCheckBox>
 
 QT_BEGIN_NAMESPACE
 
@@ -33,6 +34,8 @@ public:
     QFormLayout *formLayout;
     QLabel *label_name;
     QLineEdit *name;
+    QLabel *label_root;
+    QCheckBox *root;
     QLabel *label_description;
     QPlainTextEdit *description;
     QTableWidget *picture;
@@ -68,15 +71,22 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, name);
 
+	label_root = new QLabel(feature_add_form);
+	label_root->setObjectName(QString::fromUtf8("label_root"));
+	formLayout->setWidget(2, QFormLayout::LabelRole, label_root);
+        root = new QCheckBox(feature_add_form);
+        root->setObjectName(QString::fromUtf8("root"));
+        formLayout->setWidget(2, QFormLayout::FieldRole, root);
+
         label_description = new QLabel(feature_add_form);
         label_description->setObjectName(QString::fromUtf8("label_description"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_description);
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_description);
 
         description = new QPlainTextEdit(feature_add_form);
         description->setObjectName(QString::fromUtf8("description"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, description);
+        formLayout->setWidget(3, QFormLayout::FieldRole, description);
 
         picture = new QTableWidget(feature_add_form);
         if (picture->columnCount() < 4)
@@ -104,7 +114,7 @@ public:
         picture->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
         picture->verticalHeader()->setStretchLastSection(false);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, picture);
+        formLayout->setWidget(5, QFormLayout::FieldRole, picture);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -129,7 +139,7 @@ public:
         horizontalLayout->addWidget(cancel);
 
 
-        formLayout->setLayout(5, QFormLayout::FieldRole, horizontalLayout);
+        formLayout->setLayout(6, QFormLayout::FieldRole, horizontalLayout);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -155,12 +165,12 @@ public:
         horizontalLayout_3->addWidget(searchButton);
 
 
-        formLayout->setLayout(3, QFormLayout::FieldRole, horizontalLayout_3);
+        formLayout->setLayout(4, QFormLayout::FieldRole, horizontalLayout_3);
 
         label = new QLabel(feature_add_form);
         label->setObjectName(QString::fromUtf8("label"));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label);
+        formLayout->setWidget(4, QFormLayout::LabelRole, label);
 
         label_3 = new QLabel(feature_add_form);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -178,8 +188,8 @@ public:
         label_description->setBuddy(description);
         label->setBuddy(picture);
 #endif // QT_NO_SHORTCUT
-        QWidget::setTabOrder(name, description);
-        QWidget::setTabOrder(description, search);
+        QWidget::setTabOrder(name, root);
+        QWidget::setTabOrder(root, description);        
         QWidget::setTabOrder(search, searchButton);
         QWidget::setTabOrder(searchButton, picture);
         QWidget::setTabOrder(picture, add);
@@ -195,6 +205,7 @@ public:
     {
         feature_add_form->setWindowTitle(QApplication::translate("feature_add_form", "Add feature", 0, QApplication::UnicodeUTF8));
         label_name->setText(QApplication::translate("feature_add_form", "Name:", 0, QApplication::UnicodeUTF8));
+        label_root->setText(QApplication::translate("feature_add_form", "Add to root:", 0, QApplication::UnicodeUTF8));
         label_description->setText(QApplication::translate("feature_add_form", "Description:", 0, QApplication::UnicodeUTF8));
         QTableWidgetItem *___qtablewidgetitem = picture->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("feature_add_form", "thumbnail", 0, QApplication::UnicodeUTF8));

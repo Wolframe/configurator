@@ -37,7 +37,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout;
     QPushButton *add;
-    QPushButton *addRoot;
+    //~ QPushButton *addRoot;
     QPushButton *delete_2;
     QPushButton *edit;
     //~ QPushButton *reload_2;
@@ -92,13 +92,13 @@ public:
 
         horizontalLayout->addWidget(add);
 
-        addRoot = new QPushButton(features_form);
-        addRoot->setObjectName(QString::fromUtf8("addRoot"));
-        addRoot->setProperty("form", QVariant(QString::fromUtf8("feature_add")));
-        addRoot->setProperty("global.id", QVariant(QString::fromUtf8("1")));
-        addRoot->setProperty("global.featureState", QVariant(QString::fromUtf8("{feature.state}")));
+        //~ addRoot = new QPushButton(features_form);
+        //~ addRoot->setObjectName(QString::fromUtf8("addRoot"));
+        //~ addRoot->setProperty("form", QVariant(QString::fromUtf8("feature_add")));
+        //~ addRoot->setProperty("global.id", QVariant(QString::fromUtf8("1")));
+        //~ addRoot->setProperty("global.featureState", QVariant(QString::fromUtf8("{feature.state}")));
 
-        horizontalLayout->addWidget(addRoot);
+        //~ horizontalLayout->addWidget(addRoot);
 
         delete_2 = new QPushButton(features_form);
         delete_2->setObjectName(QString::fromUtf8("delete_2"));
@@ -148,8 +148,8 @@ public:
         QWidget::setTabOrder(feature, radioButton);
         QWidget::setTabOrder(radioButton, radioButton_2);
         QWidget::setTabOrder(radioButton_2, add);
-        QWidget::setTabOrder(add, addRoot);
-        QWidget::setTabOrder(addRoot, delete_2);
+        //~ QWidget::setTabOrder(add, addRoot);
+        //~ QWidget::setTabOrder(addRoot, delete_2);
         QWidget::setTabOrder(delete_2, edit);
         //~ QWidget::setTabOrder(edit, reload_2);
 
@@ -170,7 +170,7 @@ public:
         radioButton->setText(QApplication::translate("features_form", "expand all", 0, QApplication::UnicodeUTF8));
         radioButton_2->setText(QApplication::translate("features_form", "collapse all", 0, QApplication::UnicodeUTF8));
         add->setText(QApplication::translate("features_form", "Add", 0, QApplication::UnicodeUTF8));
-        addRoot->setText(QApplication::translate("features_form", "Add Root", 0, QApplication::UnicodeUTF8));
+        //~ addRoot->setText(QApplication::translate("features_form", "Add Root", 0, QApplication::UnicodeUTF8));
         delete_2->setText(QApplication::translate("features_form", "Delete", 0, QApplication::UnicodeUTF8));
         delete_2->setProperty("id", QVariant(QApplication::translate("features_form", "{feature.id}", 0, QApplication::UnicodeUTF8)));
         edit->setText(QApplication::translate("features_form", "Edit", 0, QApplication::UnicodeUTF8));

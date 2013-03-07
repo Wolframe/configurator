@@ -24,6 +24,7 @@
 #include <QtGui/QSpacerItem>
 #include <QtGui/QTableWidget>
 #include <QtGui/QWidget>
+#include <QCheckBox>
 
 QT_BEGIN_NAMESPACE
 
@@ -33,6 +34,8 @@ public:
     QFormLayout *formLayout;
     QLabel *label_name;
     QLineEdit *name;
+    QLabel *label_root;
+    QCheckBox *root;
     QLabel *label_description;
     QPlainTextEdit *description;
     QTableWidget *picture;
@@ -70,15 +73,22 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, name);
 
+	label_root = new QLabel(category_add_form);
+	label_root->setObjectName(QString::fromUtf8("label_root"));
+	formLayout->setWidget(2, QFormLayout::LabelRole, label_root);
+        root = new QCheckBox(category_add_form);
+        root->setObjectName(QString::fromUtf8("root"));
+        formLayout->setWidget(2, QFormLayout::FieldRole, root);
+
         label_description = new QLabel(category_add_form);
         label_description->setObjectName(QString::fromUtf8("label_description"));
 
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_description);
+        formLayout->setWidget(3, QFormLayout::LabelRole, label_description);
 
         description = new QPlainTextEdit(category_add_form);
         description->setObjectName(QString::fromUtf8("description"));
 
-        formLayout->setWidget(2, QFormLayout::FieldRole, description);
+        formLayout->setWidget(3, QFormLayout::FieldRole, description);
 
         picture = new QTableWidget(category_add_form);
         if (picture->columnCount() < 4)
@@ -106,7 +116,7 @@ public:
         picture->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));
         picture->verticalHeader()->setStretchLastSection(false);
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, picture);
+        formLayout->setWidget(5, QFormLayout::FieldRole, picture);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -139,7 +149,7 @@ public:
         horizontalLayout->addWidget(cancel);
 
 
-        formLayout->setLayout(5, QFormLayout::FieldRole, horizontalLayout);
+        formLayout->setLayout(6, QFormLayout::FieldRole, horizontalLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -172,12 +182,12 @@ public:
         horizontalLayout_2->addWidget(infoButton);
 
 
-        formLayout->setLayout(3, QFormLayout::FieldRole, horizontalLayout_2);
+        formLayout->setLayout(4, QFormLayout::FieldRole, horizontalLayout_2);
 
         label_picture = new QLabel(category_add_form);
         label_picture->setObjectName(QString::fromUtf8("label_picture"));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_picture);
+        formLayout->setWidget(4, QFormLayout::LabelRole, label_picture);
 
         label = new QLabel(category_add_form);
         label->setObjectName(QString::fromUtf8("label"));
@@ -195,7 +205,8 @@ public:
         label_description->setBuddy(description);
         label_picture->setBuddy(picture);
 #endif // QT_NO_SHORTCUT
-        QWidget::setTabOrder(name, description);
+        QWidget::setTabOrder(name, root);
+        QWidget::setTabOrder(root, description);        
         QWidget::setTabOrder(description, search);
         QWidget::setTabOrder(search, searchButton);
         QWidget::setTabOrder(searchButton, picture);
@@ -213,6 +224,7 @@ public:
     {
         category_add_form->setWindowTitle(QApplication::translate("category_add_form", "Add category", 0, QApplication::UnicodeUTF8));
         label_name->setText(QApplication::translate("category_add_form", "Name:", 0, QApplication::UnicodeUTF8));
+        label_root->setText(QApplication::translate("feature_add_form", "Add to root:", 0, QApplication::UnicodeUTF8));
         name->setProperty("state", QVariant(QApplication::translate("category_add_form", "{global.stateName}", 0, QApplication::UnicodeUTF8)));
         label_description->setText(QApplication::translate("category_add_form", "Description:", 0, QApplication::UnicodeUTF8));
         description->setProperty("state", QVariant(QApplication::translate("category_add_form", "{global.stateDescription}", 0, QApplication::UnicodeUTF8)));
