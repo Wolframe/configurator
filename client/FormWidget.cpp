@@ -121,6 +121,7 @@
 #include "tag_add_form.h"
 #include "tag_edit_form.h"
 #include "tags_form.h"
+#include "test_form.h"
 
 FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, QUiLoader *_uiLoader, QWidget *_parent, bool _debug )
 	: QWidget( _parent ), m_form( ),
@@ -616,6 +617,9 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	}
 	else if( name == "tags" ) {
 		m_ui = new tags_form( this );
+	}
+	else if( name == "test" ) {
+		m_ui = new test_form( this );
 	}
 
 	if( m_ui == 0 ) {

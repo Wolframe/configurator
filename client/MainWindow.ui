@@ -103,19 +103,21 @@
     <property name="title">
      <string>F&amp;orms</string>
     </property>
-    <addaction name="action_categories_features"/>
+    <addaction name="action_pictures"/>
     <addaction name="action_categories"/>
-    <addaction name="action_components_features"/>
+    <addaction name="action_features"/>
     <addaction name="action_components"/>
+    <addaction name="action_manufacturers"/>
+    <addaction name="action_recipes"/>
+    <addaction name="separator"/>
+    <addaction name="action_categories_features"/>
+    <addaction name="action_components_features"/>
     <addaction name="action_configuration_components"/>
     <addaction name="action_configurations"/>
     <addaction name="action_configuration_subconfigs"/>
-    <addaction name="action_features"/>
-    <addaction name="action_manufacturers"/>
-    <addaction name="action_pictures"/>
     <addaction name="action_recipe_content"/>
-    <addaction name="action_recipes"/>
     <addaction name="action_tags"/>
+    <addaction name="action_test"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuForms"/>
@@ -273,7 +275,7 @@
   </action>
   <action name="action_categories">
    <property name="text">
-    <string>action_categories</string>
+    <string>&amp;Categories</string>
    </property>
   </action>
   <action name="action_components_features">
@@ -283,7 +285,7 @@
   </action>
   <action name="action_components">
    <property name="text">
-    <string>action_components</string>
+    <string>C&amp;omponents</string>
    </property>
   </action>
   <action name="action_configuration_components">
@@ -303,17 +305,17 @@
   </action>
   <action name="action_features">
    <property name="text">
-    <string>action_features</string>
+    <string>&amp;Features</string>
    </property>
   </action>
   <action name="action_manufacturers">
    <property name="text">
-    <string>action_manufacturers</string>
+    <string>&amp;Manufacturers</string>
    </property>
   </action>
   <action name="action_pictures">
    <property name="text">
-    <string>action_pictures</string>
+    <string>&amp;Pictures</string>
    </property>
   </action>
   <action name="action_recipe_content">
@@ -323,7 +325,7 @@
   </action>
   <action name="action_recipes">
    <property name="text">
-    <string>action_recipes</string>
+    <string>&amp;Recipes</string>
    </property>
   </action>
   <action name="action_tags">
@@ -706,6 +708,11 @@
    </property>
    <property name="defaultShortcut" stdset="0">
     <string>QKeySequence::Close</string>
+   </property>
+  </action>
+  <action name="action_test">
+   <property name="text">
+    <string>Hard-coded test form</string>
    </property>
   </action>
  </widget>

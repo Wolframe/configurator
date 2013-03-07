@@ -1086,6 +1086,7 @@ void MainWindow::updateMdiMenusAndToolbars( )
 	m_ui.action_recipes->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 	m_ui.action_tags->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	m_ui.action_test->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 }
 
@@ -1328,3 +1329,9 @@ void MainWindow::on_action_tags_triggered( )
 	(void)CreateMdiSubWindow( "tags" );
 	updateMenusAndToolbars( );
 }
+void MainWindow::on_action_test_triggered( )
+{
+	(void)CreateMdiSubWindow( "test" );
+	updateMenusAndToolbars( );
+}
+

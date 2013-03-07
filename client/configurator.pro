@@ -34,7 +34,8 @@ SOURCES += \
 	HistoryLineEdit.cpp \
 	qtclient.cpp \
 	FileChooser.cpp \
-	PictureChooser.cpp
+	PictureChooser.cpp \
+	test_form.cpp
 
 HEADERS += \
 	MainWindow.hpp \
@@ -139,7 +140,8 @@ HEADERS += \
 	recipes_form.h \
 	tag_add_form.h \
 	tag_edit_form.h \
-	tags_form.h
+	tags_form.h \
+	test_form.h
 
 FORMS += \
 	loginDialog.ui \

@@ -186,6 +186,7 @@ class MainWindow : public QMainWindow
 		void on_action_recipe_content_triggered( );
 		void on_action_recipes_triggered( );
 		void on_action_tags_triggered( );
+		void on_action_test_triggered( );
 };
 
 #endif // _MAIN_WINDOW_HPP_INCLUDED
