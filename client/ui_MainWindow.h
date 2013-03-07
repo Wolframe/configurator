@@ -461,7 +461,7 @@ public:
         toolBarEdit->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
         toolBarWindow->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
         
-        actionPrint->setText(QApplication::translate("MainWindow", "action_tags", 0, QApplication::UnicodeUTF8));
+        action_tags->setText(QApplication::translate("MainWindow", "action_tags", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
