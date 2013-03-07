@@ -619,7 +619,7 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 		m_ui = new tags_form( this );
 	}
 	else if( name == "test" ) {
-		m_ui = new test_form( this );
+		m_ui = new test_form( m_dataLoader, "test", this, m_debug );
 	}
 
 	if( m_ui == 0 ) {
@@ -771,6 +771,10 @@ void FormWidget::gotAnswer( QString formName, QString widgetName, QByteArray xml
 
 // do whatever we have to do with data to the widgets
 	if( !xml.isEmpty( ) ) {
+		if( formName == "test" ) {
+			qobject_cast<test_form *>( m_ui )->gotAnswer( widgetName, xml );
+			return;
+		}
 		if( !widgetName.isEmpty( ) ) {
 			qDebug( ) << "Answer is for local widget" << widgetName << "in form" << formName;
 
