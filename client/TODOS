@@ -6,9 +6,20 @@ now configurator:
 - remove fixed 50 px height hack for pictures
 - configuration has categories/components
 - recipe component: recipe form, add picking of componentes along to
-  picking of categories
+  picking of categories (RecipeComponent table)
+- configuration:
+  - add components fix, mark in table the configuration as unfinished
+  - dialog, present components of a category to pick from
+  - categoryID gets copied from recipe.categoryID
+  - every step of adding a component to a configuration gives us
+    (over the categories), new features required and provided, so
+    this influences whether we have to pick more or less components
+    from categories full-filling the features
+  - save button: if minimum requirements are satisfied
 
 old now configurator:
+- later: code as function for manufacturer + mfgCode, manufacturer
+  table needs a code
 - generally: no nice interface possible, current qtclient is too limited
 - show thumbnails:
   - 1:n relation pictures, which picture should be shown? example:
