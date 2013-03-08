@@ -221,6 +221,7 @@ CREATE TABLE RecipeContent	(
 	UNIQUE ( recipeID, categoryID )
 );
 
+-- TODO: RecipeComponent
 
 -- Configuration
 --
