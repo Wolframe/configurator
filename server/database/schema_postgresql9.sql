@@ -101,7 +101,8 @@ CREATE TABLE Manufacturer	(
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
 	webPage		TEXT,
-	logo		INT	REFERENCES Picture( ID )
+	logo		INT	REFERENCES Picture( ID ),
+	active		BOOLEAN
 );
 
 -- The list of components
@@ -116,6 +117,7 @@ CREATE TABLE Component	(
 	mfgCode		TEXT,
 	webPage		TEXT,
 	description	TEXT,
+	active		BOOLEAN,
 	price		NUMERIC( 10, 2 )
 );
 

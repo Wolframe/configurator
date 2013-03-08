@@ -45,6 +45,7 @@ CREATE TABLE Category	(
 	description	TEXT,
 	lft		INT	NOT NULL,
 	rgt		INT	NOT NULL,
+	active		BOOLEAN,
 	CONSTRAINT order_check CHECK ( rgt > lft ),
 	CONSTRAINT category_normalizedName_check UNIQUE( normalizedName, parentID )
 );
@@ -69,6 +70,7 @@ CREATE TABLE Feature	(
 	description	TEXT,
 	lft		INT	NOT NULL,
 	rgt		INT	NOT NULL,
+	active		BOOLEAN,
 	CONSTRAINT order_check CHECK ( rgt > lft ),
 	CONSTRAINT feature_normalizedName_check UNIQUE( normalizedName, parentID )
 );
@@ -101,7 +103,8 @@ CREATE TABLE Manufacturer	(
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
 	webPage		TEXT,
-	logo		INT	REFERENCES Picture( ID )
+	logo		INT	REFERENCES Picture( ID ),
+	active		BOOLEAN
 );
 
 -- The list of components
@@ -116,6 +119,7 @@ CREATE TABLE Component	(
 	mfgCode		TEXT,
 	webPage		TEXT,
 	description	TEXT,
+	active		BOOLEAN,
 	price		NUMERIC( 10, 2 )
 );
 
