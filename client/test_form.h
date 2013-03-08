@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QString>
+#include <QVBoxLayout>
 
 #include "DataLoader.hpp"
 
@@ -18,6 +19,7 @@ class test_form : public QWidget
 		DataLoader *m_dataLoader;
 		QString m_name;
 		bool m_debug;
+		QVBoxLayout *m_layout;
 		
 	private:
 		void initialize( );
