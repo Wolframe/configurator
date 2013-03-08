@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>607</width>
-     <height>25</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -114,7 +114,7 @@
     <addaction name="action_categories_features"/>
     <addaction name="action_components_features"/>
     <addaction name="separator"/>
-    <addaction name="actionFeature_equivqlence"/>
+    <addaction name="actionFeature_equivalence"/>
    </widget>
    <widget class="QMenu" name="menu_Configuration">
     <property name="title">
@@ -722,9 +722,9 @@
     <string>Hard-coded test form</string>
    </property>
   </action>
-  <action name="actionFeature_equivqlence">
+  <action name="actionFeature_equivalence">
    <property name="text">
-    <string>Feature equivqlences</string>
+    <string>Feature equivalences</string>
    </property>
   </action>
  </widget>

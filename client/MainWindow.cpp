@@ -1087,6 +1087,7 @@ void MainWindow::updateMdiMenusAndToolbars( )
 
 	m_ui.action_tags->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 	m_ui.action_test->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	m_ui.actionFeature_equivalence->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 }
 
@@ -1335,3 +1336,8 @@ void MainWindow::on_action_test_triggered( )
 	updateMenusAndToolbars( );
 }
 
+void MainWindow::on_actionFeature_equivalence_triggered( )
+{
+	(void)CreateMdiSubWindow( "feature_equivalence" );
+	updateMenusAndToolbars( );
+}
