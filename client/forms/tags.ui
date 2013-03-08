@@ -136,19 +136,6 @@
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="reload_2">
-       <property name="text">
-        <string>Back to Picture List</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">pictures</string>
-       </property>
-       <property name="global.tagState" stdset="0">
-        <string>{tag.state}</string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </item>
    <item row="1" column="0">
@@ -187,11 +174,9 @@
   <tabstop>add</tabstop>
   <tabstop>delete_2</tabstop>
   <tabstop>edit</tabstop>
-  <tabstop>reload_2</tabstop>
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>
-  <include location="./qtclient.qrc"/>
  </resources>
  <connections>
   <connection>

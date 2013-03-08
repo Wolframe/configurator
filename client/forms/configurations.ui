@@ -74,38 +74,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="edit_2">
-       <property name="text">
-        <string>Manage Components</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">configuration_components</string>
-       </property>
-       <property name="global.id" stdset="0">
-        <string notr="true">{configuration.id}</string>
-       </property>
-       <property name="global.configurationState" stdset="0">
-        <string notr="true">{configuration.state}</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="edit_3">
-       <property name="text">
-        <string>Manage Subconfigs</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">configuration_subconfigs</string>
-       </property>
-       <property name="global.id" stdset="0">
-        <string notr="true">{configuration.id}</string>
-       </property>
-       <property name="global.configurationState" stdset="0">
-        <string notr="true">{configuration.state}</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -214,12 +182,8 @@
   <tabstop>add</tabstop>
   <tabstop>delete_2</tabstop>
   <tabstop>edit</tabstop>
-  <tabstop>edit_2</tabstop>
-  <tabstop>edit_3</tabstop>
  </tabstops>
- <resources>
-  <include location="../qtclient.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>configuration</sender>

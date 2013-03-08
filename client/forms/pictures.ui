@@ -96,23 +96,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="form1">
-       <property name="text">
-        <string>Manage Tags</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../qtclient.qrc">
-         <normaloff>:/images/tag_blue.png</normaloff>:/images/tag_blue.png</iconset>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">tags</string>
-       </property>
-       <property name="global.pictureState" stdset="0">
-        <string>{picture.state}</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -260,10 +243,8 @@
   <tabstop>delete_2</tabstop>
   <tabstop>edit</tabstop>
   <tabstop>reset_2</tabstop>
-  <tabstop>form1</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
   <include location="../qtclient.qrc"/>
  </resources>
  <connections>

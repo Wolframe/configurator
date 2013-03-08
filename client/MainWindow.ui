@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>607</width>
-     <height>19</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -109,7 +109,9 @@
     <addaction name="action_features"/>
     <addaction name="action_components"/>
     <addaction name="action_manufacturers"/>
+    <addaction name="separator"/>
     <addaction name="action_recipes"/>
+    <addaction name="action_recipe_content"/>
     <addaction name="separator"/>
     <addaction name="action_categories_features"/>
     <addaction name="action_components_features"/>
@@ -327,7 +329,7 @@
   </action>
   <action name="action_recipe_content">
    <property name="text">
-    <string>action_recipe_content</string>
+    <string>Recipe content</string>
    </property>
   </action>
   <action name="action_recipes">
