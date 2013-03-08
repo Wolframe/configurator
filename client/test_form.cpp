@@ -27,7 +27,7 @@ void test_form::sendRequest( const QString docType, const QString rootElement )
 		xml.setAutoFormatting( true );
 		xml.setAutoFormattingIndent( 2 );
 	}
-	
+
 	xml.writeStartDocument( );
 	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( rootElement ).arg( docType ) );
 	xml.writeStartElement( "", rootElement );
@@ -39,11 +39,11 @@ void test_form::sendRequest( const QString docType, const QString rootElement )
 
 	props.insert( "doctype", docType );
 	props.insert( "rootelement", rootElement );
-	
+
 	m_dataLoader->request( QString::number( (int)winId( ) ), m_name, QString( ), data, &props );
 }
 
-void test_form::gotAnswer( QString widgetName, QByteArray xml )
+void test_form::gotAnswer( QString /*widgetName*/, QByteArray xml )
 {
 	qDebug( ) << "got self-made XML answer: " << xml;
 }

@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>607</width>
-     <height>19</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -101,8 +101,9 @@
    </widget>
    <widget class="QMenu" name="menuForms">
     <property name="title">
-     <string>F&amp;orms</string>
+     <string>&amp;Definitions</string>
     </property>
+    <addaction name="action_tags"/>
     <addaction name="action_pictures"/>
     <addaction name="action_categories"/>
     <addaction name="action_features"/>
@@ -112,15 +113,21 @@
     <addaction name="separator"/>
     <addaction name="action_categories_features"/>
     <addaction name="action_components_features"/>
-    <addaction name="action_configuration_components"/>
-    <addaction name="action_configurations"/>
-    <addaction name="action_configuration_subconfigs"/>
-    <addaction name="action_recipe_content"/>
-    <addaction name="action_tags"/>
+    <addaction name="separator"/>
+    <addaction name="actionFeature_equivqlence"/>
+   </widget>
+   <widget class="QMenu" name="menu_Configuration">
+    <property name="title">
+     <string>&amp;Configuration</string>
+    </property>
     <addaction name="action_test"/>
+    <addaction name="action_configuration_subconfigs"/>
+    <addaction name="action_configurations"/>
+    <addaction name="action_configuration_components"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuForms"/>
+   <addaction name="menu_Configuration"/>
    <addaction name="menuEdit"/>
    <addaction name="menuWindow"/>
    <addaction name="menuHelp"/>
@@ -270,7 +277,7 @@
   </action>
   <action name="action_categories_features">
    <property name="text">
-    <string>action_categories_features</string>
+    <string>Category features</string>
    </property>
   </action>
   <action name="action_categories">
@@ -280,7 +287,7 @@
   </action>
   <action name="action_components_features">
    <property name="text">
-    <string>action_components_features</string>
+    <string>Component features</string>
    </property>
   </action>
   <action name="action_components">
@@ -330,7 +337,7 @@
   </action>
   <action name="action_tags">
    <property name="text">
-    <string>action_tags</string>
+    <string>Tags</string>
    </property>
   </action>
   <action name="actionOpenForm">
@@ -713,6 +720,11 @@
   <action name="action_test">
    <property name="text">
     <string>Hard-coded test form</string>
+   </property>
+  </action>
+  <action name="actionFeature_equivqlence">
+   <property name="text">
+    <string>Feature equivqlences</string>
    </property>
   </action>
  </widget>

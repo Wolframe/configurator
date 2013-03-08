@@ -83,6 +83,17 @@ CREATE TABLE FeaturePicture	(
 );
 
 
+-- Feature requirements fulfillment
+--
+CREATE TABLE FeatureFulfill	(
+	featureID	INT	REFERENCES Feature( ID ),
+	featureCount	INT,
+	fulfillID	INT	REFERENCES Feature( ID ),
+	fulfillCount	INT,
+	UNIQUE ( featureID, fulfillID )
+);
+
+
 -- The list of manufacturers
 --
 CREATE TABLE Manufacturer	(
