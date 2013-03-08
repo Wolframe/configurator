@@ -1,4 +1,14 @@
 now configurator:
+- Add picture and a list of pictures
+- code TEXT NOT NULL UNIQUE, should be either NULL or if not NULL unique
+- on error remain on current form: fixable, handle error in network data loader,
+  separate form switch and action in FormWidget
+- remove fixed 50 px height hack for pictures
+- configuration has categories/components
+- recipe component: recipe form, add picking of componentes along to
+  picking of categories
+
+old now configurator:
 - generally: no nice interface possible, current qtclient is too limited
 - show thumbnails:
   - 1:n relation pictures, which picture should be shown? example:
@@ -160,3 +170,5 @@ nice to do:
 - check how to implement "check for updates" and actually do the update.
   Example: https://github.com/pypt/fervor
   Check also how to get around MSI problems
+
+
