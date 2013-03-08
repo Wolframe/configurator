@@ -40,7 +40,7 @@
 
 #include <QWidget>
 #include <QBuffer>
-#include <QtUiTools>
+//#include <QtUiTools>
 #include <QHBoxLayout>
 #include <QSignalMapper>
 #include <QLabel>
@@ -66,7 +66,7 @@ class FormWidget : public QWidget
 	Q_OBJECT
 
 	public:		
-		FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, QUiLoader *_uiLoader, QWidget *_parent = 0, bool _debug = false );
+		FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, /* QUiLoader *_uiLoader, */ QWidget *_parent = 0, bool _debug = false );
 		virtual ~FormWidget( );
 		void loadForm( QString name, bool modal = false );
 		void setLocale( QLocale locale );
@@ -92,7 +92,7 @@ class FormWidget : public QWidget
 	private:
 		QString m_form;			// name of the form
 		QString m_previousForm;
-		QUiLoader *m_uiLoader;		// UI loader to user for loading designer XML files
+		//~ QUiLoader *m_uiLoader;		// UI loader to user for loading designer XML files
 		FormLoader *m_formLoader;	// form loader (visible form)
 		DataLoader *m_dataLoader;	// load and saves data (data form)
 		QWidget *m_ui;			// the ui loaded from the designer XML file

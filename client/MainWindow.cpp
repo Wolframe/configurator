@@ -54,7 +54,7 @@
 // built-in defaults
 MainWindow::MainWindow( QWidget *_parent ) : QMainWindow( _parent ),
 	m_cmdline( 0 ),
-	m_formWidget( 0 ), m_uiLoader( 0 ), m_formLoader( 0 ),
+	m_formWidget( 0 ),/*  m_uiLoader( 0 ), */ m_formLoader( 0 ),
 	m_dataLoader( 0 ), m_wolframeClient( 0 ), m_settings( ),
 	m_languages( ), m_language( ),
 	m_mdiArea( 0 ), m_subWinGroup( 0 ),
@@ -155,10 +155,10 @@ MainWindow::~MainWindow( )
 		delete m_dataLoader;
 		m_dataLoader = 0;
 	}
-	if( m_uiLoader ) {
-		delete m_uiLoader;
-		m_uiLoader = 0;
-	}
+	//~ if( m_uiLoader ) {
+		//~ delete m_uiLoader;
+		//~ m_uiLoader = 0;
+	//~ }
 }
 
 // --- command line argument handling
@@ -226,12 +226,12 @@ void MainWindow::initialize( )
 	qInstallMsgHandler( &myMessageOutput );
 
 // a Qt UI loader for the main theme window and also used by all form widgets
-	m_uiLoader = new QUiLoader( );
+	//~ m_uiLoader = new QUiLoader( );
 	//m_uiLoader->setLanguageChangeEnabled( true );
-	m_uiLoader->addPluginPath( "plugins" );
-	m_uiLoader->addPluginPath( "." );
-	QStringList paths = m_uiLoader->pluginPaths( );
-	qDebug( ) << "Will load custom widget plugins from" << paths;
+	//~ m_uiLoader->addPluginPath( "plugins" );
+	//~ m_uiLoader->addPluginPath( "." );
+	//~ QStringList paths = m_uiLoader->pluginPaths( );
+	//~ qDebug( ) << "Will load custom widget plugins from" << paths;
 
 // for testing, load lists of available forms from the files system or
 // a local sqlite database, pass the form loader to the FormWidget
@@ -334,7 +334,7 @@ void MainWindow::initialize( )
 
 void MainWindow::CreateFormWidget( const QString &name )
 {
-	m_formWidget = new FormWidget( m_formLoader, m_dataLoader, m_uiLoader, this, settings.debug );
+	m_formWidget = new FormWidget( m_formLoader, m_dataLoader, /* m_uiLoader, */ this, settings.debug );
 
 	connect( m_formWidget, SIGNAL( formLoaded( QString ) ),
 		this, SLOT( formLoaded( QString ) ) );
@@ -459,8 +459,8 @@ void MainWindow::disconnected( )
 	}
 
 	if( settings.uiLoadMode == Network ) {
-		delete m_uiLoader;
-		m_uiLoader = 0;
+		//~ delete m_uiLoader;
+		//~ m_uiLoader = 0;
 	}
 
 	if( settings.dataLoadMode == Network ) {
@@ -665,7 +665,7 @@ void MainWindow::formModal( QString name )
 {
 	m_modalDialog = new QDialog( this );
 
-	FormWidget *formWidget = new FormWidget( m_formLoader, m_dataLoader, m_uiLoader, m_modalDialog, settings.debug );
+	FormWidget *formWidget = new FormWidget( m_formLoader, m_dataLoader, /* m_uiLoader, */ m_modalDialog, settings.debug );
 
 	connect( formWidget, SIGNAL( formLoaded( QString ) ),
 		this, SLOT( formLoaded( QString ) ) );
@@ -919,7 +919,7 @@ void MainWindow::on_actionReload_triggered( )
 
 QMdiSubWindow *MainWindow::CreateMdiSubWindow( const QString &form )
 {
-	FormWidget *formWidget = new FormWidget( m_formLoader, m_dataLoader, m_uiLoader, this, settings.debug );
+	FormWidget *formWidget = new FormWidget( m_formLoader, m_dataLoader, /* m_uiLoader, */ this, settings.debug );
 
 	connect( formWidget, SIGNAL( formLoaded( QString ) ),
 		this, SLOT( formLoaded( QString ) ) );

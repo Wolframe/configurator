@@ -2,13 +2,13 @@ TEMPLATE = app
 
 TARGET = qtclient
 
-CONFIG += thread qt uitools designer debug
+CONFIG += qt debug
 
 DEFINES += QCOMMANDLINE_STATIC WITH_SSL
 
 INCLUDEPATH += .
 
-QT += core gui network sql
+QT += core gui network
 
 SOURCES += \
 	MainWindow.cpp \

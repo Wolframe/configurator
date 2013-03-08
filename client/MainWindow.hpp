@@ -36,7 +36,7 @@
 
 #include <QCommandLine>	
 #include <QMainWindow>
-#include <QtUiTools>
+//#include <QtUiTools>
 #include <QTranslator>
 #include <QEvent>
 #include <QMdiArea>
@@ -70,7 +70,7 @@ class MainWindow : public QMainWindow
 		QTranslator m_translatorQt; 	// contains the translations for qt
 		QCommandLine *m_cmdline;	// command line parser	
 		FormWidget *m_formWidget;	// current active form
-		QUiLoader *m_uiLoader;		// the UI loader for all forms
+		//~ QUiLoader *m_uiLoader;		// the UI loader for all forms
 		FormLoader *m_formLoader;	// form loader (visible form)
 		DataLoader *m_dataLoader;	// load and saves data (data form)
 		WolframeClient *m_wolframeClient; // the client protocol class

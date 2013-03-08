@@ -123,9 +123,9 @@
 #include "tags_form.h"
 #include "test_form.h"
 
-FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, QUiLoader *_uiLoader, QWidget *_parent, bool _debug )
+FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, /* QUiLoader *_uiLoader, */ QWidget *_parent, bool _debug )
 	: QWidget( _parent ), m_form( ),
-	  m_uiLoader( _uiLoader ), m_formLoader( _formLoader ),
+	  /* m_uiLoader( _uiLoader ), */ m_formLoader( _formLoader ),
 	  m_dataLoader( _dataLoader ), m_ui( 0 ), m_dataHandler( 0 ),
 	  m_locale( DEFAULT_LOCALE ), m_layout( 0 ), m_forms( ),
 	  m_globals( 0 ), m_props( 0 ), m_debug( _debug ), m_modal( false )
