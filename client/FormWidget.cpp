@@ -81,48 +81,9 @@
 #include "tag_add_form.h"
 #include "tag_edit_form.h"
 #include "tags_form.h"
-#include "categories_features_add_form.h"
-#include "categories_features_edit_form.h"
-#include "categories_features_form.h"
-#include "categories_form.h"
-#include "category_add_form.h"
-#include "category_edit_form.h"
-#include "component_add_form.h"
-#include "component_edit_form.h"
-#include "components_features_add_form.h"
-#include "components_features_edit_form.h"
-#include "components_features_form.h"
-#include "components_form.h"
-#include "configuration_add_form.h"
-#include "configuration_component_add_form.h"
-#include "configuration_component_edit_form.h"
-#include "configuration_components_form.h"
-#include "configuration_edit_form.h"
-#include "configurations_form.h"
-#include "configuration_subconfig_add_form.h"
-#include "configuration_subconfig_edit_form.h"
-#include "configuration_subconfigs_form.h"
-#include "feature_add_form.h"
-#include "feature_edit_form.h"
-#include "features_form.h"
-#include "manufacturer_add_form.h"
-#include "manufacturer_edit_form.h"
-#include "manufacturers_form.h"
-#include "picture_add_form.h"
-#include "picture_edit_form.h"
-#include "picture_info_form.h"
-#include "pictures_form.h"
-#include "recipe_add_form.h"
-#include "recipe_content_add_form.h"
-#include "recipe_content_edit_form.h"
-#include "recipe_content_form.h"
-#include "recipe_edit_form.h"
-#include "recipes_form.h"
-#include "tag_add_form.h"
-#include "tag_edit_form.h"
-#include "tags_form.h"
 #include "test_form.h"
 #include "feature_equivalence_form.h"
+#include "configuration_recipe_select_form.h"
 
 FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, /* QUiLoader *_uiLoader, */ QWidget *_parent, bool _debug )
 	: QWidget( _parent ), m_form( ),
@@ -499,128 +460,11 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	else if( name == "tags" ) {
 		m_ui = new tags_form( this );
 	}
-	else if( name == "categories_features_add" ) {
-		m_ui = new categories_features_add_form( this );
-	}
-	else if( name == "categories_features_edit" ) {
-		m_ui = new categories_features_edit_form( this );
-	}
-	else if( name == "categories_features" ) {
-		m_ui = new categories_features_form( this );
-	}
-	else if( name == "categories" ) {
-		m_ui = new categories_form( this );
-	}
-	else if( name == "category_add" ) {
-		m_ui = new category_add_form( this );
-	}
-	else if( name == "category_edit" ) {
-		m_ui = new category_edit_form( this );
-	}
-	else if( name == "component_add" ) {
-		m_ui = new component_add_form( this );
-	}
-	else if( name == "component_edit" ) {
-		m_ui = new component_edit_form( this );
-	}
-	else if( name == "components_features_add" ) {
-		m_ui = new components_features_add_form( this );
-	}
-	else if( name == "components_features_edit" ) {
-		m_ui = new components_features_edit_form( this );
-	}
-	else if( name == "components_features" ) {
-		m_ui = new components_features_form( this );
-	}
-	else if( name == "components" ) {
-		m_ui = new components_form( this );
-	}
-	else if( name == "configuration_add" ) {
-		m_ui = new configuration_add_form( this );
-	}
-	else if( name == "configuration_component_add" ) {
-		m_ui = new configuration_component_add_form( this );
-	}
-	else if( name == "configuration_component_edit" ) {
-		m_ui = new configuration_component_edit_form( this );
-	}
-	else if( name == "configuration_components" ) {
-		m_ui = new configuration_components_form( this );
-	}
-	else if( name == "configuration_edit" ) {
-		m_ui = new configuration_edit_form( this );
-	}
-	else if( name == "configurations" ) {
-		m_ui = new configurations_form( this );
-	}
-	else if( name == "configuration_subconfig_add" ) {
-		m_ui = new configuration_subconfig_add_form( this );
-	}
-	else if( name == "configuration_subconfig_edit" ) {
-		m_ui = new configuration_subconfig_edit_form( this );
-	}
-	else if( name == "configuration_subconfigs" ) {
-		m_ui = new configuration_subconfigs_form( this );
-	}
-	else if( name == "feature_add" ) {
-		m_ui = new feature_add_form( this );
-	}
-	else if( name == "feature_edit" ) {
-		m_ui = new feature_edit_form( this );
-	}
-	else if( name == "features" ) {
-		m_ui = new features_form( this );
-	}
-	else if( name == "manufacturer_add" ) {
-		m_ui = new manufacturer_add_form( this );
-	}
-	else if( name == "manufacturer_edit" ) {
-		m_ui = new manufacturer_edit_form( this );
-	}
-	else if( name == "manufacturers" ) {
-		m_ui = new manufacturers_form( this );
-	}
-	else if( name == "picture_add" ) {
-		m_ui = new picture_add_form( this );
-	}
-	else if( name == "picture_edit" ) {
-		m_ui = new picture_edit_form( this );
-	}
-	else if( name == "picture_info" ) {
-		m_ui = new picture_info_form( this );
-	}
-	else if( name == "pictures" ) {
-		m_ui = new pictures_form( this );
-	}
-	else if( name == "recipe_add" ) {
-		m_ui = new recipe_add_form( this );
-	}
-	else if( name == "recipe_content_add" ) {
-		m_ui = new recipe_content_add_form( this );
-	}
-	else if( name == "recipe_content_edit" ) {
-		m_ui = new recipe_content_edit_form( this );
-	}
-	else if( name == "recipe_content" ) {
-		m_ui = new recipe_content_form( this );
-	}
-	else if( name == "recipe_edit" ) {
-		m_ui = new recipe_edit_form( this );
-	}
-	else if( name == "recipes" ) {
-		m_ui = new recipes_form( this );
-	}
-	else if( name == "tag_add" ) {
-		m_ui = new tag_add_form( this );
-	}
-	else if( name == "tag_edit" ) {
-		m_ui = new tag_edit_form( this );
-	}
-	else if( name == "tags" ) {
-		m_ui = new tags_form( this );
-	}
 	else if( name == "feature_equivalence" ) {
 		m_ui = new feature_equivalence_form( this );
+	}
+	else if( name == "configuration_recipe_select" ) {
+		m_ui = new configuration_recipe_select_form( this );
 	}
 	else if( name == "test" ) {
 		m_ui = new test_form( m_dataLoader, "test", this, m_debug );

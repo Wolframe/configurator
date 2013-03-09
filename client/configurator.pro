@@ -142,7 +142,8 @@ HEADERS += \
 	tag_edit_form.h \
 	tags_form.h \
 	test_form.h \
-	feature_equivalence_form.h
+	feature_equivalence_form.h \
+	configuration_recipe_select_form.h
 
 FORMS += \
 	loginDialog.ui \
@@ -193,7 +194,8 @@ FORMS += \
 	forms/tag_add.ui \
 	forms/tag_edit.ui \
 	forms/tags.ui \
-	forms/feature_equivalence.ui
+	forms/feature_equivalence.ui \
+	forms/configuration_recipe_select.ui
 
 RESOURCES = \
 	qtclient.qrc

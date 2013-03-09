@@ -188,6 +188,7 @@ class MainWindow : public QMainWindow
 		void on_action_tags_triggered( );
 		void on_action_test_triggered( );
 		void on_actionFeature_equivalence_triggered( );
+		void on_actionConfigurationStart_triggered( );
 };
 
 #endif // _MAIN_WINDOW_HPP_INCLUDED

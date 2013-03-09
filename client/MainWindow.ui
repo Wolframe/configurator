@@ -36,7 +36,7 @@
      <x>0</x>
      <y>0</y>
      <width>607</width>
-     <height>23</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -122,6 +122,8 @@
     <property name="title">
      <string>&amp;Configuration</string>
     </property>
+    <addaction name="actionConfigurationStart"/>
+    <addaction name="separator"/>
     <addaction name="action_test"/>
     <addaction name="action_configuration_subconfigs"/>
     <addaction name="action_configurations"/>
@@ -727,6 +729,11 @@
   <action name="actionFeature_equivalence">
    <property name="text">
     <string>Feature equivalences</string>
+   </property>
+  </action>
+  <action name="actionConfigurationStart">
+   <property name="text">
+    <string>Create configuration..</string>
    </property>
   </action>
  </widget>
