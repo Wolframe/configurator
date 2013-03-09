@@ -24,14 +24,14 @@
        <property name="form" stdset="0">
         <string notr="true">categories_features_add</string>
        </property>
-       <property name="global.categoryState" stdset="0">
-        <string notr="true">{category.state}</string>
+       <property name="global.featureState" stdset="0">
+        <string notr="true">{feature.state}</string>
        </property>
-       <property name="global.category_id" stdset="0">
-        <string>{category.id}</string>
+       <property name="global.feature_id" stdset="0">
+        <string>{feature.id}</string>
        </property>
-       <property name="global.CategoryFeatureState" stdset="0">
-        <string>{CategoryFeature.state}</string>
+       <property name="global.FeatureEquivalenceState" stdset="0">
+        <string>{FeatureEquivalence.state}</string>
        </property>
       </widget>
      </item>
@@ -43,17 +43,14 @@
        <property name="form" stdset="0">
         <string notr="true">categories_features_edit</string>
        </property>
-       <property name="global.categoryState" stdset="0">
-        <string notr="true">{category.state}</string>
-       </property>
-       <property name="global.category_id" stdset="0">
-        <string>{category.id}</string>
-       </property>
-       <property name="global.CategoryFeatureState" stdset="0">
-        <string>{CategoryFeature.state}</string>
+       <property name="global.featureState" stdset="0">
+        <string notr="true">{feature.state}</string>
        </property>
        <property name="global.feature_id" stdset="0">
-        <string>{CategoryFeature.id}</string>
+        <string>{FeatureEquivalence.id}</string>
+       </property>
+       <property name="global.FeatureEquivalenceState" stdset="0">
+        <string>{FeatureEquivalence.state}</string>
        </property>
       </widget>
      </item>
@@ -65,26 +62,23 @@
        <property name="form" stdset="0">
         <string notr="true">categories_features</string>
        </property>
-       <property name="global.categoryState" stdset="0">
-        <string notr="true">{category.state}</string>
+       <property name="global.featureState" stdset="0">
+        <string notr="true">{feature.state}</string>
        </property>
        <property name="doctype" stdset="0">
-        <string notr="true">CategoryFeature.simpleform</string>
+        <string notr="true">FeatureEquivalence.simpleform</string>
        </property>
        <property name="rootelement" stdset="0">
-        <string notr="true">CategoryFeature</string>
+        <string notr="true">FeatureEquivalence</string>
        </property>
        <property name="action" stdset="0">
         <string notr="true">delete</string>
        </property>
-       <property name="global.CategoryFeatureState" stdset="0">
-        <string>{CategoryFeature.state}</string>
-       </property>
-       <property name="category_id" stdset="0">
-        <string>{category.id}</string>
+       <property name="global.FeatureEquivalenceState" stdset="0">
+        <string>{FeatureEquivalence.state}</string>
        </property>
        <property name="feature_id" stdset="0">
-        <string>{CategoryFeature.id}</string>
+        <string>{FeatureEquivalence.id}</string>
        </property>
       </widget>
      </item>
@@ -184,11 +178,11 @@
        <property name="state" stdset="0">
         <string>{global.FeatureEquivalenceState}</string>
        </property>
-       <property name="category_id" stdset="0">
-        <string>{feature.id}</string>
-       </property>
        <property name="action" stdset="0">
         <string notr="true">read</string>
+       </property>
+       <property name="feature_id" stdset="0">
+        <string>{feature.id}</string>
        </property>
        <column>
         <property name="text">
@@ -207,7 +201,7 @@
        </column>
        <column>
         <property name="text">
-         <string>fullfillcount</string>
+         <string>fulfillcount</string>
         </property>
        </column>
       </widget>
@@ -236,7 +230,7 @@
           <string>Show</string>
          </property>
          <property name="action" stdset="0">
-          <string>CategoryFeature.reload</string>
+          <string>FeatureEquivalence.reload</string>
          </property>
         </widget>
        </item>
@@ -356,6 +350,22 @@
     <hint type="destinationlabel">
      <x>172</x>
      <y>307</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>feature</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>pushButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>191</x>
+     <y>222</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>576</x>
+     <y>361</y>
     </hint>
    </hints>
   </connection>

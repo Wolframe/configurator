@@ -74,14 +74,8 @@ HEADERS += \
 	components_features_form.h \
 	components_form.h \
 	configuration_add_form.h \
-	configuration_component_add_form.h \
-	configuration_component_edit_form.h \
-	configuration_components_form.h \
 	configuration_edit_form.h \
 	configurations_form.h \
-	configuration_subconfig_add_form.h \
-	configuration_subconfig_edit_form.h \
-	configuration_subconfigs_form.h \
 	feature_add_form.h \
 	feature_edit_form.h \
 	features_form.h \
@@ -114,14 +108,8 @@ HEADERS += \
 	components_features_form.h \
 	components_form.h \
 	configuration_add_form.h \
-	configuration_component_add_form.h \
-	configuration_component_edit_form.h \
-	configuration_components_form.h \
 	configuration_edit_form.h \
 	configurations_form.h \
-	configuration_subconfig_add_form.h \
-	configuration_subconfig_edit_form.h \
-	configuration_subconfigs_form.h \
 	feature_add_form.h \
 	feature_edit_form.h \
 	features_form.h \
@@ -167,13 +155,7 @@ FORMS += \
 	forms/components_features.ui \
 	forms/components.ui \
 	forms/configuration_add.ui \
-	forms/configuration_component_add.ui \
-	forms/configuration_component_edit.ui \
-	forms/configuration_components.ui \
 	forms/configuration_edit.ui \
-	forms/configuration_subconfig_add.ui \
-	forms/configuration_subconfig_edit.ui \
-	forms/configuration_subconfigs.ui \
 	forms/configurations.ui \
 	forms/feature_add.ui \
 	forms/feature_edit.ui \

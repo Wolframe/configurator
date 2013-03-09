@@ -1061,11 +1061,7 @@ void MainWindow::updateMdiMenusAndToolbars( )
 
 	m_ui.action_components->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
-	m_ui.action_configuration_components->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-
 	m_ui.action_configurations->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
-
-	m_ui.action_configuration_subconfigs->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 	m_ui.action_features->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
@@ -1279,19 +1275,9 @@ void MainWindow::on_action_components_triggered( )
 	(void)CreateMdiSubWindow( "components" );
 	updateMenusAndToolbars( );
 }
-void MainWindow::on_action_configuration_components_triggered( )
-{
-	(void)CreateMdiSubWindow( "configuration_components" );
-	updateMenusAndToolbars( );
-}
 void MainWindow::on_action_configurations_triggered( )
 {
 	(void)CreateMdiSubWindow( "configurations" );
-	updateMenusAndToolbars( );
-}
-void MainWindow::on_action_configuration_subconfigs_triggered( )
-{
-	(void)CreateMdiSubWindow( "configuration_subconfigs" );
 	updateMenusAndToolbars( );
 }
 void MainWindow::on_action_features_triggered( )

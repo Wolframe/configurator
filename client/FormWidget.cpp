@@ -54,14 +54,8 @@
 #include "components_features_form.h"
 #include "components_form.h"
 #include "configuration_add_form.h"
-#include "configuration_component_add_form.h"
-#include "configuration_component_edit_form.h"
-#include "configuration_components_form.h"
 #include "configuration_edit_form.h"
 #include "configurations_form.h"
-#include "configuration_subconfig_add_form.h"
-#include "configuration_subconfig_edit_form.h"
-#include "configuration_subconfigs_form.h"
 #include "feature_add_form.h"
 #include "feature_edit_form.h"
 #include "features_form.h"
@@ -379,29 +373,11 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	else if( name == "configuration_add" ) {
 		m_ui = new configuration_add_form( this );
 	}
-	else if( name == "configuration_component_add" ) {
-		m_ui = new configuration_component_add_form( this );
-	}
-	else if( name == "configuration_component_edit" ) {
-		m_ui = new configuration_component_edit_form( this );
-	}
-	else if( name == "configuration_components" ) {
-		m_ui = new configuration_components_form( this );
-	}
 	else if( name == "configuration_edit" ) {
 		m_ui = new configuration_edit_form( this );
 	}
 	else if( name == "configurations" ) {
 		m_ui = new configurations_form( this );
-	}
-	else if( name == "configuration_subconfig_add" ) {
-		m_ui = new configuration_subconfig_add_form( this );
-	}
-	else if( name == "configuration_subconfig_edit" ) {
-		m_ui = new configuration_subconfig_edit_form( this );
-	}
-	else if( name == "configuration_subconfigs" ) {
-		m_ui = new configuration_subconfigs_form( this );
 	}
 	else if( name == "feature_add" ) {
 		m_ui = new feature_add_form( this );

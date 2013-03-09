@@ -177,9 +177,7 @@ class MainWindow : public QMainWindow
 		void on_action_categories_triggered( );
 		void on_action_components_features_triggered( );
 		void on_action_components_triggered( );
-		void on_action_configuration_components_triggered( );
 		void on_action_configurations_triggered( );
-		void on_action_configuration_subconfigs_triggered( );
 		void on_action_features_triggered( );
 		void on_action_manufacturers_triggered( );
 		void on_action_pictures_triggered( );
