@@ -3,7 +3,6 @@ now configurator:
 - code TEXT NOT NULL UNIQUE, should be either NULL or if not NULL unique
 - on error remain on current form: fixable, handle error in network data loader,
   separate form switch and action in FormWidget
-- remove fixed 50 px height hack for pictures
 - configuration has categories/components
 - recipe component: recipe form, add picking of componentes along to
   picking of categories (RecipeComponent table)
