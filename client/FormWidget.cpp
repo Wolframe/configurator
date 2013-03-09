@@ -78,6 +78,8 @@
 #include "test_form.h"
 #include "feature_equivalence_form.h"
 #include "configuration_recipe_select_form.h"
+#include "feature_equivalence_add_form.h"
+#include "feature_equivalence_edit_form.h"
 
 FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, /* QUiLoader *_uiLoader, */ QWidget *_parent, bool _debug )
 	: QWidget( _parent ), m_form( ),
@@ -438,6 +440,12 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	}
 	else if( name == "feature_equivalence" ) {
 		m_ui = new feature_equivalence_form( this );
+	}
+	else if( name == "feature_equivalence_add" ) {
+		m_ui = new feature_equivalence_add_form( this );
+	}
+	else if( name == "feature_equivalence_edit" ) {
+		m_ui = new feature_equivalence_edit_form( this );
 	}
 	else if( name == "configuration_recipe_select" ) {
 		m_ui = new configuration_recipe_select_form( this );

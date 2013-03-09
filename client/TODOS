@@ -11,7 +11,6 @@ now configurator:
     this influences whether we have to pick more or less components
     from categories full-filling the features
   - save button: if minimum requirements are satisfied
-- feature/feature linking
 - Add picture and a list of pictures
 - code TEXT NOT NULL UNIQUE, should be either NULL or if not NULL unique
 - on error remain on current form: fixable, handle error in network data loader,

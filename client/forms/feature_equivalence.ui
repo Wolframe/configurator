@@ -22,7 +22,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">categories_features_add</string>
+        <string notr="true">feature_equivalence_add</string>
        </property>
        <property name="global.featureState" stdset="0">
         <string notr="true">{feature.state}</string>
@@ -41,12 +41,15 @@
         <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">categories_features_edit</string>
+        <string notr="true">feature_equivalence_edit</string>
        </property>
        <property name="global.featureState" stdset="0">
         <string notr="true">{feature.state}</string>
        </property>
        <property name="global.feature_id" stdset="0">
+        <string>{feature.id}</string>
+       </property>
+       <property name="global.fulfill_id" stdset="0">
         <string>{FeatureEquivalence.id}</string>
        </property>
        <property name="global.FeatureEquivalenceState" stdset="0">
@@ -60,7 +63,7 @@
         <string>Delete</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">categories_features</string>
+        <string notr="true">feature_equivalence</string>
        </property>
        <property name="global.featureState" stdset="0">
         <string notr="true">{feature.state}</string>
@@ -78,6 +81,9 @@
         <string>{FeatureEquivalence.state}</string>
        </property>
        <property name="feature_id" stdset="0">
+        <string>{feature.id}</string>
+       </property>
+       <property name="fulfill_id" stdset="0">
         <string>{FeatureEquivalence.id}</string>
        </property>
       </widget>
