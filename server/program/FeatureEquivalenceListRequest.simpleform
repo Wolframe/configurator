@@ -1,0 +1,8 @@
+FORM FeatureEquivalenceListRequest
+{
+	FeatureEquivalence
+	{
+		feature_id @int
+		id @int
+	}
+}

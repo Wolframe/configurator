@@ -604,76 +604,14 @@ function RecipeContentListRequest( )
 	output:print( f:get( ) )
 end
 
--- configuration/component associations
+-- feature equivalences
 
-function createConfigurationComponent( )
-	local configurationComponent = input:table( )["ConfigurationComponent"]
-	formfunction( "addConfigurationComponent" )( configurationComponent )
-end
-
-function deleteConfigurationComponent( )
-	local configurationComponent = input:table( )["ConfigurationComponent"]
-	formfunction( "deleteConfigurationComponent" )( configurationComponent )
-end
-
-function ConfigurationComponentRequest( )
-	local configurationComponent = input:table( )["ConfigurationComponent"]
-	local t = formfunction( "selectConfigurationComponent" )( {
-		config_id = configurationComponent["config_id"],
-		component_id = configurationComponent["component_id"]
+function FeatureEquivalenceListRequest( )
+	local featureEquivalence = input:table( )["FeatureEquivalence"]
+	local t = formfunction( "selectFeatureEquivalenceList" )( {
+		feature_id = featureEquivalence["feature_id"]
 	} )
-	local f = form( "ConfigurationComponent" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function ConfigurationComponentListRequest( )
-	local configurationComponent = input:table( )["ConfigurationComponent"]
-	local t = formfunction( "selectConfigurationComponentList" )( {
-		config_id = configurationComponent["config_id"]
-	} )
-	local f = form( "ConfigurationComponentList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
--- configuration/subconfig associations
-
-function SubConfigurationListRequest( )
-	output:as( {root='list', system='subconfigList.simpleform'})
-	local t = formfunction( "selectSubconfigList" )( {} )
-	local f = form( "SubconfigList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function createConfigurationSubconfig( )
-	local configurationSubconfig = input:table( )["ConfigurationSubconfig"]
-	formfunction( "addConfigurationSubconfig" )( configurationSubconfig )
-end
-
-function deleteConfigurationSubconfig( )
-	local configurationSubconfig = input:table( )["ConfigurationSubconfig"]
-	formfunction( "deleteConfigurationSubconfig" )( configurationSubconfig )
-end
-
-function ConfigurationSubconfigRequest( )
-	local configurationSubconfig = input:table( )["ConfigurationSubconfig"]
-	local t = formfunction( "selectConfigurationSubconfig" )( {
-		config_id = configurationSubconfig["config_id"],
-		subconfig_id = configurationSubconfig["subconfig_id"]
-	} )
-	local f = form( "ConfigurationSubconfig" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function ConfigurationSubconfigListRequest( )
-	local configurationSubconfig = input:table( )["ConfigurationSubconfig"]
-	local t = formfunction( "selectConfigurationSubconfigList" )( {
-		config_id = configurationSubconfig["config_id"]
-	} )
-	local f = form( "ConfigurationSubconfigList" )
+	local f = form( "FeatureEquivalenceList" )
 	f:fill( t:get( ) )
 	output:print( f:get( ) )
 end

@@ -1,0 +1,14 @@
+TRANSACTION selectFeatureEquivalenceList
+RESULT INTO list
+BEGIN
+	INTO FeatureEquivalence DO
+		SELECT
+			fulfillID AS "id",
+			Feature.name as "name",
+			Feature.description as "description",
+			featureCount AS "count",
+			fulfillCount AS "fulfillcount"
+		FROM FeatureFulfill, Feature
+		WHERE featureID = $(feature_id)
+		AND fulfillID = Feature.ID;
+END

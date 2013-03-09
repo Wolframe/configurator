@@ -1,0 +1,14 @@
+FORM FeatureEquivalenceList
+{
+	list
+	{
+		FeatureEquivalence []
+		{
+			id @int
+			name string
+			description string
+			count int
+			fulfillcount int
+		}
+	}
+}
