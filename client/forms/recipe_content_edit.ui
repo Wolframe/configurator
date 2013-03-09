@@ -374,7 +374,7 @@
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>
-  <include location="./qtclient.qrc"/>
+  <include location="../qtclient.qrc"/>
  </resources>
  <connections>
   <connection>
