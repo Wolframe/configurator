@@ -1,0 +1,27 @@
+FORM FeatureEquivalence
+{
+	FeatureEquivalence
+	{
+		feature
+		{
+			id @int
+			_ string
+		}
+		FeatureEquivalence
+		{
+			id @int
+			feature_id @int
+			fulfill_id @int
+			_ string
+		}
+		fulfill
+		{
+			id @int
+			_ string
+		}
+		feature_id @int
+		fulfill_id @int
+		count int
+		fulfillcount int
+	}
+}

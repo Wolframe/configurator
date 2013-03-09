@@ -1,0 +1,10 @@
+FORM FeatureEquivalenceRequest
+{
+	FeatureEquivalence
+	{
+		feature_id @int
+		fulfill_id @int
+		count int
+		fulfillcount int
+	}
+}

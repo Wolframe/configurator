@@ -1,3 +1,18 @@
+TRANSACTION selectFeatureEquivalence
+RESULT INTO  FeatureEquivalence
+BEGIN
+	INTO . DO
+		SELECT
+			featureCount AS "count",
+			fulfillCount AS "fulfillcount"
+		FROM FeatureFulfill
+		WHERE featureID = $(feature_id) AND fulfillID = $(fulfill_id);
+	INTO fulfill DO
+		SELECT ID AS "id", name AS "_" FROM Feature WHERE ID = $(fulfill_id);
+	INTO feature DO
+		SELECT ID AS "id", name AS "_" FROM Feature WHERE ID = $(feature_id); 
+END
+
 TRANSACTION selectFeatureEquivalenceList
 RESULT INTO list
 BEGIN
@@ -11,4 +26,16 @@ BEGIN
 		FROM FeatureFulfill, Feature
 		WHERE featureID = $(feature_id)
 		AND fulfillID = Feature.ID;
+END
+
+TRANSACTION addFeatureEquivalence
+BEGIN
+	DO DELETE FROM FeatureFulfill WHERE featureID = $(feature/id) AND fulfillID = $(fulfill/id);
+	DO INSERT INTO FeatureFulfill( featureID, fulfillID, featureCount, fulfillCount )
+		VALUES ( $(feature/id), $(fulfill/id), $(count), $(fulfillcount) );
+END
+
+TRANSACTION deleteFeatureEquivalence
+BEGIN
+	DO DELETE FROM FeatureFulfill WHERE featureID = $(feature_id) AND fulfillID = $(fulfill_id);
 END

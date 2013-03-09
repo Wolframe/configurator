@@ -265,6 +265,11 @@ function FeatureHierarchyRequest()
 	select_tree( "Feature", "feature", input:get())
 end
 
+function FulfillHierarchyRequest()
+	output:as( {root='tree', system='FeatureHierarchy.simpleform'})
+	select_tree( "Feature", "fulfill", input:get())
+end
+
 function TagHierarchyRequest()
 	output:as( {root='tree', system='TagHierarchy.simpleform'})
 	select_tree( "Tag", "tag", input:get())
@@ -605,6 +610,28 @@ function RecipeContentListRequest( )
 end
 
 -- feature equivalences
+
+function createFeatureEquivalence( )
+	local featureEquivalence = input:table( )["FeatureEquivalence"]
+	formfunction( "addFeatureEquivalence" )( featureEquivalence )
+end
+
+function deleteFeatureEquivalence( )
+	local featureEquivalence = input:table( )["FeatureEquivalence"]
+	formfunction( "deleteFeatureEquivalence" )( featureEquivalence )
+end
+
+function FeatureEquivalenceRequest( )
+	local featureEquivalence = input:table( )["FeatureEquivalence"]
+	
+	local t = formfunction( "selectFeatureEquivalence" )( {
+		feature_id = featureEquivalence["feature_id"],
+		fulfill_id = featureEquivalence["fulfill_id"]
+	} )
+	local f = form( "FeatureEquivalence" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
 
 function FeatureEquivalenceListRequest( )
 	local featureEquivalence = input:table( )["FeatureEquivalence"]
