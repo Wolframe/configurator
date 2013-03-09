@@ -6,6 +6,15 @@ CREATE TABLE FeatureFulfill	(
 	UNIQUE ( featureID, fulfillID )
 );
 
+CREATE TABLE RecipeComponent	(
+	recipeID	INT	REFERENCES Recipe( ID ),
+	componentID	INT	REFERENCES Component( ID ),
+	minQuantity	INT,
+	maxQuantity	INT,
+	comment		TEXT,
+	UNIQUE ( recipeID, componentID )	
+);
+
 alter table category add active boolean;
 alter table feature add active boolean;
 alter table manufacturer add active boolean;
