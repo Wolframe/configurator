@@ -186,6 +186,11 @@
      </property>
      <column>
       <property name="text">
+       <string>quantity</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
        <string>code</string>
       </property>
      </column>
