@@ -27,13 +27,14 @@ END
 TRANSACTION updateConfiguration
 BEGIN
 	DO UPDATE Configuration SET name=$(name),
-		description=$(description), categoryID=$(categoryID),
+		description=$(description),
 		comment=$(comment)
 		WHERE ID=$(id);
 END
 
 TRANSACTION deleteConfiguration
 BEGIN
+	DO DELETE FROM ConfigComponent WHERE configID = $(id);
 	DO DELETE FROM Configuration WHERE ID = $(id);
 END
 
@@ -50,4 +51,17 @@ BEGIN
 			FROM Configuration, Category
 			WHERE Configuration.ID = $(id)
 			AND Configuration.CategoryID = Category.ID;
+	INTO component DO
+		SELECT code, Component.name AS "name",
+			Category.name AS "categoryName",
+			Manufacturer.name AS "manufacturerName",
+			mfgCode AS "mfgCode",
+			Component.webPage AS "webPage",
+			Component.description AS "description",
+			price
+			FROM ConfigComponent, Component, Category, Manufacturer
+			WHERE Component.ID = ConfigComponent.componentID
+			AND Component.categoryID = Category.ID
+			AND Component.manufacturerID = Manufacturer.ID
+			AND configID = $(id);
 END

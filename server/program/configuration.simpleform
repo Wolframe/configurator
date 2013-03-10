@@ -15,6 +15,18 @@ FORM Configuration
 			id @int
 			_ string
 		}
+		component {
+			id @int
+			code string
+			form string
+			name string
+			categoryName string
+			manufacturerName string
+			mfgCode string
+			webPage string
+			description string
+			price float
+		}
 		search
 	}
 }
