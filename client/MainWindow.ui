@@ -124,7 +124,6 @@
      <string>&amp;Configuration</string>
     </property>
     <addaction name="action_configurations"/>
-    <addaction name="actionConfigurationStart"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuForms"/>

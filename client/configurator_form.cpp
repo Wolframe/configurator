@@ -1,24 +1,24 @@
-#include "test_form.h"
+#include "configurator_form.h"
 
 #include <QXmlStreamWriter>
 #include <QByteArray>
 #include <QDebug>
 #include <QLabel>
 
-test_form::test_form( DataLoader *_dataLoader, const QString _name, QWidget *_parent, bool _debug )
+configurator_form::configurator_form( DataLoader *_dataLoader, const QString _name, QWidget *_parent, bool _debug )
 	: QWidget( _parent ), m_dataLoader( _dataLoader ), m_name( _name ), m_debug( _debug )
 {
 	initialize( );
 }
 
-void test_form::initialize( )
+void configurator_form::initialize( )
 {
 	m_layout = new QVBoxLayout( this );
 	
 	sendRequest( "TagHierarchyRequest.simpleform", "tag" );
 }
 
-void test_form::sendRequest( const QString docType, const QString rootElement )
+void configurator_form::sendRequest( const QString docType, const QString rootElement )
 {
 	QByteArray data;
 	QXmlStreamWriter xml( &data );
@@ -46,7 +46,7 @@ void test_form::sendRequest( const QString docType, const QString rootElement )
 	m_dataLoader->request( QString::number( (int)winId( ) ), m_name, QString( ), data, &props );
 }
 
-void test_form::gotAnswer( QString /*widgetName*/, QByteArray data )
+void configurator_form::gotAnswer( QString /*widgetName*/, QByteArray data )
 {
 	qDebug( ) << "got self-made XML answer: " << data;
 

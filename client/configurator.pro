@@ -35,7 +35,7 @@ SOURCES += \
 	qtclient.cpp \
 	FileChooser.cpp \
 	PictureChooser.cpp \
-	test_form.cpp
+	configurator_form.cpp
 
 HEADERS += \
 	MainWindow.hpp \
@@ -132,9 +132,8 @@ HEADERS += \
 	tag_add_form.h \
 	tag_edit_form.h \
 	tags_form.h \
-	test_form.h \
+	configurator_form.h \
 	feature_equivalence_form.h \
-	configuration_recipe_select_form.h \
 	feature_equivalence_add_form.h \
 	feature_equivalence_edit_form.h
 
@@ -185,7 +184,6 @@ FORMS += \
 	forms/tag_edit.ui \
 	forms/tags.ui \
 	forms/feature_equivalence.ui \
-	forms/configuration_recipe_select.ui \
 	forms/feature_equivalence_add.ui \
 	forms/feature_equivalence_edit.ui
 	

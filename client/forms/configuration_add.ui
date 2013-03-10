@@ -49,6 +49,9 @@
      <property name="text">
       <string>Description:</string>
      </property>
+     <property name="buddy">
+      <cstring>description</cstring>
+     </property>
     </widget>
    </item>
    <item row="2" column="1">
@@ -112,7 +115,7 @@
    <item row="4" column="1">
     <widget class="QPlainTextEdit" name="comment"/>
    </item>
-   <item row="7" column="1">
+   <item row="6" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -142,7 +145,7 @@
         <string notr="true">create</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">configurations</string>
+        <string notr="true">configurator</string>
        </property>
       </widget>
      </item>
@@ -158,6 +161,84 @@
      </item>
     </layout>
    </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Recipe:</string>
+     </property>
+     <property name="buddy">
+      <cstring>recipe</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QTableWidget" name="recipe">
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DotLine</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="doctype" stdset="0">
+      <string notr="true">RecipeListRequest.simpleform</string>
+     </property>
+     <property name="rootelement" stdset="0">
+      <string notr="true">recipe</string>
+     </property>
+     <property name="state" stdset="0">
+      <string notr="true">{global.recipeState}</string>
+     </property>
+     <property name="action" stdset="0">
+      <string notr="true">read</string>
+     </property>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>description</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>categoryName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>creationDate</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>comment</string>
+      </property>
+     </column>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -165,6 +246,7 @@
   <tabstop>description</tabstop>
   <tabstop>category</tabstop>
   <tabstop>comment</tabstop>
+  <tabstop>recipe</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>

@@ -78,9 +78,8 @@
 #include "tag_add_form.h"
 #include "tag_edit_form.h"
 #include "tags_form.h"
-#include "test_form.h"
+#include "configurator_form.h"
 #include "feature_equivalence_form.h"
-#include "configuration_recipe_select_form.h"
 #include "feature_equivalence_add_form.h"
 #include "feature_equivalence_edit_form.h"
 
@@ -459,11 +458,8 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	else if( name == "feature_equivalence_edit" ) {
 		m_ui = new feature_equivalence_edit_form( this );
 	}
-	else if( name == "configuration_recipe_select" ) {
-		m_ui = new configuration_recipe_select_form( this );
-	}
-	else if( name == "test" ) {
-		m_ui = new test_form( m_dataLoader, "test", this, m_debug );
+	else if( name == "configurator" ) {
+		m_ui = new configurator_form( m_dataLoader, "configurator", this, m_debug );
 	}
 
 	if( m_ui == 0 ) {
@@ -615,8 +611,8 @@ void FormWidget::gotAnswer( QString formName, QString widgetName, QByteArray xml
 
 // do whatever we have to do with data to the widgets
 	if( !xml.isEmpty( ) ) {
-		if( formName == "test" ) {
-			qobject_cast<test_form *>( m_ui )->gotAnswer( widgetName, xml );
+		if( formName == "configurator" ) {
+			qobject_cast<configurator_form *>( m_ui )->gotAnswer( widgetName, xml );
 			return;
 		}
 		if( !widgetName.isEmpty( ) ) {

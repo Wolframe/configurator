@@ -1,5 +1,5 @@
-#ifndef test_form_H
-#define test_form_H
+#ifndef configurator_form_H
+#define configurator_form_H
 
 #include <QWidget>
 #include <QString>
@@ -7,12 +7,12 @@
 
 #include "DataLoader.hpp"
 
-class test_form : public QWidget
+class configurator_form : public QWidget
 {
 	Q_OBJECT
 	
 	public:
-		test_form( DataLoader *_dataLoader, const QString _name, QWidget *_parent = 0, bool _debug = false );
+		configurator_form( DataLoader *_dataLoader, const QString _name, QWidget *_parent = 0, bool _debug = false );
 		void gotAnswer( QString widgetName, QByteArray xml );
 		
 	private:
