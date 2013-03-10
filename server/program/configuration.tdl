@@ -13,7 +13,11 @@ END
 TRANSACTION addConfiguration
 BEGIN
 	DO INSERT INTO Configuration( name, description, categoryID, comment )
-		VALUES ( $(name), $(description), $(categoryID), $(comment) );
+		VALUES( $(name), $(description), $(categoryID), $(comment) );
+	DO NONEMPTY UNIQUE getLastConfigurationID( );
+	DO INSERT INTO ConfigComponent( configID, componentID, quantity )
+		SELECT $1, componentID, quantity FROM RecipeComponent
+			WHERE RecipeComponent.recipeID = $(recipe/id);
 END
 
 TRANSACTION updateConfiguration
