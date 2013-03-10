@@ -70,6 +70,9 @@
 #include "recipe_content_add_form.h"
 #include "recipe_content_edit_form.h"
 #include "recipe_content_form.h"
+#include "recipe_component_add_form.h"
+#include "recipe_component_edit_form.h"
+#include "recipe_component_form.h"
 #include "recipe_edit_form.h"
 #include "recipes_form.h"
 #include "tag_add_form.h"
@@ -422,6 +425,15 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 	}
 	else if( name == "recipe_content" ) {
 		m_ui = new recipe_content_form( this );
+	}
+	else if( name == "recipe_component_add" ) {
+		m_ui = new recipe_component_add_form( this );
+	}
+	else if( name == "recipe_component_edit" ) {
+		m_ui = new recipe_component_edit_form( this );
+	}
+	else if( name == "recipe_component" ) {
+		m_ui = new recipe_component_form( this );
 	}
 	else if( name == "recipe_edit" ) {
 		m_ui = new recipe_edit_form( this );

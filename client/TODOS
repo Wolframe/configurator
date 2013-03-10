@@ -1,6 +1,4 @@
 now configurator:
-- recipe component: recipe form, add picking of componentes along to
-  picking of categories (RecipeComponent table)
 - configuration has categories/components
 - configuration:
   - add components fix, mark in table the configuration as unfinished

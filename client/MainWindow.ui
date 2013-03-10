@@ -112,6 +112,7 @@
     <addaction name="separator"/>
     <addaction name="action_recipes"/>
     <addaction name="action_recipe_content"/>
+    <addaction name="action_recipe_component"/>
     <addaction name="separator"/>
     <addaction name="action_categories_features"/>
     <addaction name="action_components_features"/>
@@ -730,6 +731,11 @@
   <action name="actionConfigurationStart">
    <property name="text">
     <string>Create new configuration..</string>
+   </property>
+  </action>
+  <action name="action_recipe_component">
+   <property name="text">
+    <string>Recipe components</string>
    </property>
   </action>
  </widget>

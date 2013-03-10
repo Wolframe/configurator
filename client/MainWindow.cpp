@@ -1070,6 +1070,7 @@ void MainWindow::updateMdiMenusAndToolbars( )
 	m_ui.action_pictures->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 	m_ui.action_recipe_content->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
+	m_ui.action_recipe_component->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
 	m_ui.action_recipes->setEnabled( m_wolframeClient && m_wolframeClient->isConnected( ) );
 
@@ -1325,5 +1326,11 @@ void MainWindow::on_actionFeature_equivalence_triggered( )
 void MainWindow::on_actionConfigurationStart_triggered( )
 {
 	(void)CreateMdiSubWindow( "configuration_recipe_select" );
+	updateMenusAndToolbars( );
+}
+
+void MainWindow::on_action_recipe_component_triggered( )
+{
+	(void)CreateMdiSubWindow( "recipe_component" );
 	updateMenusAndToolbars( );
 }

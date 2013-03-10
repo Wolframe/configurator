@@ -124,6 +124,9 @@ HEADERS += \
 	recipe_content_add_form.h \
 	recipe_content_edit_form.h \
 	recipe_content_form.h \
+	recipe_component_add_form.h \
+	recipe_component_edit_form.h \
+	recipe_component_form.h \
 	recipe_edit_form.h \
 	recipes_form.h \
 	tag_add_form.h \
@@ -173,6 +176,9 @@ FORMS += \
 	forms/recipe_content_add.ui \
 	forms/recipe_content_edit.ui \
 	forms/recipe_content.ui \
+	forms/recipe_component_add.ui \
+	forms/recipe_component_edit.ui \
+	forms/recipe_component.ui \
 	forms/recipe_edit.ui \
 	forms/recipes.ui \
 	forms/tag_add.ui \
