@@ -3,7 +3,6 @@ now configurator:
 - configuration:
   - add components fix, mark in table the configuration as unfinished
   - dialog, present components of a category to pick from
-  - categoryID gets copied from recipe.categoryID
   - every step of adding a component to a configuration gives us
     (over the categories), new features required and provided, so
     this influences whether we have to pick more or less components
