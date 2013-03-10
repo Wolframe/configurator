@@ -1,0 +1,10 @@
+FORM RecipeComponentRequest
+{
+	RecipeComponent
+	{
+		recipe_id @int
+		component_id @int
+		min_requires int
+		max_requires int
+	}
+}

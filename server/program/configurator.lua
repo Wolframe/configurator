@@ -609,6 +609,39 @@ function RecipeContentListRequest( )
 	output:print( f:get( ) )
 end
 
+-- recipe/component associations
+
+function createRecipeComponent( )
+	local recipeComponent = input:table( )["RecipeComponent"]
+	formfunction( "addRecipeComponent" )( recipeComponent )
+end
+
+function deleteRecipeComponent( )
+	local recipeComponent = input:table( )["RecipeComponent"]
+	formfunction( "deleteRecipeComponent" )( recipeComponent )
+end
+
+function RecipeComponentRequest( )
+	local recipeComponent = input:table( )["RecipeComponent"]
+	local t = formfunction( "selectRecipeComponent" )( {
+		recipe_id = recipeComponent["recipe_id"],
+		component_id = recipeComponent["component_id"]
+	} )
+	local f = form( "RecipeComponent" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function RecipeComponentListRequest( )
+	local recipeComponent = input:table( )["RecipeComponent"]
+	local t = formfunction( "selectRecipeComponentList" )( {
+		recipe_id = recipeComponent["recipe_id"]
+	} )
+	local f = form( "RecipeComponentList" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
 -- feature equivalences
 
 function createFeatureEquivalence( )
