@@ -63,6 +63,7 @@ BEGIN
 			mfgCode AS "mfgCode",
 			Component.webPage AS "webPage",
 			Component.description AS "description",
+			quantity,
 			price
 			FROM ConfigComponent, Component, Category, Manufacturer
 			WHERE Component.ID = ConfigComponent.componentID

@@ -13,6 +13,7 @@ FORM ConfiguredComponents
 			mfgCode string
 			webPage string
 			description string
+			quantity int
 			price float
 		}
 	}
