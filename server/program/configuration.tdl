@@ -15,6 +15,10 @@ BEGIN
 	DO INSERT INTO Configuration( name, description, categoryID, comment )
 		VALUES( $(name), $(description), $(categoryID), $(comment) );
 	DO NONEMPTY UNIQUE getLastConfigurationID( );
+	DO UPDATE Configuration SET categoryID =
+		(SELECT categoryID from Recipe WHERE ID=$(recipe/id) )
+		WHERE ID = $1;
+	DO NONEMPTY UNIQUE getLastConfigurationID( );
 	DO INSERT INTO ConfigComponent( configID, componentID, quantity )
 		SELECT $1, componentID, quantity FROM RecipeComponent
 			WHERE RecipeComponent.recipeID = $(recipe/id);
