@@ -300,37 +300,14 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_requires">
        <property name="text">
-        <string>Requires:</string>
+        <string>Provides:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="label_min_requires">
-         <property name="text">
-          <string>min.</string>
-         </property>
-         <property name="buddy">
-          <cstring>min_requires</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="min_requires"/>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_max_requires">
-         <property name="text">
-          <string>max.</string>
-         </property>
-         <property name="buddy">
-          <cstring>max_requires</cstring>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSpinBox" name="max_requires"/>
+        <widget class="QSpinBox" name="quantity"/>
        </item>
        <item>
         <spacer name="horizontalSpacer_2">
@@ -354,8 +331,7 @@
  <tabstops>
   <tabstop>recipe</tabstop>
   <tabstop>component</tabstop>
-  <tabstop>min_requires</tabstop>
-  <tabstop>max_requires</tabstop>
+  <tabstop>quantity</tabstop>
   <tabstop>link</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>

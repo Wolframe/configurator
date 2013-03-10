@@ -197,12 +197,12 @@
        </column>
        <column>
         <property name="text">
-         <string>min_requires</string>
+         <string>categoryName</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>max_requires</string>
+         <string>quantity</string>
         </property>
        </column>
       </widget>

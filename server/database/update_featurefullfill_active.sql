@@ -9,8 +9,7 @@ CREATE TABLE FeatureFulfill	(
 CREATE TABLE RecipeComponent	(
 	recipeID	INT	REFERENCES Recipe( ID ),
 	componentID	INT	REFERENCES Component( ID ),
-	minQuantity	INT,
-	maxQuantity	INT,
+	quantity	INT,
 	comment		TEXT,
 	UNIQUE ( recipeID, componentID )	
 );
