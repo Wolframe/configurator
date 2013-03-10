@@ -1,0 +1,8 @@
+FORM ConfiguredComponentsRequest
+{
+	component
+	{
+		id @int
+		configID @int
+	}
+}
