@@ -11,6 +11,10 @@ FORM Configuration
 			_ string
 		}
 		comment string
+		recipe {
+			id @int
+			_ string
+		}
 		search
 	}
 }
