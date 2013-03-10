@@ -17,8 +17,8 @@ FORM RecipeComponent
 			id @int
 			_ string
 		}
-		min_requires int
-		max_requires int
+		categoryName string
+		quantity int
 		recipe_id @int
 		component_id @int
 	}
