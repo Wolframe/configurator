@@ -21,7 +21,7 @@ class configurator_form : public QWidget
 		QString m_name;
 		QHash< QString, QString > *m_globals;
 		bool m_debug;
-		QVBoxLayout *m_layout;
+		QVBoxLayout *verticalLayout;
 		
 	private:
 		void initialize( );
