@@ -8,9 +8,7 @@ now configurator:
     this influences whether we have to pick more or less components
     from categories full-filling the features
   - save button: if minimum requirements are satisfied
-- prerequisites for configurator dialog:
-  - answers of createConfiguration must be set for next request (how?
-    globals?)
+  
 later configurator:
 - on error remain on current form: fixable, handle error in network data loader,
   separate form switch and action in FormWidget

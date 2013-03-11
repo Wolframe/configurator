@@ -14,7 +14,7 @@ class configurator_form : public QWidget
 	
 	public:
 		configurator_form( DataLoader *_dataLoader, const QString _name, QHash< QString, QString > *globals, QWidget *_parent = 0, bool _debug = false );
-		void gotAnswer( QString widgetName, QByteArray xml );
+		void gotAnswer( QString requestName, QByteArray xml );
 		
 	private:
 		DataLoader *m_dataLoader;
@@ -25,6 +25,6 @@ class configurator_form : public QWidget
 		
 	private:
 		void initialize( );
-		void sendRequest( const QString docType, const QString rootElement );
+		void sendRequest( const QString docType, const QString rootElement, const QString requestName );
 };
 #endif

@@ -16,10 +16,10 @@ void configurator_form::initialize( )
 {
 	m_layout = new QVBoxLayout( this );
 	
-	sendRequest( "ConfiguredComponentsRequest.simpleform", "component" );
+	sendRequest( "ConfiguredComponentsRequest.simpleform", "component", "ConfiguredComponents" );
 }
 
-void configurator_form::sendRequest( const QString docType, const QString rootElement )
+void configurator_form::sendRequest( const QString docType, const QString rootElement, const QString requestName )
 {
 	QByteArray data;
 	QXmlStreamWriter xml( &data );
@@ -46,20 +46,22 @@ void configurator_form::sendRequest( const QString docType, const QString rootEl
 	props.insert( "doctype", docType );
 	props.insert( "rootelement", rootElement );
 
-	m_dataLoader->request( QString::number( (int)winId( ) ), m_name, QString( ), data, &props );
+	m_dataLoader->request( QString::number( (int)winId( ) ), m_name, requestName, data, &props );
 }
 
-void configurator_form::gotAnswer( QString /*widgetName*/, QByteArray data )
+void configurator_form::gotAnswer( QString requestName, QByteArray data )
 {
-	qDebug( ) << "got self-made XML answer: " << data;
+	qDebug( ) << "got self-made XML answer for request: " << requestName << ":\n" << data;
 
-	QXmlStreamReader xml( data );
-	while( !xml.atEnd( ) ) {
-		xml.readNext( );
-		if( xml.isStartElement( ) && ( xml.name( ) == "component" ) ) {
-			QString text = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
-			QLabel *label = new QLabel( text, this );
-			m_layout->addWidget( label );
+	if( requestName == "ConfiguredComponents" ) {
+		QXmlStreamReader xml( data );
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );
+			if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
+				QString text = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+				QLabel *label = new QLabel( text, this );
+				m_layout->addWidget( label );
+			}
 		}
 	}
 }
