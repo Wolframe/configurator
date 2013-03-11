@@ -22,6 +22,7 @@ BEGIN
 	DO INSERT INTO ConfigComponent( configID, componentID, quantity )
 		SELECT $1, componentID, quantity FROM RecipeComponent
 			WHERE RecipeComponent.recipeID = $(recipe/id);
+	INTO configuration DO NONEMPTY UNIQUE getLastConfigurationID( );
 END
 
 TRANSACTION updateConfiguration

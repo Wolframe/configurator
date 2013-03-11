@@ -488,7 +488,10 @@ function createConfiguration( )
 	if configuration["category"] then
 		configuration["categoryID"] = configuration["category"]["id"]
 	end
-	formfunction( "addConfiguration" )( configuration )
+	local t = formfunction( "addConfiguration" )( configuration )
+	local f = form( "Configuration" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
 end
 
 function editConfiguration( )
