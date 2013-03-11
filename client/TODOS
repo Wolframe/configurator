@@ -1,6 +1,6 @@
 now configurator:
-- configuration has categories/components
 - configuration:
+  - configuration has categories/components
   - add components fix, mark in table the configuration as unfinished
   - dialog, present components of a category to pick from
   - every step of adding a component to a configuration gives us
@@ -8,12 +8,14 @@ now configurator:
     this influences whether we have to pick more or less components
     from categories full-filling the features
   - save button: if minimum requirements are satisfied
-- Add picture and a list of pictures
-- code TEXT NOT NULL UNIQUE, should be either NULL or if not NULL unique
+- prerequisites for configurator dialog:
+  - answers of createConfiguration must be set for next request (how?
+    globals?)
+later configurator:
 - on error remain on current form: fixable, handle error in network data loader,
   separate form switch and action in FormWidget
-
-later configurator:
+- Add picture and a list of pictures
+- code TEXT NOT NULL UNIQUE, should be either NULL or if not NULL unique
 - respect active flags
 - later: code as function for manufacturer + mfgCode, manufacturer
   table needs a code

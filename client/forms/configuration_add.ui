@@ -184,6 +184,9 @@
        <property name="form" stdset="0">
         <string notr="true">configurator</string>
        </property>
+       <property name="global.configID" stdset="0">
+        <string>{answer.configuration.id}</string>
+       </property>
       </widget>
      </item>
      <item>

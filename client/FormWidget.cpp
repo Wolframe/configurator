@@ -88,7 +88,8 @@ FormWidget::FormWidget( FormLoader *_formLoader, DataLoader *_dataLoader, /* QUi
 	  /* m_uiLoader( _uiLoader ), */ m_formLoader( _formLoader ),
 	  m_dataLoader( _dataLoader ), m_ui( 0 ), m_dataHandler( 0 ),
 	  m_locale( DEFAULT_LOCALE ), m_layout( 0 ), m_forms( ),
-	  m_globals( 0 ), m_props( 0 ), m_debug( _debug ), m_modal( false )
+	  m_globals( 0 ), m_props( 0 ), m_debug( _debug ), m_modal( false ),
+	  m_switchForm( false )
 {
 	initialize( );
 }
@@ -181,22 +182,27 @@ void FormWidget::switchForm( QObject *object )
 	QHash<QString, QString> *props = widgetProps->props( );
 
 	restoreFromGlobals( props );
-
-	storeToGlobals( props );
-
+	
 // execute the action (old style, action mandatory)
 // execute the action (new style request, doctype mandatory)
 	if( props->contains( "action" ) || props->contains( "doctype" ) ) {
+		m_switchForm = true;
 		sendRequest( props );
-	}
-
-// switch form now, formLoaded will inform parent and others
-	if( props->contains( "form" ) ) {
-		QString nextForm = props->value( "form" );
-		if( m_modal && nextForm == "_CLOSE_" ) {
-			emit closed( );
-		} else {
-			loadForm( nextForm );
+	} else {
+// store globals normally, we don't have a answer to a request which we
+// must evaluate
+		storeToGlobals( props );
+	
+// switch form now, formLoaded will inform parent and others,
+// if we have a request we should wait for the result before
+// switching the form
+		if( props->contains( "form" ) ) {
+			QString nextForm = props->value( "form" );
+			if( m_modal && nextForm == "_CLOSE_" ) {
+				emit closed( );
+			} else {
+				loadForm( nextForm );
+			}
 		}
 	}
 }
@@ -459,7 +465,7 @@ void FormWidget::formLoaded( QString name, QByteArray formXml )
 		m_ui = new feature_equivalence_edit_form( this );
 	}
 	else if( name == "configurator" ) {
-		m_ui = new configurator_form( m_dataLoader, "configurator", this, m_debug );
+		m_ui = new configurator_form( m_dataLoader, "configurator", m_globals, this, m_debug );
 	}
 
 	if( m_ui == 0 ) {
@@ -595,14 +601,13 @@ void FormWidget::sendRequest( QHash<QString, QString> *props )
 		m_dataHandler->clearFormData( m_ui, name );
 		m_dataHandler->resetFormData( m_ui, name );
 		m_dataHandler->loadFormDomains( m_form, m_ui, name );
-
 	} else {
 		// send regular request	for the form
 		m_dataLoader->request( QString::number( (int)winId( ) ), m_form, QString( ), xml, props );
 	}
 }
 
-void FormWidget::gotAnswer( QString formName, QString widgetName, QByteArray xml )
+void FormWidget::gotAnswer( QString formName, QString widgetName, QByteArray data )
 {
 // that's not us
 	if( formName != m_form ) return;
@@ -610,26 +615,77 @@ void FormWidget::gotAnswer( QString formName, QString widgetName, QByteArray xml
 	qDebug( ) << "Got answer for form" << formName;
 
 // do whatever we have to do with data to the widgets
-	if( !xml.isEmpty( ) ) {
+	if( !data.isEmpty( ) ) {
 		if( formName == "configurator" ) {
-			qobject_cast<configurator_form *>( m_ui )->gotAnswer( widgetName, xml );
-			return;
-		}
-		if( !widgetName.isEmpty( ) ) {
-			qDebug( ) << "Answer is for local widget" << widgetName << "in form" << formName;
+			qobject_cast<configurator_form *>( m_ui )->gotAnswer( widgetName, data );
+		} else {
+			if( !widgetName.isEmpty( ) ) {
+				qDebug( ) << "Answer is for local widget" << widgetName << "in form" << formName;
 
 // get properties if widget
-			QWidget *widget = m_ui->findChild<QWidget *>( widgetName );
-			QHash<QString, QString> *props = new QHash<QString, QString>( );
-			readDynamicStringProperties( props, widget );
-			restoreFromGlobals( props );
+				QWidget *widget = m_ui->findChild<QWidget *>( widgetName );
+				QHash<QString, QString> *props = new QHash<QString, QString>( );
+				readDynamicStringProperties( props, widget );
+				restoreFromGlobals( props );
 
 // restore domains and state
-			m_dataHandler->loadFormDomain( formName, widgetName, m_ui, xml, props );
+				m_dataHandler->loadFormDomain( formName, widgetName, m_ui, data, props );
+			} else {
+				// HACK: m_props are the properties of the form
+				qDebug( ) << "props(gotAnswer):" << m_props << this;
+				m_dataHandler->readFormData( formName, m_ui, data, m_props );
+			}
+		}
+	}
+
+// switch now after having received the answer to our request
+	if( m_switchForm && !m_dataLoader->hasRunningRequests( ) && m_props && m_props->contains( "form" ) ) {
+		m_switchForm = false;
+		QString nextForm = m_props->value( "form" );
+		if( m_modal && nextForm == "_CLOSE_" ) {
+			emit closed( );
 		} else {
-			// HACK: m_props are the properties of the form
-			qDebug( ) << "props(gotAnswer):" << m_props << this;
-			m_dataHandler->readFormData( formName, m_ui, xml, m_props );
+// set global variables here based on answers from the server, should be something like
+// 'answer.configuration.id', which is a path into the returned structure, for now
+// hardcoded
+			foreach( const QString key, m_props->keys( ) ) {
+				QString value = m_props->value( key );
+				if( value.startsWith( "answer." ) ) {
+					QStringList parts = value.split( "." );
+					int pos = 1;
+					QXmlStreamReader xml( data );
+					while( !xml.atEnd( ) ) {
+						xml.readNext( );
+						if( xml.isStartElement( ) && ( xml.name( ) == parts[pos] ) ) {
+							if( pos == parts.size( )-1 ) {
+								// found
+								QString text = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+								m_props->insert( key, text );
+								break;
+							} else {
+								pos++;
+								// check attributes first
+								QXmlStreamAttributes attributes = xml.attributes( );
+								foreach( QXmlStreamAttribute attr, attributes ) {
+									if( attr.name( ) == parts[pos] ) {
+										if( pos == parts.size( )-1 ) {
+											// found
+											QString text = attr.value( ).toString( );
+											m_props->insert( key, text );
+											break;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+// HACK: m_props are the properties of the form
+			storeToGlobals( m_props );
+			
+			loadForm( nextForm );
 		}
 	}
 }
