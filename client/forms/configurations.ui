@@ -60,7 +60,7 @@
      <item>
       <widget class="QPushButton" name="edit">
        <property name="text">
-        <string>Edit</string>
+        <string>Edit Properties</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">configuration_edit</string>

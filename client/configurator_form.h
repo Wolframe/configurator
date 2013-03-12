@@ -22,9 +22,11 @@ class configurator_form : public QWidget
 		QHash< QString, QString > *m_globals;
 		bool m_debug;
 		QVBoxLayout *verticalLayout;
+		QVBoxLayout *fixedComponentsLayout;
 		
 	private:
 		void initialize( );
+		void rest( );
 		void sendRequest( const QString docType, const QString rootElement, const QString requestName );
 };
 #endif

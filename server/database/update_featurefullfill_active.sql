@@ -22,3 +22,4 @@ update category set active='1';
 update feature set active='1';
 update manufacturer set active='1';
 update component set active='1';
+alter table configComponent add fromRecipe boolean;

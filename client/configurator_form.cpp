@@ -29,6 +29,29 @@ configurator_form::configurator_form( DataLoader *_dataLoader, const QString _na
 
 void configurator_form::initialize( )
 {
+        if (this->objectName().isEmpty())
+            this->setObjectName(QString::fromUtf8("Form"));
+        this->setWindowTitle(QApplication::translate("Form", "Configurator", 0, QApplication::UnicodeUTF8));            
+        this->resize(586, 149);
+              
+// every picked component or component picker gets added to a vertical layout
+        verticalLayout = new QVBoxLayout(this);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        
+        fixedComponentsLayout = new QVBoxLayout(this);        
+        verticalLayout->setObjectName(QString::fromUtf8("fixedComponentsLayout"));
+
+// TODO: remove
+		rest( );
+
+// trigger filling of preconfigured components (given by the recipe)
+	sendRequest( "ConfiguredComponentsFixRequest.simpleform", "component", "ConfiguredComponentsFix" );
+
+// trigger filling of configured components (choosen by user)
+}
+
+void configurator_form::rest( )
+{
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_4;
     QSpacerItem *horizontalSpacer_3;
@@ -49,21 +72,10 @@ void configurator_form::initialize( )
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_5;
-    QPushButton *saveButton;
-    QPushButton *cancelButton;
+    QPushButton *closeButton;
 
-        if (this->objectName().isEmpty())
-            this->setObjectName(QString::fromUtf8("Form"));
-        this->setWindowTitle(QApplication::translate("Form", "Configurator", 0, QApplication::UnicodeUTF8));            
-        this->resize(586, 149);
-              
-// every picked component or component picker gets added to a vertical layout
-        verticalLayout = new QVBoxLayout(this);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-
-// trigger filling of preconfigured components
-	sendRequest( "ConfiguredComponentsRequest.simpleform", "component", "ConfiguredComponents" );
-        
+        verticalLayout->addLayout( fixedComponentsLayout );
+       
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         label_4 = new QLabel(this);
@@ -158,17 +170,11 @@ void configurator_form::initialize( )
 
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-        saveButton = new QPushButton(this);
-        saveButton->setObjectName(QString::fromUtf8("saveButton"));
-        saveButton->setText(QApplication::translate("Form", "Save", 0, QApplication::UnicodeUTF8));
-        saveButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
-        horizontalLayout_5->addWidget(saveButton);
-
-        cancelButton = new QPushButton(this);
-        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
-        cancelButton->setText(QApplication::translate("Form", "Cancel", 0, QApplication::UnicodeUTF8));
-        cancelButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
-        horizontalLayout_5->addWidget(cancelButton);
+        closeButton = new QPushButton(this);
+        closeButton->setObjectName(QString::fromUtf8("closeButton"));
+        closeButton->setText(QApplication::translate("Form", "Close", 0, QApplication::UnicodeUTF8));
+        closeButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
+        horizontalLayout_5->addWidget(closeButton);
 
         verticalLayout->addLayout(horizontalLayout_5);
 
@@ -226,7 +232,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 {
 	qDebug( ) << "got self-made XML answer for request: " << requestName << ":\n" << data;
 
-	if( requestName == "ConfiguredComponents" ) {
+	if( requestName == "ConfiguredComponentsFix" ) {
 		QXmlStreamReader xml( data );
 		QString name;
 		QString quantity;
@@ -261,7 +267,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 
 				givenComponentLayout->addWidget(label);
 
-				verticalLayout->addLayout(givenComponentLayout);
+				fixedComponentsLayout->addLayout(givenComponentLayout);
 			}
 		}
 	}

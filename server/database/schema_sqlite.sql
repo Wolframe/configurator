@@ -240,6 +240,7 @@ CREATE TABLE ConfigComponent	(
 	configID	INT	REFERENCES Configuration( ID ),
 	componentID	INT	REFERENCES Component( ID ),
 	quantity	INT,
+	fromRecipe	BOOLEAN,
 	UNIQUE ( configID, componentID )
 );
 
