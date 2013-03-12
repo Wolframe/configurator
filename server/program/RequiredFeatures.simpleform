@@ -1,0 +1,12 @@
+FORM RequiredFeatures
+{
+	list
+	{
+		feature []
+		{
+			id @int
+			minQuantity string
+			maxQuantity string
+		}
+	}
+}

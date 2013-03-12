@@ -12,8 +12,8 @@ END
 
 TRANSACTION addConfiguration
 BEGIN
-	DO INSERT INTO Configuration( name, description, categoryID, comment )
-		VALUES( $(name), $(description), $(categoryID), $(comment) );
+	DO INSERT INTO Configuration( name, description, comment, recipeID )
+		VALUES( $(name), $(description), $(comment), $(recipe/id) );
 	DO NONEMPTY UNIQUE getLastConfigurationID( );
 	DO UPDATE Configuration SET categoryID =
 		(SELECT categoryID from Recipe WHERE ID=$(recipe/id) )
@@ -113,4 +113,17 @@ BEGIN
 			AND Component.categoryID = Category.ID
 			AND Component.manufacturerID = Manufacturer.ID
 			AND configID = $(configID);
+END
+
+TRANSACTION selectRequiredFeatures
+RESULT INTO list
+BEGIN
+	INTO feature DO
+		SELECT
+			featureID AS "id",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM CategRequires
+		WHERE '1';
+-- select component.name,feature.name,recipecontent.minquantity,recipecontent.maxquantity from recipecontent,component,componentprovides,feature,categrequires where recipeID=(select recipeID from configuration where ID=56) and component.ID=componentprovides.componentID and Feature.id=componentprovides.featureID and feature.id=categrequires.featureid and categrequires.categoryid=recipecontent.categoryid;
 END

@@ -534,6 +534,13 @@ function ConfiguredComponentsRequest( )
 	output:print( f:get( ) )
 end
 
+function RequiredFeaturesRequest( )
+	local t = formfunction( "selectRequiredFeatures" )( { configID = input:table( )["configuration"]["configID"] } )
+	local f = form( "RequiredFeatures" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
 -- category/features associations
 
 function createCategoryFeature( )
