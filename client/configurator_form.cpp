@@ -50,6 +50,7 @@ void configurator_form::initialize( )
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_5;
     QPushButton *saveButton;
+    QPushButton *cancelButton;
 
         if (this->objectName().isEmpty())
             this->setObjectName(QString::fromUtf8("Form"));
@@ -159,9 +160,15 @@ void configurator_form::initialize( )
 
         saveButton = new QPushButton(this);
         saveButton->setObjectName(QString::fromUtf8("saveButton"));
-
+        saveButton->setText(QApplication::translate("Form", "Save", 0, QApplication::UnicodeUTF8));
+        saveButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
         horizontalLayout_5->addWidget(saveButton);
 
+        cancelButton = new QPushButton(this);
+        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+        cancelButton->setText(QApplication::translate("Form", "Cancel", 0, QApplication::UnicodeUTF8));
+        cancelButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
+        horizontalLayout_5->addWidget(cancelButton);
 
         verticalLayout->addLayout(horizontalLayout_5);
 
@@ -183,7 +190,6 @@ void configurator_form::initialize( )
          << QApplication::translate("Form", "Intel Core Duo 1400 MHz", 0, QApplication::UnicodeUTF8)
         );
         pushButton_2->setText(QApplication::translate("Form", "Add", 0, QApplication::UnicodeUTF8));
-        saveButton->setText(QApplication::translate("Form", "Save", 0, QApplication::UnicodeUTF8));
 }
 
 void configurator_form::sendRequest( const QString docType, const QString rootElement, const QString requestName )
