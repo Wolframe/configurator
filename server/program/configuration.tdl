@@ -19,8 +19,8 @@ BEGIN
 		(SELECT categoryID from Recipe WHERE ID=$(recipe/id) )
 		WHERE ID = $1;
 	DO NONEMPTY UNIQUE getLastConfigurationID( );
-	DO INSERT INTO ConfigComponent( configID, componentID, quantity )
-		SELECT $1, componentID, quantity FROM RecipeComponent
+	DO INSERT INTO ConfigComponent( configID, componentID, quantity, fromRecipe )
+		SELECT $1, componentID, quantity, '1' FROM RecipeComponent
 			WHERE RecipeComponent.recipeID = $(recipe/id);
 	INTO configuration DO NONEMPTY UNIQUE getLastConfigurationID( );
 END
@@ -52,6 +52,46 @@ BEGIN
 			FROM Configuration, Category
 			WHERE Configuration.ID = $(id)
 			AND Configuration.CategoryID = Category.ID;
+END
+
+TRANSACTION selectConfiguredComponentsFix
+RESULT INTO list
+BEGIN
+	INTO component DO
+		SELECT Component.ID AS "id", code, Component.name AS "name",
+			Category.name AS "categoryName",
+			Manufacturer.name AS "manufacturerName",
+			mfgCode AS "mfgCode",
+			Component.webPage AS "webPage",
+			Component.description AS "description",
+			quantity,
+			price
+			FROM ConfigComponent, Component, Category, Manufacturer
+			WHERE Component.ID = ConfigComponent.componentID
+			AND Component.categoryID = Category.ID
+			AND Component.manufacturerID = Manufacturer.ID
+			AND configID = $(configID)
+			AND fromRecipe = '1';
+END
+
+TRANSACTION selectConfiguredComponentsUser
+RESULT INTO list
+BEGIN
+	INTO component DO
+		SELECT Component.ID AS "id", code, Component.name AS "name",
+			Category.name AS "categoryName",
+			Manufacturer.name AS "manufacturerName",
+			mfgCode AS "mfgCode",
+			Component.webPage AS "webPage",
+			Component.description AS "description",
+			quantity,
+			price
+			FROM ConfigComponent, Component, Category, Manufacturer
+			WHERE Component.ID = ConfigComponent.componentID
+			AND Component.categoryID = Category.ID
+			AND Component.manufacturerID = Manufacturer.ID
+			AND configID = $(configID)
+			AND fromRecipe = '0';
 END
 
 TRANSACTION selectConfiguredComponents

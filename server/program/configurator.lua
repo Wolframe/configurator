@@ -513,6 +513,13 @@ function ConfigurationRequest( )
 	output:print( f:get( ) )
 end
 
+function ConfiguredComponentsFixRequest( )
+	local t = formfunction( "selectConfiguredComponentsFix" )( { configID = input:table( )["component"]["configID"] } )
+	local f = form( "ConfiguredComponentsFix" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
 function ConfiguredComponentsRequest( )
 	local t = formfunction( "selectConfiguredComponents" )( { configID = input:table( )["component"]["configID"] } )
 	local f = form( "ConfiguredComponents" )
