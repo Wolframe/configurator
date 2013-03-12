@@ -231,7 +231,8 @@ CREATE TABLE Configuration	(
 	categoryID	INT	REFERENCES Category( ID ),
 	name		TEXT,
 	description	TEXT,
-	comment		TEXT
+	comment		TEXT,
+	recipeID	INT	REFERENCES Recipe( ID )
 );
 
 CREATE TABLE ConfigComponent	(

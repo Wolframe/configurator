@@ -18,8 +18,10 @@ alter table category add active boolean;
 alter table feature add active boolean;
 alter table manufacturer add active boolean;
 alter table component add active boolean;
+alter table Configuration add recipeID INT REFERENCES Recipe( ID );
+alter table configComponent add fromRecipe boolean;
+
 update category set active='1';
 update feature set active='1';
 update manufacturer set active='1';
 update component set active='1';
-alter table configComponent add fromRecipe boolean;

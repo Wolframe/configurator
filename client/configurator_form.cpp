@@ -64,7 +64,8 @@ void configurator_form::initialize( )
 // trigger filling of configured components (choosen by user)
 	sendRequest( "ConfiguredComponentsUserRequest.simpleform", "component", "ConfiguredComponentsUser" );
 
-// trigger filling of features still required to be fulfiled
+// trigger filling of features still required to be fulfilled
+	sendRequest( "RequiredFeaturesRequest.simpleform", "configuration", "RequiredFeatures" );
 }
 
 void configurator_form::rest( )
@@ -294,6 +295,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 				userComponentsLayout->addLayout(horizontalLayout_3);
 			}
 		}
+	} else if( requestName == "RequiredFeatures" ) {
 	}
 }
 
