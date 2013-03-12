@@ -23,6 +23,7 @@ class configurator_form : public QWidget
 		bool m_debug;
 		QVBoxLayout *verticalLayout;
 		QVBoxLayout *fixedComponentsLayout;
+		QVBoxLayout *userComponentsLayout;
 		
 	private:
 		void initialize( );

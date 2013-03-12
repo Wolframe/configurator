@@ -40,6 +40,20 @@ void configurator_form::initialize( )
         
         fixedComponentsLayout = new QVBoxLayout(this);        
         verticalLayout->setObjectName(QString::fromUtf8("fixedComponentsLayout"));
+        verticalLayout->addLayout( fixedComponentsLayout );
+
+// user picked components       
+        userComponentsLayout = new QVBoxLayout(this);
+        verticalLayout->setObjectName(QString::fromUtf8("userComponentsLayout"));
+        verticalLayout->addLayout( userComponentsLayout );
+
+// visual separator
+	QFrame *line;
+        line = new QFrame(this);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+        verticalLayout->addWidget(line);
 
 // TODO: remove
 		rest( );
@@ -48,17 +62,13 @@ void configurator_form::initialize( )
 	sendRequest( "ConfiguredComponentsFixRequest.simpleform", "component", "ConfiguredComponentsFix" );
 
 // trigger filling of configured components (choosen by user)
+	sendRequest( "ConfiguredComponentsUserRequest.simpleform", "component", "ConfiguredComponentsUser" );
+
+// trigger filling of features still required to be fulfiled
 }
 
 void configurator_form::rest( )
 {
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_4;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *pushButton_3;
-    QFrame *line;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label_2;
     QSpacerItem *horizontalSpacer;
     QSpinBox *spinBox;
     QComboBox *comboBox;
@@ -72,44 +82,17 @@ void configurator_form::rest( )
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_5;
     QSpacerItem *horizontalSpacer_5;
-    QPushButton *closeButton;
-
-        verticalLayout->addLayout( fixedComponentsLayout );
-       
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        label_4 = new QLabel(this);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setText(QApplication::translate("Form", "2 Components yyyy fullfilling feature from xx to xx", 0, QApplication::UnicodeUTF8));
-
-        horizontalLayout_3->addWidget(label_4);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_3);
-
-        pushButton_3 = new QPushButton(this);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-
-        horizontalLayout_3->addWidget(pushButton_3);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
-
-        line = new QFrame(this);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-
-        verticalLayout->addWidget(line);
-
+	QHBoxLayout *horizontalLayout;
+	QLabel *label_2;
+	
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label_2 = new QLabel(this);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-
+        label_2->setText(QApplication::translate("Form", "min to max. features xxx:", 0, QApplication::UnicodeUTF8));
         horizontalLayout->addWidget(label_2);
-
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
@@ -170,19 +153,18 @@ void configurator_form::rest( )
 
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-        closeButton = new QPushButton(this);
-        closeButton->setObjectName(QString::fromUtf8("closeButton"));
-        closeButton->setText(QApplication::translate("Form", "Close", 0, QApplication::UnicodeUTF8));
-        closeButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
-        horizontalLayout_5->addWidget(closeButton);
+// close button, adding a dynamic property for form switching
+	QPushButton *closeButton;
+	closeButton = new QPushButton(this);
+	closeButton->setObjectName(QString::fromUtf8("closeButton"));
+	closeButton->setText(QApplication::translate("Form", "Close", 0, QApplication::UnicodeUTF8));
+	closeButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
+	horizontalLayout_5->addWidget(closeButton);
 
-        verticalLayout->addLayout(horizontalLayout_5);
-
+	verticalLayout->addLayout(horizontalLayout_5);
 
         QMetaObject::connectSlotsByName(this);
 
-        pushButton_3->setText(QApplication::translate("Form", "Delete", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("Form", "min to max. features xxx:", 0, QApplication::UnicodeUTF8));
         comboBox->clear();
         comboBox->insertItems(0, QStringList()
          << QApplication::translate("Form", "Intel Quadcore CPU 1300 MHz", 0, QApplication::UnicodeUTF8)
@@ -255,7 +237,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 
 				label_5 = new QLabel(this);
 				label_5->setObjectName(QString::fromUtf8("label_5"));
-				label_5->setText( QString( "%1 components %2" ).arg( quantity ).arg( name ) );
+				label_5->setText( QString( "%1 components '%2'" ).arg( quantity ).arg( name ) );
 
 				givenComponentLayout->addWidget(label_5);
 				horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -268,6 +250,48 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 				givenComponentLayout->addWidget(label);
 
 				fixedComponentsLayout->addLayout(givenComponentLayout);
+			}
+		}
+	} else if( requestName == "ConfiguredComponentsUser" ) {
+		QXmlStreamReader xml( data );
+		QString name;
+		QString quantity;
+		QString featureQuantityFrom;
+		QString featureQuantityTo;
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );
+			
+			if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
+				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "quantity" ) ) {
+				quantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "featureMinQuantity" ) ) {
+				featureQuantityFrom = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "featureMaxQuantity" ) ) {
+				featureQuantityTo = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isEndElement( ) && ( xml.name( ) == "component" ) ) {
+				QSpacerItem *horizontalSpacer_3;
+				QLabel *label_4;
+				QHBoxLayout *horizontalLayout_3;
+				QPushButton *deleteButton;
+				
+				horizontalLayout_3 = new QHBoxLayout();
+				horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+				label_4 = new QLabel(this);
+				label_4->setObjectName(QString::fromUtf8("label_4"));
+				label_4->setText( QString( "%1 components '%2' fulfiling feature (quantity required %3 to %4)" ).arg( quantity ).arg( name ).arg( featureQuantityFrom ).arg( featureQuantityTo ) );
+
+				horizontalLayout_3->addWidget(label_4);
+				horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+				horizontalLayout_3->addItem(horizontalSpacer_3);
+
+				deleteButton = new QPushButton(this);
+				deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+				deleteButton->setText(QApplication::translate("Form", "Delete", 0, QApplication::UnicodeUTF8));
+
+				horizontalLayout_3->addWidget(deleteButton);
+
+				userComponentsLayout->addLayout(horizontalLayout_3);
 			}
 		}
 	}

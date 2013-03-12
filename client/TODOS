@@ -1,9 +1,6 @@
 now configurator:
 - configuration:
-  - get save button to work
-    - execute request in form
-    - wait for answer
-    - switch form later
+  - save request
   - configuration has categories/components
   - add components fix, mark in table the configuration as unfinished
   - dialog, present components of a category to pick from
