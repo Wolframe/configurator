@@ -6,8 +6,9 @@ BEGIN
 			Recipe.description,
 			Category.name AS "categoryName",
 			creationDate AS "creationDate", comment
-		FROM Recipe, Category
-		WHERE Recipe.categoryID = Category.ID;
+		FROM Recipe
+		LEFT JOIN Category
+		ON Recipe.categoryID = Category.ID;
 END
 
 TRANSACTION addRecipe
