@@ -85,6 +85,8 @@ BEGIN
 			Component.webPage AS "webPage",
 			Component.description AS "description",
 			quantity,
+			quantity as "featureMinQuantity",
+			quantity as "featureMaxQuantity",
 			price
 			FROM ConfigComponent, Component, Category, Manufacturer
 			WHERE Component.ID = ConfigComponent.componentID
