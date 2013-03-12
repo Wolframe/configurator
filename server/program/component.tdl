@@ -6,9 +6,11 @@ BEGIN
 			Category.name AS "categoryName", 
 			Manufacturer.name AS "manufacturerName",
 			mfgCode AS "mfgCode", Component.webPage AS "webPage", Component.description, price
-		FROM Component, Category, Manufacturer
-		WHERE Component.categoryID = Category.ID
-		AND Component.manufacturerID = Manufacturer.ID;
+		FROM Component
+		LEFT JOIN Category
+		ON Component.categoryID = Category.ID
+		LEFT JOIN Manufacturer
+		ON Component.manufacturerID = Manufacturer.ID;
 END
 
 TRANSACTION addComponent
