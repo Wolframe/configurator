@@ -24,6 +24,7 @@ class configurator_form : public QWidget
 		QVBoxLayout *verticalLayout;
 		QVBoxLayout *fixedComponentsLayout;
 		QVBoxLayout *userComponentsLayout;
+		QVBoxLayout *toPickComponentsLayout;
 		
 	private:
 		void initialize( );

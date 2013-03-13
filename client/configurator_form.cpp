@@ -32,21 +32,21 @@ void configurator_form::initialize( )
         if (this->objectName().isEmpty())
             this->setObjectName(QString::fromUtf8("Form"));
         this->setWindowTitle(QApplication::translate("Form", "Configurator", 0, QApplication::UnicodeUTF8));            
-        this->resize(586, 149);
-              
-// every picked component or component picker gets added to a vertical layout
+
+// every picked component or component picker gets added to a vertical layout       
         verticalLayout = new QVBoxLayout(this);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        
+
+// fixed componentes (given by recipe)              
         fixedComponentsLayout = new QVBoxLayout(this);        
-        verticalLayout->setObjectName(QString::fromUtf8("fixedComponentsLayout"));
+        fixedComponentsLayout->setObjectName(QString::fromUtf8("fixedComponentsLayout"));
         verticalLayout->addLayout( fixedComponentsLayout );
 
 // user picked components       
         userComponentsLayout = new QVBoxLayout(this);
-        verticalLayout->setObjectName(QString::fromUtf8("userComponentsLayout"));
+        userComponentsLayout->setObjectName(QString::fromUtf8("userComponentsLayout"));
         verticalLayout->addLayout( userComponentsLayout );
-
+        	
 // visual separator
 	QFrame *line;
         line = new QFrame(this);
@@ -55,8 +55,13 @@ void configurator_form::initialize( )
         line->setFrameShadow(QFrame::Sunken);
         verticalLayout->addWidget(line);
 
+// things to configure
+	toPickComponentsLayout = new QVBoxLayout(this);
+	toPickComponentsLayout->setObjectName(QString::fromUtf8("toPickComponentsLayout"));
+	verticalLayout->addLayout(toPickComponentsLayout);
+
 // TODO: remove
-		rest( );
+	rest( );
 
 // trigger filling of preconfigured components (given by the recipe)
 	sendRequest( "ConfiguredComponentsFixRequest.simpleform", "component", "ConfiguredComponentsFix" );
@@ -70,91 +75,19 @@ void configurator_form::initialize( )
 
 void configurator_form::rest( )
 {
-    QSpacerItem *horizontalSpacer;
-    QSpinBox *spinBox;
-    QComboBox *comboBox;
-    QPushButton *pushButton;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
-    QSpacerItem *horizontalSpacer_2;
-    QSpinBox *spinBox_2;
-    QComboBox *comboBox_2;
-    QPushButton *pushButton_2;
-    QSpacerItem *verticalSpacer;
-    QHBoxLayout *horizontalLayout_5;
-    QSpacerItem *horizontalSpacer_5;
+// close button, adding a dynamic property for form switching
+	QHBoxLayout *horizontalLayout_5;
+	QSpacerItem *horizontalSpacer_5;
+	QSpacerItem *verticalSpacer;
 
-
-	QHBoxLayout *horizontalLayout;
-	QLabel *label_2;
+	verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+	verticalLayout->addItem(verticalSpacer);
 	
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        label_2 = new QLabel(this);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setText(QApplication::translate("Form", "min to max. features xxx:", 0, QApplication::UnicodeUTF8));
-        horizontalLayout->addWidget(label_2);
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
-
-        spinBox = new QSpinBox(this);
-        spinBox->setObjectName(QString::fromUtf8("spinBox"));
-
-        horizontalLayout->addWidget(spinBox);
-
-        comboBox = new QComboBox(this);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-
-        horizontalLayout->addWidget(comboBox);
-
-        pushButton = new QPushButton(this);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        horizontalLayout->addWidget(pushButton);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        label_3 = new QLabel(this);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer_2);
-
-        spinBox_2 = new QSpinBox(this);
-        spinBox_2->setObjectName(QString::fromUtf8("spinBox_2"));
-
-        horizontalLayout_2->addWidget(spinBox_2);
-
-        comboBox_2 = new QComboBox(this);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-
-        horizontalLayout_2->addWidget(comboBox_2);
-
-        pushButton_2 = new QPushButton(this);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        horizontalLayout_2->addWidget(pushButton_2);
-
-        verticalLayout->addLayout(horizontalLayout_2);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer);
-
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-// close button, adding a dynamic property for form switching
 	QPushButton *closeButton;
 	closeButton = new QPushButton(this);
 	closeButton->setObjectName(QString::fromUtf8("closeButton"));
@@ -165,20 +98,6 @@ void configurator_form::rest( )
 	verticalLayout->addLayout(horizontalLayout_5);
 
         QMetaObject::connectSlotsByName(this);
-
-        comboBox->clear();
-        comboBox->insertItems(0, QStringList()
-         << QApplication::translate("Form", "Intel Quadcore CPU 1300 MHz", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("Form", "Intel Core Duo 1400 MHz", 0, QApplication::UnicodeUTF8)
-        );
-        pushButton->setText(QApplication::translate("Form", "Add", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("Form", "min to max. features xxx:", 0, QApplication::UnicodeUTF8));
-        comboBox_2->clear();
-        comboBox_2->insertItems(0, QStringList()
-         << QApplication::translate("Form", "Intel Quadcore CPU 1300 MHz", 0, QApplication::UnicodeUTF8)
-         << QApplication::translate("Form", "Intel Core Duo 1400 MHz", 0, QApplication::UnicodeUTF8)
-        );
-        pushButton_2->setText(QApplication::translate("Form", "Add", 0, QApplication::UnicodeUTF8));
 }
 
 void configurator_form::sendRequest( const QString docType, const QString rootElement, const QString requestName )
@@ -296,6 +215,83 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 			}
 		}
 	} else if( requestName == "RequiredFeatures" ) {
+		QXmlStreamReader xml( data );
+		QString name;
+		QString minQuantity;
+		QString maxQuantity;
+		QString id;
+		QString componentCategory;
+		QString componentName;
+		QString componentID;
+		QString lastId = "0";
+		QComboBox *comboBox;
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );
+			if( xml.isStartElement( ) && ( xml.name( ) == "id" ) ) {
+				id = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
+				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "minQuantity" ) ) {
+				minQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "maxQuantity" ) ) {
+				maxQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentID" ) ) {
+				componentID = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentName" ) ) {
+				componentName = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentCategory" ) ) {
+				componentCategory = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isEndElement( ) && ( xml.name( ) == "category" ) ) {
+				if( id != lastId ) {
+					lastId = id;
+					
+					QSpacerItem *horizontalSpacer;
+					QSpinBox *spinBox;
+					QPushButton *pushButton;
+					QHBoxLayout *horizontalLayout_2;
+					QLabel *label_3;
+					QSpacerItem *horizontalSpacer_2;
+					QSpinBox *spinBox_2;
+					QComboBox *comboBox_2;
+					QPushButton *pushButton_2;
+
+					QHBoxLayout *horizontalLayout;
+					horizontalLayout = new QHBoxLayout();
+					horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+
+					QLabel *label_2;
+					
+					label_2 = new QLabel(this);
+					label_2->setObjectName(QString::fromUtf8("label_2"));
+					label_2->setText( QString( "Category '%1' (quantity required %2 to %3)" ).arg( name ).arg( minQuantity ).arg( maxQuantity ) );
+					horizontalLayout->addWidget(label_2);
+					horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+					horizontalLayout->addItem(horizontalSpacer);
+
+					spinBox = new QSpinBox(this);
+					spinBox->setObjectName(QString::fromUtf8("spinBox"));
+
+					horizontalLayout->addWidget(spinBox);
+
+					comboBox = new QComboBox(this);
+					comboBox->setObjectName(QString::fromUtf8("comboBox"));
+					comboBox->clear();
+					comboBox->addItem( QString( "%1 - %2" ).arg( componentCategory ).arg( componentName ) );
+
+					horizontalLayout->addWidget(comboBox);
+
+					pushButton = new QPushButton(this);
+					pushButton->setObjectName(QString::fromUtf8("pushButton"));
+					pushButton->setText(QApplication::translate("Form", "Add", 0, QApplication::UnicodeUTF8));
+					horizontalLayout->addWidget(pushButton);
+
+					toPickComponentsLayout->addLayout(horizontalLayout);
+				} else {
+					comboBox->addItem( QString( "%1 - %2" ).arg( componentCategory ).arg( componentName ) );
+				}
+			}
+		}
 	}
 }
 
