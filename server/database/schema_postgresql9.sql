@@ -1,7 +1,15 @@
+-- The currency table
+--
+CREATE TABLE Currency	(
+	ID		CHAR(3)	NOT NULL PRIMARY KEY,
+	name		TEXT	NOT NULL
+);
+
+
 -- The tags tree
 --
 CREATE TABLE Tag	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	parentID	INT	REFERENCES Tag( ID ),
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL,
@@ -11,6 +19,7 @@ CREATE TABLE Tag	(
 	CONSTRAINT order_check CHECK ( rgt > lft ),
 	CONSTRAINT tag_normalizedName_check UNIQUE( normalizedName, parentID )
 );
+ALTER SEQUENCE Tag_ID_seq RESTART WITH 1;
 
 INSERT INTO Tag( parentID, name, normalizedName, description, lft, rgt )
 	VALUES ( NULL, '_ROOT_', '_ROOT_', 'Tags tree root', 1, 2 );
@@ -19,7 +28,7 @@ INSERT INTO Tag( parentID, name, normalizedName, description, lft, rgt )
 -- The list of images used
 --
 CREATE TABLE Picture	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	caption		TEXT,
 	info		TEXT,
 	width		INT,
@@ -27,6 +36,7 @@ CREATE TABLE Picture	(
 	image		TEXT,
 	thumbnail	TEXT
 );
+ALTER SEQUENCE Picture_ID_seq RESTART WITH 1;
 
 CREATE TABLE PictureTag	(
 	pictureID	INT	REFERENCES Picture( ID ),
@@ -38,16 +48,18 @@ CREATE TABLE PictureTag	(
 -- The categories tree
 --
 CREATE TABLE Category	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	parentID	INT	REFERENCES Category( ID ),
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL,
 	description	TEXT,
 	lft		INT	NOT NULL UNIQUE DEFERRABLE CHECK ( lft > 0 ),
 	rgt		INT	NOT NULL UNIQUE DEFERRABLE CHECK ( rgt > 1 ),
+	active		BOOLEAN,
 	CONSTRAINT order_check CHECK ( rgt > lft ),
 	CONSTRAINT category_normalizedName_check UNIQUE( normalizedName, parentID )
 );
+ALTER SEQUENCE Category_ID_seq RESTART WITH 1;
 
 INSERT INTO Category( parentID, name, normalizedName, description, lft, rgt )
 	VALUES ( NULL, '_ROOT_', '_ROOT_', 'Categories tree root', 1, 2 );
@@ -62,16 +74,18 @@ CREATE TABLE CategoryPicture	(
 -- The features tree
 --
 CREATE TABLE Feature	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	parentID	INT	REFERENCES Feature( ID ),
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL,
 	description	TEXT,
 	lft		INT	NOT NULL UNIQUE DEFERRABLE CHECK ( lft > 0 ),
 	rgt		INT	NOT NULL UNIQUE DEFERRABLE CHECK ( rgt > 1 ),
+	active		BOOLEAN,
 	CONSTRAINT order_check CHECK ( rgt > lft ),
 	CONSTRAINT feature_normalizedName_check UNIQUE( normalizedName, parentID )
 );
+ALTER SEQUENCE Feature_ID_seq RESTART WITH 1;
 
 INSERT INTO Feature( parentID, name, normalizedName, description, lft, rgt )
 	VALUES ( NULL, '_ROOT_', '_ROOT_', 'Features tree root', 1, 2 );
@@ -81,7 +95,6 @@ CREATE TABLE FeaturePicture	(
 	pictureID	INT	REFERENCES Picture( ID ),
 	UNIQUE ( featureID, pictureID )
 );
-
 
 -- Feature requirements fulfillment
 --
@@ -97,7 +110,7 @@ CREATE TABLE FeatureFulfill	(
 -- The list of manufacturers
 --
 CREATE TABLE Manufacturer	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
 	webPage		TEXT,
@@ -105,10 +118,11 @@ CREATE TABLE Manufacturer	(
 	active		BOOLEAN
 );
 
+
 -- The list of components
 --
 CREATE TABLE Component	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	code		TEXT	NOT NULL UNIQUE,
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
@@ -133,6 +147,7 @@ CREATE TABLE ComponentPicture	(
 	pictureID	INT	REFERENCES Picture( ID ),
 	UNIQUE ( componentID, pictureID )
 );
+
 
 -- The list of features required by members of a category
 --
@@ -189,10 +204,11 @@ CREATE TABLE ComponentCheck	(
 	ruleName	TEXT
 );
 
+
 -- Recipes
 --
 CREATE TABLE Recipe	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
 	description	TEXT,
@@ -221,13 +237,14 @@ CREATE TABLE RecipeComponent	(
 	componentID	INT	REFERENCES Component( ID ),
 	quantity	INT,
 	comment		TEXT,
-	UNIQUE ( recipeID, componentID )	
+	UNIQUE ( recipeID, componentID )
 );
+
 
 -- Configuration
 --
 CREATE TABLE Configuration	(
-	ID		SERIAL	PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	categoryID	INT	REFERENCES Category( ID ),
 	name		TEXT,
 	description	TEXT,
@@ -250,6 +267,9 @@ CREATE TABLE ComposedConfig	(
 	UNIQUE ( configID, subConfigID )
 );
 
+
+-- Helper functions
+--
 CREATE OR REPLACE FUNCTION _group_concat(text, text)
 RETURNS text AS $$
 	SELECT CASE

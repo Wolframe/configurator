@@ -1,3 +1,11 @@
+-- The currency table
+--
+CREATE TABLE Currency	(
+	ID		CHAR(3)	NOT NULL PRIMARY KEY,
+	name		TEXT	NOT NULL
+);
+
+
 -- The tags tree
 --
 CREATE TABLE Tag	(
@@ -107,6 +115,7 @@ CREATE TABLE Manufacturer	(
 	active		BOOLEAN
 );
 
+
 -- The list of components
 --
 CREATE TABLE Component	(
@@ -135,6 +144,7 @@ CREATE TABLE ComponentPicture	(
 	pictureID	INT	REFERENCES Picture( ID ),
 	UNIQUE ( componentID, pictureID )
 );
+
 
 -- The list of features required by members of a category
 --
@@ -191,6 +201,7 @@ CREATE TABLE ComponentCheck	(
 	ruleName	TEXT
 );
 
+
 -- Recipes
 --
 CREATE TABLE Recipe	(
@@ -223,8 +234,9 @@ CREATE TABLE RecipeComponent	(
 	componentID	INT	REFERENCES Component( ID ),
 	quantity	INT,
 	comment		TEXT,
-	UNIQUE ( recipeID, componentID )	
+	UNIQUE ( recipeID, componentID )
 );
+
 
 -- Configuration
 --
@@ -251,4 +263,3 @@ CREATE TABLE ComposedConfig	(
 	quantity	INT,
 	UNIQUE ( configID, subConfigID )
 );
-

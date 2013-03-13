@@ -1,7 +1,15 @@
+-- The currency table
+--
+CREATE TABLE Currency	(
+	ID		CHAR(3)	NOT NULL PRIMARY KEY,
+	name		TEXT	NOT NULL
+);
+
+
 -- The tags tree
 --
 CREATE TABLE Tag	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	parentID	INT	REFERENCES Tag( ID ),
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL,
@@ -20,7 +28,7 @@ INSERT INTO Tag( parentID, name, normalizedName, description, lft, rgt )
 -- The list of images used
 --
 CREATE TABLE Picture	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	caption		TEXT,
 	info		TEXT,
 	width		INT,
@@ -40,7 +48,7 @@ CREATE TABLE PictureTag	(
 -- The categories tree
 --
 CREATE TABLE Category	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	parentID	INT	REFERENCES Category( ID ),
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL,
@@ -66,7 +74,7 @@ CREATE TABLE CategoryPicture	(
 -- The features tree
 --
 CREATE TABLE Feature	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	parentID	INT	REFERENCES Feature( ID ),
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL,
@@ -102,7 +110,7 @@ CREATE TABLE FeatureFulfill	(
 -- The list of manufacturers
 --
 CREATE TABLE Manufacturer	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
 	webPage		TEXT,
@@ -110,10 +118,11 @@ CREATE TABLE Manufacturer	(
 	active		BOOLEAN
 );
 
+
 -- The list of components
 --
 CREATE TABLE Component	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	code		TEXT	NOT NULL UNIQUE,
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
@@ -138,6 +147,7 @@ CREATE TABLE ComponentPicture	(
 	pictureID	INT	REFERENCES Picture( ID ),
 	UNIQUE ( componentID, pictureID )
 );
+
 
 -- The list of features required by members of a category
 --
@@ -194,10 +204,11 @@ CREATE TABLE ComponentCheck	(
 	ruleName	TEXT
 );
 
+
 -- Recipes
 --
 CREATE TABLE Recipe	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	name		TEXT	NOT NULL,
 	normalizedName	TEXT	NOT NULL UNIQUE,
 	description	TEXT,
@@ -226,13 +237,14 @@ CREATE TABLE RecipeComponent	(
 	componentID	INT	REFERENCES Component( ID ),
 	quantity	INT,
 	comment		TEXT,
-	UNIQUE ( recipeID, componentID )	
+	UNIQUE ( recipeID, componentID )
 );
+
 
 -- Configuration
 --
 CREATE TABLE Configuration	(
-	ID SERIAL NOT NULL PRIMARY KEY,
+	ID		SERIAL	NOT NULL PRIMARY KEY,
 	categoryID	INT	REFERENCES Category( ID ),
 	name		TEXT,
 	description	TEXT,
@@ -255,6 +267,9 @@ CREATE TABLE ComposedConfig	(
 	UNIQUE ( configID, subConfigID )
 );
 
+
+-- Helper functions
+--
 CREATE OR REPLACE FUNCTION _group_concat(text, text)
 RETURNS text AS $$
 	SELECT CASE
