@@ -299,8 +299,8 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 	} else if( requestName == "RequiredFeatures" ) {
 		QXmlStreamReader xml( data );
 		QString name;
-		QString minQuantity;
-		QString maxQuantity;
+		int minQuantity;
+		int maxQuantity;
 		QString id;
 		QString componentCategory;
 		QString componentName;
@@ -314,9 +314,9 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
 				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "minQuantity" ) ) {
-				minQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+				minQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement ).toInt( );
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "maxQuantity" ) ) {
-				maxQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+				maxQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement ).toInt( );
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentID" ) ) {
 				componentID = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentName" ) ) {
@@ -344,6 +344,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 					QSpinBox *spinBox;
 					spinBox = new QSpinBox(this);
 					spinBox->setObjectName(QString::fromUtf8("spinBox"));
+					spinBox->setRange( minQuantity, maxQuantity );
 					horizontalLayout->addWidget(spinBox);
 
 					comboBox = new QComboBox(this);
