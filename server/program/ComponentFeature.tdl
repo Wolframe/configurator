@@ -50,8 +50,6 @@ BEGIN
 		VALUES ( $(component/id), $(feature/id), $(min_requires), $(max_requires) );
 	DO INSERT INTO ComponentProvides( componentID, featureID, minQuantity, maxQuantity )
 		VALUES ( $(component/id), $(feature/id), $(min_provides), $(max_provides) );
-	DO DELETE FROM ComponentRequires WHERE componentID = $(component/id) AND featureID=$(feature/id) AND minQuantity = 0 AND maxQuantity = 0;
-	DO DELETE FROM ComponentProvides WHERE componentID = $(component/id) AND featureID=$(feature/id) AND minQuantity = 0 AND maxQuantity = 0;
 END
 
 TRANSACTION deleteComponentFeature
