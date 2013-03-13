@@ -1,0 +1,8 @@
+FORM ConfiguratorDeleteComponentRequest
+{
+	configuration
+	{
+		id int
+		componentID int
+	}
+}

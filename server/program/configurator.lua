@@ -541,6 +541,14 @@ function RequiredFeaturesRequest( )
 	output:print( f:get( ) )
 end
 
+function ConfiguratorAddComponentRequest( )
+	local t = formfunction( "ConfiguratorAddComponent" )( input:table( ) )
+end
+
+function ConfiguratorDeleteComponentRequest( )
+	local t = formfunction( "ConfiguratorDeleteComponent" )( input:table( ) )
+end
+
 -- category/features associations
 
 function createCategoryFeature( )
