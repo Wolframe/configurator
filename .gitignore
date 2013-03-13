@@ -1,11 +1,1 @@
-configurator.pro.user
-makefiles/gmake/platform.mk.vars
-makefiles/gmake/platform.vars
-*.d
-*.o
-ui_*.h
-moc_*.cpp
-client/i18n/*.qm
-client/qrc_qtclient.cpp
-client/plugins/libwolframewidgets.so
-client/qtclient
+client/configurator.pro.user*
