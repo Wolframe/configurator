@@ -115,6 +115,20 @@ BEGIN
 			AND configID = $(configID);
 END
 
+TRANSACTION ConfiguratorAddComponent
+BEGIN
+	DO INSERT INTO ConfigComponent( configID, componentID, quantity, fromRecipe )
+		VALUES( $(configuration/id), $(configuration/componentID),
+			$(configuration/quantity), '0' );
+END
+
+TRANSACTION ConfiguratorDeleteComponent
+BEGIN
+	DO DELETE FROM ConfigComponent
+		WHERE configID = $(configuration/id)
+		AND componentID = $(configuration/componentID);
+END
+
 TRANSACTION selectRequiredFeatures
 RESULT INTO list
 BEGIN

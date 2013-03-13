@@ -1,0 +1,9 @@
+FORM ConfiguratorAddComponentRequest
+{
+	configuration
+	{
+		id int
+		componentID int
+		quantity int
+	}
+}
