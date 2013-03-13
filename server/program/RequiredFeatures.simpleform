@@ -2,11 +2,15 @@ FORM RequiredFeatures
 {
 	list
 	{
-		feature []
+		category []
 		{
-			id @int
+			id int
+			name string
 			minQuantity string
 			maxQuantity string
+			componentID int
+			componentName string
+			componentCategory string
 		}
 	}
 }

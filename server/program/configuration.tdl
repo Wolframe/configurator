@@ -118,12 +118,25 @@ END
 TRANSACTION selectRequiredFeatures
 RESULT INTO list
 BEGIN
-	INTO feature DO
+	INTO category DO
 		SELECT
-			featureID AS "id",
-			minQuantity AS "minQuantity",
-			maxQuantity AS "maxQuantity"
-		FROM CategRequires
-		WHERE '1';
--- select component.name,feature.name,recipecontent.minquantity,recipecontent.maxquantity from recipecontent,component,componentprovides,feature,categrequires where recipeID=(select recipeID from configuration where ID=56) and component.ID=componentprovides.componentID and Feature.id=componentprovides.featureID and feature.id=categrequires.featureid and categrequires.categoryid=recipecontent.categoryid;
+			RecipeContent.categoryID AS "id",
+			Category.name as "name",
+			RecipeContent.minQuantity AS "minQuantity",
+			RecipeContent.maxQuantity AS "maxQuantity",
+			Component.ID as "componentID",
+			Component.name as "componentName",
+			ComponentCategory.name as "componentCategory"
+		FROM RecipeContent, Category, CategRequires,
+			ComponentProvides, Component, Configuration,
+			Category as ComponentCategory
+		WHERE RecipeContent.categoryID = Category.ID
+		AND CategRequires.categoryID = RecipeContent.categoryID
+		AND CategRequires.minQuantity >= RecipeContent.minQuantity
+		AND ComponentProvides.featureID = CategRequires.featureID
+		AND ComponentProvides.minQuantity >= CategRequires.minQuantity
+		AND Component.ID = ComponentProvides.componentID
+		AND Component.categoryID = ComponentCategory.ID
+		AND RecipeContent.recipeID = Configuration.recipeID
+		AND Configuration.ID = $(configID);
 END
