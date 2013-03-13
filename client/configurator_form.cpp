@@ -21,7 +21,7 @@
 #include <QtGui/QWidget>
 
 configurator_form::configurator_form( DataLoader *_dataLoader, const QString _name, QHash< QString, QString > *_globals, QWidget *_parent, bool _debug )
-	: QWidget( _parent ), m_dataLoader( _dataLoader ), m_name( _name ), 
+	: QWidget( _parent ), m_dataLoader( _dataLoader ), m_name( _name ),
 	m_globals( _globals ), m_debug( _debug )
 {
 	initialize( );
@@ -29,31 +29,31 @@ configurator_form::configurator_form( DataLoader *_dataLoader, const QString _na
 
 void configurator_form::initialize( )
 {
-        if (this->objectName().isEmpty())
-            this->setObjectName(QString::fromUtf8("Form"));
-        this->setWindowTitle(QApplication::translate("Form", "Configurator", 0, QApplication::UnicodeUTF8));            
+	if (this->objectName().isEmpty())
+	    this->setObjectName(QString::fromUtf8("Form"));
+	this->setWindowTitle(QApplication::translate("Form", "Configurator", 0, QApplication::UnicodeUTF8));
 
-// every picked component or component picker gets added to a vertical layout       
-        verticalLayout = new QVBoxLayout(this);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+// every picked component or component picker gets added to a vertical layout
+	verticalLayout = new QVBoxLayout(this);
+	verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
 
-// fixed componentes (given by recipe)              
-        fixedComponentsLayout = new QVBoxLayout(this);        
-        fixedComponentsLayout->setObjectName(QString::fromUtf8("fixedComponentsLayout"));
-        verticalLayout->addLayout( fixedComponentsLayout );
+// fixed componentes (given by recipe)
+	fixedComponentsLayout = new QVBoxLayout(this);
+	fixedComponentsLayout->setObjectName(QString::fromUtf8("fixedComponentsLayout"));
+	verticalLayout->addLayout( fixedComponentsLayout );
 
-// user picked components       
-        userComponentsLayout = new QVBoxLayout(this);
-        userComponentsLayout->setObjectName(QString::fromUtf8("userComponentsLayout"));
-        verticalLayout->addLayout( userComponentsLayout );
-        	
+// user picked components
+	userComponentsLayout = new QVBoxLayout(this);
+	userComponentsLayout->setObjectName(QString::fromUtf8("userComponentsLayout"));
+	verticalLayout->addLayout( userComponentsLayout );
+
 // visual separator
 	QFrame *line;
-        line = new QFrame(this);
-        line->setObjectName(QString::fromUtf8("line"));
-        line->setFrameShape(QFrame::HLine);
-        line->setFrameShadow(QFrame::Sunken);
-        verticalLayout->addWidget(line);
+	line = new QFrame(this);
+	line->setObjectName(QString::fromUtf8("line"));
+	line->setFrameShape(QFrame::HLine);
+	line->setFrameShadow(QFrame::Sunken);
+	verticalLayout->addWidget(line);
 
 // things to configure
 	toPickComponentsLayout = new QVBoxLayout(this);
@@ -82,11 +82,11 @@ void configurator_form::rest( )
 
 	verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 	verticalLayout->addItem(verticalSpacer);
-	
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-        horizontalLayout_5->addItem(horizontalSpacer_5);
+
+	horizontalLayout_5 = new QHBoxLayout();
+	horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+	horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+	horizontalLayout_5->addItem(horizontalSpacer_5);
 
 	QPushButton *closeButton;
 	closeButton = new QPushButton(this);
@@ -97,7 +97,7 @@ void configurator_form::rest( )
 
 	verticalLayout->addLayout(horizontalLayout_5);
 
-        QMetaObject::connectSlotsByName(this);
+	QMetaObject::connectSlotsByName(this);
 }
 
 void configurator_form::sendRequest( const QString docType, const QString rootElement, const QString requestName )
@@ -140,7 +140,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 		QString quantity;
 		while( !xml.atEnd( ) ) {
 			xml.readNext( );
-			
+
 			if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
 				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "quantity" ) ) {
@@ -180,7 +180,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 		QString featureQuantityTo;
 		while( !xml.atEnd( ) ) {
 			xml.readNext( );
-			
+
 			if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
 				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
 			} else if( xml.isStartElement( ) && ( xml.name( ) == "quantity" ) ) {
@@ -194,7 +194,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 				QLabel *label_4;
 				QHBoxLayout *horizontalLayout_3;
 				QPushButton *deleteButton;
-				
+
 				horizontalLayout_3 = new QHBoxLayout();
 				horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
 				label_4 = new QLabel(this);
@@ -244,23 +244,24 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 			} else if( xml.isEndElement( ) && ( xml.name( ) == "category" ) ) {
 				if( id != lastId ) {
 					lastId = id;
-					
+
 					QSpacerItem *horizontalSpacer;
 					QSpinBox *spinBox;
 					QPushButton *pushButton;
-					QHBoxLayout *horizontalLayout_2;
-					QLabel *label_3;
-					QSpacerItem *horizontalSpacer_2;
-					QSpinBox *spinBox_2;
-					QComboBox *comboBox_2;
-					QPushButton *pushButton_2;
+// --**-- To be removed ? - MBa
+//					QHBoxLayout *horizontalLayout_2;
+//					QLabel *label_3;
+//					QSpacerItem *horizontalSpacer_2;
+//					QSpinBox *spinBox_2;
+//					QComboBox *comboBox_2;
+//					QPushButton *pushButton_2;
 
 					QHBoxLayout *horizontalLayout;
 					horizontalLayout = new QHBoxLayout();
 					horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
 
 					QLabel *label_2;
-					
+
 					label_2 = new QLabel(this);
 					label_2->setObjectName(QString::fromUtf8("label_2"));
 					label_2->setText( QString( "Category '%1' (quantity required %2 to %3)" ).arg( name ).arg( minQuantity ).arg( maxQuantity ) );
