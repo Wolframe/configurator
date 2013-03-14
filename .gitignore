@@ -2,3 +2,5 @@ client/configurator.pro.user*
 moc_*.cpp
 ui_*.h
 *.o
+*~
+*.bck
