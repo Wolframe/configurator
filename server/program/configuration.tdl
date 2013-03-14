@@ -151,6 +151,7 @@ BEGIN
 		AND ComponentProvides.minQuantity >= CategRequires.minQuantity
 		AND Component.ID = ComponentProvides.componentID
 		AND Component.categoryID = ComponentCategory.ID
+		AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE fromRecipe='0')
 		AND RecipeContent.recipeID = Configuration.recipeID
 		AND Configuration.ID = $(configID);
 END
