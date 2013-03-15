@@ -32,6 +32,7 @@ BEGIN
 	DO DELETE FROM RecipeContent WHERE recipeID = $(recipe/id) AND categoryID=$(category/id);
 	DO INSERT INTO RecipeContent( recipeID, categoryID, minQuantity, maxQuantity )
 		VALUES ( $(recipe/id), $(category/id), $(min_requires), $(max_requires) );
+	DO DELETE FROM RecipeContent WHERE recipeID = $(recipe/id) AND categoryID=$(category/id) AND minQuantity = 0 AND maxQuantity = 0;
 END
 
 TRANSACTION deleteRecipeContent

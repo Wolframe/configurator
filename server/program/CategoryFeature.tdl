@@ -50,6 +50,8 @@ BEGIN
 		VALUES ( $(category/id), $(feature/id), $(min_requires), $(max_requires) );
 	DO INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
 		VALUES ( $(category/id), $(feature/id), $(min_provides), $(max_provides) );
+	DO DELETE FROM CategRequires WHERE categoryID = $(category/id) AND featureID=$(feature/id) AND minQuantity = 0 AND maxQuantity = 0;
+	DO DELETE FROM CategProvides WHERE categoryID = $(category/id) AND featureID=$(feature/id) AND minQuantity = 0 AND maxQuantity = 0;
 END
 
 TRANSACTION deleteCategoryFeature

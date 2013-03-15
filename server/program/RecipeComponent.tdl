@@ -35,6 +35,7 @@ BEGIN
 	DO DELETE FROM RecipeComponent WHERE recipeID = $(recipe/id) AND componentID=$(component/id);
 	DO INSERT INTO RecipeComponent( recipeID, componentID, quantity )
 		VALUES ( $(recipe/id), $(component/id), $(quantity) );
+	DO DELETE FROM RecipeComponent WHERE recipeID = $(recipe/id) AND componentID=$(component/id) AND quantity = 0;
 END
 
 TRANSACTION deleteRecipeComponent
