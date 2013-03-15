@@ -275,7 +275,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 				horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
 				label_4 = new QLabel(this);
 				label_4->setObjectName(QString::fromUtf8("label_4"));
-				label_4->setText( QString( "%1 components '%2' fulfiling feature (quantity required %3 to %4)" ).arg( quantity ).arg( name ).arg( featureQuantityFrom ).arg( featureQuantityTo ) );
+				label_4->setText( QString( "%1 components '%2'" ).arg( quantity ).arg( name ) );
 
 				horizontalLayout_3->addWidget(label_4);
 				horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -334,7 +334,7 @@ void configurator_form::gotAnswer( QString requestName, QByteArray data )
 					QLabel *label_2;
 					label_2 = new QLabel(this);
 					label_2->setObjectName(QString::fromUtf8("label_2"));
-					label_2->setText( QString( "Category '%1' (quantity required %2 to %3)" ).arg( name ).arg( minQuantity ).arg( maxQuantity ) );
+					label_2->setText( QString( "Category '%1'" ).arg( name ) );
 					horizontalLayout->addWidget(label_2);
 					
 					QSpacerItem *horizontalSpacer;
