@@ -133,7 +133,7 @@ TRANSACTION selectRequiredFeatures
 RESULT INTO list
 BEGIN
 	INTO category DO
-		SELECT
+		SELECT DISTINCT
 			RecipeContent.categoryID AS "id",
 			Category.name as "name",
 			RecipeContent.minQuantity AS "minQuantity",
