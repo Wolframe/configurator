@@ -185,7 +185,8 @@ FORMS += \
 	forms/tags.ui \
 	forms/feature_equivalence.ui \
 	forms/feature_equivalence_add.ui \
-	forms/feature_equivalence_edit.ui
+	forms/feature_equivalence_edit.ui \
+    forms/recipe_select.ui
 	
 RESOURCES = \
 	qtclient.qrc
