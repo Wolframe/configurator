@@ -11,7 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Picture tags</string>
+   <string>Tags</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../qtclient.qrc">
+    <normaloff>:/images/tag_blue.png</normaloff>:/images/tag_blue.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="3" column="1">
