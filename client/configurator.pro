@@ -35,7 +35,8 @@ SOURCES += \
 	qtclient.cpp \
 	FileChooser.cpp \
 	PictureChooser.cpp \
-	configurator_form.cpp
+	configurator_form.cpp \
+    ImageSelectionDialog.cpp
 
 HEADERS += \
 	MainWindow.hpp \
@@ -135,7 +136,8 @@ HEADERS += \
 	configurator_form.h \
 	feature_equivalence_form.h \
 	feature_equivalence_add_form.h \
-	feature_equivalence_edit_form.h
+	feature_equivalence_edit_form.h \
+    ImageSelectionDialog.hpp
 
 FORMS += \
 	loginDialog.ui \
@@ -186,7 +188,11 @@ FORMS += \
 	forms/feature_equivalence.ui \
 	forms/feature_equivalence_add.ui \
 	forms/feature_equivalence_edit.ui \
-    forms/recipe_select.ui
+    forms/recipe_select.ui \
+    forms/tag_select.ui \
+    forms/category_select.ui \
+    forms/feature_select.ui \
+    forms/picture_select.ui
 	
 RESOURCES = \
 	qtclient.qrc

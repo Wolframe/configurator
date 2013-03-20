@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>512</width>
-    <height>512</height>
+    <height>518</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -154,6 +154,9 @@
        <height>250</height>
       </size>
      </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -241,7 +244,6 @@
   <tabstop>close</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
   <include location="../qtclient.qrc"/>
  </resources>
  <connections/>
