@@ -43,7 +43,8 @@
 #endif
 
 WolframeClient::WolframeClient( const ConnectionParameters _connParams,	QWidget *_parent )
-	: m_connParams( _connParams ),
+	: QObject( _parent ),
+	m_connParams( _connParams ),
 	m_state( Disconnected ),
 	m_parent( _parent ),
 	m_hasErrors( false ),
