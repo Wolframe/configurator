@@ -4,7 +4,7 @@ TARGET = qtclient
 
 CONFIG += qt debug
 
-DEFINES += QCOMMANDLINE_STATIC WITH_SSL
+DEFINES += WITH_SSL
 
 INCLUDEPATH += .
 
@@ -21,7 +21,6 @@ SOURCES += \
 	DataHandler.cpp \
 	WolframeClient.cpp \
 	FormWidget.cpp \
-	qcommandline.cpp \
 	PreferencesDialog.cpp \
 	FormChooseDialog.cpp \
 	connection.cpp \
@@ -48,7 +47,6 @@ HEADERS += \
 	DataHandler.hpp \
 	WolframeClient.hpp \
 	FormWidget.hpp \
-	qcommandline.h \
 	PreferencesDialog.hpp \
 	FormChooseDialog.hpp \
 	connection.hpp \
@@ -144,7 +142,6 @@ FORMS += \
 	PreferencesDialogDeveloper.ui \
 	PreferencesDialogInterface.ui \
 	PreferencesDialog.ui \
-	serverDefinitionDialogNoSSL.ui \
 	serverDefinitionDialog.ui \
 	forms/categories_features_add.ui \
 	forms/categories_features_edit.ui \
