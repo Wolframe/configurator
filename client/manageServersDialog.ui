@@ -17,7 +17,7 @@
    <string>Manage Connections</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="qtclient.qrc">
+   <iconset resource="qtSkeleton.qrc">
     <normaloff>:/images/world-setup.png</normaloff>:/images/world-setup.png</iconset>
   </property>
   <property name="modal">
@@ -47,6 +47,22 @@
    </item>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>18</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <widget class="QLabel" name="parametersLbl">
        <property name="text">
@@ -96,7 +112,7 @@
   <tabstop>delConnBttn</tabstop>
  </tabstops>
  <resources>
-  <include location="qtclient.qrc"/>
+  <include location="qtSkeleton.qrc"/>
  </resources>
  <connections>
   <connection>
