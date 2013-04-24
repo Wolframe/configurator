@@ -1,0 +1,334 @@
+f<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>components_features_form</class>
+ <widget class="QWidget" name="components_features_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>621</width>
+    <height>411</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Link components and features</string>
+  </property>
+  <property name="assign:component.selected" stdset="0">
+   <string notr="true">id</string>  
+  </property>
+  <property name="assign:ComponentFeature.selected" stdset="0">
+   <string notr="true">featureid</string>  
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="5" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="add">
+       <property name="text">
+        <string>Add</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">components_features_add?id={component.selected}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="edit">
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">components_features_edit?id={component.selected}&amp;featureid={ComponentFeature.selected}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="delete">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">components_features</string>
+       </property>
+       <property name="action" stdset="0">
+        <string notr="true">deleteComponentFeature ComponentFeature {component_id={component.selected}; feature_id={ComponentFeature.selected}}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../qtclient.qrc">:/images/bricks.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../qtclient.qrc">:/images/link.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="maximumSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../qtclient.qrc">:/images/chart_organisation.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Link components and features</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="1" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout_3"/>
+     </item>
+     <item row="0" column="2">
+      <widget class="QTableWidget" name="ComponentFeature">
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>components_features</string>
+       </property>
+       <property name="action" stdset="0">
+        <string>ComponentFeatureListRequest ComponentFeature {component_id={component.selected}}</string>
+       </property>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>min_requires</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>max_requires</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>min_provides</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>max_provides</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Show</string>
+         </property>
+         <property name="action" stdset="0">
+          <string>ComponentFeature.reload</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="0">
+      <widget class="QTableWidget" name="component">
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="showGrid">
+        <bool>true</bool>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DotLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="action" stdset="0">
+        <string notr="true">ComponentListRequest component {}</string>
+       </property>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>code</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>categoryName</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>manufacturerName</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>mfgCode</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>webPage</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>description</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>price</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>ComponentFeature</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>add</tabstop>
+  <tabstop>add_3</tabstop>
+  <tabstop>add_2</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../qtclient.qrc"/>
+  <include location="../qtclient.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>ComponentFeature</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>add_3</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>396</x>
+     <y>209</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>124</x>
+     <y>391</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>component</sender>
+   <signal>itemSelectionChanged()</signal>
+   <receiver>pushButton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>174</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>550</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
