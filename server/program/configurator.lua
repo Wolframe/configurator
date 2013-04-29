@@ -121,7 +121,6 @@ local function print_tree( tree, tagname, nodeid, indent)
 	if (indent ~= "") then
 		output:print( "\n" .. indent)
 	end
-	output:opentag( "tree" )
 	if tree[ nodeid ] then
 		output:opentag( "item" )
 		output:print( nodeid, "id")
@@ -145,7 +144,6 @@ local function print_tree( tree, tagname, nodeid, indent)
 		end
 		output:closetag( )
 	end
-	output:closetag()
 end
 
 local function select_tree( tablename, tagname, itr)
@@ -153,7 +151,12 @@ local function select_tree( tablename, tagname, itr)
 	for v,t in itr do
 		if t == "id" then
 			local id = tonumber( v)
-			print_tree( get_tree( tablename, id), tagname, id, "")
+			output:opentag( "tree" )
+			local tree = get_tree( tablename, id);
+			for i,chld in pairs( tree[ id].children) do
+				print_tree( tree, tagname, chld, "\t")
+			end
+			output:closetag()
 		end
 	end
 end

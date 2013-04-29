@@ -40,7 +40,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_add?parentid={category.selected}</string>
+        <string notr="true">category_add?parentid={category.selected:1}</string>
        </property>
       </widget>
      </item>
@@ -122,7 +122,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/folders.png</pixmap>
+        <pixmap>:/images/folders.png</pixmap>
        </property>
       </widget>
      </item>
@@ -146,7 +146,6 @@
   <tabstop>edit</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
   <include location="../qtclient.qrc"/>
  </resources>
  <connections>

@@ -45,3 +45,12 @@ FORM Picture
 		}
 	}
 }
+
+FORM deletePicture
+{
+	picture
+	{
+		id @int
+	}
+}
+

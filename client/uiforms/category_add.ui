@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>category_add_form</class>
+ <class>main</class>
  <widget class="QWidget" name="main">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>406</width>
+    <width>426</width>
     <height>473</height>
    </rect>
   </property>
@@ -48,8 +48,7 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QPlainTextEdit" name="description">
-    </widget>
+    <widget class="QPlainTextEdit" name="description"/>
    </item>
    <item row="5" column="1">
     <widget class="QTableWidget" name="picture">
@@ -126,7 +125,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createCategory category {parentID={parentid}; name{{main.name}}; description{{main.description}}}</string>
+        <string notr="true">createCategory category {parentID={main.parentid}; name{{main.name}}; description{{main.description}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">categories</string>
@@ -208,7 +207,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../qtclient.qrc">:/images/folder_add.png</pixmap>
+      <pixmap>:/images/folder_add.png</pixmap>
      </property>
     </widget>
    </item>

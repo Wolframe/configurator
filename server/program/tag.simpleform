@@ -6,3 +6,20 @@ FORM Tag
 	normalizedName string
 	description string
 }
+
+FORM deleteTag
+{
+	tag
+	{
+		id @int
+	}
+}
+
+FORM updateTag
+{
+	tag
+	{
+		_ Tag
+	}
+}
+

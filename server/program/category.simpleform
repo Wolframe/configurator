@@ -11,3 +11,21 @@ FORM Category
 		id @int
 	}
 }
+
+FORM deleteCategory
+{
+	category
+	{
+		id @int
+	}
+}
+
+FORM updateCategory
+{
+	category
+	{
+		_ Category
+	}
+}
+
+

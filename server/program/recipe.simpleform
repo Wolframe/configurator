@@ -20,3 +20,18 @@ FORM Recipe
 		search
 	}
 }
+
+FORM updateRecipe
+{
+	_ Recipe
+}
+
+FORM deleteRecipe
+{
+	recipe
+	{
+		id @int
+	}
+}
+
+

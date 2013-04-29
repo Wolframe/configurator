@@ -11,3 +11,22 @@ FORM Feature
 		id @int
 	}
 }
+
+FORM deleteFeature
+{
+	feature
+	{
+		id @int
+	}
+}
+
+FORM updateFeature
+{
+	feature
+	{
+		_ Feature
+	}
+}
+
+
+

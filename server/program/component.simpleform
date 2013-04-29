@@ -26,3 +26,22 @@ FORM Component
 		search
 	}
 }
+
+FORM updateComponent
+{
+	_ Component
+}
+
+FORM createComponent
+{
+	_ Component
+}
+
+FORM deleteComponent
+{
+	component
+	{
+		id @int
+	}
+}
+

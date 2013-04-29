@@ -25,3 +25,11 @@ FORM CategoryFeature
 		feature_id @int
 	}
 }
+
+FORM deleteCategoryFeature
+{
+	category_id @int
+	feature_id @int
+}
+
+

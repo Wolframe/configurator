@@ -30,3 +30,9 @@ FORM Configuration
 		search
 	}
 }
+
+FORM deleteConfiguration
+{
+	id @int
+}
+

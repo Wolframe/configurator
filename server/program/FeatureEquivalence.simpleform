@@ -25,3 +25,17 @@ FORM FeatureEquivalence
 		fulfillcount int
 	}
 }
+
+FORM deleteFeatureEquivalence
+{
+	FeatureEquivalence
+	{
+		feature_id @int
+		fulfill_id @int
+	}
+}
+
+FORM createFeatureEquivalence
+{
+	_ FeatureEquivalence
+}
