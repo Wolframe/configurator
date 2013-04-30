@@ -13,20 +13,8 @@
   <property name="windowTitle">
    <string>Edit recipe component</string>
   </property>
-  <property name="initAction" stdset="0">
-   <string>read</string>
-  </property>
-  <property name="doctype" stdset="0">
-   <string>RecipeComponentRequest.simpleform</string>
-  </property>
-  <property name="rootelement" stdset="0">
-   <string notr="true">RecipeComponent</string>
-  </property>
-  <property name="recipe_id" stdset="0">
-   <string notr="true">{global.recipe_id}</string>
-  </property>
-  <property name="component_id" stdset="0">
-   <string notr="true">{global.component_id}</string>
+  <property name="action" stdset="0">
+   <string>RecipeComponentRequest RecipeComponent {recipe_id={id}; component_id={component_id}; quantity{{quantity}}; link{{link}}}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="5" column="0">
@@ -37,28 +25,10 @@
         <string>Save</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_component</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.componentState" stdset="0">
-        <string notr="true">{component.state}</string>
-       </property>
-       <property name="global.recipe_id" stdset="0">
-        <string notr="true">{recipe.id}</string>
-       </property>
-       <property name="global.component_id" stdset="0">
-        <string notr="true">{component.id}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string>create</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeComponent.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">RecipeComponent</string>
+        <string>createRecipeComponent RecipeComponent {recipe_id={id}; component_id={component_id}}</string>
        </property>
       </widget>
      </item>
@@ -67,20 +37,8 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="action" stdset="0">
-        <string>read</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string>RecipeComponentRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string>RecipeComponent</string>
-       </property>
-       <property name="recipe_id" stdset="0">
-        <string>{global.recipe_id}</string>
-       </property>
-       <property name="component_id" stdset="0">
-        <string>{global.component_id}</string>
+       <property name="form" stdset="0">
+        <string>recipe_component_edit?id={id}&amp;component_id={component_id}</string>
        </property>
       </widget>
      </item>
@@ -90,13 +48,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_component</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.componentState" stdset="0">
-        <string notr="true">{component.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -196,17 +148,8 @@
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">ComponentListRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">component</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.componentState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">ComponentListRequest component {}</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>
@@ -282,17 +225,8 @@
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeListRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">recipe</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.recipeState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">RecipeListRequest recipe {}</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>

@@ -103,14 +103,8 @@
       <property name="expandsOnDoubleClick">
        <bool>false</bool>
       </property>
-      <property name="doctype" stdset="0">
-       <string>TagHierarchyRequest.simpleform</string>
-      </property>
-      <property name="rootelement" stdset="0">
-       <string>tag</string>
-      </property>
       <property name="action" stdset="0">
-       <string notr="true">read</string>
+       <string>TagHierarchyRequest tag {}</string>
       </property>
       <column>
        <property name="text">
@@ -160,20 +154,11 @@
        <property name="text">
         <string>Add</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">picture</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Picture.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">create</string>
+        <string notr="true">createPicture picture {caption{{caption}}; info {{info}}; tag {{tag}}; image {{image}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">pictures</string>
-       </property>
-       <property name="global.lastPictureDir" stdset="0">
-        <string notr="true">{image.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -183,7 +168,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">pictures</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>

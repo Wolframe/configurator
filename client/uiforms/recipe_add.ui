@@ -75,14 +75,8 @@
      <property name="expandsOnDoubleClick">
       <bool>false</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string>CategoryHierarchyRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string>category</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string>CategoryHierarchyRequest category {}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>200</number>
@@ -185,17 +179,8 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">PictureListRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <property name="search" stdset="0">
-      <string notr="true">{search.text}</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string notr="true">PictureListRequest picture {search{{search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -245,17 +230,11 @@
        <property name="text">
         <string>Add</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">recipe</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Recipe.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">create</string>
+        <string notr="true">createRecipe recipe {name{{name}}; description{{description}}; category{{category}}; comment{{comment}}; picture{{picture}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipes</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -265,7 +244,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipes</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>

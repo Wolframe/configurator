@@ -13,17 +13,8 @@
   <property name="windowTitle">
    <string>Edit feature</string>
   </property>
-  <property name="initAction" stdset="0">
-   <string>read</string>
-  </property>
-  <property name="id" stdset="0">
-   <string notr="true">{global.id}</string>
-  </property>
-  <property name="doctype" stdset="0">
-   <string notr="true">FeatureRequest.simpleForm</string>
-  </property>
-  <property name="rootelement" stdset="0">
-   <string notr="true">feature</string>
+  <property name="action" stdset="0">
+   <string notr="true">FeatureRequest feature {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -82,17 +73,8 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">PictureListRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <property name="search" stdset="0">
-      <string notr="true">{search.text}</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -142,20 +124,11 @@
        <property name="text">
         <string>Save</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Feature.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">update</string>
+        <string notr="true">updateFeature feature {id={id}; name{{name}}; description{{description}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">features</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
        </property>
       </widget>
      </item>
@@ -164,17 +137,8 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">FeatureRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
+        <string notr="true">FeatureRequest feature {id={id}}</string>
        </property>
       </widget>
      </item>

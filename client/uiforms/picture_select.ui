@@ -40,23 +40,11 @@
        <property name="text">
         <string>&amp;Cancel</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Picture.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">picture</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">delete</string>
+        <string notr="true">deletePicture picture {id={picture.id}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">pictures</string>
-       </property>
-       <property name="id" stdset="0">
-        <string>{picture.id}</string>
-       </property>
-       <property name="global.pictureState" stdset="0">
-        <string>{picture.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -66,13 +54,7 @@
         <string>Info</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">picture_info</string>
-       </property>
-       <property name="global.pictureState" stdset="0">
-        <string>{picture.state}</string>
-       </property>
-       <property name="global.pictureId" stdset="0">
-        <string notr="true">{picture.id}</string>
+        <string notr="true">picture_info?id={picture.selected}</string>
        </property>
       </widget>
      </item>
@@ -114,20 +96,8 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">PictureListRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <property name="state" stdset="0">
-      <string notr="true">{global.pictureState}</string>
-     </property>
-     <property name="search" stdset="0">
-      <string>{search.text}</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string notr="true">PictureListRequest picture {search{{search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -194,9 +164,6 @@
        <property name="initialFocus" stdset="0">
         <bool>true</bool>
        </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.searchState}</string>
-       </property>
       </widget>
      </item>
      <item>
@@ -204,11 +171,8 @@
        <property name="text">
         <string>Search..</string>
        </property>
-       <property name="global.searchState" stdset="0">
-        <string notr="true">{search.state}</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">picture.reload</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>

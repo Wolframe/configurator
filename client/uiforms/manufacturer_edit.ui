@@ -13,17 +13,8 @@
   <property name="windowTitle">
    <string>Edit manufacturer</string>
   </property>
-  <property name="initAction" stdset="0">
-   <string>read</string>
-  </property>
-  <property name="id" stdset="0">
-   <string notr="true">{global.id}</string>
-  </property>
-  <property name="doctype" stdset="0">
-   <string notr="true">ManufacturerRequest.simpleForm</string>
-  </property>
-  <property name="rootelement" stdset="0">
-   <string>manufacturer</string>
+  <property name="action" stdset="0">
+   <string notr="true">ManufacturerRequest manufacturer {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -79,17 +70,8 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">PictureListRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <property name="search" stdset="0">
-      <string notr="true">{search.text}</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -139,20 +121,11 @@
        <property name="text">
         <string>Save</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">manufacturer</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Manufacturer.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">update</string>
+        <string notr="true">updateManufacturer manufacturer {id={id}; name {{name}}; wepPage {{webPage}} }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">manufacturers</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -161,17 +134,8 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">ManufacturerRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">manufacturer</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">read</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
+       <property name="form" stdset="0">
+        <string notr="true">manufacturer_edit?id={id}</string>
        </property>
       </widget>
      </item>
@@ -181,7 +145,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">manufacturers</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -220,11 +184,8 @@
        <property name="text">
         <string>Search..</string>
        </property>
-       <property name="global.searchState" stdset="0">
-        <string notr="true">{search.state}</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">picture.reload</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>

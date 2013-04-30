@@ -16,17 +16,8 @@
   <property name="windowTitle">
    <string>Picture info</string>
   </property>
-  <property name="initAction" stdset="0">
-   <string notr="true">read</string>
-  </property>
-  <property name="id" stdset="0">
-   <string notr="true">{global.pictureId}</string>
-  </property>
-  <property name="doctype" stdset="0">
-   <string notr="true">PictureRequest.simpleform</string>
-  </property>
-  <property name="rootelement" stdset="0">
-   <string notr="true">picture</string>
+  <property name="action" stdset="0">
+   <string notr="true">PictureRequest picture {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">

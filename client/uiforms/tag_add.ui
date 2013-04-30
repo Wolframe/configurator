@@ -66,20 +66,11 @@
          <property name="text">
           <string>Add</string>
          </property>
-         <property name="rootelement" stdset="0">
-          <string notr="true">tag</string>
-         </property>
-         <property name="doctype" stdset="0">
-          <string notr="true">Tag.simpleform</string>
-         </property>
          <property name="action" stdset="0">
-          <string notr="true">create</string>
+          <string notr="true">createTag tag {parentID={id}; name{{name}}; description{{description}}}</string>
          </property>
          <property name="form" stdset="0">
-          <string notr="true">tags</string>
-         </property>
-         <property name="parentID" stdset="0">
-          <string notr="true">{global.id}</string>
+          <string notr="true">_CLOSE_</string>
          </property>
         </widget>
        </item>
@@ -89,7 +80,7 @@
           <string>Cancel</string>
          </property>
          <property name="form" stdset="0">
-          <string notr="true">tags</string>
+          <string notr="true">_CLOSE_</string>
          </property>
         </widget>
        </item>

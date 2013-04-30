@@ -13,17 +13,8 @@
   <property name="windowTitle">
    <string>Edit picture</string>
   </property>
-  <property name="initAction" stdset="0">
-   <string>read</string>
-  </property>
-  <property name="id" stdset="0">
-   <string notr="true">{global.id}</string>
-  </property>
-  <property name="doctype" stdset="0">
-   <string notr="true">PictureRequest.simpleForm</string>
-  </property>
-  <property name="rootelement" stdset="0">
-   <string>picture</string>
+  <property name="action" stdset="0">
+   <string notr="true">PictureRequest picture {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -111,14 +102,8 @@
       <property name="expandsOnDoubleClick">
        <bool>false</bool>
       </property>
-      <property name="doctype" stdset="0">
-       <string>TagHierarchyRequest.simpleform</string>
-      </property>
-      <property name="rootelement" stdset="0">
-       <string>tag</string>
-      </property>
       <property name="action" stdset="0">
-       <string notr="true">read</string>
+       <string>TagHierarchyRequest tag {}</string>
       </property>
       <column>
        <property name="text">
@@ -143,8 +128,8 @@
        <height>150</height>
       </size>
      </property>
-     <property name="state" stdset="0">
-      <string notr="true">{global.lastPictureDir}</string>
+     <property name="global:lastPictureDir" stdset="0">
+      <string notr="true">_w_state</string>
      </property>
     </widget>
    </item>
@@ -168,23 +153,11 @@
        <property name="text">
         <string>Save</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">picture</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Picture.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">update</string>
+        <string notr="true">updatePicture picture {id={id}; caption{{caption}}; info {{info}}; tag {{tag}}; image {{image}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">pictures</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
-       </property>
-       <property name="global.lastPictureDir" stdset="0">
-        <string>{image.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -193,17 +166,8 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">PictureRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">picture</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">read</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
+       <property name="form" stdset="0">
+        <string notr="true">picture_edit?id={id}</string>
        </property>
       </widget>
      </item>
@@ -213,7 +177,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">pictures</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>

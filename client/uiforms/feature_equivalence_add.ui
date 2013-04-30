@@ -22,28 +22,10 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">feature_equivalence</string>
-       </property>
-       <property name="global.featureState" stdset="0">
-        <string notr="true">{feature.state}</string>
-       </property>
-       <property name="global.fulfillState" stdset="0">
-        <string notr="true">{fulfill.state}</string>
-       </property>
-       <property name="global.feature_id" stdset="0">
-        <string notr="true">{feature.id}</string>
-       </property>
-       <property name="global.fulfill_id" stdset="0">
-        <string notr="true">{fulfill.id}</string>
+        <string notr="true">feature_equivalence?fulfill_id={fulfill.id}&amp;feature_id={feature.id}</string>
        </property>
        <property name="action" stdset="0">
-        <string>create</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">FeatureEquivalence.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">FeatureEquivalence</string>
+        <string notr="true">createFeatureEquivalence FeatureEquivalence {fulfill_id={fulfill.id}; feature_id={feature.id}}</string>
        </property>
       </widget>
      </item>
@@ -162,17 +144,8 @@
        <property name="itemsExpandable">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">FeatureHierarchyRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.featureState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">FeatureHierarchyRequest feature {}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>
@@ -197,17 +170,8 @@
        <property name="itemsExpandable">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">FulfillHierarchyRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.fulfillState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">FulfillHierarchyRequest feature {feature_id={feature_id}}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>

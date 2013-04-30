@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>feature_equivalence_edit_form</class>
- <widget class="QWidget" name="feature_equivalence_edit_form">
+ <widget class="QWidget" name="main">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,13 +14,13 @@
    <string>Edit a feature equivalence</string>
   </property>
   <property name="action" stdset="0">
-   <string>FeatureEquivalenceRequest FeatureEquivalence {feature_id={id};fulfill_id={fulfill_id};count{{count}};fulfillcount{{fulfillcount}}}</string>
+   <string>FeatureEquivalenceRequest FeatureEquivalence {feature_id={feature.selected};fulfill_id={fulfill.selected};count{{main.count}};fulfillcount{{main.fulfillcount}}}</string>
   </property>
   <property name="assign:fulfill.selected" stdset="0">
-   <string notr="true">fulfill_id</string>
+   <string notr="true">main.fulfill_id</string>
   </property>
   <property name="assign:feature.selected" stdset="0">
-   <string notr="true">id</string>
+   <string notr="true">main.id</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="5" column="0">
@@ -46,17 +46,8 @@
        <property name="action" stdset="0">
         <string>read</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string>FeatureEquivalenceRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string>FeatureEquivalence</string>
-       </property>
-       <property name="feature_id" stdset="0">
-        <string>{global.feature_id}</string>
-       </property>
-       <property name="fulfill_id" stdset="0">
-        <string>{global.fulfill_id}</string>
+       <property name="action" stdset="0">
+        <string>FeatureEquivalenceRequest FeatureEquivalence {feature_id={feature.selected}}</string>
        </property>
       </widget>
      </item>
@@ -160,14 +151,8 @@
        <property name="itemsExpandable">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">FulfillHierarchyRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">FulfillHierarchyRequest feature {}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>
@@ -219,14 +204,8 @@
        <property name="itemsExpandable">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">FeatureHierarchyRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">FeatureHierarchyRequest feature {}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>

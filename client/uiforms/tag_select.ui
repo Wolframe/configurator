@@ -54,17 +54,8 @@
      <property name="itemsExpandable">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">TagHierarchyRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string>tag</string>
-     </property>
-     <property name="state" stdset="0">
-      <string notr="true">{global.tagState}</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string notr="true">TagHierarchyRequest tag {}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>250</number>
@@ -89,38 +80,17 @@
         <string>&amp;OK</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tag_add</string>
-       </property>
-       <property name="global.id" stdset="0">
-        <string notr="true">{tag.id}</string>
-       </property>
-       <property name="global.tagState" stdset="0">
-        <string>{tag.state}</string>
+        <string notr="true">tag_add?id={tag.selected}</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete_2">
+      <widget class="QPushButton" name="cancel">
        <property name="text">
         <string>&amp;Cancel</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Tag.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">tag</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">delete</string>
-       </property>
        <property name="form" stdset="0">
-        <string notr="true">tags</string>
-       </property>
-       <property name="id" stdset="0">
-        <string>{tag.id}</string>
-       </property>
-       <property name="global.tagState" stdset="0">
-        <string>{tag.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -160,7 +130,7 @@
   <tabstop>radioButton</tabstop>
   <tabstop>radioButton_2</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
+  <tabstop>cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>

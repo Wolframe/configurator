@@ -22,69 +22,30 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_content_add</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
-       <property name="global.RecipeContentState" stdset="0">
-        <string>{RecipeContent.state}</string>
+        <string notr="true">recipe_content_add?id={id}</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_3">
+      <widget class="QPushButton" name="edit">
        <property name="text">
         <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_content_edit</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
-       <property name="global.RecipeContentState" stdset="0">
-        <string>{RecipeContent.state}</string>
-       </property>
-       <property name="global.category_id" stdset="0">
-        <string>{RecipeContent.id}</string>
+        <string notr="true">recipe_content_edit?id={id}</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_2">
+      <widget class="QPushButton" name="delete">
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="form" stdset="0">
-        <string notr="true">recipe_content</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeContent.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">RecipeContent</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">recipe, RecipeContent</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">delete</string>
-       </property>
-       <property name="global.RecipeContentState" stdset="0">
-        <string>{RecipeContent.state}</string>
-       </property>
-       <property name="recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
-       <property name="category_id" stdset="0">
-        <string>{RecipeContent.id}</string>
+        <string notr="true">deleteRecipeContent RecipeContent {id={id}; category_id={RecipeContent.selected}}</string>
        </property>
       </widget>
      </item>
@@ -175,20 +136,8 @@
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectRows</enum>
        </property>
-       <property name="doctype" stdset="0">
-        <string>RecipeContentListRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string>RecipeContent</string>
-       </property>
-       <property name="state" stdset="0">
-        <string>{global.RecipeContentState}</string>
-       </property>
-       <property name="recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string>RecipeContentListRequest RecipeContent {recipe_id={recipe.selected}}</string>
        </property>
        <column>
         <property name="text">
@@ -230,8 +179,8 @@
          <property name="text">
           <string>Show</string>
          </property>
-         <property name="action" stdset="0">
-          <string>RecipeContent.reload</string>
+         <property name="datasignal:clicked" stdset="0">
+          <string>RecipeContent</string>
          </property>
         </widget>
        </item>
@@ -260,17 +209,11 @@
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeListRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
+       <property name="dataslot" stdset="0">
         <string notr="true">recipe</string>
        </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.recipeState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">RecipeListRequest recipe {}</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>

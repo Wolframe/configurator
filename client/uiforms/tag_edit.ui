@@ -13,17 +13,8 @@
   <property name="windowTitle">
    <string>Edit tag</string>
   </property>
-  <property name="initAction" stdset="0">
-   <string>read</string>
-  </property>
-  <property name="id" stdset="0">
-   <string notr="true">{global.id}</string>
-  </property>
-  <property name="doctype" stdset="0">
-   <string notr="true">TagRequest.simpleForm</string>
-  </property>
-  <property name="rootelement" stdset="0">
-   <string>tag</string>
+  <property name="action" stdset="0">
+   <string notr="true">TagRequest tag {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="1" column="0">
@@ -76,20 +67,11 @@
        <property name="text">
         <string>Save</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">tag</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Tag.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">update</string>
+        <string notr="true">updateTag tag {id={id}; name{{name}}; description{{description}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tags</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -98,17 +80,8 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">TagRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">tag</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">read</string>
-       </property>
-       <property name="id" stdset="0">
-        <string notr="true">{global.id}</string>
+       <property name="form" stdset="0">
+        <string notr="true">tag_edit?id={id}</string>
        </property>
       </widget>
      </item>
@@ -118,7 +91,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tags</string>
+        <string notr="true">_COSE_</string>
        </property>
       </widget>
      </item>

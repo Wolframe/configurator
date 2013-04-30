@@ -70,17 +70,11 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">PictureListRequest.simpleform</string>
+     <property name="action" stdset="0">
+      <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
      </property>
      <property name="rootelement" stdset="0">
       <string notr="true">picture</string>
-     </property>
-     <property name="search" stdset="0">
-      <string notr="true">{search.text}</string>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">read</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -130,20 +124,11 @@
        <property name="text">
         <string>Add</string>
        </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">feature</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Feature.simpleform</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">create</string>
+        <string notr="true">createFeature feature {parentID={id}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
-       </property>
-       <property name="parentID" stdset="0">
-        <string notr="true">{global.id}</string>
        </property>
       </widget>
      </item>

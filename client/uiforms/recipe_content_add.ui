@@ -22,25 +22,10 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_content</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.categoryState" stdset="0">
-        <string notr="true">{category.state}</string>
-       </property>
-       <property name="global.recipe_id" stdset="0">
-        <string notr="true">{recipe.id}</string>
-       </property>
-       <property name="global.category_id" stdset="0">
-        <string notr="true">{category.id}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string>create</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeContent.simpleform</string>
+        <string notr="true">createRecipeContent RecipeContent {}</string>
        </property>
        <property name="rootelement" stdset="0">
         <string notr="true">RecipeContent</string>
@@ -53,13 +38,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_content</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.categoryState" stdset="0">
-        <string notr="true">{category.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -159,17 +138,8 @@
        <property name="itemsExpandable">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">CategoryHierarchyRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">category</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.categoryState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">CategoryHierarchyRequest category {}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>
@@ -212,17 +182,11 @@
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeListRequest.simpleform</string>
+       <property name="action" stdset="0">
+        <string notr="true">RecipeListRequest recipe {}</string>
        </property>
        <property name="rootelement" stdset="0">
         <string notr="true">recipe</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.recipeState}</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">read</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>

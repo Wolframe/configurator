@@ -22,69 +22,30 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_component_add</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
-       <property name="global.RecipeComponentState" stdset="0">
-        <string>{RecipeComponent.state}</string>
+        <string notr="true">recipe_component_add?id={recipe.selected}</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_3">
+      <widget class="QPushButton" name="edit">
        <property name="text">
         <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_component_edit</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="global.recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
-       <property name="global.RecipeComponentState" stdset="0">
-        <string>{RecipeComponent.state}</string>
-       </property>
-       <property name="global.component_id" stdset="0">
-        <string>{RecipeComponent.id}</string>
+        <string notr="true">recipe_component_edit?id={recipe.selected}&amp;component_id={RecipeComponent.selected}</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_2">
+      <widget class="QPushButton" name="delete">
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="form" stdset="0">
-        <string notr="true">recipe_component</string>
-       </property>
-       <property name="global.recipeState" stdset="0">
-        <string notr="true">{recipe.state}</string>
-       </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeComponent.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">RecipeComponent</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">recipe, RecipeComponent</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">delete</string>
-       </property>
-       <property name="global.RecipeComponentState" stdset="0">
-        <string>{RecipeComponent.state}</string>
-       </property>
-       <property name="recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
-       <property name="component_id" stdset="0">
-        <string>{RecipeComponent.id}</string>
+        <string notr="true">deleteRecipeComponent RecipeComponent {recipe_id={id}; component_id={component_id}}</string>
        </property>
       </widget>
      </item>
@@ -175,20 +136,8 @@
        <property name="selectionBehavior">
         <enum>QAbstractItemView::SelectRows</enum>
        </property>
-       <property name="doctype" stdset="0">
-        <string>RecipeComponentListRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string>RecipeComponent</string>
-       </property>
-       <property name="state" stdset="0">
-        <string>{global.RecipeComponentState}</string>
-       </property>
-       <property name="recipe_id" stdset="0">
-        <string>{recipe.id}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string>RecipeComponentListRequest RecipeComponent {recipe_id={recipe.selected}}</string>
        </property>
        <column>
         <property name="text">
@@ -230,8 +179,8 @@
          <property name="text">
           <string>Show</string>
          </property>
-         <property name="action" stdset="0">
-          <string>RecipeComponent.reload</string>
+         <property name="datasignal:clicked" stdset="0">
+          <string>RecipeComponent, recipe</string>
          </property>
         </widget>
        </item>
@@ -260,17 +209,8 @@
        <property name="sortingEnabled">
         <bool>true</bool>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">RecipeListRequest.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">recipe</string>
-       </property>
-       <property name="state" stdset="0">
-        <string notr="true">{global.recipeState}</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">read</string>
+        <string notr="true">RecipeListRequest recipe {}</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>
@@ -313,8 +253,8 @@
   <tabstop>RecipeComponent</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>add_3</tabstop>
-  <tabstop>add_2</tabstop>
+  <tabstop>edit</tabstop>
+  <tabstop>delete</tabstop>
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>
@@ -324,7 +264,7 @@
   <connection>
    <sender>RecipeComponent</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>add_3</receiver>
+   <receiver>edit</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">

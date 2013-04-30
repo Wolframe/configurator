@@ -24,12 +24,6 @@
        <property name="form" stdset="0">
         <string notr="true">manufacturer_add</string>
        </property>
-       <property name="global.id" stdset="0">
-        <string notr="true">{manufacturer.id}</string>
-       </property>
-       <property name="global.manufacturerState" stdset="0">
-        <string notr="true">{manufacturer.state}</string>
-       </property>
       </widget>
      </item>
      <item>
@@ -37,23 +31,11 @@
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="doctype" stdset="0">
-        <string notr="true">Manufacturer.simpleform</string>
-       </property>
-       <property name="rootelement" stdset="0">
-        <string notr="true">manufacturer</string>
-       </property>
        <property name="action" stdset="0">
-        <string notr="true">delete</string>
+        <string notr="true">deleteManufacturer manufacturer {id={manufacturer.selected}}</string>
        </property>
-       <property name="form" stdset="0">
-        <string notr="true">manufacturers</string>
-       </property>
-       <property name="id" stdset="0">
-        <string>{manufacturer.id}</string>
-       </property>
-       <property name="global.manufacturerState" stdset="0">
-        <string notr="true">{manufacturer.state}</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">manufacturer</string>
        </property>
       </widget>
      </item>
@@ -63,13 +45,7 @@
         <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">manufacturer_edit</string>
-       </property>
-       <property name="global.id" stdset="0">
-        <string notr="true">{manufacturer.id}</string>
-       </property>
-       <property name="global.manufacturerState" stdset="0">
-        <string notr="true">{manufacturer.state}</string>
+        <string notr="true">manufacturer_edit?id={manufacturer.id}</string>
        </property>
       </widget>
      </item>
@@ -138,17 +114,8 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="doctype" stdset="0">
-      <string notr="true">ManufacturerListRequest.simpleform</string>
-     </property>
-     <property name="rootelement" stdset="0">
-      <string notr="true">manufacturer</string>
-     </property>
-     <property name="state" stdset="0">
-      <string notr="true">{global.manufacturerState}</string>
-     </property>
      <property name="action" stdset="0">
-      <string notr="true">read</string>
+      <string notr="true">ManufacturerListRequest manufacturer {}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
