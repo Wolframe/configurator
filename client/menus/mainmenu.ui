@@ -77,6 +77,10 @@
    </property>
   </action>
   <action name="action_categories">
+   <property name="icon">
+    <iconset resource="../qtclient.qrc">
+     <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Categories</string>
    </property>
@@ -93,6 +97,10 @@
    </property>
   </action>
   <action name="action_components">
+   <property name="icon">
+    <iconset resource="../qtclient.qrc">
+     <normaloff>:/images/bricks.png</normaloff>:/images/bricks.png</iconset>
+   </property>
    <property name="text">
     <string>C&amp;omponents</string>
    </property>
@@ -109,6 +117,10 @@
    </property>
   </action>
   <action name="action_features">
+   <property name="icon">
+    <iconset resource="../qtclient.qrc">
+     <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Features</string>
    </property>
@@ -117,6 +129,10 @@
    </property>
   </action>
   <action name="action_manufacturers">
+   <property name="icon">
+    <iconset resource="../qtclient.qrc">
+     <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Manufacturers</string>
    </property>
@@ -125,6 +141,10 @@
    </property>
   </action>
   <action name="action_pictures">
+   <property name="icon">
+    <iconset resource="../qtclient.qrc">
+     <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Pictures</string>
    </property>
@@ -149,6 +169,10 @@
    </property>
   </action>
   <action name="action_tags">
+   <property name="icon">
+    <iconset resource="../qtclient.qrc">
+     <normaloff>:/images/tag_blue.png</normaloff>:/images/tag_blue.png</iconset>
+   </property>
    <property name="text">
     <string>Tags</string>
    </property>
