@@ -215,7 +215,7 @@
         <bool>true</bool>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">FeatureHierarchyRequest feature {}</string>
+        <string notr="true">FeatureHierarchyRequest feature {id=1}</string>
        </property>
        <property name="dataslot" stdset="0">
         <string notr="true">features</string>

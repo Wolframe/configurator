@@ -72,7 +72,7 @@
       <bool>false</bool>
      </property>
      <property name="action" stdset="0">
-      <string>CategoryHierarchyRequest category {}</string>
+      <string>CategoryHierarchyRequest category {id=1}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>200</number>
@@ -193,7 +193,7 @@
         <string notr="true">component</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateComponent component {id={main.id}}; code{{code}}; name{{name}}; category{id={category.id}}; manufacturer{id={manufacturer.id}}; mfgCode{{mfgCode}}; webPage{{webPage}}; description{{description}}; price{{price}}; picture[] {id={picture.selected}}}</string>
+        <string notr="true">updateComponent component {id={main.id}}; code{{main.code}}; name{{main.name}}; category{id={main.category.selected}}; manufacturer{id={main.manufacturer.selected}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; picture[] {id={main.picture.selected}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>

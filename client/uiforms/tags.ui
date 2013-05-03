@@ -55,7 +55,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">TagHierarchyRequest tag {}</string>
+      <string notr="true">TagHierarchyRequest tag {id=1}</string>
      </property>
      <property name="dataslot" stdset="0">
       <string notr="true">tag</string>

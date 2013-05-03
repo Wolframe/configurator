@@ -139,7 +139,7 @@
         <bool>true</bool>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">FeatureHierarchyRequest feature {}</string>
+        <string notr="true">FeatureHierarchyRequest feature {id=1}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>

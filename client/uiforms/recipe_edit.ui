@@ -82,7 +82,7 @@
       <bool>false</bool>
      </property>
      <property name="action" stdset="0">
-      <string>CategoryHierarchyRequest category {}</string>
+      <string>CategoryHierarchyRequest category {id=1}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>200</number>
