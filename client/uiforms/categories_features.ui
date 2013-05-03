@@ -22,7 +22,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">categories_features_add?id={category.selected}</string>
+        <string notr="true">categories_features_add?id={category.selected:1}</string>
        </property>
       </widget>
      </item>

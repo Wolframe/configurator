@@ -125,7 +125,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createCategory category {parentID={main.parentid}; name{{main.name}}; description{{main.description}}}</string>
+        <string notr="true">createCategory category {parentID={main.id}; name{{main.name}}; description{{main.description}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>

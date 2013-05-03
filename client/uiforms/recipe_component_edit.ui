@@ -28,7 +28,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string>createRecipeComponent RecipeComponent {recipe_id={id}; component_id={component_id}}</string>
+        <string>createRecipeComponent RecipeComponent {recipe_id={main.id}; component_id={main.component_id}}</string>
        </property>
       </widget>
      </item>
@@ -38,7 +38,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string>recipe_component_edit?id={id}&amp;component_id={component_id}</string>
+        <string>recipe_component_edit?id={main.id}&amp;component_id={main.component_id}</string>
        </property>
       </widget>
      </item>

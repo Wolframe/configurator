@@ -71,7 +71,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <property name="rootelement" stdset="0">
       <string notr="true">picture</string>
@@ -125,7 +125,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createFeature feature {parentID={id}}</string>
+        <string notr="true">createFeature feature {parentID={main.id}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -174,11 +174,8 @@
        <property name="text">
         <string>Search..</string>
        </property>
-       <property name="global.searchState" stdset="0">
-        <string notr="true">{search.state}</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">picture.reload</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>

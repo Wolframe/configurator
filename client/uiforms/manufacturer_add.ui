@@ -118,7 +118,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

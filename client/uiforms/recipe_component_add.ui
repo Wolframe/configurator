@@ -25,7 +25,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createRecipeComponent RecipeComponent {recipe{{recipe}}; {{component}}; quantity{{quantity}}; link{{link}}}</string>
+        <string notr="true">createRecipeComponent RecipeComponent {recipe{{main.recipe}}; component{{main.component}}; quantity{{main.quantity}}; link{{main.link}}}</string>
        </property>
       </widget>
      </item>

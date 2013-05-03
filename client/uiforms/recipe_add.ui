@@ -146,11 +146,11 @@
        <property name="text">
         <string>Search..</string>
        </property>
-       <property name="global.searchState" stdset="0">
-        <string notr="true">{search.state}</string>
+       <property name="global:searchState" stdset="0">
+        <string notr="true">_w_state</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">picture.reload</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>
@@ -180,7 +180,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
+<ui version="4.0">{
  <class>tag_edit_form</class>
  <widget class="QWidget" name="tag_edit_form">
   <property name="geometry">
@@ -68,7 +68,7 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateTag tag {id={id}; name{{name}}; description{{description}}}</string>
+        <string notr="true">updateTag tag {id={main.id}; name{{main.name}}; description{{main.description}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -81,7 +81,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tag_edit?id={id}</string>
+        <string notr="true">tag_edit?id={main.id}</string>
        </property>
       </widget>
      </item>

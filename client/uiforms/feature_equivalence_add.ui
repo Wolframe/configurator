@@ -22,7 +22,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">feature_equivalence?fulfill_id={fulfill.id}&amp;feature_id={feature.id}</string>
+        <string notr="true">feature_equivalence?fulfill_id={fulfill.selected}&amp;feature_id={feature.selected}</string>
        </property>
        <property name="action" stdset="0">
         <string notr="true">createFeatureEquivalence FeatureEquivalence {fulfill_id={fulfill.id}; feature_id={feature.id}}</string>
@@ -35,13 +35,7 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">feature_equivalence</string>
-       </property>
-       <property name="global.fulfillState" stdset="0">
-        <string notr="true">{fulfill.state}</string>
-       </property>
-       <property name="global.featureState" stdset="0">
-        <string notr="true">{feature.state}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -171,7 +165,7 @@
         <bool>true</bool>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">FulfillHierarchyRequest feature {feature_id={feature_id}}</string>
+        <string notr="true">FulfillHierarchyRequest feature {feature_id={main.feature_id}}</string>
        </property>
        <attribute name="headerDefaultSectionSize">
         <number>200</number>

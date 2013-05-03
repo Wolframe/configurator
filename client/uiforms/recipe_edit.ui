@@ -152,11 +152,11 @@
        <property name="text">
         <string>Search..</string>
        </property>
-       <property name="global.searchState" stdset="0">
-        <string notr="true">{search.state}</string>
+       <property name="global:searchState" stdset="0">
+        <string notr="true">_w_state</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">picture.reload</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>
@@ -186,7 +186,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -237,7 +237,7 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateRecipe recipe {id={id}; name{{name}}; description{{description}}; category {{category}}; comment {{comment}}}</string>
+        <string notr="true">updateRecipe recipe {id={main.id}; name{{main.name}}; description{{main.description}}; category {{main.category}}; comment {{main.comment}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -250,7 +250,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_edit?id={id}</string>
+        <string notr="true">recipe_edit?id={main.id}</string>
        </property>
       </widget>
      </item>

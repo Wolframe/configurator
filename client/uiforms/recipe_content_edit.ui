@@ -38,7 +38,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string>recipe_content_id?id={id}&amp;category_id={category_id}</string>
+        <string>recipe_content_id?id={main.id}&amp;category_id={main.category_id}</string>
        </property>
       </widget>
      </item>

@@ -25,7 +25,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createComponentFeature ComponentFeature {component{id={component.selected}};feature{id={feature.selected}}; min_requires{{min_requires}}; max_requires{{max_requires}}; min_provides{{min_provides}}; max_provides{{max_provides}}}</string>
+        <string notr="true">createComponentFeature ComponentFeature {component{id={component.selected}};feature{id={feature.selected}}; min_requires{{main.min_requires}}; max_requires{{main.max_requires}}; min_provides{{main.min_provides}}; max_provides{{main.max_provides}}}</string>
        </property>
       </widget>
      </item>

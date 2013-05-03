@@ -74,7 +74,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -125,7 +125,7 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateFeature feature {id={id}; name{{name}}; description{{description}}}</string>
+        <string notr="true">updateFeature feature {id={main.id}; name{{main.name}}; description{{main.description}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">features</string>
@@ -138,7 +138,7 @@
         <string>Reset</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">FeatureRequest feature {id={id}}</string>
+        <string notr="true">FeatureRequest feature {id={main.id}}</string>
        </property>
       </widget>
      </item>
@@ -184,11 +184,11 @@
        <property name="text">
         <string>Search..</string>
        </property>
-       <property name="global.searchState" stdset="0">
-        <string notr="true">{search.state}</string>
+       <property name="global_searchState" stdset="0">
+        <string notr="true">_w_state</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">picture.reload</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>

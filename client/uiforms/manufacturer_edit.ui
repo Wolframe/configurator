@@ -71,7 +71,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -122,7 +122,7 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateManufacturer manufacturer {id={id}; name {{name}}; wepPage {{webPage}} }</string>
+        <string notr="true">updateManufacturer manufacturer {id={main.id}; name {{main.name}}; wepPage {{main.webPage}} }</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -135,7 +135,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">manufacturer_edit?id={id}</string>
+        <string notr="true">manufacturer_edit?id={main.id}</string>
        </property>
       </widget>
      </item>

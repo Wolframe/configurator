@@ -40,7 +40,7 @@
         <string>&amp;Select</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_add?parentID={main.category.selected}</string>
+        <string notr="true">category_add?parentID={main.category.selected:1}</string>
        </property>
       </widget>
      </item>

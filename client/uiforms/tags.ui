@@ -83,7 +83,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tag_add?id={tag.selected}</string>
+        <string notr="true">tag_add?id={tag.selected:1}</string>
        </property>
       </widget>
      </item>

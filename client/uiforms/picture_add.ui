@@ -129,8 +129,8 @@
        <height>150</height>
       </size>
      </property>
-     <property name="state" stdset="0">
-      <string notr="true">{global.lastPictureDir}</string>
+     <property name="global:lastPictureDir" stdset="0">
+      <string notr="true">_w_state</string>
      </property>
     </widget>
    </item>
@@ -155,7 +155,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createPicture picture {caption{{caption}}; info {{info}}; tag {{tag}}; image {{image}}}</string>
+        <string notr="true">createPicture picture {caption{{main.caption}}; info {{main.info}}; tag {{main.tag}}; image {{main.image}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
