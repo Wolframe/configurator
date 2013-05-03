@@ -139,7 +139,7 @@
         <string>Reset</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">CategoryRequest category {id={id}}</string>
+        <string notr="true">CategoryRequest category {id={main.id}}</string>
        </property>
       </widget>
      </item>
@@ -196,7 +196,7 @@
         <string>Info</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">picture_info?id={picture.id}</string>
+        <string notr="true">picture_info?id={main.picture.selected}</string>
        </property>
       </widget>
      </item>

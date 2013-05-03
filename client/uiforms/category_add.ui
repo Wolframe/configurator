@@ -128,7 +128,7 @@
         <string notr="true">createCategory category {parentID={main.parentid}; name{{main.name}}; description{{main.description}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">categories</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -185,7 +185,7 @@
         <string>Info</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">picture_info?id={main.picture.id}</string>
+        <string notr="true">picture_info?id={main.picture.selected}</string>
        </property>
       </widget>
      </item>
