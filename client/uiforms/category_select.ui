@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>category_select_form</class>
- <widget class="QWidget" name="main">
+ <widget class="QWidget" name="category_select">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -40,7 +40,7 @@
         <string>&amp;Select</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_add?parentID={category.selected}</string>
+        <string notr="true">category_add?parentID={main.category.selected}</string>
        </property>
       </widget>
      </item>
@@ -50,7 +50,7 @@
         <string>&amp;Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">deleteCategory category {id={category.selected}}</string>
+        <string notr="true">deleteCategory category {id={main.category.selected}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">categories</string>

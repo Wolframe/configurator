@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>main</class>
- <widget class="QWidget" name="main">
+ <widget class="QWidget" name="category_add">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -74,7 +74,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search={main.search.text}}</string>
+      <string notr="true">PictureListRequest picture {search={main.search}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -185,7 +185,7 @@
         <string>Info</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">picture_info?id={picture.id}</string>
+        <string notr="true">picture_info?id={main.picture.id}</string>
        </property>
       </widget>
      </item>

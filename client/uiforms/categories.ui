@@ -63,7 +63,7 @@
         <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_edit&amp;id={category.selected}</string>
+        <string notr="true">category_edit?id={category.selected}</string>
        </property>
       </widget>
      </item>

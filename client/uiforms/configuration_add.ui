@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>configuration_add_form</class>
- <widget class="QWidget" name="main">
+ <widget class="QWidget" name="configuration_add">
   <property name="geometry">
    <rect>
     <x>0</x>
