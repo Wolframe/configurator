@@ -84,7 +84,7 @@ f<?xml version="1.0" encoding="UTF-8"?>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/bricks.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/bricks.png</pixmap>
        </property>
       </widget>
      </item>
@@ -100,7 +100,7 @@ f<?xml version="1.0" encoding="UTF-8"?>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/link.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/link.png</pixmap>
        </property>
       </widget>
      </item>
@@ -116,7 +116,7 @@ f<?xml version="1.0" encoding="UTF-8"?>
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/chart_organisation.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/chart_organisation.png</pixmap>
        </property>
       </widget>
      </item>
@@ -294,8 +294,8 @@ f<?xml version="1.0" encoding="UTF-8"?>
   <tabstop>add_2</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections>
   <connection>

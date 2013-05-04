@@ -84,7 +84,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/link_add.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/link_add.png</pixmap>
        </property>
       </widget>
      </item>
@@ -100,7 +100,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/folders.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/folders.png</pixmap>
        </property>
       </widget>
      </item>
@@ -293,8 +293,8 @@
   <tabstop>cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -1,11 +1,9 @@
-TEMPLATE = lib
+TEMPLATE = subdirs
 
-TARGET = configurator
+TARGET = resources i18n
 
 CONFIG += qt debug
 
 QT += core gui network
 
-RESOURCES = \
-	qtclient.qrc
-	
+# TODO: how to add rcc-qt4 -binary configurator.qrc -o resources/configurator.rcc

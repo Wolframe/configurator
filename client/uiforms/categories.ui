@@ -146,7 +146,7 @@
   <tabstop>edit</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections>
   <connection>

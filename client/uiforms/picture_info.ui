@@ -29,7 +29,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../qtclient.qrc">:/images/picture.png</pixmap>
+      <pixmap resource="../configurator.qrc">:/images/picture.png</pixmap>
      </property>
     </widget>
    </item>
@@ -235,7 +235,7 @@
   <tabstop>close</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections/>
 </ui>
