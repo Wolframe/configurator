@@ -39,6 +39,9 @@
      <height>19</height>
     </rect>
    </property>
+   <property name="beforeMenu" stdset="0">
+    <string notr="true">menuEdit</string>
+   </property>
    <widget class="QMenu" name="menuForms">
     <property name="title">
      <string>&amp;Definitions</string>
@@ -58,14 +61,14 @@
     <addaction name="action_components_features"/>
     <addaction name="separator"/>
    </widget>
-   <widget class="QMenu" name="menu_Configuration">
+   <widget class="QMenu" name="menuConfiguration">
     <property name="title">
      <string>&amp;Configuration</string>
     </property>
     <addaction name="action_configurations"/>
    </widget>
    <addaction name="menuForms"/>
-   <addaction name="menu_Configuration"/>
+   <addaction name="menuConfiguration"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_categories_features">
