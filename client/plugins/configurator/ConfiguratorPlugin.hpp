@@ -80,17 +80,21 @@ class ConfiguratorWidget : public QWidget
 	Q_OBJECT
 	
 	public:
-		ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QWidget *_parent = 0 );
+		ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent = 0 );
 
 		void gotAnswer( const QByteArray& _data );
+		void gotAnswer( QString requestName, QByteArray xml );
 		
 	private:
 		void initialize( );
 		void rest( );
 		void sendRequest( const QString docType, const QString rootElement, const QString requestName );
+		void sendAddComponentRequest( int configID, int componentID, int quantity );
+		void sendDeleteComponentRequest( int configID, int componentID );
 		
 	private:
 		bool m_debug;
+		QHash<QString,QVariant>* m_globals;
 		ConfiguratorPlugin *m_plugin;
 		QSignalMapper *m_addSignalMapper;
 		QSignalMapper *m_deleteSignalMapper;
@@ -100,6 +104,8 @@ class ConfiguratorWidget : public QWidget
 		QVBoxLayout *toPickComponentsLayout;
 
 	private slots:
+		void addComponent( QObject *object );	
+		void deleteComponent( QObject *object );	
 		void handlePressMeButton( );
 		void handleClearButton( );
 };
@@ -117,7 +123,8 @@ class ConfiguratorPlugin : public QObject, public FormPluginInterface
 		
 		virtual QString name( ) const;
 		virtual QString windowTitle( ) const;
-		virtual QWidget *createForm( DataLoader *_dataLoader, QWidget *_parent );
+		virtual void setDebug( bool _debug );
+		virtual QWidget *createForm( DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent );
 		virtual void gotAnswer( const QString& _tag, const QByteArray& _data );
 		
 		void sendRequest( WId wid, const QByteArray &_request );

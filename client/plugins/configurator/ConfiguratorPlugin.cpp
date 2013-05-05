@@ -55,8 +55,8 @@
 
 // ConfiguratorWidget
 
-ConfiguratorWidget::ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QWidget *_parent )
-	: QWidget( _parent ), m_debug( _debug ), m_plugin( _plugin )
+ConfiguratorWidget::ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent )
+	: QWidget( _parent ), m_debug( _debug ), m_globals( _globals ), m_plugin( _plugin )
 {
 	initialize( );
 }
@@ -141,7 +141,7 @@ void ConfiguratorWidget::rest( )
 	QMetaObject::connectSlotsByName(this);
 }
 
-void ConfiguratorWidget::sendRequest( const QString docType, const QString rootElement, const QString requestName )
+void ConfiguratorWidget::sendRequest( const QString docType, const QString rootElement, const QString /* requestName */ )
 {
 	QByteArray data;
 	QXmlStreamWriter xml( &data );
@@ -158,18 +158,14 @@ void ConfiguratorWidget::sendRequest( const QString docType, const QString rootE
 	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( rootElement ).arg( docType ) );
 	xml.writeStartElement( "", rootElement );
 	xml.writeAttribute( "id", "1" );
-	QString configID = m_globals->value( "configID" );
+	QString configID = m_globals->value( "configID" ).toString( );
 	xml.writeAttribute( "configID", configID );
 	xml.writeEndElement( );
 	xml.writeEndDocument( );
 
 	qDebug( ) << "self-made XML request: " << data;
 
-	props.insert( "doctype", docType );
-	props.insert( "rootelement", rootElement );
-
-//	m_dataLoader->request( QString::number( (int)winId( ) ), m_name, requestName, data, &props );
-	m_plugin->sendRequest( winId( ), xml );
+	m_plugin->sendRequest( winId( ), data );
 }
 
 void ConfiguratorWidget::handlePressMeButton( )
@@ -179,6 +175,278 @@ void ConfiguratorWidget::handlePressMeButton( )
 	request.append( QString( "<!DOCTYPE \"employee\" SYSTEM \"ListEmployee.simpleform\">" ) );
 	request.append( QString( "<employee/>" ) );
 
+}
+
+void ConfiguratorWidget::sendAddComponentRequest( int configID, int componentID, int quantity )
+{
+	QByteArray data;
+	QXmlStreamWriter xml( &data );
+	QHash<QString, QString> props;
+
+// pretty-printing only in debug mode (because of superfluous
+// white spaces sent to server)
+	if( m_debug ) {
+		xml.setAutoFormatting( true );
+		xml.setAutoFormattingIndent( 2 );
+	}
+
+	xml.writeStartDocument( );
+	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( "configuration" ).arg( "ConfiguratorAddComponentRequest.simpleform" ) );
+	xml.writeStartElement( "", "configuration" );
+	xml.writeTextElement( "id", QString::number( configID ) );
+	xml.writeTextElement( "componentID", QString::number( componentID ) );
+	xml.writeTextElement( "quantity", QString::number( quantity ) );
+	xml.writeEndElement( );
+	xml.writeEndDocument( );
+
+	qDebug( ) << "self-made XML request: " << data;
+
+	props.insert( "doctype", "ConfiguratorAddComponentRequest.simpleform" );
+	props.insert( "rootelement", "configuration" );
+
+	m_plugin->sendRequest( winId( ), data );
+}
+
+void ConfiguratorWidget::sendDeleteComponentRequest( int configID, int componentID )
+{
+	QByteArray data;
+	QXmlStreamWriter xml( &data );
+	QHash<QString, QString> props;
+
+// pretty-printing only in debug mode (because of superfluous
+// white spaces sent to server)
+	if( m_debug ) {
+		xml.setAutoFormatting( true );
+		xml.setAutoFormattingIndent( 2 );
+	}
+
+	xml.writeStartDocument( );
+	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( "configuration" ).arg( "ConfiguratorDeleteComponentRequest.simpleform" ) );
+	xml.writeStartElement( "", "configuration" );
+	xml.writeTextElement( "id", QString::number( configID ) );
+	xml.writeTextElement( "componentID", QString::number( componentID ) );
+	xml.writeEndElement( );
+	xml.writeEndDocument( );
+
+	qDebug( ) << "self-made XML request: " << data;
+
+	props.insert( "doctype", "ConfiguratorDeleteComponentRequest.simpleform" );
+	props.insert( "rootelement", "configuration" );
+
+	m_plugin->sendRequest( winId( ), data );
+}
+
+void ConfiguratorWidget::gotAnswer( QString requestName, QByteArray data )
+{
+	qDebug( ) << "got self-made XML answer for request: " << requestName << ":\n" << data;
+
+	if( requestName == "ConfiguredComponentsFix" ) {
+		QXmlStreamReader xml( data );
+		QString name;
+		QString quantity;
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );
+
+			if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
+				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "quantity" ) ) {
+				quantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isEndElement( ) && ( xml.name( ) == "component" ) ) {
+
+				QHBoxLayout *givenComponentLayout;
+				QLabel *label_5;
+				QSpacerItem *horizontalSpacer_4;
+				QLabel *label;
+
+				givenComponentLayout = new QHBoxLayout();
+				givenComponentLayout->setObjectName(QString::fromUtf8("givenComponentLayout"));
+
+				label_5 = new QLabel(this);
+				label_5->setObjectName(QString::fromUtf8("label_5"));
+				label_5->setText( QString( "%1 components '%2'" ).arg( quantity ).arg( name ) );
+
+				givenComponentLayout->addWidget(label_5);
+				horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+				givenComponentLayout->addItem(horizontalSpacer_4);
+
+				label = new QLabel(this);
+				label->setObjectName(QString::fromUtf8("label"));
+				label->setText(QApplication::translate("Form", "given", 0, QApplication::UnicodeUTF8));
+
+				givenComponentLayout->addWidget(label);
+
+				fixedComponentsLayout->addLayout(givenComponentLayout);
+			}
+		}
+	} else if( requestName == "ConfiguredComponentsUser" ) {
+		QXmlStreamReader xml( data );
+		int id;
+		QString name;
+		QString quantity;
+		QString featureQuantityFrom;
+		QString featureQuantityTo;
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );	
+					
+			if( xml.isStartElement( ) && ( xml.name( ) == "component" ) ) {
+				QXmlStreamAttributes attributes = xml.attributes( );
+				foreach( QXmlStreamAttribute attr, attributes ) {
+					if( attr.name( ) == "id" ) {
+						id = attr.value( ).toString( ).toInt( );
+					}
+				}
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
+				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "quantity" ) ) {
+				quantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "featureMinQuantity" ) ) {
+				featureQuantityFrom = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "featureMaxQuantity" ) ) {
+				featureQuantityTo = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isEndElement( ) && ( xml.name( ) == "component" ) ) {
+				QSpacerItem *horizontalSpacer_3;
+				QLabel *label_4;
+				QHBoxLayout *horizontalLayout_3;
+				QPushButton *deleteButton;
+
+				horizontalLayout_3 = new QHBoxLayout();
+				horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+				label_4 = new QLabel(this);
+				label_4->setObjectName(QString::fromUtf8("label_4"));
+				label_4->setText( QString( "%1 components '%2'" ).arg( quantity ).arg( name ) );
+
+				horizontalLayout_3->addWidget(label_4);
+				horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+				horizontalLayout_3->addItem(horizontalSpacer_3);
+
+				deleteButton = new QPushButton(this);
+				deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
+				deleteButton->setText(QApplication::translate("Form", "Delete", 0, QApplication::UnicodeUTF8));
+
+				horizontalLayout_3->addWidget(deleteButton);
+
+				connect( deleteButton, SIGNAL( clicked( ) ),
+					m_deleteSignalMapper, SLOT( map( ) ) );
+					
+				DeleteComponentWidgets *componentWidgets = new DeleteComponentWidgets( deleteButton, id );
+				m_deleteSignalMapper->setMapping( deleteButton, componentWidgets );
+
+				userComponentsLayout->addLayout(horizontalLayout_3);
+			}
+		}
+	} else if( requestName == "RequiredFeatures" ) {
+		QXmlStreamReader xml( data );
+		QString name;
+		int minQuantity;
+		int maxQuantity;
+		QString id;
+		QString componentCategory;
+		QString componentName;
+		QString componentID;
+		QString lastId = "0";
+		QComboBox *comboBox;
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );
+			if( xml.isStartElement( ) && ( xml.name( ) == "id" ) ) {
+				id = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "name" ) ) {
+				name = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "minQuantity" ) ) {
+				minQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement ).toInt( );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "maxQuantity" ) ) {
+				maxQuantity = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement ).toInt( );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentID" ) ) {
+				componentID = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentName" ) ) {
+				componentName = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isStartElement( ) && ( xml.name( ) == "componentCategory" ) ) {
+				componentCategory = xml.readElementText( QXmlStreamReader::ErrorOnUnexpectedElement );
+			} else if( xml.isEndElement( ) && ( xml.name( ) == "category" ) ) {
+				if( id != lastId ) {
+					lastId = id;
+
+					QHBoxLayout *horizontalLayout;
+					horizontalLayout = new QHBoxLayout();
+					horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+
+					QLabel *label_2;
+					label_2 = new QLabel(this);
+					label_2->setObjectName(QString::fromUtf8("label_2"));
+					label_2->setText( QString( "Category '%1'" ).arg( name ) );
+					horizontalLayout->addWidget(label_2);
+					
+					QSpacerItem *horizontalSpacer;
+					horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+					horizontalLayout->addItem(horizontalSpacer);
+
+					QSpinBox *spinBox;
+					spinBox = new QSpinBox(this);
+					spinBox->setObjectName(QString::fromUtf8("spinBox"));
+					spinBox->setRange( minQuantity, maxQuantity );
+					horizontalLayout->addWidget(spinBox);
+
+					comboBox = new QComboBox(this);
+					comboBox->setObjectName(QString::fromUtf8("comboBox"));
+					comboBox->clear();
+					comboBox->addItem( QString( "%1 - %2" ).arg( componentCategory ).arg( componentName ) );
+					comboBox->setItemData( comboBox->count()-1, QVariant( componentID ), Qt::UserRole );
+
+					horizontalLayout->addWidget(comboBox);
+
+					QPushButton *addButton;
+					addButton = new QPushButton(this);
+					addButton->setObjectName(QString::fromUtf8("addButton"));
+					addButton->setText(QApplication::translate("Form", "Add", 0, QApplication::UnicodeUTF8));
+					horizontalLayout->addWidget(addButton);
+
+					toPickComponentsLayout->addLayout(horizontalLayout);
+
+					connect( addButton, SIGNAL( clicked( ) ),
+						m_addSignalMapper, SLOT( map( ) ) );
+					
+					AddComponentWidgets *componentWidgets = new AddComponentWidgets( addButton, comboBox, spinBox );
+					m_addSignalMapper->setMapping( addButton, componentWidgets );
+				} else {
+					comboBox->addItem( QString( "%1 - %2" ).arg( componentCategory ).arg( componentName ) );
+					comboBox->setItemData( comboBox->count()-1, QVariant( componentID ), Qt::UserRole );
+				}
+			}
+		}
+	} else if( requestName == "ConfiguratorAddComponentRequest" ||
+		requestName == "ConfiguratorDeleteComponentRequest" ) {
+// TODO: must be a signal to the parent? how to add this to the plugin interface?
+		//~ qobject_cast<FormWidget *>( parent( ) )->reload( );
+	}
+}
+
+void ConfiguratorWidget::addComponent( QObject *object )
+{
+	AddComponentWidgets *componentWidgets = qobject_cast<AddComponentWidgets *>( object );
+	int componentID = componentWidgets->m_componentBox->itemData( componentWidgets->m_componentBox->currentIndex( ), Qt::UserRole ).toInt( );
+	int quantity = componentWidgets->m_spinBox->value( );
+	
+	qDebug( )
+		<< "ADD"
+		<< componentID
+		<< quantity
+		<< componentWidgets->m_componentBox->itemText( componentWidgets->m_componentBox->currentIndex( ) );
+
+	int configID = m_globals->value( "configID" ).toInt( );
+
+	sendAddComponentRequest( configID, componentID, quantity );	
+}
+
+void ConfiguratorWidget::deleteComponent( QObject *object )
+{
+	DeleteComponentWidgets *componentWidgets = qobject_cast<DeleteComponentWidgets *>( object );
+
+	int configID = m_globals->value( "configID" ).toInt( );
+	
+	qDebug( )
+		<< "DELETE"
+		<< componentWidgets->m_componentID;
+		
+	sendDeleteComponentRequest( configID, componentWidgets->m_componentID );
 }
 
 void ConfiguratorWidget::gotAnswer( const QByteArray& _data )
@@ -214,16 +482,17 @@ QString ConfiguratorPlugin::windowTitle( ) const
 
 void ConfiguratorPlugin::setDebug( bool _debug )
 {
-	m_debug = debug;
+	m_debug = _debug;
 }
 
-QWidget *ConfiguratorPlugin::createForm( DataLoader *_dataLoader, QWidget *_parent )
+QWidget *ConfiguratorPlugin::createForm( DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent )
 {
 	qDebug( ) << "PLUGIN: creating a form of type" << name( );
-	
+
 	m_dataLoader = _dataLoader;
+	m_debug = _debug;
 	
-	ConfiguratorWidget *widget = new ConfiguratorWidget( this, m_debug, _parent );
+	ConfiguratorWidget *widget = new ConfiguratorWidget( this, m_debug, _globals, _parent );
 	QString winId = QString::number( (int)widget->winId( ) );
 	m_widgets.insert( winId, widget );
 	
