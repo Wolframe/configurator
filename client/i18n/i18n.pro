@@ -45,7 +45,8 @@ FORMS += \
 	../uiforms/tag_add.ui \
 	../uiforms/tag_edit.ui \
 	../uiforms/tag_select.ui \
-	../uiforms/tags.ui
+	../uiforms/tags.ui \
+	../menus/mainmenu.ui
 	
 TRANSLATIONS += \
 	configurator.de_CH.ts \

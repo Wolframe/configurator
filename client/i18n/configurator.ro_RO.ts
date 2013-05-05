@@ -2,6 +2,149 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="ro_RO">
 <context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="17"/>
+        <source>Configurator Menu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="23"/>
+        <source>Andreas Baumann</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="26"/>
+        <source>plastique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="47"/>
+        <source>&amp;Definitions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="66"/>
+        <source>&amp;Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="76"/>
+        <source>Category features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="79"/>
+        <source>categories_features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="88"/>
+        <source>&amp;Categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="91"/>
+        <source>categories</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="96"/>
+        <source>Component features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="99"/>
+        <source>component_features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="108"/>
+        <source>C&amp;omponents</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="111"/>
+        <source>components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="116"/>
+        <source>Configurations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="128"/>
+        <source>&amp;Features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="131"/>
+        <source>features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="140"/>
+        <source>&amp;Manufacturers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="143"/>
+        <source>manufacturers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="152"/>
+        <source>&amp;Pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="155"/>
+        <source>pictures</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="160"/>
+        <source>Recipe content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="163"/>
+        <source>recipe_content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="168"/>
+        <source>&amp;Recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="171"/>
+        <source>recipes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="180"/>
+        <source>Tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="183"/>
+        <source>tags</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="188"/>
+        <source>Recipe components</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../menus/mainmenu.ui" line="191"/>
+        <source>recipe_component</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SelectRecipe</name>
     <message>
         <location filename="../uiforms/recipe_select.ui" line="14"/>
@@ -895,6 +1038,111 @@
     <message>
         <location filename="../uiforms/components_features_edit.ui" line="324"/>
         <source>Provides:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>components_features_form</name>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="14"/>
+        <location filename="../uiforms/components_features.ui" line="126"/>
+        <source>Link components and features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="28"/>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="38"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="48"/>
+        <source>Delete</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="149"/>
+        <source>components_features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="152"/>
+        <source>ComponentFeatureListRequest ComponentFeature {component_id={component.selected}}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="156"/>
+        <location filename="../uiforms/components_features.ui" line="250"/>
+        <source>name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="161"/>
+        <source>min_requires</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="166"/>
+        <source>max_requires</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="171"/>
+        <source>min_provides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="176"/>
+        <source>max_provides</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="202"/>
+        <source>Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="205"/>
+        <source>ComponentFeature.reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="245"/>
+        <source>code</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="255"/>
+        <source>categoryName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="260"/>
+        <source>manufacturerName</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="265"/>
+        <source>mfgCode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="270"/>
+        <source>webPage</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="275"/>
+        <source>description</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../uiforms/components_features.ui" line="280"/>
+        <source>price</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
