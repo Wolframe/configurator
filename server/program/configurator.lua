@@ -723,11 +723,10 @@ end
 function PictureListRequest( )
 	output:as( {root='list', system='PictureList.simpleform'})
 	filter().empty = false
-	local search = nil
-	for v,t in input:get( ) do
-		if t == "search" then
-			search = "%" .. normalizer( "name" )( v ) .. "%"
-		end
+	local inp = input:table()
+	local search = inp[ "picture"][ "search"]
+	if search then
+		search = "%" .. normalizer( "name" )( search ) .. "%"
 	end
 	if search == nil then
 		search = "%%"

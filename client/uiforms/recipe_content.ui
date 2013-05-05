@@ -139,6 +139,9 @@
        <property name="action" stdset="0">
         <string>RecipeContentListRequest RecipeContent {recipe_id={recipe.selected}}</string>
        </property>
+       <property name="synonym:RecipeContent" stdset="0">
+        <string notr="true">row</string>
+       </property>
        <column>
         <property name="text">
          <string>name</string>

@@ -157,6 +157,9 @@
        <property name="action" stdset="0">
         <string>CategoryFeatureListRequest CategoryFeature {}</string>
        </property>
+       <property name="synonym:CategoryFeature">
+        <string>row</string>
+       </property>
        <column>
         <property name="text">
          <string>name</string>

@@ -139,6 +139,9 @@
        <property name="action" stdset="0">
         <string>RecipeComponentListRequest RecipeComponent {recipe_id={recipe.selected}}</string>
        </property>
+       <property name="synonym:RecipeComponent" stdset="0">
+        <string notr="true">row</string>
+       </property>
        <column>
         <property name="text">
          <string>name</string>
@@ -211,6 +214,9 @@
        </property>
        <property name="action" stdset="0">
         <string notr="true">RecipeListRequest recipe {}</string>
+       </property>
+       <property name="synonym:recipe" stdset="0">
+        <string notr="true">row</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>

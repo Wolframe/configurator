@@ -54,3 +54,11 @@ FORM deletePicture
 	}
 }
 
+FORM PictureListRequest
+{
+	picture
+	{
+		search string
+	}
+}
+

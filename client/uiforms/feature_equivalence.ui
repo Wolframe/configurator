@@ -139,6 +139,9 @@
        <property name="action" stdset="0">
         <string>FeatureEquivalenceListRequest FeatureEquivalence {feature_id){feature.selected}}</string>
        </property>
+       <property name="synonym:FeatureEquivalence" stdset="0">
+        <string>row</string>
+       </property>
        <column>
         <property name="text">
          <string>name</string>

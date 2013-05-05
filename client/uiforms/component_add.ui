@@ -122,6 +122,9 @@
      <property name="action" stdset="0">
       <string notr="true">ManufacturerListRequest manufacturer {}</string>
      </property>
+     <property name="synonym:manufacturer">
+      <string>row</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
@@ -251,6 +254,9 @@
      </property>
      <property name="action" stdset="0">
       <string notr="true">PictureListRequest picture {search{{search.text}}}</string>
+     </property>
+     <property name="synonym:picture">
+      <string>row</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

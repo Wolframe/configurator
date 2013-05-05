@@ -117,6 +117,9 @@
      <property name="action" stdset="0">
       <string notr="true">ManufacturerListRequest manufacturer {}</string>
      </property>
+     <property name="synonym:manufacturer" stdset="0">
+      <string>row</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>

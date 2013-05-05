@@ -188,6 +188,9 @@
      <property name="action" stdset="0">
       <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
+     <property name="synonym:picture" stdset="0">
+      <string notr="true">row</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>

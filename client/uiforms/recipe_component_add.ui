@@ -141,6 +141,9 @@
        <property name="action" stdset="0">
         <string notr="true">RecipeListRequest recipe {}</string>
        </property>
+       <property name="synonym:recipe">
+        <string notr="true">row</string>
+       </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>
        </attribute>
@@ -199,6 +202,9 @@
        </property>
        <property name="action" stdset="0">
         <string notr="true">ComponentListRequest component {}</string>
+       </property>
+       <property name="synonym:component">
+        <string notr="true">row</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
         <bool>true</bool>

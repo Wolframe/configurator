@@ -107,7 +107,10 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{search}}}</string>
+      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
+     </property>
+     <property name="synonym:picture" stdset="0">
+      <string>row</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -197,7 +200,6 @@
   <tabstop>add</tabstop>
   <tabstop>delete_2</tabstop>
   <tabstop>edit</tabstop>
-  <tabstop>reset_2</tabstop>
  </tabstops>
  <resources>
   <include location="../qtclient.qrc"/>
@@ -216,22 +218,6 @@
     <hint type="destinationlabel">
      <x>512</x>
      <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>picture</sender>
-   <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>reset_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>291</x>
-     <y>132</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>292</x>
-     <y>254</y>
     </hint>
    </hints>
   </connection>

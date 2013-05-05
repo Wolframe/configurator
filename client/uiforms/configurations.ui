@@ -130,6 +130,9 @@
      <property name="action" stdset="0">
       <string notr="true">ConfigurationListRequest configuration {}</string>
      </property>
+     <property name="synonym:configuration" stdset="0">
+      <string>row</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
