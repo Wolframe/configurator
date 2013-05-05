@@ -27,7 +27,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete_2">
+      <widget class="QPushButton" name="delete">
        <property name="text">
         <string>Delete</string>
        </property>
@@ -176,7 +176,7 @@
  <tabstops>
   <tabstop>component</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
+  <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
  <resources>

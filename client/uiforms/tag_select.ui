@@ -41,7 +41,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="collapse">
        <property name="text">
         <string>collapse all</string>
        </property>
@@ -128,7 +128,7 @@
  <tabstops>
   <tabstop>tag</tabstop>
   <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
+  <tabstop>collapse</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
@@ -153,7 +153,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton_2</sender>
+   <sender>collapse</sender>
    <signal>toggled(bool)</signal>
    <receiver>tag</receiver>
    <slot>collapseAll()</slot>

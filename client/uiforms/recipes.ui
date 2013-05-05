@@ -73,7 +73,7 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="maximumSizelabel">
        <property name="maximumSize">
         <size>
          <width>32</width>

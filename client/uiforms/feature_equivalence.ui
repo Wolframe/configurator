@@ -27,7 +27,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_3">
+      <widget class="QPushButton" name="edit">
        <property name="text">
         <string>Edit</string>
        </property>
@@ -180,7 +180,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="show">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -247,10 +247,10 @@
   <tabstop>FeatureEquivalence</tabstop>
   <tabstop>ignore_expand_cats</tabstop>
   <tabstop>ignore_collapse_cats</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>show</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>add_3</tabstop>
-  <tabstop>add_2</tabstop>
+  <tabstop>edit</tabstop>
+  <tabstop>delete</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>

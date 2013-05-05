@@ -17,14 +17,14 @@
    <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <widget class="QRadioButton" name="radioButton">
+      <widget class="QRadioButton" name="expand">
        <property name="text">
         <string>expand all</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QRadioButton" name="radioButton_2">
+      <widget class="QRadioButton" name="collapse">
        <property name="text">
         <string>collapse all</string>
        </property>
@@ -45,7 +45,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete_2">
+      <widget class="QPushButton" name="delete">
        <property name="text">
         <string>Delete</string>
        </property>
@@ -139,10 +139,10 @@
  </widget>
  <tabstops>
   <tabstop>category</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
+  <tabstop>expand</tabstop>
+  <tabstop>collapse</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
+  <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
  <resources>
@@ -150,7 +150,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>radioButton</sender>
+   <sender>expand</sender>
    <signal>toggled(bool)</signal>
    <receiver>category</receiver>
    <slot>expandAll()</slot>
@@ -166,7 +166,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>radioButton_2</sender>
+   <sender>collapse</sender>
    <signal>toggled(bool)</signal>
    <receiver>category</receiver>
    <slot>collapseAll()</slot>

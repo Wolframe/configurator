@@ -296,8 +296,8 @@
   <tabstop>ComponentFeature</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>add_3</tabstop>
-  <tabstop>add_2</tabstop>
+  <tabstop>edit</tabstop>
+  <tabstop>delete</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>
@@ -307,7 +307,7 @@
   <connection>
    <sender>ComponentFeature</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>add_3</receiver>
+   <receiver>edit</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">

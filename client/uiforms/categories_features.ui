@@ -27,7 +27,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_3">
+      <widget class="QPushButton" name="edit">
        <property name="text">
         <string>Edit</string>
        </property>
@@ -37,7 +37,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="add_2">
+      <widget class="QPushButton" name="delete">
        <property name="text">
         <string>Delete</string>
        </property>
@@ -128,14 +128,14 @@
      <item row="1" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QRadioButton" name="ignore_expand_cats">
+        <widget class="QRadioButton" name="expand">
          <property name="text">
           <string>expand all</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="ignore_collapse_cats">
+        <widget class="QRadioButton" name="collapse">
          <property name="text">
           <string>collapse all</string>
          </property>
@@ -249,13 +249,13 @@
  </widget>
  <tabstops>
   <tabstop>category</tabstop>
-  <tabstop>ignore_expand_cats</tabstop>
-  <tabstop>ignore_collapse_cats</tabstop>
+  <tabstop>expand</tabstop>
+  <tabstop>collapse</tabstop>
   <tabstop>CategoryFeature</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>add_3</tabstop>
-  <tabstop>add_2</tabstop>
+  <tabstop>edit</tabstop>
+  <tabstop>delete</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>
@@ -313,7 +313,7 @@
   <connection>
    <sender>CategoryFeature</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>add_3</receiver>
+   <receiver>edit</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">

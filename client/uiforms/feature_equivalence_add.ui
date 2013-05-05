@@ -118,14 +118,14 @@
      <item row="1" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QRadioButton" name="ignore_expand_feats">
+        <widget class="QRadioButton" name="expand">
          <property name="text">
           <string>expand all</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="ignore_collapse_feats">
+        <widget class="QRadioButton" name="collapse">
          <property name="text">
           <string>collapse all</string>
          </property>
@@ -185,14 +185,14 @@
      <item row="1" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QRadioButton" name="ignore_expand_feats_2">
+        <widget class="QRadioButton" name="expand_2">
          <property name="text">
           <string>expand all</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="ignore_collapse_feats_2">
+        <widget class="QRadioButton" name="collapse_2">
          <property name="text">
           <string>collapse all</string>
          </property>
@@ -268,10 +268,10 @@
  <tabstops>
   <tabstop>feature</tabstop>
   <tabstop>fulfill</tabstop>
-  <tabstop>ignore_expand_feats</tabstop>
-  <tabstop>ignore_collapse_feats</tabstop>
-  <tabstop>ignore_expand_feats_2</tabstop>
-  <tabstop>ignore_collapse_feats_2</tabstop>
+  <tabstop>expand</tabstop>
+  <tabstop>collapse</tabstop>
+  <tabstop>expand_2</tabstop>
+  <tabstop>collapse_2</tabstop>
   <tabstop>count</tabstop>
   <tabstop>fulfillcount</tabstop>
   <tabstop>link</tabstop>
@@ -283,7 +283,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>ignore_expand_feats</sender>
+   <sender>expand</sender>
    <signal>clicked()</signal>
    <receiver>feature</receiver>
    <slot>expandAll()</slot>
@@ -299,7 +299,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>ignore_collapse_feats</sender>
+   <sender>collapse</sender>
    <signal>clicked()</signal>
    <receiver>feature</receiver>
    <slot>collapseAll()</slot>
@@ -315,7 +315,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>ignore_expand_feats_2</sender>
+   <sender>expand_2</sender>
    <signal>clicked()</signal>
    <receiver>fulfill</receiver>
    <slot>expandAll()</slot>
@@ -331,7 +331,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>ignore_collapse_feats_2</sender>
+   <sender>collapse_2</sender>
    <signal>clicked()</signal>
    <receiver>fulfill</receiver>
    <slot>collapseAll()</slot>

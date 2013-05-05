@@ -50,7 +50,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="edit_2">
+      <widget class="QPushButton" name="modify">
        <property name="text">
         <string>Modify configuration</string>
        </property>
@@ -166,8 +166,8 @@
  <tabstops>
   <tabstop>configuration</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
   <tabstop>edit</tabstop>
+  <tabstop>modify</tabstop>
  </tabstops>
  <resources/>
  <connections>
