@@ -125,6 +125,9 @@
      <property name="synonym:manufacturer">
       <string>row</string>
      </property>
+     <property name="synonym:thumbnail" stdset="0">
+      <string notr="true">thumbnail.pixmap</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>

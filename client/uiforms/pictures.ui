@@ -30,7 +30,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete_2">
+      <widget class="QPushButton" name="delete">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -112,6 +112,12 @@
      <property name="synonym:picture" stdset="0">
       <string>row</string>
      </property>
+     <property name="synonym:thumbnail" stdset="0">
+      <string notr="true">thumbnail.pixmap</string>
+     </property>
+     <property name="synonym:thumbnail" stdset="0">
+      <string>thumbnail.pixmap</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
@@ -148,7 +154,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/picture.png</pixmap>
+        <pixmap>:/images/picture.png</pixmap>
        </property>
       </widget>
      </item>
@@ -198,12 +204,10 @@
   <tabstop>searchButton</tabstop>
   <tabstop>picture</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
+  <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
- <resources>
-  <include location="../configurator.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>search</sender>
