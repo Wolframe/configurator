@@ -200,7 +200,7 @@
   <tabstop>cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections/>
 </ui>

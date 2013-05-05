@@ -1,7 +1,9 @@
 TEMPLATE = subdirs
 
-SUBDIRS = resources i18n plugins
+SUBDIRS = configurator
 
 CONFIG += qt debug
 
 QT += core gui
+
+

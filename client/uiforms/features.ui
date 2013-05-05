@@ -122,7 +122,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../qtclient.qrc">:/images/chart_organisation.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/chart_organisation.png</pixmap>
        </property>
       </widget>
      </item>
@@ -146,8 +146,8 @@
   <tabstop>edit</tabstop>
  </tabstops>
  <resources>
-  <include location="../qtclient.qrc"/>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections>
   <connection>
