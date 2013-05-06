@@ -80,7 +80,7 @@ class ConfiguratorWidget : public QWidget
 	Q_OBJECT
 	
 	public:
-		ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent = 0 );
+		ConfiguratorWidget( ConfiguratorPlugin *_plugin, const FormCall &formCall, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent = 0 );
 
 		void gotAnswer( const QString &widgetCmd, const QByteArray xml );
 		
@@ -92,6 +92,7 @@ class ConfiguratorWidget : public QWidget
 		void sendDeleteComponentRequest( int configID, int componentID );
 		
 	private:
+		FormCall m_formCall;
 		bool m_debug;
 		QHash<QString,QVariant>* m_globals;
 		ConfiguratorPlugin *m_plugin;
@@ -122,7 +123,7 @@ class ConfiguratorPlugin : public QObject, public FormPluginInterface
 		virtual QString name( ) const;
 		virtual QString windowTitle( ) const;
 		virtual void setDebug( bool _debug );
-		virtual QWidget *createForm( DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent );
+		virtual QWidget *createForm( const FormCall &formCall, DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent );
 		virtual void gotAnswer( const QString& _tag, const QByteArray& _data );
 		
 		void sendRequest( WId wid, const QString &widgetCmd, const QByteArray &_request );

@@ -55,8 +55,8 @@
 
 // ConfiguratorWidget
 
-ConfiguratorWidget::ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent )
-	: QWidget( _parent ), m_debug( _debug ), m_globals( _globals ), m_plugin( _plugin )
+ConfiguratorWidget::ConfiguratorWidget( ConfiguratorPlugin *_plugin, const FormCall &formCall, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent )
+	: QWidget( _parent ), m_formCall( formCall ), m_debug( _debug ), m_globals( _globals ), m_plugin( _plugin )
 {
 	initialize( );
 }
@@ -158,7 +158,13 @@ void ConfiguratorWidget::sendRequest( const QString &docType, const QString &roo
 	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( rootElement ).arg( docType ) );
 	xml.writeStartElement( "", rootElement );
 	xml.writeAttribute( "id", "1" );
-	QString configID = m_globals->value( "configID" ).toString( );
+	QString configID;
+	QList<FormCall::Parameter> parms = m_formCall.parameter( );
+	foreach( FormCall::Parameter parm, parms ) {
+		if( parm.first == "configID" ) {
+			configID = parm.second.toString( );
+		}
+	}
 	xml.writeAttribute( "configID", configID );
 	xml.writeEndElement( );
 	xml.writeEndDocument( );
@@ -204,7 +210,7 @@ void ConfiguratorWidget::sendAddComponentRequest( int configID, int componentID,
 	props.insert( "doctype", "ConfiguratorAddComponentRequest.simpleform" );
 	props.insert( "rootelement", "configuration" );
 
-	m_plugin->sendRequest( winId( ), "onfiguratorAddComponent", data );
+	m_plugin->sendRequest( winId( ), "ConfiguratorAddComponent", data );
 }
 
 void ConfiguratorWidget::sendDeleteComponentRequest( int configID, int componentID )
@@ -471,14 +477,14 @@ void ConfiguratorPlugin::setDebug( bool _debug )
 	m_debug = _debug;
 }
 
-QWidget *ConfiguratorPlugin::createForm( DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent )
+QWidget *ConfiguratorPlugin::createForm( const FormCall &formCall, DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent )
 {
 	qDebug( ) << "PLUGIN: creating a form of type" << name( );
 
 	m_dataLoader = _dataLoader;
 	m_debug = _debug;
 	
-	ConfiguratorWidget *widget = new ConfiguratorWidget( this, m_debug, _globals, _parent );
+	ConfiguratorWidget *widget = new ConfiguratorWidget( this, formCall, m_debug, _globals, _parent );
 	QString winId = QString::number( (int)widget->winId( ) );
 	m_widgets.insert( winId, widget );
 	
