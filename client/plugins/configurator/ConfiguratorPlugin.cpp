@@ -141,7 +141,7 @@ void ConfiguratorWidget::rest( )
 	QMetaObject::connectSlotsByName(this);
 }
 
-void ConfiguratorWidget::sendRequest( const QString docType, const QString rootElement, const QString /* requestName */ )
+void ConfiguratorWidget::sendRequest( const QString &docType, const QString &rootElement, const QString &widgetCmd )
 {
 	QByteArray data;
 	QXmlStreamWriter xml( &data );
@@ -165,7 +165,7 @@ void ConfiguratorWidget::sendRequest( const QString docType, const QString rootE
 
 	qDebug( ) << "self-made XML request: " << data;
 
-	m_plugin->sendRequest( winId( ), data );
+	m_plugin->sendRequest( winId( ), widgetCmd, data );
 }
 
 void ConfiguratorWidget::handlePressMeButton( )
@@ -204,7 +204,7 @@ void ConfiguratorWidget::sendAddComponentRequest( int configID, int componentID,
 	props.insert( "doctype", "ConfiguratorAddComponentRequest.simpleform" );
 	props.insert( "rootelement", "configuration" );
 
-	m_plugin->sendRequest( winId( ), data );
+	m_plugin->sendRequest( winId( ), "onfiguratorAddComponent", data );
 }
 
 void ConfiguratorWidget::sendDeleteComponentRequest( int configID, int componentID )
@@ -233,14 +233,14 @@ void ConfiguratorWidget::sendDeleteComponentRequest( int configID, int component
 	props.insert( "doctype", "ConfiguratorDeleteComponentRequest.simpleform" );
 	props.insert( "rootelement", "configuration" );
 
-	m_plugin->sendRequest( winId( ), data );
+	m_plugin->sendRequest( winId( ), "ConfiguratorDeleteComponent", data );
 }
 
-void ConfiguratorWidget::gotAnswer( QString requestName, QByteArray data )
+void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray data )
 {
-	qDebug( ) << "got self-made XML answer for request: " << requestName << ":\n" << data;
+	qDebug( ) << "got self-made XML answer for request: " << widgetCmd << ":\n" << data;
 
-	if( requestName == "ConfiguredComponentsFix" ) {
+	if( widgetCmd == "ConfiguredComponentsFix" ) {
 		QXmlStreamReader xml( data );
 		QString name;
 		QString quantity;
@@ -278,7 +278,7 @@ void ConfiguratorWidget::gotAnswer( QString requestName, QByteArray data )
 				fixedComponentsLayout->addLayout(givenComponentLayout);
 			}
 		}
-	} else if( requestName == "ConfiguredComponentsUser" ) {
+	} else if( widgetCmd == "ConfiguredComponentsUser" ) {
 		QXmlStreamReader xml( data );
 		int id;
 		QString name;
@@ -334,7 +334,7 @@ void ConfiguratorWidget::gotAnswer( QString requestName, QByteArray data )
 				userComponentsLayout->addLayout(horizontalLayout_3);
 			}
 		}
-	} else if( requestName == "RequiredFeatures" ) {
+	} else if( widgetCmd == "RequiredFeatures" ) {
 		QXmlStreamReader xml( data );
 		QString name;
 		int minQuantity;
@@ -412,8 +412,8 @@ void ConfiguratorWidget::gotAnswer( QString requestName, QByteArray data )
 				}
 			}
 		}
-	} else if( requestName == "ConfiguratorAddComponentRequest" ||
-		requestName == "ConfiguratorDeleteComponentRequest" ) {
+	} else if( widgetCmd == "ConfiguratorAddComponentRequest" ||
+		widgetCmd == "ConfiguratorDeleteComponentRequest" ) {
 // TODO: must be a signal to the parent? how to add this to the plugin interface?
 		//~ qobject_cast<FormWidget *>( parent( ) )->reload( );
 	}
@@ -447,20 +447,6 @@ void ConfiguratorWidget::deleteComponent( QObject *object )
 		<< componentWidgets->m_componentID;
 		
 	sendDeleteComponentRequest( configID, componentWidgets->m_componentID );
-}
-
-void ConfiguratorWidget::gotAnswer( const QByteArray& _data )
-{
-	QString xml( _data.data( ) );
-	
-	xml.replace( '&', "&amp;" ).replace( '<', "&lt;" ).replace( '>', "&gt;<br/>" );
-
-	//~ m_label->setText( QString( "<html><body>%2</body></html>" ).arg( xml ) );
-}
-
-void ConfiguratorWidget::handleClearButton( )
-{
-	//~ m_label->setText( "" );
 }
 
 // ConfiguratorPlugin
@@ -499,12 +485,11 @@ QWidget *ConfiguratorPlugin::createForm( DataLoader *_dataLoader, bool _debug, Q
 	return widget;
 }
 
-void ConfiguratorPlugin::sendRequest( WId wid, const QByteArray &_request )
+void ConfiguratorPlugin::sendRequest( WId wid, const QString &widgetCmd, const QByteArray &_request )
 {
-	// TODO: how to initialize this one? With what?
-	QString cmd;
+	QString cmd; // TODO: how to initialize this one? With what?
 	QString id = QString::number( (int)wid );
-	QString tag = QString( "%1:%2" ).arg( id ).arg( m_tagCounter++ );
+	QString tag = QString( "%1:%2:%3" ).arg( id ).arg( m_tagCounter++ ).arg( widgetCmd );
 
 	m_dataLoader->datarequest( cmd, tag, _request );	
 }
@@ -520,7 +505,7 @@ void ConfiguratorPlugin::gotAnswer( const QString& _tag, const QByteArray& _data
 	
 	ConfiguratorWidget *widget = *it;
 	if( widget ) {
-		widget->gotAnswer( _data );
+		widget->gotAnswer( parts[2], _data );
 	}
 }
 

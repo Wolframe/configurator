@@ -82,13 +82,12 @@ class ConfiguratorWidget : public QWidget
 	public:
 		ConfiguratorWidget( ConfiguratorPlugin *_plugin, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent = 0 );
 
-		void gotAnswer( const QByteArray& _data );
-		void gotAnswer( QString requestName, QByteArray xml );
+		void gotAnswer( const QString &widgetCmd, const QByteArray xml );
 		
 	private:
 		void initialize( );
 		void rest( );
-		void sendRequest( const QString docType, const QString rootElement, const QString requestName );
+		void sendRequest( const QString &docType, const QString &rootElement, const QString &widgetCmd );
 		void sendAddComponentRequest( int configID, int componentID, int quantity );
 		void sendDeleteComponentRequest( int configID, int componentID );
 		
@@ -107,7 +106,6 @@ class ConfiguratorWidget : public QWidget
 		void addComponent( QObject *object );	
 		void deleteComponent( QObject *object );	
 		void handlePressMeButton( );
-		void handleClearButton( );
 };
 
 class ConfiguratorPlugin : public QObject, public FormPluginInterface
@@ -127,7 +125,7 @@ class ConfiguratorPlugin : public QObject, public FormPluginInterface
 		virtual QWidget *createForm( DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent );
 		virtual void gotAnswer( const QString& _tag, const QByteArray& _data );
 		
-		void sendRequest( WId wid, const QByteArray &_request );
+		void sendRequest( WId wid, const QString &widgetCmd, const QByteArray &_request );
 		
 	private:
 		QHash<QString, ConfiguratorWidget *> m_widgets;
