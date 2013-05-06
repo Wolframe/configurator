@@ -90,6 +90,7 @@ class ConfiguratorWidget : public QWidget
 		void sendRequest( const QString &docType, const QString &rootElement, const QString &widgetCmd );
 		void sendAddComponentRequest( int configID, int componentID, int quantity );
 		void sendDeleteComponentRequest( int configID, int componentID );
+		QString getFormParam( const QString &key ) const;
 		
 	private:
 		FormCall m_formCall;

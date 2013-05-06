@@ -158,13 +158,7 @@ void ConfiguratorWidget::sendRequest( const QString &docType, const QString &roo
 	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( rootElement ).arg( docType ) );
 	xml.writeStartElement( "", rootElement );
 	xml.writeAttribute( "id", "1" );
-	QString configID;
-	QList<FormCall::Parameter> parms = m_formCall.parameter( );
-	foreach( FormCall::Parameter parm, parms ) {
-		if( parm.first == "configID" ) {
-			configID = parm.second.toString( );
-		}
-	}
+	QString configID = getFormParam( "configID" );
 	xml.writeAttribute( "configID", configID );
 	xml.writeEndElement( );
 	xml.writeEndDocument( );
@@ -172,6 +166,16 @@ void ConfiguratorWidget::sendRequest( const QString &docType, const QString &roo
 	qDebug( ) << "self-made XML request: " << data;
 
 	m_plugin->sendRequest( winId( ), widgetCmd, data );
+}
+
+QString ConfiguratorWidget::getFormParam( const QString &key ) const
+{
+	QList<FormCall::Parameter> parms = m_formCall.parameter( );
+	foreach( FormCall::Parameter parm, parms ) {
+		if( parm.first == key ) {
+			return parm.second.toString( );
+		}
+	}
 }
 
 void ConfiguratorWidget::handlePressMeButton( )
@@ -187,7 +191,6 @@ void ConfiguratorWidget::sendAddComponentRequest( int configID, int componentID,
 {
 	QByteArray data;
 	QXmlStreamWriter xml( &data );
-	QHash<QString, QString> props;
 
 // pretty-printing only in debug mode (because of superfluous
 // white spaces sent to server)
@@ -207,9 +210,6 @@ void ConfiguratorWidget::sendAddComponentRequest( int configID, int componentID,
 
 	qDebug( ) << "self-made XML request: " << data;
 
-	props.insert( "doctype", "ConfiguratorAddComponentRequest.simpleform" );
-	props.insert( "rootelement", "configuration" );
-
 	m_plugin->sendRequest( winId( ), "ConfiguratorAddComponent", data );
 }
 
@@ -217,7 +217,6 @@ void ConfiguratorWidget::sendDeleteComponentRequest( int configID, int component
 {
 	QByteArray data;
 	QXmlStreamWriter xml( &data );
-	QHash<QString, QString> props;
 
 // pretty-printing only in debug mode (because of superfluous
 // white spaces sent to server)
@@ -235,9 +234,6 @@ void ConfiguratorWidget::sendDeleteComponentRequest( int configID, int component
 	xml.writeEndDocument( );
 
 	qDebug( ) << "self-made XML request: " << data;
-
-	props.insert( "doctype", "ConfiguratorDeleteComponentRequest.simpleform" );
-	props.insert( "rootelement", "configuration" );
 
 	m_plugin->sendRequest( winId( ), "ConfiguratorDeleteComponent", data );
 }
@@ -437,7 +433,7 @@ void ConfiguratorWidget::addComponent( QObject *object )
 		<< quantity
 		<< componentWidgets->m_componentBox->itemText( componentWidgets->m_componentBox->currentIndex( ) );
 
-	int configID = m_globals->value( "configID" ).toInt( );
+	int configID = getFormParam( "configID" ).toInt( );
 
 	sendAddComponentRequest( configID, componentID, quantity );	
 }
@@ -446,7 +442,7 @@ void ConfiguratorWidget::deleteComponent( QObject *object )
 {
 	DeleteComponentWidgets *componentWidgets = qobject_cast<DeleteComponentWidgets *>( object );
 
-	int configID = m_globals->value( "configID" ).toInt( );
+	int configID = getFormParam( "configID" ).toInt( );
 	
 	qDebug( )
 		<< "DELETE"
