@@ -415,10 +415,9 @@ void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray d
 				}
 			}
 		}
-	} else if( widgetCmd == "ConfiguratorAddComponentRequest" ||
-		widgetCmd == "ConfiguratorDeleteComponentRequest" ) {
-// TODO: must be a signal to the parent? how to add this to the plugin interface?
-		//~ qobject_cast<FormWidget *>( parent( ) )->reload( );
+	} else if( widgetCmd == "ConfiguratorAddComponent" ||
+		widgetCmd == "ConfiguratorDeleteComponent" ) {
+		emit reload( );
 	}
 }
 
@@ -484,6 +483,8 @@ QWidget *ConfiguratorPlugin::createForm( const FormCall &formCall, DataLoader *_
 	ConfiguratorWidget *widget = new ConfiguratorWidget( this, formCall, m_debug, _globals, _parent );
 	QString winId = QString::number( (int)widget->winId( ) );
 	m_widgets.insert( winId, widget );
+
+	connect( widget, SIGNAL( reload( ) ), _parent, SLOT( reload( ) ) );
 	
 	return widget;
 }

@@ -103,6 +103,9 @@ class ConfiguratorWidget : public QWidget
 		QVBoxLayout *fixedComponentsLayout;
 		QVBoxLayout *userComponentsLayout;
 		QVBoxLayout *toPickComponentsLayout;
+	
+	signals:
+		void reload( );
 
 	private slots:
 		void addComponent( QObject *object );	
