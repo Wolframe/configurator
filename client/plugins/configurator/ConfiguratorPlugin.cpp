@@ -38,20 +38,20 @@
 #include <QDebug>
 #include <QLabel>
 
-#include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QComboBox>
-#include <QtGui/QFrame>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QSpacerItem>
-#include <QtGui/QSpinBox>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QVariant>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QComboBox>
+#include <QFrame>
+#include <QHBoxLayout>
+#include <QHeaderView>
+#include <QLabel>
+#include <QPushButton>
+#include <QSpacerItem>
+#include <QSpinBox>
+#include <QVBoxLayout>
+#include <QWidget>
 
 // ConfiguratorWidget
 
@@ -65,7 +65,7 @@ void ConfiguratorWidget::initialize( )
 {
         if (this->objectName().isEmpty())
             this->setObjectName(QString::fromUtf8("Form"));
-        this->setWindowTitle(QApplication::translate("Form", "Configurator", 0, QApplication::UnicodeUTF8));            
+        this->setWindowTitle(QApplication::translate("Form", "Configurator", 0));            
 
 	m_addSignalMapper = new QSignalMapper( this );
 	connect( m_addSignalMapper, SIGNAL( mapped( QObject * ) ),
@@ -132,7 +132,7 @@ void ConfiguratorWidget::rest( )
 	QPushButton *closeButton;
 	closeButton = new QPushButton(this);
 	closeButton->setObjectName(QString::fromUtf8("closeButton"));
-	closeButton->setText(QApplication::translate("Form", "Close", 0, QApplication::UnicodeUTF8));
+	closeButton->setText(QApplication::translate("Form", "Close", 0));
 	closeButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
 	horizontalLayout_5->addWidget(closeButton);
 
@@ -274,7 +274,7 @@ void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray d
 
 				label = new QLabel(this);
 				label->setObjectName(QString::fromUtf8("label"));
-				label->setText(QApplication::translate("Form", "given", 0, QApplication::UnicodeUTF8));
+				label->setText(QApplication::translate("Form", "given", 0));
 
 				givenComponentLayout->addWidget(label);
 
@@ -324,7 +324,7 @@ void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray d
 
 				deleteButton = new QPushButton(this);
 				deleteButton->setObjectName(QString::fromUtf8("deleteButton"));
-				deleteButton->setText(QApplication::translate("Form", "Delete", 0, QApplication::UnicodeUTF8));
+				deleteButton->setText(QApplication::translate("Form", "Delete", 0));
 
 				horizontalLayout_3->addWidget(deleteButton);
 
@@ -399,7 +399,7 @@ void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray d
 					QPushButton *addButton;
 					addButton = new QPushButton(this);
 					addButton->setObjectName(QString::fromUtf8("addButton"));
-					addButton->setText(QApplication::translate("Form", "Add", 0, QApplication::UnicodeUTF8));
+					addButton->setText(QApplication::translate("Form", "Add", 0));
 					horizontalLayout->addWidget(addButton);
 
 					toPickComponentsLayout->addLayout(horizontalLayout);
