@@ -176,6 +176,7 @@ QString ConfiguratorWidget::getFormParam( const QString &key ) const
 			return parm.second.toString( );
 		}
 	}
+	return QString( "" );
 }
 
 void ConfiguratorWidget::handlePressMeButton( )
