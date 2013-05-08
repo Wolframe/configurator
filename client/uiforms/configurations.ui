@@ -55,10 +55,7 @@
         <string>Modify configuration</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">configurator</string>
-       </property>
-       <property name="global:configID" stdset="0">
-        <string>configuration.id</string>
+        <string notr="true">configurator?configID={configuration.selected}</string>
        </property>
       </widget>
      </item>
