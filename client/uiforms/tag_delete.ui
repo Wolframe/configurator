@@ -3,7 +3,7 @@
  <class>tag_edit_form</class>
  <widget class="QWidget" name="tag_edit_form">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>
