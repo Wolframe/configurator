@@ -9,48 +9,45 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>407</width>
-    <height>263</height>
+    <width>287</width>
+    <height>134</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Edit tag</string>
+   <string>Delete tag</string>
   </property>
   <property name="action" stdset="0">
    <string notr="true">TagRequest tag {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_name">
-     <property name="text">
-      <string>Name:</string>
-     </property>
-     <property name="buddy">
-      <cstring>name</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="name">
-     <property name="initialFocus" stdset="0">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
    <item row="2" column="0">
-    <widget class="QLabel" name="label_description">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>Description:</string>
+      <string/>
      </property>
-     <property name="buddy">
-      <cstring>description</cstring>
+     <property name="pixmap">
+      <pixmap resource="../configurator.qrc">:/images/tag_blue_edit.png</pixmap>
      </property>
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QPlainTextEdit" name="description"/>
+    <widget class="QLabel" name="editlabel">
+     <property name="text">
+      <string>Delete tag..</string>
+     </property>
+    </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Do you really want to delete %1, %2?</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer">
@@ -66,28 +63,18 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="save">
+      <widget class="QPushButton" name="delete_2">
        <property name="text">
-        <string>Save</string>
+        <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">editTag tag {id={main.id}; name{{main.name}}; description{{main.description}}}</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string notr="true">deleteTag tag {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>tag</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="reset">
-       <property name="text">
-        <string>Reset</string>
+        <string notr="true">tag</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tag_edit?id={main.id}</string>
+        <string>_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -103,30 +90,17 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
+   <item row="4" column="1">
+    <widget class="QLabel" name="name">
      <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../configurator.qrc">:/images/tag_blue_edit.png</pixmap>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="editlabel">
-     <property name="text">
-      <string>Edit tag..</string>
+      <string>&lt;NAME&gt;</string>
      </property>
     </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>name</tabstop>
-  <tabstop>description</tabstop>
-  <tabstop>save</tabstop>
-  <tabstop>reset</tabstop>
+  <tabstop>delete_2</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
  <resources>

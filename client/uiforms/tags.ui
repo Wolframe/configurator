@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>556</width>
+    <width>506</width>
     <height>318</height>
    </rect>
   </property>
@@ -60,6 +60,21 @@
      <property name="dataslot" stdset="0">
       <string notr="true">tag</string>
      </property>
+     <property name="contextmenu" stdset="0">
+      <string>add, edit, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Tag</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Tag</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Tag</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string>tag_add?id={selected:1}</string>
+     </property>
      <attribute name="headerDefaultSectionSize">
       <number>250</number>
      </attribute>
@@ -88,21 +103,12 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete_2">
+      <widget class="QPushButton" name="edit_2">
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteTag tag {id={tag.selected}}</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">tag</string>
-       </property>
-       <property name="id" stdset="0">
-        <string>{tag.id}</string>
-       </property>
-       <property name="global.tagState" stdset="0">
-        <string>{tag.state}</string>
+       <property name="form" stdset="0">
+        <string notr="true">tag_delete?id={tag.selected}</string>
        </property>
       </widget>
      </item>
@@ -152,7 +158,7 @@
   <tabstop>radioButton</tabstop>
   <tabstop>collapse</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
+  <tabstop>edit_2</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
  <resources>
