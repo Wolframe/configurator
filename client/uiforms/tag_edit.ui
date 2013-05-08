@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">{
+<ui version="4.0">
  <class>tag_edit_form</class>
  <widget class="QWidget" name="tag_edit_form">
   <property name="geometry">
@@ -92,6 +92,9 @@
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>main.name</string>
        </property>
       </widget>
      </item>
