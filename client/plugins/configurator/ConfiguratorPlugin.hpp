@@ -129,10 +129,12 @@ class ConfiguratorPlugin : public QObject, public FormPluginInterface
 		virtual void setDebug( bool _debug );
 		virtual QWidget *createForm( const FormCall &formCall, DataLoader *_dataLoader, bool _debug, QHash<QString,QVariant>* _globals, QWidget *_parent );
 		virtual void gotAnswer( const QString& _tag, const QByteArray& _data );
+		virtual void gotError( const QString& tag_, const QByteArray& error_ );
 		
 		void sendRequest( WId wid, const QString &widgetCmd, const QByteArray &_request );
 		
 	private:
+		QWidget *m_parent;
 		QHash<QString, ConfiguratorWidget *> m_widgets;
 		DataLoader *m_dataLoader;
 		int m_tagCounter;

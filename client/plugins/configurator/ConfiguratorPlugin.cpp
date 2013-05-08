@@ -52,6 +52,7 @@
 #include <QSpinBox>
 #include <QVBoxLayout>
 #include <QWidget>
+#include <QMessageBox>
 
 // ConfiguratorWidget
 
@@ -479,6 +480,7 @@ QWidget *ConfiguratorPlugin::createForm( const FormCall &formCall, DataLoader *_
 
 	m_dataLoader = _dataLoader;
 	m_debug = _debug;
+	m_parent = _parent;
 	
 	ConfiguratorWidget *widget = new ConfiguratorWidget( this, formCall, m_debug, _globals, _parent );
 	QString winId = QString::number( (int)widget->winId( ) );
@@ -511,6 +513,11 @@ void ConfiguratorPlugin::gotAnswer( const QString& _tag, const QByteArray& _data
 	if( widget ) {
 		widget->gotAnswer( parts[2], _data );
 	}
+}
+
+void ConfiguratorPlugin::gotError( const QString& /*tag_*/, const QByteArray& error_ )
+{
+	QMessageBox::critical( m_parent, tr( "Configurator form error" ), QString( error_ ), QMessageBox::Ok );
 }
 
 #if QT_VERSION < 0x050000
