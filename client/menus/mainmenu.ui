@@ -96,7 +96,7 @@
     <string>Component features</string>
    </property>
    <property name="form" stdset="0">
-    <string>component_features</string>
+    <string>components_features</string>
    </property>
   </action>
   <action name="action_components">

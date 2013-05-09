@@ -17,6 +17,9 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/tag_blue.png</normaloff>:/images/tag_blue.png</iconset>
   </property>
+  <property name="singletonWindow" stdset="0">
+   <bool>true</bool>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="3" column="1">
     <spacer name="horizontalSpacer">
@@ -61,7 +64,7 @@
       <string notr="true">tag</string>
      </property>
      <property name="contextmenu" stdset="0">
-      <string>add, edit, delete</string>
+      <string notr="true">add, edit, delete</string>
      </property>
      <property name="contextmenu:add" stdset="0">
       <string>Add Tag</string>
@@ -73,7 +76,13 @@
       <string>Delete Tag</string>
      </property>
      <property name="form:add" stdset="0">
-      <string>tag_add?id={selected:1}</string>
+      <string notr="true">tag_add?id={selected:1}</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">tag_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">tag_delete?id={selected:1}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>250</number>

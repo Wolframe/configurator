@@ -3,7 +3,7 @@
  <class>tag_add_form</class>
  <widget class="QWidget" name="tag_add_form">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>

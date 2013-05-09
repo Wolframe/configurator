@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Link components and features</string>
   </property>
+  <property name="singletonWindow" stdset="0">
+   <bool>true</bool>
+  </property>
   <property name="assign:component.selected" stdset="0">
    <string notr="true">id</string>  
   </property>

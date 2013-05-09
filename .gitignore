@@ -4,4 +4,12 @@ ui_*.h
 *.o
 *~
 *.bck
+*.qm
+*.rcc
+qrc_*.cpp
+ui_*.h
+*.so*
+Makefile
+Makefile.debug
+Makefile.release
 client/plugins/plugins.pro.user

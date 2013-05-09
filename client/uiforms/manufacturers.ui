@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Manufacturers</string>
   </property>
+  <property name="singletonWindow" stdset="0">
+   <bool>true</bool>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
