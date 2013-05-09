@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>372</width>
+    <width>380</width>
     <height>381</height>
    </rect>
   </property>
@@ -143,10 +143,25 @@
       <item>
        <widget class="QRadioButton" name="no">
         <property name="text">
-         <string>&lt;PATH of selected tree&gt;</string>
+         <string>as child of %1</string>
         </property>
         <property name="checked">
          <bool>true</bool>
+        </property>
+        <property name="action" stdset="0">
+         <string>TagRequest tag {id={main.id}}</string>
+        </property>
+        <property name="synonym:name" stdset="0">
+         <string>1</string>
+        </property>
+        <property name="synonym:description" stdset="0">
+         <string>2</string>
+        </property>
+        <property name="state:visible" stdset="0">
+         <string>{main.id}&gt;1</string>
+        </property>
+        <property name="state:enabled" stdset="0">
+         <string>{main.id}&gt;1</string>
         </property>
        </widget>
       </item>
