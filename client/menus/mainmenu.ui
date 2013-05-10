@@ -78,10 +78,13 @@
    <property name="form" stdset="0">
     <string>categories_features</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_categories">
    <property name="icon">
-    <iconset resource="../qtclient.qrc">
+    <iconset resource="../configurator.qrc">
      <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
    </property>
    <property name="text">
@@ -89,6 +92,9 @@
    </property>
    <property name="form" stdset="0">
     <string>categories</string>
+   </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
    </property>
   </action>
   <action name="action_components_features">
@@ -98,10 +104,13 @@
    <property name="form" stdset="0">
     <string>components_features</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_components">
    <property name="icon">
-    <iconset resource="../qtclient.qrc">
+    <iconset resource="../configurator.qrc">
      <normaloff>:/images/bricks.png</normaloff>:/images/bricks.png</iconset>
    </property>
    <property name="text">
@@ -109,6 +118,9 @@
    </property>
    <property name="form" stdset="0">
     <string>components</string>
+   </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
    </property>
   </action>
   <action name="action_configurations">
@@ -118,10 +130,13 @@
    <property name="form" stdset="0">
     <string notr="true">configurations</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_features">
    <property name="icon">
-    <iconset resource="../qtclient.qrc">
+    <iconset resource="../configurator.qrc">
      <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
    </property>
    <property name="text">
@@ -130,10 +145,13 @@
    <property name="form" stdset="0">
     <string>features</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_manufacturers">
    <property name="icon">
-    <iconset resource="../qtclient.qrc">
+    <iconset resource="../configurator.qrc">
      <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
    </property>
    <property name="text">
@@ -142,10 +160,13 @@
    <property name="form" stdset="0">
     <string>manufacturers</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_pictures">
    <property name="icon">
-    <iconset resource="../qtclient.qrc">
+    <iconset resource="../configurator.qrc">
      <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
    </property>
    <property name="text">
@@ -153,6 +174,9 @@
    </property>
    <property name="form" stdset="0">
     <string>pictures</string>
+   </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
    </property>
   </action>
   <action name="action_recipe_content">
@@ -162,6 +186,9 @@
    <property name="form" stdset="0">
     <string>recipe_content</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_recipes">
    <property name="text">
@@ -170,10 +197,13 @@
    <property name="form" stdset="0">
     <string>recipes</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
   <action name="action_tags">
    <property name="icon">
-    <iconset resource="../qtclient.qrc">
+    <iconset resource="../configurator.qrc">
      <normaloff>:/images/tag_blue.png</normaloff>:/images/tag_blue.png</iconset>
    </property>
    <property name="text">
@@ -181,6 +211,9 @@
    </property>
    <property name="form" stdset="0">
     <string>tags</string>
+   </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
    </property>
   </action>
   <action name="action_recipe_component">
@@ -190,10 +223,13 @@
    <property name="form" stdset="0">
     <string>recipe_component</string>
    </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
+   </property>
   </action>
  </widget>
  <resources>
-  <include location="../qtclient.qrc"/>
+  <include location="../configurator.qrc"/>
  </resources>
  <connections/>
 </ui>
