@@ -27,10 +27,20 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Add picture..</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_caption">
      <property name="text">
       <string>Caption:</string>
+     </property>
+     <property name="buddy">
+      <cstring>caption</cstring>
      </property>
     </widget>
    </item>
@@ -45,6 +55,9 @@
     <widget class="QLabel" name="label_info">
      <property name="text">
       <string>Info:</string>
+     </property>
+     <property name="buddy">
+      <cstring>info</cstring>
      </property>
     </widget>
    </item>
@@ -63,66 +76,70 @@
      <property name="text">
       <string>Tags</string>
      </property>
+     <property name="buddy">
+      <cstring>tags</cstring>
+     </property>
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QGroupBox" name="tagwrap">
-     <property name="enabled">
-      <bool>true</bool>
+    <widget class="QListWidget" name="tags">
+     <property name="action:add_tag" stdset="0">
+      <string>TagSetRequest tags { tag [] { id = {tag_select.tag.selected}}}</string>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>100</height>
-      </size>
+     <property name="dataslot" stdset="0">
+      <string>add_tag</string>
      </property>
-     <property name="title">
-      <string/>
-     </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-     <widget class="QTreeWidget" name="tag">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>311</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::MultiSelection</enum>
-      </property>
-      <property name="headerHidden">
-       <bool>true</bool>
-      </property>
-      <property name="expandsOnDoubleClick">
-       <bool>false</bool>
-      </property>
-      <property name="action" stdset="0">
-       <string>TagHierarchyRequest tag {id=1}</string>
-      </property>
-      <column>
-       <property name="text">
-        <string>tag</string>
-       </property>
-      </column>
-     </widget>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_picture">
-     <property name="text">
-      <string>Picture:</string>
+     <property name="link:tag_select" stdset="0">
+      <string>{main.widgetid}_tag</string>
      </property>
     </widget>
    </item>
    <item row="4" column="1">
-    <widget class="PictureChooser" name="image" native="true">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_tag_button">
+       <property name="text">
+        <string>Add tag...</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>tag_select?widgetid={main.widgetid}_tag</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="delete_tag_button">
+       <property name="text">
+        <string>Delete tag...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_picture">
+     <property name="text">
+      <string>Picture:</string>
+     </property>
+     <property name="buddy">
+      <cstring>image</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="PictureChooser" name="image">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -134,7 +151,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="6" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -155,7 +172,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createPicture picture {caption{{main.caption}}; info {{main.info}}; tag {{main.tag}}; image {{main.image}}}</string>
+        <string notr="true">createPicture picture {caption{{main.caption}}; info {{main.info}}; tag {{main.tag.selected:}}; image {size={main.image.size}; {main.image.base64}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -174,13 +191,6 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Add picture..</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -193,7 +203,7 @@
  <tabstops>
   <tabstop>caption</tabstop>
   <tabstop>info</tabstop>
-  <tabstop>tag</tabstop>
+  <tabstop>tags</tabstop>
   <tabstop>image</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>

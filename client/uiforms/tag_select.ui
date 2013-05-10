@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>select_tag_form</class>
  <widget class="QWidget" name="select_tag_form">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -80,7 +83,10 @@
         <string>&amp;OK</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">tag_add?id={tag.selected:1}</string>
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string notr="true">add_tag</string>
        </property>
       </widget>
      </item>

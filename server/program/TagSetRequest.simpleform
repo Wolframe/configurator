@@ -1,0 +1,10 @@
+FORM TagSetRequest
+{
+	tags
+	{
+		tag []
+		{
+			id @int
+		}
+	}
+}

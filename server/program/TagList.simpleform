@@ -1,0 +1,11 @@
+FORM TagList
+{
+	tags
+	{
+		tag []
+		{
+			id @int
+			name string
+		}
+	}
+}
