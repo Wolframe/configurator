@@ -794,9 +794,19 @@ local function transform_picture( itr )
 		end
 	end
 	info = formfunction( "imageInfo" )( { [ "data"] = picture["image"] } ):table( )
-	picture["width"] = info.width
-	picture["height"] = info.height
-	thumb = formfunction( "imageThumb" )( { [ "image" ] = { [ "data" ] = picture["image"] }, [ "size" ] = 50 } ):table( )
+	width = info.width
+	height = info.height
+	logger.print( "ERROR", width, "x", height )
+	size = 50
+	ratio = width / height
+	logger.print( "ERROR", ratio )
+	if ratio > 3 then
+		ratio = 3
+	end
+	width = size * ratio
+	height = size
+	logger.print( "ERROR", width, "x", height )
+	thumb = formfunction( "imageRescale" )( { [ "image" ] = { [ "data" ] = picture["image"] }, [ "width" ] = width, [ "height" ] = height } ):table( )
 	picture["thumbnail"] = thumb.data
 	return picture
 end
