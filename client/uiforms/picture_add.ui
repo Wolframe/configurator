@@ -96,7 +96,7 @@
       <string>item</string>
      </property>
      <property name="synonym:name" stdset="0">
-      <string> </string>
+      <string/>
      </property>
     </widget>
    </item>
@@ -177,7 +177,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>picture</string>
+        <string notr="true">picture</string>
        </property>
       </widget>
      </item>
