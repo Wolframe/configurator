@@ -118,6 +118,9 @@
      <property name="synonym:thumbnail" stdset="0">
       <string>thumbnail.pixmap</string>
      </property>
+     <property name="dataslot" stdset="0">
+      <string>picture</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
