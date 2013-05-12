@@ -92,6 +92,12 @@
      <property name="link:tag_select" stdset="0">
       <string>{main.widgetid}_tag</string>
      </property>
+     <property name="synonym:tag" stdset="0">
+      <string>item</string>
+     </property>
+     <property name="synonym:name" stdset="0">
+      <string> </string>
+     </property>
     </widget>
    </item>
    <item row="4" column="1">

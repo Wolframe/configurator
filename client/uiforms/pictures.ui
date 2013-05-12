@@ -116,9 +116,6 @@
       <string>row</string>
      </property>
      <property name="synonym:thumbnail" stdset="0">
-      <string notr="true">thumbnail.pixmap</string>
-     </property>
-     <property name="synonym:thumbnail" stdset="0">
       <string>thumbnail.pixmap</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
@@ -186,15 +183,8 @@
        <property name="initialFocus" stdset="0">
         <bool>true</bool>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="searchButton">
-       <property name="text">
-        <string>Search..</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
+       <property name="datasignal:changed" stdset="0">
+        <string>picture</string>
        </property>
       </widget>
      </item>
@@ -204,31 +194,13 @@
  </widget>
  <tabstops>
   <tabstop>search</tabstop>
-  <tabstop>searchButton</tabstop>
   <tabstop>picture</tabstop>
   <tabstop>add</tabstop>
   <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
  <resources/>
- <connections>
-  <connection>
-   <sender>search</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>473</x>
-     <y>35</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>512</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <signal>init()</signal>
  </slots>
