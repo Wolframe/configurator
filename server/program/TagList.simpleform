@@ -6,6 +6,9 @@ FORM TagList
 		{
 			id @int
 			name string
+			normalizedName string
+			description string
 		}
 	}
 }
+
