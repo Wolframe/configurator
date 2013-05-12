@@ -46,12 +46,12 @@ END
 
 TRANSACTION selectTagSet -- (/tag/id)
 BEGIN
-	FOREACH /tag INTO tag DO NONEMPTY UNIQUE SELECT ID AS id,name,normalizedName AS "normalizedName",description FROM Tag WHERE ID = $(id) ORDER BY ID;
+	FOREACH /tag INTO tag DO UNIQUE SELECT ID AS id,name,normalizedName AS "normalizedName",description FROM Tag WHERE ID = $(id) ORDER BY ID;
 END
 
 TRANSACTION selectPictureTagSet -- (id)
 BEGIN
-	FOREACH /tag INTO tag DO NONEMPTY UNIQUE SELECT PictureTag.tagID AS id,Tag.name,Tag.normalizedName AS "normalizedName",Tag.description FROM Tag,PictureTag WHERE Tag.ID = PictureTag.tagID AND PictureTag.pictureID = $(id) ORDER BY PictureTag.tagID;
+	INTO tag DO SELECT PictureTag.tagID AS id,Tag.name,Tag.normalizedName AS "normalizedName",Tag.description FROM Tag,PictureTag WHERE Tag.ID = PictureTag.tagID AND PictureTag.pictureID = $(id) ORDER BY PictureTag.tagID;
 END
 
 --
