@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>picture_edit_form</class>
- <widget class="QWidget" name="picture_edit_form">
+ <class>dummy</class>
+ <widget class="QWidget" name="dummy">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,6 +15,9 @@
   </property>
   <property name="action" stdset="0">
    <string notr="true">PictureRequest picture {id={id}}</string>
+  </property>
+  <property name="synonym:picture" stdset="0">
+   <string>main</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -65,52 +68,25 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QGroupBox" name="tagwrap">
-     <property name="enabled">
-      <bool>true</bool>
+    <widget class="QListWidget" name="tags">
+     <property name="action" stdset="0">
+      <string>PictureTagSetRequest tags {id = {main.id}}</string>
      </property>
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>100</height>
-      </size>
+     <property name="action:add_tag" stdset="0">
+      <string>TagSetRequest tags { tag [] { id = {tag_select.tag.selected}}}</string>
      </property>
-     <property name="title">
+     <property name="dataslot" stdset="0">
+      <string>add_tag ({main.widgetid}_tag)</string>
+     </property>
+     <property name="link:tag_select" stdset="0">
+      <string>{main.widgetid}_tag</string>
+     </property>
+     <property name="synonym:tag" stdset="0">
+      <string>item</string>
+     </property>
+     <property name="synonym:name" stdset="0">
       <string/>
      </property>
-     <property name="flat">
-      <bool>true</bool>
-     </property>
-     <property name="checkable">
-      <bool>false</bool>
-     </property>
-     <widget class="QTreeWidget" name="tag">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>311</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::MultiSelection</enum>
-      </property>
-      <property name="headerHidden">
-       <bool>true</bool>
-      </property>
-      <property name="expandsOnDoubleClick">
-       <bool>false</bool>
-      </property>
-      <property name="action" stdset="0">
-       <string>TagHierarchyRequest tag {id=1}</string>
-      </property>
-      <column>
-       <property name="text">
-        <string>tag</string>
-       </property>
-      </column>
-     </widget>
     </widget>
    </item>
    <item row="6" column="0">
@@ -121,7 +97,7 @@
     </widget>
    </item>
    <item row="6" column="1">
-    <widget class="PictureChooser" name="image" native="true">
+    <widget class="PictureChooser" name="image">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -154,7 +130,7 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updatePicture picture {id={main.id}; caption{{main.caption}}; info {{main.info}}; tag {{main.tag}}; image {size={main.image.size}; {main.image.base64}}}</string>
+        <string notr="true">updatePicture picture {id={main.id}; caption{{main.caption}}; info {{main.info}}; tag {{main.tags.id}}; image {size={main.image.size}; {main.image.base64}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -240,7 +216,6 @@
  <tabstops>
   <tabstop>caption</tabstop>
   <tabstop>info</tabstop>
-  <tabstop>tag</tabstop>
   <tabstop>image</tabstop>
   <tabstop>save</tabstop>
   <tabstop>reset</tabstop>

@@ -1,1 +1,2 @@
 TagSetRequest=selectTagSet(xml):TagList;
+PictureTagSetRequest=selectPictureTagSet(xml):TagList;

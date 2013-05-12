@@ -73,3 +73,6 @@ BEGIN
 	DO DELETE FROM PictureTag WHERE PictureID = $(id);
 	DO DELETE FROM Picture WHERE ID = $(id);
 END
+
+
+

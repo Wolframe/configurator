@@ -87,7 +87,7 @@
       <string>TagSetRequest tags { tag [] { id = {tag_select.tag.selected}}}</string>
      </property>
      <property name="dataslot" stdset="0">
-      <string>add_tag</string>
+      <string>add_tag ({main.widgetid}_tag)</string>
      </property>
      <property name="link:tag_select" stdset="0">
       <string>{main.widgetid}_tag</string>
@@ -118,17 +118,10 @@
      <item>
       <widget class="QPushButton" name="add_tag_button">
        <property name="text">
-        <string>Add tag...</string>
+        <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string>tag_select?widgetid={main.widgetid}_tag</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="delete_tag_button">
-       <property name="text">
-        <string>Delete tag...</string>
+        <string>tag_select?widgetid={main.widgetid}_tag&amp;tag.selected={tags.id}</string>
        </property>
       </widget>
      </item>
@@ -178,10 +171,13 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createPicture picture {caption{{main.caption}}; info {{main.info}}; tag {{main.tag.selected:}}; image {size={main.image.size}; {main.image.base64}}}</string>
+        <string notr="true">createPicture picture {caption{{main.caption}}; info {{main.info}}; tag {{main.tags.id}}; image {size={main.image.size}; {main.image.base64}}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>picture</string>
        </property>
       </widget>
      </item>
