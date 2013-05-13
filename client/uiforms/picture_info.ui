@@ -25,6 +25,9 @@
   <property name="synonym:image" stdset="0">
    <string>image.base64</string>
   </property>
+  <property name="synonym:tagwrap" stdset="0">
+   <string>main</string>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
