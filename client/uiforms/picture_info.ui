@@ -146,10 +146,16 @@
       </size>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="synonym:picture" stdset="0">
+      <string notr="true">main</string>
+     </property>
+     <property name="synonym:image" stdset="0">
+      <string notr="true">image.base64</string>
      </property>
     </widget>
    </item>
