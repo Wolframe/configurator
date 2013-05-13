@@ -116,7 +116,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="add_tag_button">
+      <widget class="QPushButton" name="add_edit_button">
        <property name="text">
         <string>Edit</string>
        </property>
@@ -206,6 +206,7 @@
   <tabstop>caption</tabstop>
   <tabstop>info</tabstop>
   <tabstop>tags</tabstop>
+  <tabstop>add_edit_button</tabstop>
   <tabstop>image</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>

@@ -828,7 +828,7 @@ local function create_picture( itr)
 	formfunction( "addPicture" )( { picture = picture } )
 end
 
-function editPicture( )
+function updatePicture( )
 	update_picture( input:get())
 end
 
