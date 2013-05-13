@@ -33,18 +33,12 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
+      <widget class="QPushButton" name="edit_2">
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">deletePicture picture {id={picture.selected}}</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
+       <property name="form" stdset="0">
+        <string notr="true">picture_delete?id={picture.selected}</string>
        </property>
       </widget>
      </item>
@@ -199,11 +193,29 @@
   <tabstop>search</tabstop>
   <tabstop>picture</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete</tabstop>
+  <tabstop>edit_2</tabstop>
   <tabstop>edit</tabstop>
+  <tabstop>info</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>picture</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>info</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>214</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>253</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <signal>init()</signal>
  </slots>

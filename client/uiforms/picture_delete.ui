@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>tag_delete_form</class>
- <widget class="QWidget" name="tag_delete_form">
+ <class>picture_delete_form</class>
+ <widget class="QWidget" name="picture_delete_form">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
@@ -9,15 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>298</width>
-    <height>134</height>
+    <width>274</width>
+    <height>114</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Delete tag</string>
   </property>
   <property name="action" stdset="0">
-   <string notr="true">TagRequest tag {id={id}}</string>
+   <string notr="true">PictureRequest picture {id={id}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -36,7 +36,7 @@
    <item row="2" column="1">
     <widget class="QLabel" name="editlabel">
      <property name="text">
-      <string>Delete tag..</string>
+      <string>Delete picture..</string>
      </property>
     </widget>
    </item>
@@ -46,10 +46,7 @@
       <string>Do you really want to delete  '%1' ?</string>
      </property>
      <property name="action" stdset="0">
-      <string>TagRequest tag {id={main.id}}</string>
-     </property>
-     <property name="synonym:name" stdset="0">
-      <string>1</string>
+      <string>PictureRequest picture {id={main.id}}</string>
      </property>
     </widget>
    </item>
@@ -70,14 +67,17 @@
      </item>
      <item>
       <widget class="QPushButton" name="delete_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="text">
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">deleteTag tag {id={main.id}}</string>
+        <string notr="true">deletePicture picture {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string notr="true">tag</string>
+        <string notr="true">picture</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>
@@ -99,7 +99,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>delete_2</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
  <resources>
