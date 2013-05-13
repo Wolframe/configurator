@@ -149,7 +149,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">picture_edit?id={main.id}</string>
+        <string notr="true">_RESET_</string>
        </property>
       </widget>
      </item>
