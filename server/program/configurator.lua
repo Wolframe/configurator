@@ -796,6 +796,8 @@ local function transform_picture( itr )
 	info = formfunction( "imageInfo" )( { [ "data"] = picture["image"] } ):table( )
 	width = info.width
 	height = info.height
+	picture["width"] = width
+	picture["height"] = height
 	size = 50
 	ratio = width / height
 	if ratio > 4 then
