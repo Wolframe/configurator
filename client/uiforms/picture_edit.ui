@@ -16,11 +16,8 @@
   <property name="action" stdset="0">
    <string notr="true">PictureRequest picture {id={id}}</string>
   </property>
-  <property name="synonym:picture" stdset="0">
-   <string>main</string>
-  </property>
-  <property name="synonym:image" stdset="0">
-   <string>image.base64</string>
+  <property name="answer" stdset="0">
+   <string>Picture dummy {picture{id={main.id}; caption{{main.caption}}; image{{main.image.base64}}; size{{?}}; tags{{?}}; used_categories{{?}}; used_features{{?}}}; tagwrap[] {id={?};tag{{?}}}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">

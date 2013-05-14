@@ -62,3 +62,19 @@ FORM PictureListRequest
 	}
 }
 
+FORM PictureList
+{
+	list
+	{
+		picture
+		{
+			id @int
+			caption string
+			info string
+			thumbnail string
+			tags string
+		}
+	}
+}
+
+
