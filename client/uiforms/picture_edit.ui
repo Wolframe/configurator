@@ -92,14 +92,41 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="4" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_edit_button">
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>tag_select?widgetid={main.widgetid}_tag&amp;tag.selected={tags.id}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="0">
     <widget class="QLabel" name="label_image">
      <property name="text">
       <string>Image:</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
+   <item row="7" column="1">
     <widget class="PictureChooser" name="image">
      <property name="minimumSize">
       <size>
@@ -165,28 +192,28 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_used_in_categories">
      <property name="text">
       <string>Used in categories:</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
+   <item row="6" column="0">
     <widget class="QLabel" name="label_used_in_features">
      <property name="text">
       <string>Used in features:</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="5" column="1">
     <widget class="QLabel" name="used_categories">
      <property name="text">
       <string>used in categories</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="6" column="1">
     <widget class="QLabel" name="used_features">
      <property name="text">
       <string>used in features</string>
