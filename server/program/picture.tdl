@@ -50,6 +50,16 @@ BEGIN
 		WHERE Picture.ID = $(id);
 END
 
+TRANSACTION selectPictureAttr -- (/picture/id)
+BEGIN
+	INTO picture DO UNIQUE
+		SELECT Picture.ID AS "id", caption, info FROM Picture
+		WHERE Picture.ID = $(id);
+	INTO tag DO
+		select Tag.ID AS "id", name as _ FROM Tag,PictureTag,Picture
+		WHERE PictureTag.tagID = Tag.ID AND PictureTag.pictureID = Picture.ID AND Picture.ID = $(id);
+END
+
 TRANSACTION updatePicture -- (picture/id, picture/caption, picture/info, picture/image, picture/width, picture/height, picture/thumbnail)
 BEGIN
 	FOREACH picture DO UPDATE Picture SET

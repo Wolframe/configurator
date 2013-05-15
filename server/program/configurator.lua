@@ -755,6 +755,19 @@ function PictureRequest( )
 	output:closetag( )
 end
 
+function PictureAttrRequest( )
+	output:as( {root='dummy', system='PictureAttrResult.simpleform'})
+	filter().empty = false
+	inp = input:table()
+	logger.printc("INPUT selectPictureAttr id='", inp["picture"]["id"], "'")
+	local t = formfunction( "selectPictureAttr" )( { id = inp["picture"]["id"]} )
+	logger.printc("OUTPUT selectPictureAttr=(", t, ")")
+	local f = form( "PictureAttrResult" )
+	f:fill( t:get( ), {"attr"})
+	logger.printc("OUTPUT FORM=(", f:get(), ")")
+	output:print( f:get( ) )
+end
+
 local function transform_picture( itr )
 	-- should be a form transformation, not lua code :-)
 	local picture = {}

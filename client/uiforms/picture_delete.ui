@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>274</width>
+    <width>284</width>
     <height>114</height>
    </rect>
   </property>
@@ -17,7 +17,10 @@
    <string>Delete tag</string>
   </property>
   <property name="action" stdset="0">
-   <string notr="true">PictureRequest picture {id={id}}</string>
+   <string notr="true">PictureAttrRequest picture {id={id}}</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>PictureAttrResult attr {picture {id={?}; caption{{1}}; info{{info}}}; tag[]{id={?}; {?}}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -104,6 +107,7 @@
  <resources>
   <include location="../configurator.qrc"/>
   <include location="../configurator.qrc"/>
+  <include location="../../../../../../.designer/configurator.qrc"/>
  </resources>
  <connections/>
 </ui>

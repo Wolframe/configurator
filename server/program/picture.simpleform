@@ -1,3 +1,29 @@
+FORM PictureAttrRequest
+{
+	picture
+	{
+		id @int
+	}
+}
+
+FORM PictureAttrResult
+{
+	attr
+	{
+		picture
+		{
+			id @int
+			caption string
+			info string
+		}
+		tag []
+		{
+			id @int
+			_ string
+		}
+	}
+}
+
 FORM Picture
 {
 	picture
