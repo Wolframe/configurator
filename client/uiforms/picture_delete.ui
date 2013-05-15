@@ -16,12 +16,6 @@
   <property name="windowTitle">
    <string>Delete tag</string>
   </property>
-  <property name="action" stdset="0">
-   <string notr="true">PictureAttrRequest picture {id={id}}</string>
-  </property>
-  <property name="answer" stdset="0">
-   <string>PictureAttrResult attr {picture {id={?}; caption{{1}}; info{{info}}}; tag[]{id={?}; {?}}}</string>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -49,7 +43,10 @@
       <string>Do you really want to delete  '%1' ?</string>
      </property>
      <property name="action" stdset="0">
-      <string>PictureRequest picture {id={main.id}}</string>
+      <string>PictureAttrRequest picture {id={main.id}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>PictureAttrResult attr {picture {id={?}; caption{{1}}; info{{info}}}; tag[]{id={?}; {?}}}</string>
      </property>
     </widget>
    </item>
@@ -107,7 +104,6 @@
  <resources>
   <include location="../configurator.qrc"/>
   <include location="../configurator.qrc"/>
-  <include location="../../../../../../.designer/configurator.qrc"/>
  </resources>
  <connections/>
 </ui>
