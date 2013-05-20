@@ -19,6 +19,9 @@
   <property name="action" stdset="0">
    <string notr="true">TagRequest tag {id={id}}</string>
   </property>
+  <property name="answer" stdset="0">
+   <string>Tag tag {id={main.id}; parentID={?}; name{{main.name}}; normalizedName{{?}}; description{{main.description}}}</string>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="1" column="0">
     <widget class="QLabel" name="label_name">

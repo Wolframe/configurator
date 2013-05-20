@@ -165,12 +165,10 @@ local function select_node( tablename, elementname, itr)
 	filter().empty = false
 	for v,t in itr do
 		if t == "id" then
-			output:opentag( elementname)
 			local r = formfunction( "select" .. tablename)( {id=v} )
 			local f = form( tablename)
-			f:fill( r:get())
+			f:fill( r:get(), {elementname})
 			output:print( f:get())
-			output:closetag( )
 		end
 	end
 end

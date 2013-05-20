@@ -16,6 +16,9 @@
   <property name="action" stdset="0">
    <string notr="true">CategoryRequest category {id={id}}</string>
   </property>
+  <property name="answer" stdset="0">
+   <string notr="true">Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; normalizedName{{?}}; description{{main.description}}; picture[] {picture {id={?}}}}</string>
+  </property>  
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -77,11 +80,11 @@
      <property name="action" stdset="0">
       <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
-     <property name="synonym:picture">
-      <string>row</string>
+     <property name="answer" stdset="0">
+      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
      </property>
-     <property name="synonym:thumbnail" stdset="0">
-      <string notr="true">thumbnail.pixmap</string>
+     <property name="dataslot" stdset="0">
+      <string notr="true">picture</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

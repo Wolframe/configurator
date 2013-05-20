@@ -91,12 +91,9 @@
         <property name="action" stdset="0">
          <string>TagRequest tag {id={main.id}}</string>
         </property>
-        <property name="synonym:name" stdset="0">
-         <string>1</string>
-        </property>
-        <property name="synonym:description" stdset="0">
-         <string>2</string>
-        </property>
+	    <property name="answer" stdset="0">
+         <string>Tag tag {id={?}; parentID={?}; name{{1}}; normalizedName{{?}}; description{{2}}}</string>
+		</property>
         <property name="state:visible" stdset="0">
          <string>{main.id}&gt;1</string>
         </property>

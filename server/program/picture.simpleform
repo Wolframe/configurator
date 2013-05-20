@@ -92,7 +92,7 @@ FORM PictureList
 {
 	list
 	{
-		picture
+		picture []
 		{
 			id @int
 			caption string
@@ -102,5 +102,6 @@ FORM PictureList
 		}
 	}
 }
+
 
 

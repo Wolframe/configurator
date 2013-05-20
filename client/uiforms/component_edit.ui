@@ -280,8 +280,11 @@
      <property name="action" stdset="0">
       <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
-     <property name="synonym:picture">
-      <string>row</string>
+     <property name="answer" stdset="0">
+      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string notr="true">picture</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

@@ -160,6 +160,9 @@
        <property name="action" stdset="0">
         <string>CategoryFeatureListRequest CategoryFeature {}</string>
        </property>
+       <property name="answer" stdset="0">
+		<string>CategoryFeatureList list {CategoryFeature[] {id={row.id};name{{row.name}};min_requires{{row.min_requires}};max_requires{{row.max_requires}};min_provides{{row.min_provides}};max_provides{{row.max_provides}}}</string>
+       </property>
        <property name="synonym:CategoryFeature">
         <string>row</string>
        </property>

@@ -1,14 +1,17 @@
 FORM Feature
 {
-	id @int
-	parentID @int
-	root ?int
-	name string
-	normalizedName string
-	description string
-	picture []
+	feature
 	{
 		id @int
+		parentID @int
+		root ?int
+		name string
+		normalizedName string
+		description string
+		picture []
+		{
+			id @int
+		}
 	}
 }
 
@@ -22,9 +25,22 @@ FORM deleteFeature
 
 FORM updateFeature
 {
-	feature
+	_ Feature
+}
+
+FORM FeatureHierarchyNode
+{
+	id @int
+	parentID @int
+	name string
+	item FeatureHierarchyNode[]
+}
+
+FORM FeatureHierarchy
+{
+	tree
 	{
-		_ Feature
+		item FeatureHierarchyNode[]
 	}
 }
 

@@ -1,14 +1,17 @@
 FORM Category
 {
-	id @int
-	parentID @int
-	root ?string
-	name string
-	normalizedName string
-	description string
-	picture []
+	category
 	{
 		id @int
+		parentID @int
+		root ?string
+		name string
+		normalizedName string
+		description string
+		picture []
+		{
+			id @int
+		}
 	}
 }
 
@@ -22,9 +25,22 @@ FORM deleteCategory
 
 FORM updateCategory
 {
-	category
+	_ Category
+}
+
+FORM CategoryHierarchyNode
+{
+	id @int
+	parentID @int
+	name string
+	item CategoryHierarchyNode[]
+}
+
+FORM CategoryHierarchy
+{
+	tree
 	{
-		_ Category
+		item CategoryHierarchyNode[]
 	}
 }
 
