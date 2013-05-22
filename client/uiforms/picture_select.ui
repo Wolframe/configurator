@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>picture_select_form</class>
  <widget class="QWidget" name="picture_select_form">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -39,9 +42,6 @@
        </property>
        <property name="text">
         <string>&amp;Cancel</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">deletePicture picture {id={picture.id}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -170,15 +170,8 @@
        <property name="initialFocus" stdset="0">
         <bool>true</bool>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="searchButton">
-       <property name="text">
-        <string>Search..</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
+       <property name="datasignal:changed" stdset="0">
+        <string>picture</string>
        </property>
       </widget>
      </item>
@@ -188,7 +181,6 @@
  </widget>
  <tabstops>
   <tabstop>search</tabstop>
-  <tabstop>searchButton</tabstop>
   <tabstop>picture</tabstop>
   <tabstop>select</tabstop>
   <tabstop>cancel</tabstop>
@@ -198,22 +190,6 @@
   <include location="../configurator.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>search</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>473</x>
-     <y>35</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>512</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>picture</sender>
    <signal>doubleClicked(QModelIndex)</signal>

@@ -6,12 +6,7 @@ FORM Category
 		parentID @int
 		root ?string
 		name string
-		normalizedName string
 		description string
-		picture []
-		{
-			id @int
-		}
 	}
 }
 
@@ -44,4 +39,23 @@ FORM CategoryHierarchy
 	}
 }
 
+FORM CategoryPictureListRequest 
+{
+	category
+	{
+		id @int
+	}
+}
+
+FORM CategoryPictureList
+{
+	pictures
+	{
+		picture []
+		{
+			id @int
+			thumbnail string
+		}
+	}
+}
 

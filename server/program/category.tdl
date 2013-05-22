@@ -41,12 +41,16 @@ END
 TRANSACTION selectCategory -- (id)
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
-		normalizedName AS "normalizedName",description
+		description
 		FROM Category WHERE ID = $(id);
-	INTO picture DO 
-		SELECT CategoryPicture.pictureID AS "id"
-			FROM CategoryPicture
-			WHERE CategoryPicture.categoryID = $(id);
+END
+
+TRANSACTION selectCatogeryPictures -- (id)
+BEGIN
+	INTO picture DO SELECT pictureID AS "id", thumbnail
+		FROM CategoryPicture, Picture
+		WHERE CategoryPicture.pictureID = Picture.ID
+		AND CategoryPicture.categoryID = $(id);
 END
 
 TRANSACTION selectCategoryByNormalizedName -- (normalizedName)
