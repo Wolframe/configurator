@@ -45,31 +45,12 @@ BEGIN
 		FROM Category WHERE ID = $(id);
 END
 
-TRANSACTION selectCatogeryPictures -- (id,add)
+TRANSACTION selectCatogeryPictures -- (id)
 BEGIN
-	INTO picture DO SELECT pictureID AS "id", thumbnail
+	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM CategoryPicture, Picture
 		WHERE CategoryPicture.pictureID = Picture.ID
 		AND CategoryPicture.categoryID = $(id);
-END
-
-TRANSACTION selectCatogeryPicturesAdd -- (id,add)
-BEGIN
-	INTO picture DO
-		SELECT pictureID AS "id", thumbnail
-			FROM CategoryPicture, Picture
-			WHERE CategoryPicture.pictureID = Picture.ID
-			AND CategoryPicture.categoryID = $(id);
-
-	FOREACH /add INTO picture DO
-		SELECT ID,thumbnail FROM Picture
-			WHERE ID = $(.)
-			AND ID NOT IN
-				(SELECT pictureID AS "id"
-					FROM CategoryPicture, Picture
-					WHERE CategoryPicture.pictureID = Picture.ID
-					AND CategoryPicture.categoryID = $(/id)
-				);
 END
 
 TRANSACTION selectCategoryByNormalizedName -- (normalizedName)

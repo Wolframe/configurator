@@ -111,6 +111,7 @@ FORM PictureThumbnailList
 		{
 			id @int
 			thumbnail string
+			caption string
 		}
 	}
 }

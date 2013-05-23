@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>picture_select_form</class>
  <widget class="QWidget" name="picture_select_form">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -39,12 +36,6 @@
        </property>
        <property name="text">
         <string>&amp;Ok</string>
-       </property>
-       <property name="default">
-        <bool>false</bool>
-       </property>
-       <property name="flat">
-        <bool>false</bool>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
