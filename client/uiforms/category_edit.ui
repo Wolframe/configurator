@@ -95,7 +95,16 @@
       <string>CategoryPictureListRequest category {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>CategoryPictureList pictures {picture[] {id={pictures.item.id}; thumbnail{{pictures.item.icon}} }}</string>
+      <string>CategoryPictureList pictures {picture[] {id={item.id}; thumbnail{{item.icon}} }}</string>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string>select_picture ({main.widgetid}_picture)</string>
+     </property>
+     <property name="link:picture_add" stdset="0">
+      <string>{main.widgetid}_picture</string>
+     </property>
+     <property name="action:select_picture" stdset="0">
+      <string>CategoryPictureListAddRequest category {id={main.id}; add[]{{picture_add.picture.selected}}}</string>
      </property>
     </widget>
    </item>
@@ -168,12 +177,22 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="add_edit_button">
+      <widget class="QPushButton" name="edit_pictures">
        <property name="text">
-        <string>Edit</string>
+        <string>Edit Pictures</string>
        </property>
        <property name="form" stdset="0">
-        <string>picture_select?widgetid={main.widgetid}_picture&amp;picture.selected={pictures.id}</string>
+        <string>picture_select_edit?widgetid={main.widgetid}_picture&amp;id={main.pictures.id}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_pictures">
+       <property name="text">
+        <string>Add Pictures</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>picture_select?widgetid={main.widgetid}_picture</string>
        </property>
       </widget>
      </item>
