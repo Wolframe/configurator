@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
+    <width>495</width>
     <height>358</height>
    </rect>
   </property>
@@ -92,6 +92,27 @@
      </property>
      <property name="action" stdset="0">
       <string notr="true">CategoryHierarchyRequest category {id=1}</string>
+     </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">add, edit, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Category</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Category</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Category</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string notr="true">category_add?id={selected:1}</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">category_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">category_delete?id={selected:1}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>250</number>
