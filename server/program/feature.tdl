@@ -44,10 +44,14 @@ BEGIN
 		SELECT ID AS id, parentID AS "parentID", name,
 			normalizedName AS "normalizedName", description
 			FROM Feature WHERE ID = $(id);
-	INTO picture DO
-		SELECT pictureID AS "id"
-			FROM FeaturePicture
-			WHERE FeaturePicture.featureID = $(id);
+END
+
+TRANSACTION selectFeaturePictures -- (id)
+BEGIN
+	INTO picture DO SELECT pictureID AS "id", thumbnail
+		FROM FeaturePicture, Picture
+		WHERE FeaturePicture.pictureID = Picture.ID
+		AND FeaturePicture.featureID = $(id);
 END
 
 TRANSACTION selectFeatureByNormalizedName -- (normalizedName)

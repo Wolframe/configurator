@@ -2,4 +2,4 @@ TagSetRequest=selectTagSet(xml):TagList;
 PictureTagSetRequest=selectPictureTagSet(xml):TagList;
 CategoryPictureListRequest=selectCatogeryPictures(xml):CategoryPictureList;
 CategoryPictureListAddRequest=selectCatogeryPicturesAdd(xml):CategoryPictureList;
-
+FeaturePictureListRequest=selectFeaturePictures(xml):FeaturePictureList;

@@ -23,6 +23,23 @@
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
    </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="../configurator.qrc">:/images/chart_organisation_edit.png</pixmap>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Edit feature..</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_name">
      <property name="text">
@@ -53,64 +70,14 @@
    <item row="2" column="1">
     <widget class="QPlainTextEdit" name="description"/>
    </item>
-   <item row="4" column="1">
-    <widget class="QTableWidget" name="picture">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Pictures:</string>
      </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
+     <property name="buddy">
+      <cstring>pictures</cstring>
      </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::MultiSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
-     </property>
-     <property name="answer" stdset="0">
-      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>thumbnail</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>caption</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>info</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>tags</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item row="5" column="0" colspan="2">
@@ -134,10 +101,13 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateFeature feature {id={main.id}; name{{main.name}}; description{{main.description}}}</string>
+        <string notr="true">editFeature feature {id={main.id}; name{{main.name}}; description{{main.description}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">features</string>
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>features</string>
        </property>
       </widget>
      </item>
@@ -147,7 +117,7 @@
         <string>Reset</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">FeatureRequest feature {id={main.id}}</string>
+        <string notr="true">_RESET_</string>
        </property>
       </widget>
      </item>
@@ -157,13 +127,32 @@
         <string>Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">features</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
    <item row="3" column="1">
+    <widget class="QListWidget" name="pictures">
+     <property name="iconSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="action" stdset="0">
+      <string>FeaturePictureListRequest feature {id={main.id}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>FeaturePictureList pictures {picture[] {id={pictures.item.id}; thumbnail{{pictures.item.icon}} }}</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <spacer name="horizontalSpacer_2">
@@ -179,65 +168,24 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QPushButton" name="add_edit_button">
        <property name="text">
-        <string>Filter pictures by:</string>
+        <string>Edit</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="search"/>
-     </item>
-     <item>
-      <widget class="QPushButton" name="searchButton">
-       <property name="text">
-        <string>Search..</string>
-       </property>
-       <property name="global_searchState" stdset="0">
-        <string notr="true">_w_state</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
+       <property name="form" stdset="0">
+        <string>picture_select?widgetid={main.widgetid}_picture&amp;picture.selected={pictures.id}</string>
        </property>
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Pictures:</string>
-     </property>
-     <property name="buddy">
-      <cstring>picture</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../configurator.qrc">:/images/chart_organisation_edit.png</pixmap>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Edit feature..</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
   <tabstop>description</tabstop>
-  <tabstop>search</tabstop>
-  <tabstop>searchButton</tabstop>
-  <tabstop>picture</tabstop>
+  <tabstop>pictures</tabstop>
+  <tabstop>add_edit_button</tabstop>
   <tabstop>save</tabstop>
   <tabstop>reset</tabstop>
   <tabstop>cancel</tabstop>
@@ -246,22 +194,5 @@
   <include location="../configurator.qrc"/>
   <include location="../configurator.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>search</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>299</x>
-     <y>242</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>380</x>
-     <y>244</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

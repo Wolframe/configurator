@@ -6,6 +6,7 @@ FORM Category
 		parentID @int
 		root ?string
 		name string
+		normalizedName ?string
 		description string
 		pictures
 		{
@@ -74,4 +75,3 @@ FORM CategoryPictureList
 		}
 	}
 }
-

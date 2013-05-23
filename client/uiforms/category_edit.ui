@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>582</width>
-    <height>541</height>
+    <width>417</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -74,6 +74,9 @@
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Pictures:</string>
+     </property>
+     <property name="buddy">
+      <cstring>pictures</cstring>
      </property>
     </widget>
    </item>
@@ -197,6 +200,8 @@
  <tabstops>
   <tabstop>name</tabstop>
   <tabstop>description</tabstop>
+  <tabstop>pictures</tabstop>
+  <tabstop>add_edit_button</tabstop>
   <tabstop>save</tabstop>
   <tabstop>reset</tabstop>
   <tabstop>cancel</tabstop>

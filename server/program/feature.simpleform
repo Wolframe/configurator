@@ -4,14 +4,10 @@ FORM Feature
 	{
 		id @int
 		parentID @int
-		root ?int
+		root ?string
 		name string
-		normalizedName string
+		normalizedName ?string
 		description string
-		picture []
-		{
-			id @int
-		}
 	}
 }
 
@@ -44,5 +40,22 @@ FORM FeatureHierarchy
 	}
 }
 
+FORM FeaturePictureListRequest 
+{
+	feature
+	{
+		id @int
+	}
+}
 
-
+FORM FeaturePictureList
+{
+	features
+	{
+		feature []
+		{
+			id @int
+			thumbnail string
+		}
+	}
+}
