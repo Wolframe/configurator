@@ -22,6 +22,27 @@
      <property name="itemsExpandable">
       <bool>true</bool>
      </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">add, edit, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Feature</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Feature</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Feature</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string notr="true">feature_add?id={selected:1}</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">feature_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">feature_delete?id={selected:1}</string>
+     </property>
      <property name="dataslot" stdset="0">
       <string notr="true">features</string>
      </property>
