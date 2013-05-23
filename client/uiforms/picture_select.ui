@@ -40,6 +40,12 @@
        <property name="text">
         <string>&amp;Ok</string>
        </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
        </property>

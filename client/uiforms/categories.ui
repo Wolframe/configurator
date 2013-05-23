@@ -43,7 +43,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_add?parentid={category.selected:1}</string>
+        <string notr="true">category_add?id={category.selected:1}&amp;root.selected={category.selected:no:yes}</string>
        </property>
       </widget>
      </item>
@@ -52,11 +52,8 @@
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteCategory category {id={category.selected}}</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">categories</string>
+       <property name="form" stdset="0">
+        <string notr="true">category_delete?id={category.selected}</string>
        </property>
       </widget>
      </item>
@@ -125,7 +122,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/images/folders.png</pixmap>
+        <pixmap resource="../configurator.qrc">:/images/folders.png</pixmap>
        </property>
       </widget>
      </item>
