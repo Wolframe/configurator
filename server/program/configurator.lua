@@ -303,7 +303,7 @@ function TagRequest()
 	select_node( "Tag", "tag", input:get())
 end
 
-function editCategory()
+function updateCategory()
 	edit_node( "Category", input:get())
 end
 

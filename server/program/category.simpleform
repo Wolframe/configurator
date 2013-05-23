@@ -7,6 +7,13 @@ FORM Category
 		root ?string
 		name string
 		description string
+		pictures
+		{
+			picture []
+			{
+				id @int
+			}
+		}
 	}
 }
 

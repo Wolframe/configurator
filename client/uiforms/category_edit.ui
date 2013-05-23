@@ -126,13 +126,10 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">editCategory category {id={main.id}; name{{main.name}}; description{{main.description}}}</string>
+        <string notr="true">updateCategory category {id={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}}} </string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string>categories</string>
        </property>
       </widget>
      </item>
@@ -186,7 +183,7 @@
      <item>
       <widget class="QPushButton" name="add_pictures">
        <property name="text">
-        <string>Add Pictures</string>
+        <string>New Pictures</string>
        </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>
