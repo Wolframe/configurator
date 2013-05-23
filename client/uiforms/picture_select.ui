@@ -27,11 +27,17 @@
        <property name="text">
         <string>&amp;Select</string>
        </property>
-       <property name="form" stdset="0">
-        <string notr="true">picture_add</string>
+       <property name="default">
+        <bool>false</bool>
        </property>
-       <property name="global.pictureState" stdset="0">
-        <string>{picture.state}</string>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>add_picture</string>
        </property>
       </widget>
      </item>

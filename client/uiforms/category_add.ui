@@ -59,16 +59,6 @@
      <property name="text">
       <string>As Root:</string>
      </property>
-     <property name="buddy">
-      <cstring>root</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QCheckBox" name="root">
-     <property name="text">
-      <string/>
-     </property>
     </widget>
    </item>
    <item row="3" column="0">
@@ -91,7 +81,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="6" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -117,6 +107,9 @@
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
        </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>categories</string>
+       </property>
       </widget>
      </item>
      <item>
@@ -131,11 +124,100 @@
      </item>
     </layout>
    </item>
+   <item row="2" column="1">
+    <widget class="QGroupBox" name="root">
+     <property name="title">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QRadioButton" name="yes">
+        <property name="text">
+         <string>as root</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="no">
+        <property name="text">
+         <string>as child of '%1'</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="action" stdset="0">
+         <string>CategoryRequest category {id={main.id}}</string>
+        </property>
+        <property name="answer" stdset="0">
+         <string>Category category {id={?}; parentID={?}; name{{1}}; normalizedName{{?}}; description{{2}}}</string>
+        </property>
+        <property name="state:visible" stdset="0">
+         <string>{main.id}&gt;1</string>
+        </property>
+        <property name="state:enabled" stdset="0">
+         <string>{main.id}&gt;1</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QListWidget" name="pictures">
+     <property name="iconSize">
+      <size>
+       <width>50</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="action" stdset="0">
+      <string>CategoryPictureListRequest category {id={main.id}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>CategoryPictureList pictures {picture[] {id={pictures.item.id}; thumbnail{{pictures.item.icon}} }}</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_edit_button">
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>picture_select?widgetid={main.widgetid}_picture&amp;picture.selected={pictures.id}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
-  <tabstop>root</tabstop>
   <tabstop>description</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
