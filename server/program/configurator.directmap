@@ -1,5 +1,6 @@
 TagSetRequest=selectTagSet(xml):TagList;
 PictureTagSetRequest=selectPictureTagSet(xml):TagList;
-CategoryPictureListRequest=selectCatogeryPictures(xml):CategoryPictureList;
-CategoryPictureListAddRequest=selectCatogeryPicturesAdd(xml):CategoryPictureList;
+CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
+CategoryPictureListAddRequest=selectCatogeryPicturesAdd(xml):PictureThumbnailList;
+PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;
 FeaturePictureListRequest=selectFeaturePictures(xml):FeaturePictureList;

@@ -64,14 +64,12 @@ FORM CategoryPictureListAddRequest
 	}
 }
 
-FORM CategoryPictureList
+FORM CategoryPictureListExcludeRequest
 {
-	pictures
+	category
 	{
-		picture []
-		{
-			id @int
-			thumbnail string
-		}
+		id @int
+		exclude int[]
 	}
 }
+

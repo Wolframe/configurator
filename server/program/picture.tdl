@@ -1,3 +1,9 @@
+TRANSACTION getPictureThumbnailList
+BEGIN
+	FOREACH /picture INTO picture DO
+		SELECT ID AS "id",thumbnail FROM Picture WHERE ID = $(id);
+END
+
 TRANSACTION selectPictureList
 RESULT INTO list
 BEGIN
