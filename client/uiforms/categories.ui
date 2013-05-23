@@ -52,9 +52,6 @@
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">categories</string>
-       </property>
        <property name="form" stdset="0">
         <string notr="true">category_delete?id={category.selected}</string>
        </property>
