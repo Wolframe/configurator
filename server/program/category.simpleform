@@ -47,6 +47,15 @@ FORM CategoryPictureListRequest
 	}
 }
 
+FORM CategoryPictureListAddRequest
+{
+	category
+	{
+		id @int
+		add int[]
+	}
+}
+
 FORM CategoryPictureList
 {
 	pictures
