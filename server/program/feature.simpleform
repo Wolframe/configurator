@@ -48,14 +48,3 @@ FORM FeaturePictureListRequest
 	}
 }
 
-FORM FeaturePictureList
-{
-	features
-	{
-		feature []
-		{
-			id @int
-			thumbnail string
-		}
-	}
-}

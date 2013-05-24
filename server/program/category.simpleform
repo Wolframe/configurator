@@ -55,21 +55,3 @@ FORM CategoryPictureListRequest
 	}
 }
 
-FORM CategoryPictureListAddRequest
-{
-	category
-	{
-		id @int
-		add int[]
-	}
-}
-
-FORM CategoryPictureListExcludeRequest
-{
-	category
-	{
-		id @int
-		exclude int[]
-	}
-}
-

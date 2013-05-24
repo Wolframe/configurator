@@ -307,7 +307,7 @@ function updateCategory()
 	edit_node( "Category", input:get())
 end
 
-function editFeature()
+function updateFeature()
 	edit_node( "Feature", input:get())
 end
 

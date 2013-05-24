@@ -71,16 +71,6 @@
    <item row="3" column="1">
     <widget class="QPlainTextEdit" name="description"/>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Pictures:</string>
-     </property>
-     <property name="buddy">
-      <cstring>pictures</cstring>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -102,7 +92,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createFeature feature {parentID={main.id}; name{{main.name}}; description{{main.description}}} </string>
+        <string notr="true">createFeature feature {parentID={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}} }</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -168,22 +158,41 @@
      </layout>
     </widget>
    </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_picture">
+     <property name="text">
+      <string>Pictures:</string>
+     </property>
+     <property name="buddy">
+      <cstring>pictures</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="1">
     <widget class="QListWidget" name="pictures">
      <property name="iconSize">
       <size>
        <width>50</width>
-       <height>50</height>
+       <height>30</height>
       </size>
      </property>
      <property name="viewMode">
       <enum>QListView::IconMode</enum>
      </property>
-     <property name="action" stdset="0">
-      <string>FeaturePictureListRequest feature {id={main.id}}</string>
-     </property>
      <property name="answer" stdset="0">
-      <string>FeaturePictureList pictures {picture[] {id={pictures.item.id}; thumbnail{{pictures.item.icon}} }}</string>
+      <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string>exclude_picture, select_picture ({main.widgetid}_picture)</string>
+     </property>
+     <property name="link:picture_add" stdset="0">
+      <string>{main.widgetid}_picture</string>
+     </property>
+     <property name="action:select_picture" stdset="0">
+      <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
+     </property>
+     <property name="action:exclude_picture" stdset="0">
+      <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
      </property>
     </widget>
    </item>
@@ -203,12 +212,25 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="add_edit_button">
+      <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Edit</string>
+        <string>Exclude Picture</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>exclude_picture@main.pictures</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="new_pictures">
+       <property name="text">
+        <string>New Picture</string>
        </property>
        <property name="form" stdset="0">
-        <string>picture_select?widgetid={main.widgetid}_picture&amp;picture.selected={pictures.id}</string>
+        <string>picture_select?widgetid={main.widgetid}_picture</string>
+       </property>
+       <property name="datasignal:destroyed" stdset="0">
+        <string>close@{main.widgetid}_picture</string>
        </property>
       </widget>
      </item>
@@ -222,7 +244,8 @@
   <tabstop>no</tabstop>
   <tabstop>description</tabstop>
   <tabstop>pictures</tabstop>
-  <tabstop>add_edit_button</tabstop>
+  <tabstop>exclude_pictures</tabstop>
+  <tabstop>new_pictures</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
