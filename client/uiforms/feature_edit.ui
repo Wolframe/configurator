@@ -17,7 +17,7 @@
    <string notr="true">FeatureRequest feature {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string notr="true">Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.name}}; normalizedName{{?}}; description{{main.description}}; picture[] {picture {id={?}}}}</string>
+   <string notr="true">Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; picture[] {picture {id={?}}}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">

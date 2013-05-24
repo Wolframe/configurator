@@ -57,7 +57,7 @@ TRANSACTION selectCategoryByNormalizedName -- (normalizedName)
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT ID AS id, parentID AS "parentID", name,
-			normalizedName AS "normalizedName",description FROM Category
+			description FROM Category
 			WHERE normalizedName = $(normalizedName);
 	INTO picture DO
 		SELECT pictureID AS "id"
@@ -68,7 +68,7 @@ END
 TRANSACTION selectCategorySet -- (/category/id)
 BEGIN
 	FOREACH /category INTO category DO NONEMPTY UNIQUE
-		SELECT ID AS "ID", name, normalizedName AS "normalizedName", description
+		SELECT ID AS "ID", name, description
 			FROM Category WHERE ID = $(id) ORDER BY ID;
 END
 
@@ -77,7 +77,7 @@ END
 --
 TRANSACTION selectTopCategory -- (id)
 BEGIN
-	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.normalizedName AS "normalizedName",P2.description FROM category AS P1, category AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
+	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.description FROM category AS P1, category AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
 END
 
 --
@@ -85,5 +85,5 @@ END
 --
 TRANSACTION selectSubCategory -- (id)
 BEGIN
-	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.normalizedName AS "normalizedName",P1.description FROM category AS P1, category AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
+	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM category AS P1, category AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END
