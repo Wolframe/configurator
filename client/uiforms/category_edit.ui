@@ -79,6 +79,9 @@
    </item>
    <item row="3" column="1">
     <widget class="QListWidget" name="pictures">
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
+     </property>
      <property name="iconSize">
       <size>
        <width>50</width>
@@ -126,7 +129,7 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Exclude Picture</string>
+        <string>Remove Picture</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>
@@ -136,7 +139,7 @@
      <item>
       <widget class="QPushButton" name="new_pictures">
        <property name="text">
-        <string>New Picture</string>
+        <string>Add Picture(s)..</string>
        </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>
