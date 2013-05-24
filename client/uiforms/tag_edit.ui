@@ -20,7 +20,7 @@
    <string notr="true">TagRequest tag {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Tag tag {id={main.id}; parentID={?}; name{{main.name}}; normalizedName{{?}}; description{{main.description}}}</string>
+   <string>Tag tag {id={main.id}; parentID={?}; name{{main.name}}; description{{main.description}}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <item row="1" column="0">

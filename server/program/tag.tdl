@@ -36,22 +36,22 @@ END
 --
 TRANSACTION selectTag -- (id)
 BEGIN
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,normalizedName AS "normalizedName",description FROM Tag WHERE ID = $(id);
+	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE ID = $(id);
 END
 
 TRANSACTION selectTagByNormalizedName -- (normalizedName)
 BEGIN
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,normalizedName AS "normalizedName",description FROM Tag WHERE normalizedName = $(normalizedName);
+	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE normalizedName = $(normalizedName);
 END
 
 TRANSACTION selectTagSet -- (/tag/id)
 BEGIN
-	FOREACH /tag INTO tag DO UNIQUE SELECT ID AS id,name,normalizedName AS "normalizedName",description FROM Tag WHERE ID = $(id) ORDER BY ID;
+	FOREACH /tag INTO tag DO UNIQUE SELECT ID AS id,name,description FROM Tag WHERE ID = $(id) ORDER BY ID;
 END
 
 TRANSACTION selectPictureTagSet -- (id)
 BEGIN
-	INTO tag DO SELECT PictureTag.tagID AS id,Tag.name,Tag.normalizedName AS "normalizedName",Tag.description FROM Tag,PictureTag WHERE Tag.ID = PictureTag.tagID AND PictureTag.pictureID = $(id) ORDER BY PictureTag.tagID;
+	INTO tag DO SELECT PictureTag.tagID AS id,Tag.name,Tag.description FROM Tag,PictureTag WHERE Tag.ID = PictureTag.tagID AND PictureTag.pictureID = $(id) ORDER BY PictureTag.tagID;
 END
 
 --
@@ -59,7 +59,7 @@ END
 --
 TRANSACTION selectTopTag -- (id)
 BEGIN
-	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.normalizedName AS "normalizedName",P2.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
+	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
 END
 
 --
@@ -67,6 +67,6 @@ END
 --
 TRANSACTION selectSubTag -- (id)
 BEGIN
-	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.normalizedName AS "normalizedName",P1.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
+	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END
 

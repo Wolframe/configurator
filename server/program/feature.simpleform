@@ -6,7 +6,6 @@ FORM Feature
 		parentID @int
 		root ?string
 		name string
-		normalizedName ?string
 		description string
 	}
 }

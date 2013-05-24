@@ -145,7 +145,7 @@
          <string>FeatureRequest feature {id={main.id}}</string>
         </property>
         <property name="answer" stdset="0">
-         <string>Feature feature {id={?}; parentID={?}; name{{1}}; normalizedName{{?}}; description{{2}}}</string>
+         <string>Feature feature {id={?}; parentID={?}; name{{1}}; description{{2}}}</string>
         </property>
         <property name="state:visible" stdset="0">
          <string>{main.id}&gt;1</string>
