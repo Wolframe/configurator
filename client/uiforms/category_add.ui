@@ -230,7 +230,10 @@
         <string>New Picture</string>
        </property>
        <property name="form" stdset="0">
-        <string>picture_select?widgetid={main.widgetid}_picture&amp;prev_picture_id={main.pictures.id}</string>
+        <string>picture_select?widgetid={main.widgetid}_picture</string>
+       </property>
+       <property name="datasignal:destroyed" stdset="0">
+        <string>close@{main.widgetid}_picture</string>
        </property>
       </widget>
      </item>
