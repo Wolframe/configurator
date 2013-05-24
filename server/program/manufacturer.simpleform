@@ -12,3 +12,24 @@ FORM Manufacturer
 		}
 	}
 }
+
+FORM ManufacturerPictureRequest
+{
+	manufacturer
+	{
+		id @int
+	}
+}
+
+FORM ManufacturerPicture
+{
+	manufacturer
+	{
+		picture
+		{
+			id @int
+			image string;
+		}
+	}
+}
+

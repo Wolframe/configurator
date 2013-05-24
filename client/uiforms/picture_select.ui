@@ -35,7 +35,7 @@
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>&amp;Ok</string>
+        <string>Add</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>select_picture</string>
@@ -48,7 +48,7 @@
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>Done</string>
+        <string>Ok</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>

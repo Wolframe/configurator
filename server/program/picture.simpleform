@@ -116,4 +116,14 @@ FORM PictureThumbnailList
 	}
 }
 
+FORM PictureThumbnail
+{
+	picture
+	{
+		id @int
+		thumbnail string
+		caption string
+	}
+}
+
 
