@@ -34,11 +34,8 @@
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteManufacturer manufacturer {id={manufacturer.selected}}</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">manufacturer</string>
+       <property name="form" stdset="0">
+        <string notr="true">manufacturer_delete?id={manufacturer.selected}</string>
        </property>
       </widget>
      </item>
@@ -48,7 +45,7 @@
         <string>Edit</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">manufacturer_edit?id={manufacturer.id}</string>
+        <string notr="true">manufacturer_edit?id={manufacturer.selected}</string>
        </property>
       </widget>
      </item>

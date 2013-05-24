@@ -3,5 +3,6 @@ PictureTagSetRequest=selectPictureTagSet(xml):TagList;
 
 CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
 FeaturePictureListRequest=selectFeaturePictures(xml):PictureThumbnailList;
+ManufacturerPictureListRequest=selectManufacturerPictures(xml):PictureThumbnailList;
 
 PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;

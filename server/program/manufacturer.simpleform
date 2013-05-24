@@ -9,9 +9,6 @@ FORM Manufacturer
 		picture
 		{
 			id @int
-			image string
-			_ string
 		}
-		search string
 	}
 }

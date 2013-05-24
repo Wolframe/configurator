@@ -33,9 +33,20 @@ BEGIN
 		FROM Manufacturer
 		WHERE Manufacturer.ID = $(id);
 	INTO picture DO
+		SELECT Picture.ID AS "id"
+		FROM Manufacturer
+		LEFT JOIN Picture
+		ON Manufacturer.logo = Picture.ID
+		WHERE Manufacturer.ID = $(id);
+END
+
+TRANSACTION selectManufacturerPicture -- (id)
+BEGIN
+	INTO picture DO
 		SELECT Picture.ID AS "id", image
 		FROM Manufacturer
 		LEFT JOIN Picture
 		ON Manufacturer.logo = Picture.ID
 		WHERE Manufacturer.ID = $(id);
 END
+
