@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>565</width>
-    <height>274</height>
+    <width>570</width>
+    <height>292</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>570</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Pictures</string>
@@ -107,7 +113,7 @@
       <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
+      <string>PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{row.tags}}}</string>
      </property>
      <property name="dataslot" stdset="0">
       <string notr="true">picture</string>
@@ -138,9 +144,6 @@
      </property>
      <property name="form:info" stdset="0">
       <string notr="true">picture_info?id={selected:1}</string>
-     </property>
-     <property name="answer" stdset="0">
-      <string>PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{row.tags}}}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
