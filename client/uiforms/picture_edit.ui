@@ -73,7 +73,7 @@
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="selectionMode">
-      <enum>QAbstractItemView::MultiSelection</enum>
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="flow">
       <enum>QListView::LeftToRight</enum>

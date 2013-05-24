@@ -6,15 +6,105 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>626</width>
-    <height>344</height>
+    <width>304</width>
+    <height>189</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Pictures</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="0">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../configurator.qrc">:/images/picture.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Filter pictures by:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="search">
+       <property name="initialFocus" stdset="0">
+        <bool>true</bool>
+       </property>
+       <property name="datasignal:changed" stdset="0">
+        <string>picture</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QListWidget" name="picture">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::MultiSelection</enum>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="isWrapping" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="selectionRectVisible">
+      <bool>false</bool>
+     </property>
+     <property name="action" stdset="0">
+      <string>PictureListRequest picture {search{{main.search}}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>PictureList list {picture[] {id={item.id}; caption{{?}}; thumbnail{{item.icon}}; info {{?}};  tags{{?}}}}</string>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string>picture</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -67,139 +157,17 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
-    <widget class="QTableWidget" name="picture">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
-     </property>
-     <property name="answer" stdset="0">
-      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>thumbnail</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>caption</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>info</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>tags</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/picture.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Filter pictures by:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="search">
-       <property name="initialFocus" stdset="0">
-        <bool>true</bool>
-       </property>
-       <property name="datasignal:changed" stdset="0">
-        <string>picture</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>search</tabstop>
-  <tabstop>picture</tabstop>
   <tabstop>cancel</tabstop>
   <tabstop>info</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>picture</sender>
-   <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>info</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>291</x>
-     <y>132</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>292</x>
-     <y>254</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <signal>init()</signal>
  </slots>
