@@ -146,7 +146,7 @@
       <string notr="true">picture_info?id={selected:1}</string>
      </property>
      <property name="column:0:width" stdset="0">
-      <number>100</number>
+      <number>80</number>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>200</number>
