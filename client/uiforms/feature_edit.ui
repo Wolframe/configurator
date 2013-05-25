@@ -14,10 +14,10 @@
    <string>Edit feature</string>
   </property>
   <property name="action" stdset="0">
-   <string notr="true">FeatureRequest feature {id={id}}</string>
+   <string>FeatureRequest feature {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string notr="true">Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; picture[] {picture {id={?}}}}</string>
+   <string>Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; used_categories {{main.used_categories}}; picture[] {picture {id={?}}}}</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -108,47 +108,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="exclude_pictures">
-       <property name="text">
-        <string>Remove picture</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string>exclude_picture@main.pictures</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="new_pictures">
-       <property name="text">
-        <string>Add picture(s)..</string>
-       </property>
-       <property name="form" stdset="0">
-        <string>picture_select?widgetid={main.widgetid}_picture</string>
-       </property>
-       <property name="datasignal:destroyed" stdset="0">
-        <string>close@{main.widgetid}_picture</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="5" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer">
@@ -184,7 +144,7 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="action" stdset="0">
+       <property name="form" stdset="0">
         <string notr="true">_RESET_</string>
        </property>
       </widget>
@@ -196,6 +156,60 @@
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Used in categories:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLabel" name="used_categories">
+     <property name="text">
+      <string>none</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exclude_pictures">
+       <property name="text">
+        <string>Remove picture</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>exclude_picture@main.pictures</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="new_pictures">
+       <property name="text">
+        <string>Add picture(s)..</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>picture_select?widgetid={main.widgetid}_picture</string>
+       </property>
+       <property name="datasignal:destroyed" stdset="0">
+        <string>close@{main.widgetid}_picture</string>
        </property>
       </widget>
      </item>
