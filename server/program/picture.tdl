@@ -32,10 +32,10 @@ BEGIN
 		SELECT Picture.ID AS "id", image, caption, coalesce( info, '' ) AS "info", width, height,
 			coalesce( group_concat( distinct Tag.name ), '' ) as tags,
 			3*length(image)/4+2 as size,
-			coalesce( group_concat( distinct Category.name ), 'none' ) as used_categories,
-			coalesce( group_concat( distinct Feature.name ), 'none' ) as used_features,
-			coalesce( group_concat( distinct Manufacturer.name ), 'none' ) as used_manufacturers,
-			coalesce( group_concat( distinct Component.name ), 'none' ) as used_components
+			coalesce( group_concat( distinct Category.name ), '(none)' ) as used_categories,
+			coalesce( group_concat( distinct Feature.name ), '(none)' ) as used_features,
+			coalesce( group_concat( distinct Manufacturer.name ), '(none)' ) as used_manufacturers,
+			coalesce( group_concat( distinct Component.name ), '(none)' ) as used_components
 		FROM Picture
 		LEFT JOIN PictureTag
 		ON PictureTag.pictureID = Picture.ID

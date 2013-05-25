@@ -43,7 +43,7 @@ BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT Feature.ID AS id, Feature.parentID AS "parentID",
 			Feature.name, Feature.description,
-			coalesce( group_concat( Category.name ), 'none' ) as "used_categories"
+			coalesce( group_concat( Category.name ), '(none)' ) as "used_categories"
 		FROM Feature
 		LEFT JOIN CategRequires
 		ON CategRequires.featureID = Feature.ID
