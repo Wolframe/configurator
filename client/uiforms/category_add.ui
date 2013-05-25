@@ -217,7 +217,7 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Exclude Picture</string>
+        <string>Remove picture</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>
@@ -227,7 +227,7 @@
      <item>
       <widget class="QPushButton" name="new_pictures">
        <property name="text">
-        <string>New Picture</string>
+        <string>Add picture(s)..</string>
        </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>

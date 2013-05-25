@@ -65,6 +65,9 @@
      <property name="text">
       <string>Tags:</string>
      </property>
+     <property name="buddy">
+      <cstring>tags</cstring>
+     </property>
     </widget>
    </item>
    <item row="3" column="1">
@@ -131,14 +134,17 @@
      </item>
     </layout>
    </item>
-   <item row="7" column="0">
+   <item row="11" column="0">
     <widget class="QLabel" name="label_image">
      <property name="text">
       <string>Image:</string>
      </property>
+     <property name="buddy">
+      <cstring>image</cstring>
+     </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="11" column="1">
     <widget class="PictureChooser" name="image">
      <property name="minimumSize">
       <size>
@@ -151,7 +157,7 @@
      </property>
     </widget>
    </item>
-   <item row="9" column="0" colspan="2">
+   <item row="13" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer">
@@ -249,6 +255,34 @@
      </property>
     </widget>
    </item>
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Used in manufacturers:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_6">
+     <property name="text">
+      <string>Used in components:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLabel" name="used_components">
+     <property name="text">
+      <string>none</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QLabel" name="used_manufacturers">
+     <property name="text">
+      <string>none</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -261,6 +295,8 @@
  <tabstops>
   <tabstop>caption</tabstop>
   <tabstop>info</tabstop>
+  <tabstop>tags</tabstop>
+  <tabstop>add_edit_button</tabstop>
   <tabstop>image</tabstop>
   <tabstop>save</tabstop>
   <tabstop>reset</tabstop>
