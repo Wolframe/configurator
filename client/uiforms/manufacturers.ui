@@ -123,6 +123,9 @@
      <property name="synonym:thumbnail" stdset="0">
       <string notr="true">thumbnail.pixmap</string>
      </property>
+     <property name="column:0:width" stdset="0">
+      <UInt>80</UInt>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
