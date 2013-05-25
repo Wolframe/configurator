@@ -175,12 +175,6 @@
        <property name="datasignal:destroyed" stdset="0">
         <string>close@{main.widgetid}_picture</string>
        </property>
-       <property name="link:picture_add" stdset="0">
-        <string>{main.widgetid}_picture</string>
-       </property>
-       <property name="state:hidden" stdset="0">
-        <string>{picture_add.search}</string>
-       </property>
       </widget>
      </item>
     </layout>
