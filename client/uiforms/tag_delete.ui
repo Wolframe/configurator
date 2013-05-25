@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>298</width>
+    <width>321</width>
     <height>134</height>
    </rect>
   </property>
@@ -40,7 +40,7 @@
    <item row="3" column="1">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Do you really want to delete  '%1' ?</string>
+      <string>Do you really want to delete  '%1' (and all its children) ?</string>
      </property>
      <property name="action" stdset="0">
       <string>TagRequest tag {id={main.id}}</string>

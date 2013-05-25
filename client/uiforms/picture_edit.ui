@@ -218,14 +218,14 @@
    <item row="5" column="1">
     <widget class="QLabel" name="used_categories">
      <property name="text">
-      <string>used in categories</string>
+      <string>(none)</string>
      </property>
     </widget>
    </item>
    <item row="6" column="1">
     <widget class="QLabel" name="used_features">
      <property name="text">
-      <string>used in features</string>
+      <string>(none)</string>
      </property>
     </widget>
    </item>
