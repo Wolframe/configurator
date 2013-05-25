@@ -72,8 +72,11 @@
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+     </property>
      <property name="selectionMode">
-      <enum>QAbstractItemView::MultiSelection</enum>
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="iconSize">
       <size>
@@ -100,7 +103,7 @@
       <string>PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>PictureList list {picture[] {id={item.id}; caption{{item.tooltip}}; thumbnail{{item.icon}}; info{{?}}; tags{{?}}}}</string>
+      <string>PictureList list {picture[] {id={item.id}; caption{{item.tooltip}}; thumbnail{{item.icon}}; info {{?}};  tags{{?}}}}</string>
      </property>
      <property name="dataslot" stdset="0">
       <string>picture</string>
@@ -170,7 +173,24 @@
  <resources>
   <include location="../configurator.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>picture</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>info</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>214</x>
+     <y>160</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>253</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
  <slots>
   <signal>init()</signal>
  </slots>
