@@ -41,9 +41,16 @@ END
 TRANSACTION selectFeature -- (id)
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
-		SELECT ID AS id, parentID AS "parentID", name,
-			description
-			FROM Feature WHERE ID = $(id);
+		SELECT Feature.ID AS id, Feature.parentID AS "parentID",
+			Feature.name, Feature.description,
+			coalesce( group_concat( Category.name ), '(none)' ) as "used_categories"
+		FROM Feature
+		LEFT JOIN CategRequires
+		ON CategRequires.featureID = Feature.ID
+		LEFT JOIN Category
+		ON Category.ID = CategRequires.categoryID
+		WHERE Feature.ID = $(id)
+		GROUP BY Feature.ID;
 END
 
 TRANSACTION selectFeaturePictures -- (id)

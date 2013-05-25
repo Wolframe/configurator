@@ -108,6 +108,15 @@
      <property name="dataslot" stdset="0">
       <string>picture</string>
      </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">info</string>
+     </property>
+     <property name="contextmenu:info" stdset="0">
+      <string>Info about picture</string>
+     </property>
+     <property name="form:info" stdset="0">
+      <string notr="true">picture_info?id={selected:1}</string>
+     </property>
     </widget>
    </item>
    <item row="2" column="0">

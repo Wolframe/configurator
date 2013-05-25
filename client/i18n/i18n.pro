@@ -64,3 +64,7 @@ QMAKE_EXTRA_COMPILERS += updateqm
 PRE_TARGETDEPS += compiler_updateqm_make_all
 
 # update language resources with 'lupdate-qt4 -verbose i18n.pro'
+
+SOURCES = \
+	dummy.cpp
+	
