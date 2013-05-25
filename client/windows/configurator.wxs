@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+Copyright (C) 2013 Project Wolframe.
+All rights reserved.
+
+This file is part of Project Wolframe.
+
+Commercial Usage
+   Licensees holding valid Project Wolframe Commercial licenses may
+   use this file in accordance with the Project Wolframe
+   Commercial License Agreement provided with the Software or,
+   alternatively, in accordance with the terms contained
+   in a written agreement between the licensee and Project Wolframe.
+
+GNU General Public License Usage
+   Alternatively, you can redistribute this file and/or modify it
+   under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   Wolframe is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with Wolframe.  If not, see <http://www.gnu.org/licenses/>.
+
+If you have questions regarding the use of this file, please contact
+Project Wolframe.
+
+-->
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:firewall="http://schemas.microsoft.com/wix/FirewallExtension"
+	 xmlns:contrib="http://wixtoolset.org/wixcontrib/2008">
+
+	<?define ProductVersion = "0.0.1" ?>
+	<?define ProductCode = "{5a95c1e7-7d87-46c4-8380-6a6ac5ab9a63}" ?>
+	<?define ProductUpgradeCode = "{8792c6c2-c1af-4d48-ae6f-12d9262051c0}" ?>
+	
+	<?if $(sys.BUILDARCH) = "x64" ?>
+		<?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+		<?ifdef var.debug?>
+			<?define ProductName = "configurator (64-bit, debug version)" ?>
+		<?else?>
+			<?define ProductName = "configurator (64-bit)" ?>
+		<?endif?>
+	<?elseif $(sys.BUILDARCH) = "x86" ?>
+		<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+		<?ifdef var.debug?>
+			<?define ProductName = "configurator (32-bit, debug version)" ?>
+		<?else?>
+			<?define ProductName = "configurator (32-bit)" ?>
+		<?endif?>
+	<?endif?>
+	
+	<Product Name="$(var.ProductName)" Version="$(var.ProductVersion)" Manufacturer="Wolframe Team"
+	         Language="1033" Codepage="1252"
+	         Id="$(var.ProductCode)" 
+	         UpgradeCode="$(var.ProductUpgradeCode)" >
+		 
+		<Package Description="Wolframe configurator Windows Installer Package"
+		         Comments="The Wolframe configuartor"
+		         Manufacturer="Wolframe Team" InstallerVersion="300" Compressed="yes"/>
+
+		<Media Id="1" Cabinet="configurator.cab" EmbedCab="yes"/>
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="$(var.PlatformProgramFilesFolder)" Name="PFiles">
+				<Directory Id="WolframeGroup" Name="Wolframe Group">
+					<Directory Id="INSTALLDIR" Name="Wolframe Configurator">
+						<Directory Id="UiFormsDir" Name="uiforms">
+							<Component Id="ConfiguratorPlugins" Guid="{b9fe7b56-d479-4738-9a2e-301e46ffc1b4}">
+								<?ifdef var.debug?>
+									<File Id="configuratord.dll" Name="configuratord.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configuratord.dll"/>
+								<?else?>
+									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configurator.dll"/>
+								<?endif?>
+							</Component>							
+						</Directory>
+					</Directory>
+				</Directory>
+			</Directory>
+			
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="Wolframe"/>
+			</Directory>
+	
+		</Directory>
+
+		<DirectoryRef Id="ApplicationProgramsFolder">
+			<Component Id="ApplicationShortcut" Guid="{bf3fcf58-e154-4a68-b565-bc4fa9545b2f}">
+<!--				<Shortcut Id="qtClient"
+				          Name="Wolframe Configurator"
+				          Description="Start Wolframe configurator"
+				          Target="[INSTALLDIR]\bin\qtclient.exe"/>
+-->
+
+				<Shortcut Id="UninstallProduct"
+				          Name="Uninstall Wolframe configurator"
+				          Description="Uninstalls Wolframe configurator"
+				          Target="[System64Folder]msiexec.exe"
+				          Arguments="/x $(var.ProductCode)"/>
+
+				<RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+				<RegistryValue Root="HKCU" Key="SOFTWARE\WolframeGroup\Wolframe Configurator"
+				               Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+			</Component>
+		</DirectoryRef>
+
+		<Feature Id="Complete" Title="Configurator" Description="$(var.ProductName)"
+		         Display="expand" Level="1" ConfigurableDirectory="INSTALLDIR">
+			<Feature Id="configurator" Title="Configurator" Description="Wolframe configurator client" Level="1">
+				<ComponentRef Id="ApplicationShortcut"/>
+				<ComponentRef Id="ConfiguratorPlugins"/>
+			</Feature>
+		</Feature>
+
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR"/>
+
+		<WixVariable Id="WixUILicenseRtf" Value="license.rtf"/>
+		<WixVariable Id="WixUIDialogBmp" Value="bitmaps/Wolf.bmp"/>
+		<Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Check out http://www.wolframe.net for additional information."/>
+
+		<Property Id="APPHELPLINK">http://www.wolframe.net</Property>
+		<Icon Id="Wolframe.ico" SourceFile="bitmaps/Wolframe.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="Wolframe.ico"/>
+
+		<UIRef Id="WixUI_configurator"/>
+		<UIRef Id="WixUI_ErrorProgressText"/>
+	</Product>
+</Wix>
+
