@@ -821,7 +821,6 @@ local function transform_picture( itr )
 		width = size
 		height = round( size * ratio )
 	end
-	logger.print( "ERROR", ratio, " ", height, " ", width )
 	thumb = formfunction( "imageRescale" )( { [ "image" ] = { [ "data" ] = picture["image"] }, [ "width" ] = width, [ "height" ] = height } ):table( )
 	picture["thumbnail"] = thumb.data
 	return picture
