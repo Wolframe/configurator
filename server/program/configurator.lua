@@ -763,6 +763,11 @@ function PictureAttrRequest( )
 	output:print( f:get( ) )
 end
 
+local function round( num, idp )
+	local mult = 10 ^ ( idp or 0 )
+	return math.floor( num * mult + 0.5 ) / mult
+end
+
 local function transform_picture( itr )
 	-- should be a form transformation, not lua code :-)
 	local picture = {}
@@ -807,12 +812,15 @@ local function transform_picture( itr )
 	picture["width"] = width
 	picture["height"] = height
 	size = 50
-	ratio = width / height
-	if ratio > 4 then
-		ratio = 4
+	if height >= width then
+		ratio = width / height
+		height = size
+		width = round( size * ratio )
+	else
+		ratio = height / width
+		width = size
+		height = round( size * ratio )
 	end
-	width = size * ratio
-	height = size
 	thumb = formfunction( "imageRescale" )( { [ "image" ] = { [ "data" ] = picture["image"] }, [ "width" ] = width, [ "height" ] = height } ):table( )
 	picture["thumbnail"] = thumb.data
 	return picture

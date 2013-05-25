@@ -70,7 +70,7 @@
    <item row="1" column="0">
     <widget class="QTableWidget" name="component">
      <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
@@ -91,7 +91,7 @@
       <bool>true</bool>
      </property>
      <property name="dataslot" stdset="0">
-       <string notr="true">components</string>
+      <string notr="true">components</string>
      </property>
      <property name="action" stdset="0">
       <string notr="true">ComponentListRequest component {}</string>
@@ -100,6 +100,9 @@
       <string>row</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
       <bool>true</bool>
      </attribute>
      <attribute name="verticalHeaderStretchLastSection">

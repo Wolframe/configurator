@@ -39,6 +39,8 @@ FORM Picture
 		tags string
 		used_categories string
 		used_features string
+		used_manufacturers string
+		used_components string
 		tagwrap
 		{
 			id @int

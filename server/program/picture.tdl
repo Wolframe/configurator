@@ -29,11 +29,13 @@ END
 TRANSACTION selectPicture -- (/picture/id)
 BEGIN
 	INTO picture DO UNIQUE
-		SELECT Picture.ID AS "id", image, caption, coalesce( info, '' ) AS "info", width, height,
-			coalesce( group_concat( distinct Tag.name ), '' ) as tags,
+		SELECT Picture.ID AS "id", image, caption, coalesce( info, 'none' ) AS "info", width, height,
+			coalesce( group_concat( distinct Tag.name ), 'none' ) as tags,
 			3*length(image)/4+2 as size,
-			coalesce( group_concat( distinct Category.name ), '' ) as used_categories,
-			coalesce( group_concat( distinct Feature.name ), '' ) as used_features
+			coalesce( group_concat( distinct Category.name ), 'none' ) as used_categories,
+			coalesce( group_concat( distinct Feature.name ), 'none' ) as used_features,
+			coalesce( group_concat( distinct Manufacturer.name ), 'none' ) as used_manufacturers,
+			coalesce( group_concat( distinct Component.name ), 'none' ) as used_components
 		FROM Picture
 		LEFT JOIN PictureTag
 		ON PictureTag.pictureID = Picture.ID
@@ -47,6 +49,12 @@ BEGIN
 		ON FeaturePicture.pictureID = Picture.ID
 		LEFT JOIN Feature
 		ON FeaturePicture.featureID = Feature.ID
+		LEFT JOIN Manufacturer
+		ON Manufacturer.logo = Picture.ID
+		LEFT JOIN ComponentPicture
+		ON ComponentPicture.pictureID = Picture.ID
+		LEFT JOIN Component
+		ON ComponentPicture.componentID = Component.ID
 		WHERE Picture.ID = $(id)
 		GROUP BY Picture.ID, Picture.image, Picture.caption, Picture.info,
 			Picture.width, Picture.height;
