@@ -97,7 +97,7 @@
       <string>PictureListRequest picture {search{{main.search}}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>PictureList list {picture[] {id={item.id}; caption{{?}}; thumbnail{{item.icon}}; info {{?}};  tags{{?}}}}</string>
+      <string>PictureList list {picture[] {id={item.id}; info{{?}}; thumbnail{{item.icon}}; caption {{item.tooltip}};  tags{{?}}}}</string>
      </property>
      <property name="dataslot" stdset="0">
       <string>picture</string>
