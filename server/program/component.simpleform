@@ -3,7 +3,6 @@ FORM Component
 	component
 	{
 		id @int
-		form @string
 		code string
 		name string
 		category {
