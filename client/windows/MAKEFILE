@@ -17,8 +17,6 @@ WIX_ARCH = x86
 # define if you want to deploy the debug version
 DEBUG = 1
 
-WIXGEN = ..\..\..\wixgen.exe
-
 # end configuration
 
 CANDLE = "$(WIX_DIR)\bin\candle.exe"
@@ -76,8 +74,5 @@ test_install:
 test_uninstall:
 	-del uninstall.log
 	-msiexec /lieva uninstall.log /x {5a95c1e7-7d87-46c4-8380-6a6ac5ab9a63}
-
-generate:
-	$(WIXGEN) -nologo -outdir . -t files.wxs_t
 	
 	

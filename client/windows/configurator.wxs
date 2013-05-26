@@ -81,7 +81,80 @@ Project Wolframe.
 									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configurator.dll"/>
 								<?endif?>
 							</Component>							
+
+							<Component Id="UiForms" Guid="{27dac1e1-3f6d-4545-9e94-fe9679fae54a}">
+								<File Id="categories.ui" Name="categories.ui" DiskId="1" Source="..\uiforms\categories.ui"/>
+								<File Id="categories_features.ui" Name="categories_features.ui" DiskId="1" Source="..\uiforms\categories_features.ui"/>
+								<File Id="categories_features_add.ui" Name="categories_features_add.ui" DiskId="1" Source="..\uiforms\categories_features_add.ui"/>
+								<File Id="categories_features_edit.ui" Name="categories_features_edit.ui" DiskId="1" Source="..\uiforms\categories_features_edit.ui"/>
+								<File Id="category_add.ui" Name="category_add.ui" DiskId="1" Source="..\uiforms\category_add.ui"/>
+								<File Id="category_delete.ui" Name="category_delete.ui" DiskId="1" Source="..\uiforms\category_delete.ui"/>
+								<File Id="category_edit.ui" Name="category_edit.ui" DiskId="1" Source="..\uiforms\category_edit.ui"/>
+								<File Id="category_select.ui" Name="category_select.ui" DiskId="1" Source="..\uiforms\category_select.ui"/>
+								<File Id="component_add.ui" Name="component_add.ui" DiskId="1" Source="..\uiforms\component_add.ui"/>
+								<File Id="component_edit.ui" Name="component_edit.ui" DiskId="1" Source="..\uiforms\component_edit.ui"/>
+								<File Id="components.ui" Name="components.ui" DiskId="1" Source="..\uiforms\components.ui"/>
+								<File Id="components_features.ui" Name="components_features.ui" DiskId="1" Source="..\uiforms\components_features.ui"/>
+								<File Id="components_features_add.ui" Name="components_features_add.ui" DiskId="1" Source="..\uiforms\components_features_add.ui"/>
+								<File Id="components_features_edit.ui" Name="components_features_edit.ui" DiskId="1" Source="..\uiforms\components_features_edit.ui"/>
+								<File Id="configuration_add.ui" Name="configuration_add.ui" DiskId="1" Source="..\uiforms\configuration_add.ui"/>
+								<File Id="configuration_edit.ui" Name="configuration_edit.ui" DiskId="1" Source="..\uiforms\configuration_edit.ui"/>
+								<File Id="configurations.ui" Name="configurations.ui" DiskId="1" Source="..\uiforms\configurations.ui"/>
+								<File Id="feature_add.ui" Name="feature_add.ui" DiskId="1" Source="..\uiforms\feature_add.ui"/>
+								<File Id="feature_delete.ui" Name="feature_delete.ui" DiskId="1" Source="..\uiforms\feature_delete.ui"/>
+								<File Id="feature_edit.ui" Name="feature_edit.ui" DiskId="1" Source="..\uiforms\feature_edit.ui"/>
+								<File Id="feature_equivalence.ui" Name="feature_equivalence.ui" DiskId="1" Source="..\uiforms\feature_equivalence.ui"/>
+								<File Id="feature_equivalence_add.ui" Name="feature_equivalence_add.ui" DiskId="1" Source="..\uiforms\feature_equivalence_add.ui"/>
+								<File Id="feature_equivalence_edit.ui" Name="feature_equivalence_edit.ui" DiskId="1" Source="..\uiforms\feature_equivalence_edit.ui"/>
+								<File Id="feature_select.ui" Name="feature_select.ui" DiskId="1" Source="..\uiforms\feature_select.ui"/>
+								<File Id="features.ui" Name="features.ui" DiskId="1" Source="..\uiforms\features.ui"/>
+								<File Id="manufacturer_add.ui" Name="manufacturer_add.ui" DiskId="1" Source="..\uiforms\manufacturer_add.ui"/>
+								<File Id="manufacturer_delete.ui" Name="manufacturer_delete.ui" DiskId="1" Source="..\uiforms\manufacturer_delete.ui"/>
+								<File Id="manufacturer_edit.ui" Name="manufacturer_edit.ui" DiskId="1" Source="..\uiforms\manufacturer_edit.ui"/>
+								<File Id="manufacturers.ui" Name="manufacturers.ui" DiskId="1" Source="..\uiforms\manufacturers.ui"/>
+								<File Id="picture_add.ui" Name="picture_add.ui" DiskId="1" Source="..\uiforms\picture_add.ui"/>
+								<File Id="picture_delete.ui" Name="picture_delete.ui" DiskId="1" Source="..\uiforms\picture_delete.ui"/>
+								<File Id="picture_edit.ui" Name="picture_edit.ui" DiskId="1" Source="..\uiforms\picture_edit.ui"/>
+								<File Id="picture_info.ui" Name="picture_info.ui" DiskId="1" Source="..\uiforms\picture_info.ui"/>
+								<File Id="picture_select.ui" Name="picture_select.ui" DiskId="1" Source="..\uiforms\picture_select.ui"/>
+								<File Id="pictures.ui" Name="pictures.ui" DiskId="1" Source="..\uiforms\pictures.ui"/>
+								<File Id="recipe_add.ui" Name="recipe_add.ui" DiskId="1" Source="..\uiforms\recipe_add.ui"/>
+								<File Id="recipe_component.ui" Name="recipe_component.ui" DiskId="1" Source="..\uiforms\recipe_component.ui"/>
+								<File Id="recipe_component_add.ui" Name="recipe_component_add.ui" DiskId="1" Source="..\uiforms\recipe_component_add.ui"/>
+								<File Id="recipe_component_edit.ui" Name="recipe_component_edit.ui" DiskId="1" Source="..\uiforms\recipe_component_edit.ui"/>
+								<File Id="recipe_content.ui" Name="recipe_content.ui" DiskId="1" Source="..\uiforms\recipe_content.ui"/>
+								<File Id="recipe_content_add.ui" Name="recipe_content_add.ui" DiskId="1" Source="..\uiforms\recipe_content_add.ui"/>
+								<File Id="recipe_content_edit.ui" Name="recipe_content_edit.ui" DiskId="1" Source="..\uiforms\recipe_content_edit.ui"/>
+								<File Id="recipe_edit.ui" Name="recipe_edit.ui" DiskId="1" Source="..\uiforms\recipe_edit.ui"/>
+								<File Id="recipe_select.ui" Name="recipe_select.ui" DiskId="1" Source="..\uiforms\recipe_select.ui"/>
+								<File Id="recipes.ui" Name="recipes.ui" DiskId="1" Source="..\uiforms\recipes.ui"/>
+								<File Id="tag_add.ui" Name="tag_add.ui" DiskId="1" Source="..\uiforms\tag_add.ui"/>
+								<File Id="tag_delete.ui" Name="tag_delete.ui" DiskId="1" Source="..\uiforms\tag_delete.ui"/>
+								<File Id="tag_edit.ui" Name="tag_edit.ui" DiskId="1" Source="..\uiforms\tag_edit.ui"/>
+								<File Id="tag_select.ui" Name="tag_select.ui" DiskId="1" Source="..\uiforms\tag_select.ui"/>
+								<File Id="tags.ui" Name="tags.ui" DiskId="1" Source="..\uiforms\tags.ui"/>
+							</Component>
 						</Directory>
+
+						<Directory Id="MenusDir" Name="menus">
+							<Component Id="Menus" Guid="{66e03cce-b10c-4ac4-9f41-ddaf10fa0635}">
+								<File Id="mainmenu.ui" Name="mainmenu.ui" DiskId="1" Source="..\menus\mainmenu.ui"/>
+							</Component>
+						</Directory>
+
+						<Directory Id="ResourcesDir" Name="resources">
+							<Component Id="Resources" Guid="{278a5824-e2c7-457a-840f-5320eba7acde}">
+								<File Id="configurator.rcc" Name="configurator.rcc" DiskId="1" Source="..\resources\configurator.rcc"/>
+							</Component>
+						</Directory>
+						
+						<Directory Id="I18nDir" Name="i18n">
+							<Component Id="I18n" Guid="{06c26e35-8f1d-4c2d-bf85-8d28a9f6c8ff}">
+								<File Id="configurator.de_CH.qm" Name="configurator.de_CH.qm" DiskId="1" Source="..\i18n\configurator.de_CH.qm"/>
+								<File Id="configurator.ro_RO.qm" Name="configurator.ro_RO.qm" DiskId="1" Source="..\i18n\configurator.ro_RO.qm"/>
+							</Component>
+						</Directory>
+						
 					</Directory>
 				</Directory>
 			</Directory>
@@ -91,7 +164,7 @@ Project Wolframe.
 			</Directory>
 	
 		</Directory>
-
+				
 		<DirectoryRef Id="ApplicationProgramsFolder">
 			<Component Id="ApplicationShortcut" Guid="{bf3fcf58-e154-4a68-b565-bc4fa9545b2f}">
 <!--				<Shortcut Id="qtClient"
@@ -117,6 +190,10 @@ Project Wolframe.
 			<Feature Id="configurator" Title="Configurator" Description="Wolframe configurator client" Level="1">
 				<ComponentRef Id="ApplicationShortcut"/>
 				<ComponentRef Id="ConfiguratorPlugins"/>
+				<ComponentRef Id="UiForms"/>
+				<ComponentRef Id="Menus"/>
+				<ComponentRef Id="Resources"/>
+				<ComponentRef Id="I18n"/>
 			</Feature>
 		</Feature>
 
@@ -134,4 +211,3 @@ Project Wolframe.
 		<UIRef Id="WixUI_ErrorProgressText"/>
 	</Product>
 </Wix>
-
