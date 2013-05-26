@@ -55,7 +55,7 @@ END
 
 TRANSACTION selectFeaturePictures -- (id)
 BEGIN
-	INTO picture DO SELECT pictureID AS "id", thumbnail
+	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM FeaturePicture, Picture
 		WHERE FeaturePicture.pictureID = Picture.ID
 		AND FeaturePicture.featureID = $(id);
