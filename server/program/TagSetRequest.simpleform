@@ -6,6 +6,10 @@ FORM TagSetRequest
 		{
 			id @int
 		}
+		add []
+		{
+			id @int
+		}
 	}
 }
 

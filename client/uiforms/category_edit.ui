@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>419</width>
-    <height>350</height>
+    <width>441</width>
+    <height>440</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -126,7 +126,7 @@
       <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
      </property>
      <property name="dataslot" stdset="0">
-      <string>exclude_picture, select_picture ({main.widgetid}_picture)</string>
+      <string>select_picture ({main.widgetid}_picture)</string>
      </property>
      <property name="link:picture_add" stdset="0">
       <string>{main.widgetid}_picture</string>

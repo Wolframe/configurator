@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>402</width>
+    <width>456</width>
     <height>596</height>
    </rect>
   </property>
@@ -91,7 +91,7 @@
       <string>PictureTagSetRequest tags {id = {main.id}}</string>
      </property>
      <property name="action:add_tag" stdset="0">
-      <string>TagSetRequest tags { tag [] { id = {tag_select.tag.selected}}}</string>
+      <string>TagSetRequest tags { tag [] { id = {id}}; add [] { id = {tag_select.tag.selected}}}</string>
      </property>
      <property name="dataslot" stdset="0">
       <string>add_tag ({main.widgetid}_tag)</string>
@@ -104,6 +104,9 @@
      </property>
      <property name="synonym:name" stdset="0">
       <string/>
+     </property>
+     <property name="action:exclude_tag" stdset="0">
+      <string>TagSetRequest tags { tag [] { id = {unselected}}}</string>
      </property>
     </widget>
    </item>
@@ -123,12 +126,22 @@
       </spacer>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Remove Tag</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>exclude_tag@main.tags</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="add_edit_button">
        <property name="text">
-        <string>Edit</string>
+        <string>Add Tag(s)..</string>
        </property>
        <property name="form" stdset="0">
-        <string>tag_select?widgetid={main.widgetid}_tag&amp;tag.selected={tags.id}</string>
+        <string>tag_select?widgetid={main.widgetid}_tag</string>
        </property>
       </widget>
      </item>
