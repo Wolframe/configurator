@@ -46,7 +46,7 @@
       <string>ManufacturerRequest manufacturer {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Manufacturer manufacturer {id={?}; parentID={?}; name{{1}}; normalizedName{{?}}; description{{2}}; webPage{{?}}; picture{id={?}}}</string>
+      <string>Manufacturer manufacturer {id={?}; parentID={?}; name{{1}}; normalizedName{{?}}; description{{?}}; webPage{{?}}; picture{id={?}}}</string>
      </property>
     </widget>
    </item>

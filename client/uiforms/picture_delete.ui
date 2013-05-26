@@ -46,7 +46,7 @@
       <string>PictureAttrRequest picture {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>PictureAttrResult attr {picture {id={?}; caption{{1}}; info{{info}}}; tag[]{id={?}; {?}}}</string>
+      <string>PictureAttrResult attr {picture {id={?}; caption{{1}}; info{{?}}}; tag[]{id={?}; {?}}}</string>
      </property>
     </widget>
    </item>
