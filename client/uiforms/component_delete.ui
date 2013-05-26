@@ -30,13 +30,13 @@
    <item row="3" column="1">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Do you really want to delete  '%1' (and all its children) ?</string>
+      <string>Do you really want to delete '%1' ?</string>
      </property>
      <property name="action" stdset="0">
       <string>ComponentRequest component {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Component component {id={?}; code {{?}}; name{{1}}; category{id={?}; {?}}; manufacturer{{?}}; mfgCode{{?}}; webPage{{?}}; price{{?}}; description{{?}} }</string>
+      <string>Component component {id={?}; code {{?}}; name{{1}}; category{id={?}; {?}}; manufacturer{id={?}; {?}}; mfgCode{{?}}; webPage{{?}}; price{{?}}; description{{?}} }</string>
      </property>
     </widget>
    </item>
