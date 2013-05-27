@@ -94,7 +94,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/link.png</pixmap>
+        <pixmap>:/images/link.png</pixmap>
        </property>
       </widget>
      </item>
@@ -110,7 +110,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/folders.png</pixmap>
+        <pixmap>:/images/folders.png</pixmap>
        </property>
       </widget>
      </item>
@@ -259,33 +259,15 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>recipe</tabstop>
   <tabstop>RecipeContent</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>add_3</tabstop>
-  <tabstop>add_2</tabstop>
+  <tabstop>edit</tabstop>
+  <tabstop>delete</tabstop>
  </tabstops>
- <resources>
-  <include location="../configurator.qrc"/>
-  <include location="../configurator.qrc"/>
- </resources>
+ <resources/>
  <connections>
-  <connection>
-   <sender>RecipeContent</sender>
-   <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>add_3</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>396</x>
-     <y>209</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>124</x>
-     <y>391</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>recipe</sender>
    <signal>itemSelectionChanged()</signal>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>category_select_form</class>
+ <class>category_select</class>
  <widget class="QWidget" name="category_select">
   <property name="geometry">
    <rect>
@@ -13,8 +13,12 @@
   <property name="windowTitle">
    <string>Categories</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
+   <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
       <widget class="QRadioButton" name="expand">
@@ -32,47 +36,7 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="select">
-       <property name="text">
-        <string>&amp;Select</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">category_add?parentID={main.category.selected:1}</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancel">
-       <property name="text">
-        <string>&amp;Delete</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteCategory category {id={main.category.selected}}</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">categories</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0" colspan="2">
+   <item row="0" column="0" colspan="2">
     <widget class="QTreeWidget" name="category">
      <property name="itemsExpandable">
       <bool>true</bool>
@@ -95,28 +59,41 @@
      </column>
     </widget>
    </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
+      <widget class="QPushButton" name="select">
        <property name="text">
-        <string/>
+        <string>&amp;Select</string>
        </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/folders.png</pixmap>
+       <property name="form" stdset="0">
+        <string notr="true">category_add?parentID={main.category.selected:1}</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QPushButton" name="cancel">
        <property name="text">
-        <string>Select category</string>
+        <string>&amp;Delete</string>
+       </property>
+       <property name="action" stdset="0">
+        <string notr="true">deleteCategory category {id={main.category.selected}}</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">categories</string>
        </property>
       </widget>
      </item>

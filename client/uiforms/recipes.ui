@@ -165,13 +165,12 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>recipe</tabstop>
   <tabstop>add</tabstop>
-  <tabstop>delete_2</tabstop>
+  <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
- <resources>
-  <include location="../configurator.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>recipe</sender>
