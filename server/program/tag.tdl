@@ -52,7 +52,7 @@ BEGIN
 	FOREACH /add DO INSERT INTO IDlist (ID) VALUES ($(id));
 	DO INSERT INTO IDunion SELECT DISTINCT ID FROM IDlist;
 
-	INTO tag DO SELECT ID AS id,name,description FROM Tag,IDunion WHERE ID = IDunion.ID ORDER BY ID;
+	INTO tag DO SELECT tag.ID AS id,name,description FROM Tag,IDunion WHERE tag.ID = IDunion.ID ORDER BY tag.ID;
 END
 
 TRANSACTION selectPictureTagSet -- (id)
