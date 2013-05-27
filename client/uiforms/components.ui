@@ -34,11 +34,8 @@
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteComponent component {id={component.selected}}</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">components</string>
+       <property name="form" stdset="0">
+        <string>component_delete?id={component.selected}</string>
        </property>
       </widget>
      </item>
@@ -92,6 +89,27 @@
      </property>
      <property name="dataslot" stdset="0">
       <string notr="true">components</string>
+     </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">add, edit, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Component</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Component</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Component</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string notr="true">component_add?id={selected:1}</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">component_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">component_delete?id={selected:1}</string>
      </property>
      <property name="action" stdset="0">
       <string notr="true">ComponentListRequest component {}</string>

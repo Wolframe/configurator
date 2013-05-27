@@ -122,9 +122,12 @@ FORM PictureThumbnail
 {
 	picture
 	{
-		id @int
-		thumbnail string
-		caption string
+		picture
+		{
+			id @int
+			thumbnail string
+			caption string
+		}
 	}
 }
 

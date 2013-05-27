@@ -46,7 +46,7 @@
       <string>TagRequest tag {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Tag tag {id={?}; parentID={?}; name{{1}}; description{{2}}}</string>
+      <string>Tag tag {id={?}; parentID={?}; name{{1}}; description{{?}}}</string>
      </property>
     </widget>
    </item>

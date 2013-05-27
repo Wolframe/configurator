@@ -20,16 +20,3 @@ FORM ManufacturerPictureRequest
 		id @int
 	}
 }
-
-FORM ManufacturerPicture
-{
-	manufacturer
-	{
-		picture
-		{
-			id @int
-			image string;
-		}
-	}
-}
-

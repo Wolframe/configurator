@@ -10,6 +10,13 @@ BEGIN
 	INTO picture DO SELECT Picture.ID AS "id", thumbnail, caption FROM Picture, IDunion WHERE Picture.ID = IDunion.ID;
 END
 
+TRANSACTION getPictureThumbnail
+BEGIN
+	INTO picture DO SELECT Picture.ID AS "id", thumbnail, caption
+		FROM Picture
+		WHERE Picture.ID = $(id);
+END
+
 TRANSACTION selectPictureList
 RESULT INTO list
 BEGIN

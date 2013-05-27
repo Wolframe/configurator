@@ -26,7 +26,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../configurator.qrc">:/images/tag_blue_edit.png</pixmap>
+      <pixmap resource="../configurator.qrc">:/images/chart_organisation.png</pixmap>
      </property>
     </widget>
    </item>
@@ -46,7 +46,7 @@
       <string>FeatureRequest feature {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Feature feature {id={?}; parentID={?}; name{{1}}; description{{2}}}</string>
+      <string>Feature feature {id={?}; parentID={?}; name{{1}}; description{{?}}; used_categories{{?}}}</string>
      </property>
     </widget>
    </item>
