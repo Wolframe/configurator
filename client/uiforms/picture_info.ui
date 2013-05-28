@@ -3,14 +3,14 @@
  <class>picture_info_form</class>
  <widget class="QWidget" name="picture_info_form">
   <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
+   <enum>Qt::NonModal</enum>
   </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>512</width>
-    <height>558</height>
+    <height>579</height>
    </rect>
   </property>
   <property name="windowTitle">
