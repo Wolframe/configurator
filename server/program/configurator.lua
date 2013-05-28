@@ -360,7 +360,7 @@ function createManufacturer( )
 	formfunction( "addManufacturer" )( manufacturer )
 end
 
-function editManufacturer( )
+function updateManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
 	if manufacturer["picture"] then
 		manufacturer["logo"] = manufacturer["picture"]["id"]

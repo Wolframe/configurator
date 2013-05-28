@@ -3,7 +3,6 @@ FORM Manufacturer
 	manufacturer
 	{
 		id @int
-		form @string
 		name string
 		webPage string
 		picture
@@ -18,5 +17,19 @@ FORM ManufacturerPictureRequest
 	manufacturer
 	{
 		id @int
+	}
+}
+
+FORM updateManufacturer
+{
+	manufacturer
+	{
+		id @int
+		name string
+		webPage string
+		picture
+		{
+			id @int
+		}
 	}
 }

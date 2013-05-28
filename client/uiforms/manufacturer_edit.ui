@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>400</height>
+    <width>459</width>
+    <height>205</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,8 +94,7 @@
         <string>ManufacturerPictureRequest manufacturer {id={main.id}}</string>
        </property>
        <property name="answer" stdset="0">
-        <string>PictureThumbnail picture {id={?}; caption {{tooltip}}; thumbnail{{base64}} }
-</string>
+        <string>PictureThumbnail picture {id={id}; caption {{tooltip}}; thumbnail{{base64}} }</string>
        </property>
        <property name="dataslot" stdset="0">
         <string>select_picture ({main.widgetid}_picture)</string>
@@ -104,7 +103,7 @@
         <string>{main.widgetid}_picture</string>
        </property>
        <property name="action:select_picture" stdset="0">
-        <string>PictureThumbnailRequest picture{id={{picture_change.picture.selected}}</string>
+        <string>PictureThumbnailRequest picture{id={picture_change.picture.selected:1}</string>
        </property>
       </widget>
      </item>
@@ -157,10 +156,10 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateManufacturer manufacturer {id={main.id}; name {{main.name}}; wepPage {{main.webPage}} }</string>
+        <string>updateManufacturer manufacturer {id={main.id}; name {{main.name}}; webPage {{main.webPage}}; picture{id={main.image.id} } }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
       </widget>
      </item>
