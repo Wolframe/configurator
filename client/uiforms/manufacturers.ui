@@ -147,6 +147,9 @@
      <property name="form:delete" stdset="0">
       <string notr="true">manufacturer_delete?id={selected:1}</string>
      </property>
+     <property name="dataslot" stdset="0">
+      <string>manufacturers</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
