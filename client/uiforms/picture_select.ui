@@ -134,23 +134,13 @@
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>Add</string>
+        <string>Ok</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>select_picture</string>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancel">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="text">
-        <string>Ok</string>
-       </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -170,7 +160,8 @@
  </widget>
  <tabstops>
   <tabstop>search</tabstop>
-  <tabstop>cancel</tabstop>
+  <tabstop>picture</tabstop>
+  <tabstop>select</tabstop>
   <tabstop>info</tabstop>
  </tabstops>
  <resources>
@@ -180,16 +171,16 @@
   <connection>
    <sender>picture</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>info</receiver>
+   <receiver>select</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>214</x>
-     <y>160</y>
+     <x>129</x>
+     <y>342</y>
     </hint>
     <hint type="destinationlabel">
-     <x>278</x>
-     <y>253</y>
+     <x>244</x>
+     <y>446</y>
     </hint>
    </hints>
   </connection>

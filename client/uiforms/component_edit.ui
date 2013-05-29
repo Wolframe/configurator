@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>656</width>
-    <height>428</height>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -299,7 +299,7 @@
        <item>
         <widget class="QPushButton" name="new_pictures">
          <property name="text">
-          <string>Add Picture(s)..</string>
+          <string>Add Picture..</string>
          </property>
          <property name="form" stdset="0">
           <string>picture_select?widgetid={main.widgetid}_picture</string>
