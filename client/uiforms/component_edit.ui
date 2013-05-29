@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>component_edit_form</class>
+ <class>component_edit</class>
  <widget class="QWidget" name="component_edit">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>460</width>
-    <height>1004</height>
+    <width>723</width>
+    <height>534</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,166 +16,144 @@
   <property name="action" stdset="0">
    <string notr="true">ComponentRequest component {id={main.id}}</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <property name="fieldGrowthPolicy">
-    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-   </property>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_code">
-     <property name="text">
-      <string>Code:</string>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="5" column="0" colspan="2">
+    <layout class="QFormLayout" name="formLayout_2">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
-     <property name="buddy">
-      <cstring>code</cstring>
-     </property>
-    </widget>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_code">
+       <property name="text">
+        <string>Code:</string>
+       </property>
+       <property name="buddy">
+        <cstring>code</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="code">
+       <property name="initialFocus" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_name">
+       <property name="text">
+        <string>Name:</string>
+       </property>
+       <property name="buddy">
+        <cstring>name</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="name"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_category">
+       <property name="text">
+        <string>Category:</string>
+       </property>
+       <property name="buddy">
+        <cstring>category</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QTreeWidget" name="category">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="headerHidden">
+        <bool>false</bool>
+       </property>
+       <property name="expandsOnDoubleClick">
+        <bool>false</bool>
+       </property>
+       <property name="action" stdset="0">
+        <string>CategoryHierarchyRequest category {id=1}</string>
+       </property>
+       <attribute name="headerDefaultSectionSize">
+        <number>200</number>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>category</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>description</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_manufacturer">
+       <property name="text">
+        <string>Manufacturer</string>
+       </property>
+       <property name="buddy">
+        <cstring>manufacturer</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QTableWidget" name="manufacturer">
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="showGrid">
+        <bool>true</bool>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DotLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <property name="action" stdset="0">
+        <string notr="true">ManufacturerListRequest manufacturer {}</string>
+       </property>
+       <property name="synonym:manufacturer" stdset="0">
+        <string>row</string>
+       </property>
+       <property name="synonym:thumbnail" stdset="0">
+        <string notr="true">thumbnail.pixmap</string>
+       </property>
+       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderStretchLastSection">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>thumbnail</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="code">
-     <property name="initialFocus" stdset="0">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_name">
-     <property name="text">
-      <string>Name:</string>
-     </property>
-     <property name="buddy">
-      <cstring>name</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="name"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_category">
-     <property name="text">
-      <string>Category:</string>
-     </property>
-     <property name="buddy">
-      <cstring>category</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QTreeWidget" name="category">
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="headerHidden">
-      <bool>false</bool>
-     </property>
-     <property name="expandsOnDoubleClick">
-      <bool>false</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string>CategoryHierarchyRequest category {id=1}</string>
-     </property>
-     <attribute name="headerDefaultSectionSize">
-      <number>200</number>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>category</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>description</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_manufacturer">
-     <property name="text">
-      <string>Manufacturer</string>
-     </property>
-     <property name="buddy">
-      <cstring>manufacturer</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QTableWidget" name="manufacturer">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">ManufacturerListRequest manufacturer {}</string>
-     </property>
-     <property name="synonym:manufacturer">
-      <string>row</string>
-     </property>
-     <property name="synonym:thumbnail" stdset="0">
-      <string notr="true">thumbnail.pixmap</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>thumbnail</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>name</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_mfgCode">
-     <property name="text">
-      <string>mfgCode:</string>
-     </property>
-     <property name="buddy">
-      <cstring>mfgCode</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="mfgCode"/>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_description">
-     <property name="text">
-      <string>Webpage:</string>
-     </property>
-     <property name="buddy">
-      <cstring>webPage</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="webPage"/>
-   </item>
-   <item row="12" column="1">
+   <item row="17" column="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -228,94 +206,186 @@
      </item>
     </layout>
    </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_description_2">
-     <property name="text">
-      <string>Description:</string>
+   <item row="5" column="2">
+    <layout class="QFormLayout" name="formLayout_3">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
-     <property name="buddy">
-      <cstring>description</cstring>
-     </property>
-    </widget>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_mfgCode">
+       <property name="text">
+        <string>mfgCode:</string>
+       </property>
+       <property name="buddy">
+        <cstring>mfgCode</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="mfgCode"/>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="webPage"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_description">
+       <property name="text">
+        <string>Webpage:</string>
+       </property>
+       <property name="buddy">
+        <cstring>webPage</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QPlainTextEdit" name="description"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_description_2">
+       <property name="text">
+        <string>Description:</string>
+       </property>
+       <property name="buddy">
+        <cstring>description</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="price"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="label_price">
+       <property name="text">
+        <string>Price:</string>
+       </property>
+       <property name="buddy">
+        <cstring>price</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Pictures:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QListWidget" name="pictures">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::MultiSelection</enum>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="movement">
+        <enum>QListView::Static</enum>
+       </property>
+       <property name="isWrapping" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::IconMode</enum>
+       </property>
+       <property name="selectionRectVisible">
+        <bool>false</bool>
+       </property>
+       <property name="action" stdset="0">
+        <string>CategoryPictureListRequest category {id={main.id}}</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>select_picture ({main.widgetid}_picture)</string>
+       </property>
+       <property name="link:picture_add" stdset="0">
+        <string>{main.widgetid}_picture</string>
+       </property>
+       <property name="action:select_picture" stdset="0">
+        <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
+       </property>
+       <property name="action:exclude_picture" stdset="0">
+        <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exclude_pictures">
+         <property name="text">
+          <string>Remove Picture</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>exclude_picture@main.pictures</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="new_pictures">
+         <property name="text">
+          <string>Add Picture(s)..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>picture_select?widgetid={main.widgetid}_picture</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_picture</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
-   <item row="9" column="1">
-    <widget class="QLineEdit" name="price"/>
-   </item>
-   <item row="9" column="0">
-    <widget class="QLabel" name="label_price">
-     <property name="text">
-      <string>Price:</string>
-     </property>
-     <property name="buddy">
-      <cstring>price</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="QPlainTextEdit" name="description"/>
-   </item>
-   <item row="11" column="1">
-    <widget class="QTableWidget" name="picture">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::MultiSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
-     </property>
-     <property name="answer" stdset="0">
-      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>thumbnail</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>caption</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>info</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>tags</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="10" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item row="0" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../configurator.qrc">:/images/brick_edit.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Edit component..</string>
+       </property>
+      </widget>
+     </item>
      <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
@@ -329,73 +399,11 @@
        </property>
       </spacer>
      </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Filter pictures by:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="search">
-       <property name="datasignal:changed" stdset="0">
-        <string notr="true">picture</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="searchButton">
-       <property name="text">
-        <string>Search..</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
-       </property>
-      </widget>
-     </item>
     </layout>
-   </item>
-   <item row="10" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Pictures:</string>
-     </property>
-     <property name="buddy">
-      <cstring>picture</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="../configurator.qrc">:/images/brick_edit.png</pixmap>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Edit component..</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>code</tabstop>
-  <tabstop>name</tabstop>
-  <tabstop>category</tabstop>
-  <tabstop>manufacturer</tabstop>
-  <tabstop>mfgCode</tabstop>
-  <tabstop>webPage</tabstop>
-  <tabstop>description</tabstop>
-  <tabstop>price</tabstop>
-  <tabstop>search</tabstop>
-  <tabstop>searchButton</tabstop>
-  <tabstop>picture</tabstop>
   <tabstop>save</tabstop>
   <tabstop>reset</tabstop>
   <tabstop>cancel</tabstop>
@@ -404,22 +412,5 @@
   <include location="../configurator.qrc"/>
   <include location="../configurator.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>search</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>355</x>
-     <y>754</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>753</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
