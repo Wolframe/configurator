@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
-    <normaloff>:/images/folder_edit.png</normaloff>:/images/folder_edit.png</iconset>
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
   <property name="action" stdset="0">
    <string>CategoryRequest category {id={id}}</string>

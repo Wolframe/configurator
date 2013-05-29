@@ -14,16 +14,16 @@
    <string>Edit a component/feature link</string>
   </property>
   <property name="assign:component.selected" stdset="0">
-   <string notr="true">id</string>  
+   <string notr="true">id</string>
   </property>
   <property name="assign:feature.selected" stdset="0">
-   <string notr="true">featureid</string>  
+   <string notr="true">featureid</string>
   </property>
   <property name="action" stdset="0">
    <string>ComponentFeatureRequest ComponentFeature {feature_id={feature.selected}; component_id={component.selected}}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="5" column="0">
+   <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="link">
@@ -73,66 +73,7 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/bricks.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/link_edit.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/chart_organisation.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Edit a link of component and feature..</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -213,7 +154,7 @@
        <property name="action" stdset="0">
         <string notr="true">ComponentListRequest component {}</string>
        </property>
-       <property name="synonym:component">
+       <property name="synonym:component" stdset="0">
         <string>row</string>
        </property>
        <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
@@ -266,7 +207,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <layout class="QFormLayout" name="formLayout">
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

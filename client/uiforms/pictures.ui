@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Pictures</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
+  </property>
   <property name="singletonWindow" stdset="0">
    <bool>true</bool>
   </property>
@@ -185,16 +189,6 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap>:/images/picture.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -236,7 +230,9 @@
   <tabstop>edit</tabstop>
   <tabstop>info</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>picture</sender>
