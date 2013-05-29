@@ -132,9 +132,6 @@
        <property name="text">
         <string>Edit</string>
        </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
-       </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>
        </property>

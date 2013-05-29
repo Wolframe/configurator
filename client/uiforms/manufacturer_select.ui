@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>category_select</class>
+ <widget class="QWidget" name="category_select">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>388</width>
+    <height>266</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Categories</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QTableWidget" name="manufacturer">
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DotLine</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="action" stdset="0">
+      <string>ManufacturerListRequest manufacturer {}</string>
+     </property>
+     <property name="column:0:width" stdset="0">
+      <UInt>80</UInt>
+     </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">add, edit, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Manufacturer</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Manufacturer</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Manufacturer</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string notr="true">manufacturer_add?id={selected:1}</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">manufacturer_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">manufacturer_delete?id={selected:1}</string>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string>manufacturers</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>Manufacturer list {manufacturer[] {id={row.id}; name{{row.name}}; webPage{{row.webPage}};  thumbnail{{row.icon.pixmap}} } }
+</string>
+     </property>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>icon</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>webPage</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="select">
+       <property name="text">
+        <string>&amp;Select</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>select_manufacturer</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>manufacturer</tabstop>
+  <tabstop>select</tabstop>
+  <tabstop>cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>manufacturer</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>select</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>51</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

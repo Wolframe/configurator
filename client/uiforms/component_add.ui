@@ -284,7 +284,7 @@
        <item>
         <widget class="QPushButton" name="new_pictures">
          <property name="text">
-          <string>Add Picture..</string>
+          <string>Add picture..</string>
          </property>
          <property name="form" stdset="0">
           <string>picture_select?widgetid={main.widgetid}_picture</string>

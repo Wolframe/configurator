@@ -105,15 +105,12 @@
        <property name="text">
         <string>Manufacturer</string>
        </property>
-       <property name="buddy">
-        <cstring>pushButton_2</cstring>
-       </property>
       </widget>
      </item>
      <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="manufacturer">
+        <widget class="QLabel" name="image">
          <property name="minimumSize">
           <size>
            <width>60</width>
@@ -122,6 +119,21 @@
          </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="action" stdset="0">
+          <string>ManufacturerPictureRequest manufacturer {id={main.id}}</string>
+         </property>
+         <property name="answer" stdset="0">
+          <string>PictureThumbnail picture {id={id}; caption {{tooltip}}; thumbnail{{base64}} }</string>
+         </property>
+         <property name="dataslot" stdset="0">
+          <string>select_picture ({main.widgetid}_picture)</string>
+         </property>
+         <property name="link:picture_change" stdset="0">
+          <string>{main.widgetid}_manufacturer</string>
+         </property>
+         <property name="action:select_picture" stdset="0">
+          <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}</string>
          </property>
         </widget>
        </item>
@@ -139,9 +151,15 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="searchButton">
          <property name="text">
           <string>Edit</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>manufacturer_select?widgetid={main.widgetid}_manufacturer</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_manufacturer</string>
          </property>
         </widget>
        </item>
@@ -299,7 +317,7 @@
        <item>
         <widget class="QPushButton" name="new_pictures">
          <property name="text">
-          <string>Add Picture..</string>
+          <string>Add picture..</string>
          </property>
          <property name="form" stdset="0">
           <string>picture_select?widgetid={main.widgetid}_picture</string>
@@ -372,7 +390,6 @@
   <tabstop>code</tabstop>
   <tabstop>name</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
   <tabstop>mfgCode</tabstop>
   <tabstop>webPage</tabstop>
   <tabstop>price</tabstop>

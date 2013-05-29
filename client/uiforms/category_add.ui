@@ -161,7 +161,7 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Remove picture</string>
+        <string>Remove picture(s)</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>

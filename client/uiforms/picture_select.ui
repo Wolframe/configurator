@@ -129,12 +129,15 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="select">
+      <widget class="QPushButton" name="okButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>Ok</string>
+        <string>&amp;Ok</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>select_picture</string>
@@ -145,9 +148,19 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="info">
+      <widget class="QPushButton" name="cancelButton">
        <property name="text">
-        <string>Info</string>
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="infoButton">
+       <property name="text">
+        <string>&amp;Info</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">picture_info?id={picture.selected}</string>
@@ -161,8 +174,8 @@
  <tabstops>
   <tabstop>search</tabstop>
   <tabstop>picture</tabstop>
-  <tabstop>select</tabstop>
-  <tabstop>info</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>infoButton</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>
@@ -171,7 +184,7 @@
   <connection>
    <sender>picture</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>select</receiver>
+   <receiver>okButton</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
