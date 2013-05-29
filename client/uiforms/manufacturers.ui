@@ -115,13 +115,7 @@
       <bool>true</bool>
      </property>
      <property name="action" stdset="0">
-      <string notr="true">ManufacturerListRequest manufacturer {}</string>
-     </property>
-     <property name="synonym:manufacturer" stdset="0">
-      <string>row</string>
-     </property>
-     <property name="synonym:thumbnail" stdset="0">
-      <string notr="true">thumbnail.pixmap</string>
+      <string>ManufacturerListRequest manufacturer {}</string>
      </property>
      <property name="column:0:width" stdset="0">
       <UInt>80</UInt>
@@ -150,6 +144,10 @@
      <property name="dataslot" stdset="0">
       <string>manufacturers</string>
      </property>
+     <property name="answer" stdset="0">
+      <string>Manufacturer list {manufacturer[] {id={row.id}; name{{row.name}}; webPage{{row.webPage}};  thumbnail{{row.icon.pixmap}} } }
+</string>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>
@@ -161,7 +159,7 @@
      </attribute>
      <column>
       <property name="text">
-       <string>thumbnail</string>
+       <string>icon</string>
       </property>
      </column>
      <column>

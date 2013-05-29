@@ -20,11 +20,32 @@ FORM ManufacturerPictureRequest
 	}
 }
 
+FORM deleteManufacturer
+{
+	manufacturer
+	{
+		id @int
+	}
+}
+
 FORM updateManufacturer
 {
 	manufacturer
 	{
 		id @int
+		name string
+		webPage string
+		picture
+		{
+			id @int
+		}
+	}
+}
+
+FORM addManufacturer
+{
+	manufacturer
+	{
 		name string
 		webPage string
 		picture

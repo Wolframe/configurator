@@ -349,7 +349,7 @@ function ManufacturerListRequest( )
 	output:print( f:get( ) )
 end
 
-function createManufacturer( )
+function addManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
 	if manufacturer["picture"] then
 		manufacturer["logo"] = manufacturer["picture"]["id"]
