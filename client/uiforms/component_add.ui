@@ -285,7 +285,7 @@
         <bool>false</bool>
        </property>
        <property name="action" stdset="0">
-        <string>CategoryPictureListRequest category {id={main.id}}</string>
+        <string>ComponentPictureListRequest component {id={main.id}}</string>
        </property>
        <property name="answer" stdset="0">
         <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>

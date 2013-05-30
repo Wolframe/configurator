@@ -294,7 +294,7 @@
         <bool>false</bool>
        </property>
        <property name="action" stdset="0">
-        <string>CategoryPictureListRequest category {id={main.id}}</string>
+        <string>ComponentPictureListRequest component {id={main.id}}</string>
        </property>
        <property name="answer" stdset="0">
         <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
@@ -379,7 +379,7 @@
         <string>_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string>updateComponent component {id={main.id}}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; picture[] {id={main.pictures.id}}}</string>
+        <string>updateComponent component {id={main.id}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; picture[] {id={main.pictures.id}}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>components</string>

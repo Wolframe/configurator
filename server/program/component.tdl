@@ -57,20 +57,16 @@ BEGIN
 			LEFT JOIN Manufacturer
 			ON manufacturerID = Manufacturer.ID
 			WHERE Component.ID = $(id);
-	INTO picture DO
-		SELECT ComponentPicture.pictureID AS "id"
-			FROM ComponentPicture
-			WHERE ComponentPicture.componentID = $(id);
+--	INTO picture DO
+--		SELECT ComponentPicture.pictureID AS "id"
+--			FROM ComponentPicture
+--			WHERE ComponentPicture.componentID = $(id);
 END
 
-TRANSACTION selectComponentManufacturerPicture -- (id)
+TRANSACTION selectComponentPictures -- (id)
 BEGIN
-	INTO . DO
-		SELECT Picture.ID AS "id", thumbnail, caption
-		FROM Component
-		LEFT JOIN Manufacturer
-		ON Component.manufacturerID = Manufacturer.ID
-		LEFT JOIN Picture
-		ON Manufacturer.logo = Picture.ID
-		WHERE Component.ID = $(id);
+	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
+		FROM ComponentPicture, Picture
+		WHERE ComponentPicture.pictureID = Picture.ID
+		AND ComponentPicture.componentID = $(id);
 END

@@ -46,7 +46,7 @@ FORM CategoryHierarchy
 	}
 }
 
-FORM CategoryPictureListRequest 
+FORM CategoryPictureListRequest
 {
 	category
 	{

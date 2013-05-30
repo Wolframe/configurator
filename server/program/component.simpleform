@@ -44,7 +44,7 @@ FORM deleteComponent
 	}
 }
 
-FORM ComponentManufacturerPictureRequest
+FORM ComponentPictureListRequest
 {
 	component
 	{
