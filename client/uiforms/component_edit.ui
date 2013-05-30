@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>656</width>
+    <width>591</width>
     <height>388</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
    <string>ComponentRequest component {id={main.id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Category component {id={?}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; manufacturer{id={?}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}} }</string>
+   <string>Category component {id={?}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; manufacturer{id={main.manufacturer.id}; {main.manufacturer.text}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="0" colspan="2">
@@ -73,8 +73,26 @@
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
         <widget class="QLabel" name="category">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text">
           <string/>
+         </property>
+         <property name="dataslot" stdset="0">
+          <string>select_category ({main.widgetid}_category)</string>
+         </property>
+         <property name="action:select_category" stdset="0">
+          <string>selectCategory category {id={category_select.category.selected}}</string>
          </property>
         </widget>
        </item>
@@ -96,6 +114,12 @@
          <property name="text">
           <string>Edit</string>
          </property>
+         <property name="form" stdset="0">
+          <string>category_select?widgetid={main.widgetid}_category</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_category</string>
+         </property>
         </widget>
        </item>
       </layout>
@@ -105,35 +129,35 @@
        <property name="text">
         <string>Manufacturer</string>
        </property>
+       <property name="buddy">
+        <cstring>searchButton</cstring>
+       </property>
       </widget>
      </item>
      <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="image">
+        <widget class="QLabel" name="manufacturer">
          <property name="minimumSize">
           <size>
-           <width>60</width>
-           <height>60</height>
+           <width>100</width>
+           <height>0</height>
           </size>
          </property>
          <property name="text">
           <string/>
          </property>
-         <property name="action" stdset="0">
-          <string>ComponentManufacturerPictureRequest component {id={main.id}}</string>
+         <property name="dataslot" stdset="0">
+          <string>select_manufacturer ({main.widgetid}_manufacturer}</string>
+         </property>
+         <property name="action:select_manufacturer" stdset="0">
+          <string>ManufacturerRequest manufacturer {id={manufacturer_change.manufacturer.selected}}</string>
          </property>
          <property name="answer" stdset="0">
-          <string>PictureThumbnail picture {id={id}; caption {{tooltip}}; thumbnail{{base64}} }</string>
+          <string>Manufacturer manufacturer {id={id}; name {{text}}; webPage{{?}}; picture{id={?}} }</string>
          </property>
-         <property name="dataslot" stdset="0">
-          <string>select_picture ({main.widgetid}_picture)</string>
-         </property>
-         <property name="link:picture_change" stdset="0">
+         <property name="link:manufacturer_change" stdset="0">
           <string>{main.widgetid}_manufacturer</string>
-         </property>
-         <property name="action:select_picture" stdset="0">
-          <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}</string>
          </property>
         </widget>
        </item>
@@ -390,6 +414,7 @@
   <tabstop>code</tabstop>
   <tabstop>name</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>searchButton</tabstop>
   <tabstop>mfgCode</tabstop>
   <tabstop>webPage</tabstop>
   <tabstop>price</tabstop>

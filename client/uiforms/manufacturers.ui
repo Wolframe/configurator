@@ -110,7 +110,7 @@
       <string>Delete Manufacturer</string>
      </property>
      <property name="form:add" stdset="0">
-      <string notr="true">manufacturer_add?id={selected:1}</string>
+      <string notr="true">manufacturer_add</string>
      </property>
      <property name="form:edit" stdset="0">
       <string notr="true">manufacturer_edit?id={selected:1}</string>

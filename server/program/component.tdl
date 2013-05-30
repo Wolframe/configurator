@@ -52,8 +52,10 @@ BEGIN
 			WHERE Component.ID = $(id)
 			AND Component.CategoryID = Category.ID;
 	INTO manufacturer DO
-		SELECT manufacturerID AS "id"
+		SELECT manufacturerID AS "id", Manufacturer.name AS "_"
 			FROM Component
+			LEFT JOIN Manufacturer
+			ON manufacturerID = Manufacturer.ID
 			WHERE Component.ID = $(id);
 	INTO picture DO
 		SELECT ComponentPicture.pictureID AS "id"
