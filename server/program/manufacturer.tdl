@@ -49,4 +49,3 @@ BEGIN
 		ON Manufacturer.logo = Picture.ID
 		WHERE Manufacturer.ID = $(id);
 END
-

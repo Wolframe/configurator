@@ -44,3 +44,10 @@ FORM deleteComponent
 	}
 }
 
+FORM ComponentManufacturerPictureRequest
+{
+	component
+	{
+		id @int
+	}
+}

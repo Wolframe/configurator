@@ -121,7 +121,7 @@
           <string/>
          </property>
          <property name="action" stdset="0">
-          <string>ManufacturerPictureRequest manufacturer {id={main.id}}</string>
+          <string>ComponentManufacturerPictureRequest component {id={main.id}}</string>
          </property>
          <property name="answer" stdset="0">
           <string>PictureThumbnail picture {id={id}; caption {{tooltip}}; thumbnail{{base64}} }</string>
