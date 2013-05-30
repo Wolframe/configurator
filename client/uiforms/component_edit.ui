@@ -92,7 +92,13 @@
           <string>select_category ({main.widgetid}_category)</string>
          </property>
          <property name="action:select_category" stdset="0">
-          <string>selectCategory category {id={category_select.category.selected}}</string>
+          <string>CategoryRequest category {id={category_change.category.selected}}</string>
+         </property>
+         <property name="link:category_change" stdset="0">
+          <string>{main.widgetid}_category</string>
+         </property>
+         <property name="answer" stdset="0">
+          <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}} }</string>
          </property>
         </widget>
        </item>
