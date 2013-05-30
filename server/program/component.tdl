@@ -3,8 +3,8 @@ RESULT INTO list
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
-			Category.name AS "categoryName", 
-			Manufacturer.name AS "manufacturerName",
+			coalesce( Category.name, '' ) AS "categoryName", 
+			coalesce( Manufacturer.name, '' ) AS "manufacturerName",
 			mfgCode AS "mfgCode", Component.webPage AS "webPage", Component.description, price
 		FROM Component
 		LEFT JOIN Category
@@ -52,11 +52,25 @@ BEGIN
 			WHERE Component.ID = $(id)
 			AND Component.CategoryID = Category.ID;
 	INTO manufacturer DO
-		SELECT manufacturerID AS "id"
+		SELECT manufacturerID AS "id", Manufacturer.name AS "_"
 			FROM Component
+			LEFT JOIN Manufacturer
+			ON manufacturerID = Manufacturer.ID
 			WHERE Component.ID = $(id);
 	INTO picture DO
 		SELECT ComponentPicture.pictureID AS "id"
 			FROM ComponentPicture
 			WHERE ComponentPicture.componentID = $(id);
+END
+
+TRANSACTION selectComponentManufacturerPicture -- (id)
+BEGIN
+	INTO . DO
+		SELECT Picture.ID AS "id", thumbnail, caption
+		FROM Component
+		LEFT JOIN Manufacturer
+		ON Component.manufacturerID = Manufacturer.ID
+		LEFT JOIN Picture
+		ON Manufacturer.logo = Picture.ID
+		WHERE Component.ID = $(id);
 END

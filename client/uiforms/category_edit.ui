@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>441</width>
-    <height>440</height>
+    <width>366</width>
+    <height>314</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
-    <normaloff>:/images/folder_edit.png</normaloff>:/images/folder_edit.png</iconset>
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
   <property name="action" stdset="0">
    <string>CategoryRequest category {id={id}}</string>
@@ -144,7 +144,7 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Remove Picture</string>
+        <string>Remove picture(s)</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>
@@ -154,7 +154,7 @@
      <item>
       <widget class="QPushButton" name="new_pictures">
        <property name="text">
-        <string>Add Picture(s)..</string>
+        <string>Add picture..</string>
        </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>

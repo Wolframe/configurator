@@ -6,18 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>462</width>
-    <height>400</height>
+    <width>303</width>
+    <height>184</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Edit manufacturer</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
+  </property>
   <property name="action" stdset="0">
-   <string notr="true">ManufacturerRequest manufacturer {id={id}}</string>
+   <string>ManufacturerRequest manufacturer {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Manufacturer manufacturer {id={?}; name{{name}}; webPage{{webPage}}}</string>
+   <string>Manufacturer manufacturer {id={?}; name{{name}}; webPage{{webPage}}; picture{id={?}} }</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -29,7 +33,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="../configurator.qrc">:/images/building_edit.png</pixmap>
+      <pixmap>:/images/building_edit.png</pixmap>
      </property>
     </widget>
    </item>
@@ -75,6 +79,9 @@
      <property name="text">
       <string>Logo:</string>
      </property>
+     <property name="buddy">
+      <cstring>searchButton</cstring>
+     </property>
     </widget>
    </item>
    <item row="3" column="1">
@@ -94,7 +101,7 @@
         <string>ManufacturerPictureRequest manufacturer {id={main.id}}</string>
        </property>
        <property name="answer" stdset="0">
-        <string>PictureThumbnail picture {picture{id={?}; caption {{?}}; thumbnail{{base64}}}}</string>
+        <string>PictureThumbnail picture {id={id}; caption {{tooltip}}; thumbnail{{base64}} }</string>
        </property>
        <property name="dataslot" stdset="0">
         <string>select_picture ({main.widgetid}_picture)</string>
@@ -103,7 +110,7 @@
         <string>{main.widgetid}_picture</string>
        </property>
        <property name="action:select_picture" stdset="0">
-        <string>PictureThumbnailRequest picture{id={{picture_change.picture.selected:1}}</string>
+        <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}</string>
        </property>
       </widget>
      </item>
@@ -125,11 +132,11 @@
        <property name="text">
         <string>Edit</string>
        </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
-       </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>
+       </property>
+       <property name="datasignal:destroyed" stdset="0">
+        <string>close@{main.widgetid}_picture</string>
        </property>
       </widget>
      </item>
@@ -156,10 +163,13 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateManufacturer manufacturer {id={main.id}; name {{main.name}}; wepPage {{main.webPage}} }</string>
+        <string>updateManufacturer manufacturer {id={main.id}; name {{main.name}}; webPage {{main.webPage}}; picture{id={main.image.id} } }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>manufacturers</string>
        </property>
       </widget>
      </item>
@@ -169,7 +179,7 @@
         <string>Reset</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">manufacturer_edit?id={main.id}</string>
+        <string notr="true">_RESET_</string>
        </property>
       </widget>
      </item>

@@ -42,11 +42,10 @@ END
 
 TRANSACTION selectManufacturerPicture -- (id)
 BEGIN
-	INTO picture DO
+	INTO . DO
 		SELECT Picture.ID AS "id", thumbnail, caption
 		FROM Manufacturer
 		LEFT JOIN Picture
 		ON Manufacturer.logo = Picture.ID
 		WHERE Manufacturer.ID = $(id);
 END
-

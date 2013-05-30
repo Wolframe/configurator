@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
-    <normaloff>:/images/folder_add.png</normaloff>:/images/folder_add.png</iconset>
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -161,7 +161,7 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Remove picture</string>
+        <string>Remove picture(s)</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>
@@ -171,7 +171,7 @@
      <item>
       <widget class="QPushButton" name="new_pictures">
        <property name="text">
-        <string>Add picture(s)..</string>
+        <string>Add picture..</string>
        </property>
        <property name="form" stdset="0">
         <string>picture_select?widgetid={main.widgetid}_picture</string>

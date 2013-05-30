@@ -349,7 +349,7 @@ function ManufacturerListRequest( )
 	output:print( f:get( ) )
 end
 
-function createManufacturer( )
+function addManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
 	if manufacturer["picture"] then
 		manufacturer["logo"] = manufacturer["picture"]["id"]
@@ -360,7 +360,7 @@ function createManufacturer( )
 	formfunction( "addManufacturer" )( manufacturer )
 end
 
-function editManufacturer( )
+function updateManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
 	if manufacturer["picture"] then
 		manufacturer["logo"] = manufacturer["picture"]["id"]
@@ -392,7 +392,7 @@ function ComponentListRequest( )
 	output:print( f:get( ) )
 end
 
-function createComponent( )
+function addComponent( )
 	local component = input:table( )["component"]
 	if component["category"] then
 		component["categoryID"] = component["category"]["id"]
@@ -406,7 +406,7 @@ function createComponent( )
 	formfunction( "addComponent" )( component )
 end
 
-function editComponent( )
+function updateComponent( )
 	local component = input:table( )["component"]
 	if component["category"] then
 		component["categoryID"] = component["category"]["id"]

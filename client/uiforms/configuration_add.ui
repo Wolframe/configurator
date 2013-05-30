@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>configuration_add_form</class>
+ <class>configuration_add</class>
  <widget class="QWidget" name="configuration_add">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>355</width>
+    <width>351</width>
     <height>696</height>
    </rect>
   </property>
@@ -18,20 +18,6 @@
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
    </property>
    <item row="0" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Add configuration..</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
     <widget class="QLabel" name="label_name">
      <property name="text">
       <string>Name:</string>
@@ -41,14 +27,14 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="0" column="1">
     <widget class="QLineEdit" name="name">
      <property name="initialFocus" stdset="0">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QLabel" name="label_description_2">
      <property name="text">
       <string>Description:</string>
@@ -58,10 +44,10 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="1" column="1">
     <widget class="QPlainTextEdit" name="description"/>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="label_description">
      <property name="text">
       <string>Comment:</string>
@@ -71,10 +57,10 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="2" column="1">
     <widget class="QPlainTextEdit" name="comment"/>
    </item>
-   <item row="4" column="0">
+   <item row="3" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Recipe:</string>
@@ -84,7 +70,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="3" column="1">
     <widget class="QTableWidget" name="recipe">
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -146,7 +132,7 @@
      </column>
     </widget>
    </item>
-   <item row="5" column="1">
+   <item row="4" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">

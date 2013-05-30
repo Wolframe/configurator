@@ -80,20 +80,20 @@
         <string>&amp;Select</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_add?parentID={main.category.selected:1}</string>
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>select_category</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="cancel">
        <property name="text">
-        <string>&amp;Delete</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteCategory category {id={main.category.selected}}</string>
+        <string>&amp;Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">categories</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
      </item>
@@ -141,6 +141,22 @@
     <hint type="destinationlabel">
      <x>146</x>
      <y>227</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>category</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>select</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>27</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>294</y>
     </hint>
    </hints>
   </connection>

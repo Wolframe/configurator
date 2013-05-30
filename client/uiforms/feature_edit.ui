@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Edit feature</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
+  </property>
   <property name="action" stdset="0">
    <string>FeatureRequest feature {id={id}}</string>
   </property>
@@ -24,23 +28,6 @@
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
    </property>
    <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap>:/images/chart_organisation_edit.png</pixmap>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Edit feature..</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
     <widget class="QLabel" name="label_name">
      <property name="text">
       <string>Name:</string>
@@ -50,14 +37,14 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="0" column="1">
     <widget class="QLineEdit" name="name">
      <property name="initialFocus" stdset="0">
       <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QLabel" name="label_description">
      <property name="text">
       <string>Description:</string>
@@ -67,17 +54,20 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="1" column="1">
     <widget class="QPlainTextEdit" name="description"/>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Pictures:</string>
      </property>
+     <property name="buddy">
+      <cstring>pictures</cstring>
+     </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="2" column="1">
     <widget class="QListWidget" name="pictures">
      <property name="iconSize">
       <size>
@@ -108,7 +98,61 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="3" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exclude_pictures">
+       <property name="text">
+        <string>Remove picture(s)</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>exclude_picture@main.pictures</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="new_pictures">
+       <property name="text">
+        <string>Add picture..</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>picture_select?widgetid={main.widgetid}_picture</string>
+       </property>
+       <property name="datasignal:destroyed" stdset="0">
+        <string>close@{main.widgetid}_picture</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Used in categories:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLabel" name="used_categories">
+     <property name="text">
+      <string>(none)</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <spacer name="horizontalSpacer">
@@ -161,60 +205,6 @@
      </item>
     </layout>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Used in categories:</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLabel" name="used_categories">
-     <property name="text">
-      <string>(none)</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="exclude_pictures">
-       <property name="text">
-        <string>Remove picture</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string>exclude_picture@main.pictures</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="new_pictures">
-       <property name="text">
-        <string>Add picture(s)..</string>
-       </property>
-       <property name="form" stdset="0">
-        <string>picture_select?widgetid={main.widgetid}_picture</string>
-       </property>
-       <property name="datasignal:destroyed" stdset="0">
-        <string>close@{main.widgetid}_picture</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <tabstops>
@@ -227,6 +217,8 @@
   <tabstop>reset</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -13,11 +13,109 @@
   <property name="windowTitle">
    <string>Components</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/bricks.png</normaloff>:/images/bricks.png</iconset>
+  </property>
   <property name="singletonWindow" stdset="0">
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="0">
+   <item row="0" column="0">
+    <widget class="QTableWidget" name="component">
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid">
+      <bool>true</bool>
+     </property>
+     <property name="gridStyle">
+      <enum>Qt::DotLine</enum>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string notr="true">components</string>
+     </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">add, edit, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Component</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Component</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Component</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string notr="true">component_add</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">component_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">component_delete?id={selected:1}</string>
+     </property>
+     <property name="action" stdset="0">
+      <string>ComponentListRequest component {}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>Component list {component[] {id={row.id}; code{{row.code}}; name{{row.name}}; categoryName{{row.categoryName}}; manufacturerName{{row.manufacturerName}}; mfgCode{{row.mfgCode}}; webPage{{?}}; description{{?}}; price{{row.price}} }</string>
+     </property>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>code</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>categoryName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>manufacturerName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>mfgCode</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>price</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="add">
@@ -61,137 +159,6 @@
         </size>
        </property>
       </spacer>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0">
-    <widget class="QTableWidget" name="component">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string notr="true">components</string>
-     </property>
-     <property name="contextmenu" stdset="0">
-      <string notr="true">add, edit, delete</string>
-     </property>
-     <property name="contextmenu:add" stdset="0">
-      <string>Add Component</string>
-     </property>
-     <property name="contextmenu:edit" stdset="0">
-      <string>Edit Component</string>
-     </property>
-     <property name="contextmenu:delete" stdset="0">
-      <string>Delete Component</string>
-     </property>
-     <property name="form:add" stdset="0">
-      <string notr="true">component_add?id={selected:1}</string>
-     </property>
-     <property name="form:edit" stdset="0">
-      <string notr="true">component_edit?id={selected:1}</string>
-     </property>
-     <property name="form:delete" stdset="0">
-      <string notr="true">component_delete?id={selected:1}</string>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">ComponentListRequest component {}</string>
-     </property>
-     <property name="synonym:component" stdset="0">
-      <string>row</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>code</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>categoryName</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>manufacturerName</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>mfgCode</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>webPage</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>description</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>price</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/bricks.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Manage components</string>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>

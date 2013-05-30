@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>categories_features_edit_form</class>
+ <class>categories_features_edit</class>
  <widget class="QWidget" name="categories_features_edit">
   <property name="geometry">
    <rect>
@@ -17,13 +17,13 @@
    <string>CategoryFeatureRequest CategoryFeature {category_id={id}; feature_id={featureid}}</string>
   </property>
   <property name="assign:category.selected" stdset="0">
-   <string notr="true">id</string>  
+   <string notr="true">id</string>
   </property>
   <property name="assign:feature.selected" stdset="0">
-   <string notr="true">featureid</string>  
+   <string notr="true">featureid</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="5" column="0">
+   <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="link">
@@ -42,9 +42,6 @@
       <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>Reset</string>
-       </property>
-       <property name="action" stdset="0">
-        <string>read</string>
        </property>
        <property name="action" stdset="0">
         <string>CategoryFeatureRequest CategoryFeature {category_id={main.id}; feature_id={main.featureid}}</string>
@@ -76,66 +73,7 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/folders.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_3">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/link_edit.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="maximumSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/chart_organisation.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>New link of category and feature..</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -230,7 +168,7 @@
      </item>
     </layout>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <layout class="QFormLayout" name="formLayout">
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

@@ -13,19 +13,13 @@
   <property name="windowTitle">
    <string>Pictures</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string/>
-       </property>
-       <property name="pixmap">
-        <pixmap resource="../configurator.qrc">:/images/picture.png</pixmap>
-       </property>
-      </widget>
-     </item>
      <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
@@ -135,35 +129,38 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="select">
+      <widget class="QPushButton" name="okButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>Add</string>
+        <string>&amp;Ok</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>select_picture</string>
        </property>
+       <property name="form" stdset="0">
+        <string>_CLOSE_</string>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="cancel">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
+      <widget class="QPushButton" name="cancelButton">
        <property name="text">
-        <string>Ok</string>
+        <string>&amp;Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="info">
+      <widget class="QPushButton" name="infoButton">
        <property name="text">
-        <string>Info</string>
+        <string>&amp;Info</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">picture_info?id={picture.selected}</string>
@@ -176,8 +173,9 @@
  </widget>
  <tabstops>
   <tabstop>search</tabstop>
-  <tabstop>cancel</tabstop>
-  <tabstop>info</tabstop>
+  <tabstop>picture</tabstop>
+  <tabstop>okButton</tabstop>
+  <tabstop>infoButton</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>
@@ -186,16 +184,16 @@
   <connection>
    <sender>picture</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>info</receiver>
+   <receiver>okButton</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>214</x>
-     <y>160</y>
+     <x>129</x>
+     <y>342</y>
     </hint>
     <hint type="destinationlabel">
-     <x>278</x>
-     <y>253</y>
+     <x>244</x>
+     <y>446</y>
     </hint>
    </hints>
   </connection>
