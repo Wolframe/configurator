@@ -392,7 +392,7 @@ function ComponentListRequest( )
 	output:print( f:get( ) )
 end
 
-function createComponent( )
+function addComponent( )
 	local component = input:table( )["component"]
 	if component["category"] then
 		component["categoryID"] = component["category"]["id"]
@@ -406,7 +406,7 @@ function createComponent( )
 	formfunction( "addComponent" )( component )
 end
 
-function editComponent( )
+function updateComponent( )
 	local component = input:table( )["component"]
 	if component["category"] then
 		component["categoryID"] = component["category"]["id"]
