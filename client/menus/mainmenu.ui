@@ -48,10 +48,10 @@
     </property>
     <addaction name="action_tags"/>
     <addaction name="action_pictures"/>
-    <addaction name="action_categories"/>
     <addaction name="action_features"/>
-    <addaction name="action_components"/>
+    <addaction name="action_categories"/>
     <addaction name="action_manufacturers"/>
+    <addaction name="action_components"/>
     <addaction name="separator"/>
     <addaction name="action_recipes"/>
     <addaction name="action_recipe_content"/>
