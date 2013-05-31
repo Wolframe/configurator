@@ -30,7 +30,7 @@
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="add">
+      <widget class="QPushButton" name="addButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -43,7 +43,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="edit_2">
+      <widget class="QPushButton" name="deleteButton">
        <property name="text">
         <string>Delete</string>
        </property>
@@ -53,7 +53,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="edit">
+      <widget class="QPushButton" name="editButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -66,7 +66,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="info">
+      <widget class="QPushButton" name="infoButton">
        <property name="text">
         <string>Info</string>
        </property>
@@ -225,10 +225,10 @@
  <tabstops>
   <tabstop>search</tabstop>
   <tabstop>picture</tabstop>
-  <tabstop>add</tabstop>
-  <tabstop>edit_2</tabstop>
-  <tabstop>edit</tabstop>
-  <tabstop>info</tabstop>
+  <tabstop>addButton</tabstop>
+  <tabstop>deleteButton</tabstop>
+  <tabstop>editButton</tabstop>
+  <tabstop>infoButton</tabstop>
  </tabstops>
  <resources>
   <include location="../configurator.qrc"/>
@@ -237,7 +237,7 @@
   <connection>
    <sender>picture</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>info</receiver>
+   <receiver>editButton</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -245,8 +245,8 @@
      <y>160</y>
     </hint>
     <hint type="destinationlabel">
-     <x>278</x>
-     <y>253</y>
+     <x>209</x>
+     <y>269</y>
     </hint>
    </hints>
   </connection>

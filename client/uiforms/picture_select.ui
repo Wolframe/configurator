@@ -145,6 +145,9 @@
        <property name="form" stdset="0">
         <string>_CLOSE_</string>
        </property>
+       <property name="state:enabled" stdset="0">
+        <string>{picture.selected}&gt;0</string>
+       </property>
       </widget>
      </item>
      <item>

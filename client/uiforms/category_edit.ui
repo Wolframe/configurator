@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>754</width>
-    <height>386</height>
+    <height>354</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -135,9 +135,22 @@
        <property name="text">
         <string>Required features:</string>
        </property>
+       <property name="buddy">
+        <cstring>listWidget</cstring>
+       </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="1" column="1">
+      <widget class="QListWidget" name="listWidget">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <spacer name="horizontalSpacer_3">
@@ -165,16 +178,36 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>category_select?widgetid={main.widgetid}_category</string>
+          <string>feature_select?widgetid={main.widgetid}_feature</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_category</string>
+          <string>close@{main.widgetid}_feature</string>
          </property>
         </widget>
        </item>
       </layout>
      </item>
-     <item row="5" column="1">
+     <item row="3" column="1">
+      <widget class="QListWidget" name="listWidget_2">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Provided features:</string>
+       </property>
+       <property name="buddy">
+        <cstring>listWidget_2</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
         <spacer name="horizontalSpacer_4">
@@ -202,41 +235,14 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>category_select?widgetid={main.widgetid}_category</string>
+          <string>feature_select?widgetid={main.widgetid}_feature</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_category</string>
+          <string>close@{main.widgetid}_feature</string>
          </property>
         </widget>
        </item>
       </layout>
-     </item>
-     <item row="4" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Privided features:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QListWidget" name="listWidget">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>100</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <widget class="QListWidget" name="listWidget_2">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>100</height>
-        </size>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>
@@ -373,8 +379,10 @@
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
+  <tabstop>listWidget</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>listWidget_2</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>description</tabstop>

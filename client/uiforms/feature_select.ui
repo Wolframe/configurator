@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
-    <height>340</height>
+    <width>274</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -80,7 +80,13 @@
         <string>&amp;Select</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">feature_add</string>
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>select_feature</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{feature.selected}&gt;0</string>
        </property>
       </widget>
      </item>
@@ -88,9 +94,6 @@
       <widget class="QPushButton" name="cancel">
        <property name="text">
         <string>&amp;Cancel</string>
-       </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteFeature feature {id={feature.selected}}</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
@@ -135,12 +138,28 @@
    <slot>collapseAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>398</x>
+     <x>195</x>
      <y>297</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
      <y>216</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>feature</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>select</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>31</x>
+     <y>329</y>
     </hint>
    </hints>
   </connection>
