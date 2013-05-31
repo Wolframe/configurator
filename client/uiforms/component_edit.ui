@@ -23,9 +23,6 @@
   <property name="answer" stdset="0">
    <string>Category component {id={?}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; manufacturer{id={main.manufacturer.id}; {main.manufacturer.text}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}} }</string>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout_2">

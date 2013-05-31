@@ -23,9 +23,6 @@
   <property name="answer" stdset="0">
    <string>Manufacturer manufacturer {id={?}; name{{name}}; webPage{{webPage}}; picture{id={?}} }</string>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

@@ -49,9 +49,13 @@ recipe
 - select list of features needed for the recipe (recipe_content*.ui)
 - select list of components in recipe (recipe_component*.ui)
     
-discussed
+general
 
 - resize all forms, give them nice default sizes
+- used stackwidgets in complex dialogs to seperate:
+  - properties as price, code, name, etc
+  - description and pictures
+  - relations like features provided
 
 todo discuss
 
@@ -65,7 +69,13 @@ general
 - IMHO we should be able to set the values of a form and then overload
   them and not have to artificially split the form request in 3 parts
   (see component_edit and manufacturer_select)
-
+- hard to understand for a developer to put certain dynamic properties
+  to widget to avoid error messages like:
+  CRITICAL: set a dynamic property of QLabel "picture_info_form.image" that is not predefined: "base64" QVariant(QString, "/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAPAAA/+4ADkFk...") 
+- we can have multiple selection boxes for the same edit window with
+  lost link behaviour, leads also to error message:
+  CRITICAL: error widget visitor "QLabel" "component_edit.manufacturer" ambiguus widget link reference : "component_edit:1281_manufacturer" 
+  
 compoents
 
 - component list:
@@ -100,13 +110,9 @@ compoents
 
 seen and postponed or worked around
 
-- modal in modal doesn't work:
-  CRITICAL: illegal form call in modal dialog (only _CLOSE_ as next form allowed) 
-  example info in picture select
-  => at the moment circumvented by using normal MDI windows and the 'destroyed' datasignal
 - designer plugin for Wolframe
   - plugin for request/answer: multi-line text in a first step as property 
     edit (qttests repo, experimental)
   - fails on Qt5 (completly, dynamic properties are not updated or created!)
   => currently on hold, not sure if that's the right way to go!
-- feature/feature relation is for later (feature_equivalence)
+- feature/feature relation is for later (feature_equivalence uis)

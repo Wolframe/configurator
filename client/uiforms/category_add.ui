@@ -20,9 +20,6 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

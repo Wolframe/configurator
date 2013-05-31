@@ -26,9 +26,6 @@
   <property name="answer" stdset="0">
    <string>Tag tag {id={main.id}; parentID={?}; name{{main.name}}; description{{main.description}}}</string>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

@@ -23,9 +23,6 @@
   <property name="answer" stdset="0">
    <string>Picture dummy {picture{id={main.id}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{?}}; width{{?}}; size{{?}}; tags{{?}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}}; used_components {{main.used_components}} }; tagwrap[] {id={?};tag{{?}}}}</string>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

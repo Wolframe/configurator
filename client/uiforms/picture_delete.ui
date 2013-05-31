@@ -20,9 +20,6 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>

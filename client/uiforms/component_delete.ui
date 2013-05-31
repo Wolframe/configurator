@@ -20,9 +20,6 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/bricks.png</normaloff>:/images/bricks.png</iconset>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -64,7 +61,7 @@
         <string>deleteComponent component {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string notr="true">tag</string>
+        <string notr="true">components</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>

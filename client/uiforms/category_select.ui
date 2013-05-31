@@ -17,9 +17,6 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
-  <property name="id" stdset="0">
-   <string/>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
