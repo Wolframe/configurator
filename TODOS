@@ -48,49 +48,29 @@ recipe
 - select pictures (N)
 - select list of features needed for the recipe (recipe_content*.ui)
 - select list of components in recipe (recipe_component*.ui)
-
-qtclient
-
-- selection in table widget (PF)
-- reload leads to a second form in MDI window, cancel
-  closes the first form!
-  (dito reset) (PF,ABa)
-- status handling (ABa)
-  - show a '*' edited/modified in window title
-  - make window.title a widget path for setting the name of the edited
-    object (MDI standard)
-  - storing of the current state (data) should be optional and only
-    enabled if there is a dynamic boolean property on the window 'storeState'
-  - ask the user whether he wants to logout with windows in state
-    modified/edited
     
 discussed
 
 - resize all forms, give them nice default sizes
-- order is again frantic! selection is wrong after sorting in for example
-  table widget (components)
 
 todo discuss
 
+general
+
 - not all actions in an iconized list view lead to status recalculations
   in the remove button (state:enabled)
-- philosophical issue: we have a lot of properties again, so the idea of
-  shortening action and answer was maybe not necessary. besides, designer
-  plugins are not very likely to happen to make editing less painful.
-- sort out all errors like
-  CRITICAL: set a dynamic property of QLabel "manufacturer" that is not predefined: "id" QVariant(QString, "5") 
-  => big question, where to define those properties in the first place?
-  
 - how things are coupled in two multiple request cases:
   'answer' should fit to 'action'
   'action:select_picture' to 'answer:select_picture'
-- IMHO we should be able to set the values of a form and the overload
+- IMHO we should be able to set the values of a form and then overload
   them and not have to artificially split the form request in 3 parts
   (see component_edit and manufacturer_select)
-  
-component list:
-  - exact attributes in the component list
-component edit:
+
+compoents
+
+- component list:
+  - TBD: exact attributes in the component list
+- component edit:
   - manufacturer and category are optional by db model, not in ui
   
 - search for all select forms
@@ -101,12 +81,6 @@ component edit:
 - dito default buttons for all forms
 - property title, so we can put the name of a component into the window title
   (example add/edit xXXX)
-- why is datasignal:destroyed on the "add new pictures" button?
-  
-CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/description" 
-
-- CRITICAL: element not defined in answer description: QVariant(QString, "picture") at "" 
-  => add the name of the affected widget here!
 - syntax error: code {?}; leads to completly misleading error message:
   CRITICAL: attribute not defined in answer description: "id" at ""
 - not clear, where the problem is (TDL, simpleform?):
