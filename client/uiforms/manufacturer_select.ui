@@ -17,6 +17,9 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
   </property>
+  <property name="id" stdset="0">
+   <string/>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <widget class="QTableWidget" name="manufacturer">
@@ -88,6 +91,9 @@
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>select_manufacturer</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{manufacturer.selected}&gt;0</string>
        </property>
       </widget>
      </item>

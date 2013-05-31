@@ -14,8 +14,8 @@
    <string>Manage categories</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../images/folders.png</normaloff>../images/folders.png</iconset>
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
   <property name="singletonWindow" stdset="0">
    <bool>true</bool>
@@ -143,7 +143,9 @@
   <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>expand</sender>

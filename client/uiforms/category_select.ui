@@ -17,6 +17,9 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
+  <property name="id" stdset="0">
+   <string/>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -84,6 +87,9 @@
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>select_category</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{category.selected}&gt;0</string>
        </property>
       </widget>
      </item>

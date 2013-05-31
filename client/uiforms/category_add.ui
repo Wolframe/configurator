@@ -20,6 +20,9 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
+  <property name="id" stdset="0">
+   <string/>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -110,37 +113,6 @@
      <property name="text">
       <string>Pictures:</string>
      </property>
-     <property name="buddy">
-      <cstring>pictures</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QListWidget" name="pictures">
-     <property name="iconSize">
-      <size>
-       <width>50</width>
-       <height>30</height>
-      </size>
-     </property>
-     <property name="viewMode">
-      <enum>QListView::IconMode</enum>
-     </property>
-     <property name="answer" stdset="0">
-      <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string>exclude_picture, select_picture ({main.widgetid}_picture)</string>
-     </property>
-     <property name="link:picture_add" stdset="0">
-      <string>{main.widgetid}_picture</string>
-     </property>
-     <property name="action:select_picture" stdset="0">
-      <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
-     </property>
-     <property name="action:exclude_picture" stdset="0">
-      <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
-     </property>
     </widget>
    </item>
    <item row="4" column="1">
@@ -161,10 +133,13 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Remove picture(s)</string>
+        <string>Remove picture</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{pictures.selected}&gt;0</string>
        </property>
       </widget>
      </item>
@@ -226,6 +201,61 @@
      </item>
     </layout>
    </item>
+   <item row="3" column="1">
+    <widget class="QListWidget" name="pictures">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
+     </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
+     <property name="isWrapping" stdset="0">
+      <bool>false</bool>
+     </property>
+     <property name="viewMode">
+      <enum>QListView::IconMode</enum>
+     </property>
+     <property name="selectionRectVisible">
+      <bool>false</bool>
+     </property>
+     <property name="action" stdset="0">
+      <string>CategoryPictureListRequest category {id={main.id}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
+     </property>
+     <property name="dataslot" stdset="0">
+      <string>select_picture ({main.widgetid}_picture)</string>
+     </property>
+     <property name="link:picture_add" stdset="0">
+      <string>{main.widgetid}_picture</string>
+     </property>
+     <property name="action:select_picture" stdset="0">
+      <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
+     </property>
+     <property name="action:exclude_picture" stdset="0">
+      <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -233,7 +263,6 @@
   <tabstop>yes</tabstop>
   <tabstop>no</tabstop>
   <tabstop>description</tabstop>
-  <tabstop>pictures</tabstop>
   <tabstop>exclude_pictures</tabstop>
   <tabstop>new_pictures</tabstop>
   <tabstop>add</tabstop>

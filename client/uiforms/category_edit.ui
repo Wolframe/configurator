@@ -23,6 +23,9 @@
   <property name="answer" stdset="0">
    <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}} }</string>
   </property>
+  <property name="id" stdset="0">
+   <string/>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -283,7 +286,7 @@
         <enum>Qt::ScrollBarAlwaysOff</enum>
        </property>
        <property name="selectionMode">
-        <enum>QAbstractItemView::MultiSelection</enum>
+        <enum>QAbstractItemView::SingleSelection</enum>
        </property>
        <property name="iconSize">
         <size>
@@ -341,10 +344,13 @@
        <item>
         <widget class="QPushButton" name="exclude_pictures">
          <property name="text">
-          <string>Remove picture(s)</string>
+          <string>Remove picture</string>
          </property>
          <property name="datasignal:clicked" stdset="0">
           <string>exclude_picture@main.pictures</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{pictures.selected}&gt;0</string>
          </property>
         </widget>
        </item>

@@ -89,6 +89,15 @@
        <property name="action:select_picture" stdset="0">
         <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}</string>
        </property>
+       <property name="id" stdset="0">
+        <string/>
+       </property>
+       <property name="tooltip" stdset="0">
+        <string/>
+       </property>
+       <property name="base64" stdset="0">
+        <string/>
+       </property>
       </widget>
      </item>
      <item>

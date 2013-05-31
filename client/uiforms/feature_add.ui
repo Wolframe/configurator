@@ -17,6 +17,9 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
   </property>
+  <property name="id" stdset="0">
+   <string/>
+  </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
@@ -120,6 +123,9 @@
        <height>30</height>
       </size>
      </property>
+     <property name="movement">
+      <enum>QListView::Static</enum>
+     </property>
      <property name="viewMode">
       <enum>QListView::IconMode</enum>
      </property>
@@ -158,10 +164,13 @@
      <item>
       <widget class="QPushButton" name="exclude_pictures">
        <property name="text">
-        <string>Remove picture(s)</string>
+        <string>Remove picture</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_picture@main.pictures</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{pictures.selected}&gt;0</string>
        </property>
       </widget>
      </item>
