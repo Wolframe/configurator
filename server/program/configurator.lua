@@ -168,6 +168,7 @@ local function select_node( tablename, elementname, itr)
 			local r = formfunction( "select" .. tablename)( {id=v} )
 			local f = form( tablename)
 			f:fill( r:get(), {elementname})
+			logger:print( "ERROR", f:table( ) );
 			output:print( f:get())
 		end
 	end
@@ -548,39 +549,6 @@ end
 
 function ConfiguratorDeleteComponentRequest( )
 	local t = formfunction( "ConfiguratorDeleteComponent" )( input:table( ) )
-end
-
--- category/features associations
-
-function createCategoryFeature( )
-	local categoryFeature = input:table( )["CategoryFeature"]
-	formfunction( "addCategoryFeature" )( categoryFeature )
-end
-
-function deleteCategoryFeature( )
-	local categoryFeature = input:table( )["CategoryFeature"]
-	formfunction( "deleteCategoryFeature" )( categoryFeature )
-end
-
-function CategoryFeatureRequest( )
-	local categoryFeature = input:table( )["CategoryFeature"]
-	local t = formfunction( "selectCategoryFeature" )( {
-		category_id = categoryFeature["category_id"],
-		feature_id = categoryFeature["feature_id"]
-	} )
-	local f = form( "CategoryFeature" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function CategoryFeatureListRequest( )
-	local categoryFeature = input:table( )["CategoryFeature"]
-	local t = formfunction( "selectCategoryFeatureList" )( {
-		category_id = categoryFeature["category_id"]
-	} )
-	local f = form( "CategoryFeatureList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
 end
 
 -- components/features associations

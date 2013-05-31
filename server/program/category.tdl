@@ -38,11 +38,24 @@ END
 -- selectCategoryByNormalizedName :Get the category by name
 -- selectCategoryList             :Get a list of categories
 --
+OPERATION selectCategoryFeaturesRequired -- (id)
+BEGIN
+	INTO CategoryFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name as "name",
+			minQuantity, maxQuantity
+		FROM CategRequires, Feature
+		WHERE categoryID = $(id)
+		AND featureID = Feature.ID;
+END
+
 TRANSACTION selectCategory -- (id)
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
 		description
 		FROM Category WHERE ID = $(id);
+	INTO features_required DO selectCategoryFeaturesRequired( );
 END
 
 TRANSACTION selectCatogeryPictures -- (id)
@@ -86,4 +99,25 @@ END
 TRANSACTION selectSubCategory -- (id)
 BEGIN
 	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM category AS P1, category AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
+END
+
+--
+-- selectCategoryFeaturesRequired : get all required features of this category
+--
+TRANSACTION selectCategoryFeatureRequiredList -- (id)
+BEGIN
+	DO CREATE LOCAL TEMPORARY TABLE IDlist (ID INT) ON COMMIT DROP;
+	DO CREATE LOCAL TEMPORARY TABLE IDunion (ID INT) ON COMMIT DROP;
+	FOREACH /feature DO INSERT INTO IDlist (ID) VALUES ($(id));
+	FOREACH /add DO INSERT INTO IDlist (ID) VALUES ($(id));
+	DO INSERT INTO IDunion SELECT DISTINCT ID FROM IDlist;
+	INTO CategoryFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name as "name",
+			minQuantity, maxQuantity
+		FROM CategRequires, Feature, IDunion
+		WHERE categoryID = $(category_id)
+		AND featureID = Feature.ID
+		AND Feature.ID = IDunion.ID;
 END

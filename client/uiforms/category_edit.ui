@@ -77,152 +77,11 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="1">
+    <layout class="QFormLayout" name="formLayout_2">
      <property name="fieldGrowthPolicy">
       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_name">
-       <property name="text">
-        <string>Name:</string>
-       </property>
-       <property name="buddy">
-        <cstring>name</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="name">
-       <property name="initialFocus" stdset="0">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>Required features:</string>
-       </property>
-       <property name="buddy">
-        <cstring>required_features</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QListWidget" name="required_features">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>100</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>Remove</string>
-         </property>
-         <property name="state:enabled" stdset="0">
-          <string>{required_features.selected}&gt;0</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="text">
-          <string>Add..</string>
-         </property>
-         <property name="form" stdset="0">
-          <string>feature_select?widgetid={main.widgetid}_feature</string>
-         </property>
-         <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_feature</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="3" column="1">
-      <widget class="QListWidget" name="provided_features">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>100</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Provided features:</string>
-       </property>
-       <property name="buddy">
-        <cstring>provided_features</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_3">
-         <property name="text">
-          <string>Remove</string>
-         </property>
-         <property name="state:enabled" stdset="0">
-          <string>{provided_features.selected}&gt;0</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_4">
-         <property name="text">
-          <string>Add..</string>
-         </property>
-         <property name="form" stdset="0">
-          <string>feature_select?widgetid={main.widgetid}_feature</string>
-         </property>
-         <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_feature</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="1">
-    <layout class="QFormLayout" name="formLayout_2">
      <item row="0" column="0">
       <widget class="QLabel" name="label_description">
        <property name="text">
@@ -240,6 +99,16 @@
          <width>16777215</width>
          <height>100</height>
         </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Pictures:</string>
+       </property>
+       <property name="buddy">
+        <cstring>pictures</cstring>
        </property>
       </widget>
      </item>
@@ -341,15 +210,194 @@
        </item>
       </layout>
      </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label">
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <layout class="QFormLayout" name="formLayout">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_name">
        <property name="text">
-        <string>Pictures:</string>
+        <string>Name:</string>
        </property>
        <property name="buddy">
-        <cstring>pictures</cstring>
+        <cstring>name</cstring>
        </property>
       </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="name">
+       <property name="initialFocus" stdset="0">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Required features:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QTreeWidget" name="required_features">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
+       <property name="itemsExpandable">
+        <bool>false</bool>
+       </property>
+       <property name="headerHidden">
+        <bool>true</bool>
+       </property>
+       <property name="expandsOnDoubleClick">
+        <bool>false</bool>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>select_feature_required ({main.widgetid}_feature_required)</string>
+       </property>
+       <property name="action:select_feature_required" stdset="0">
+        <string>CategoryFeatureRequiredListRequest category {id={main.id}}</string>
+       </property>
+       <attribute name="headerVisible">
+        <bool>false</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>minQuantity</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>maxQuantity</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{required_features.selected}&gt;0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Add..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>feature_select_required?widgetid={main.widgetid}_feature_required</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_feature_required</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Provided features:</string>
+       </property>
+       <property name="buddy">
+        <cstring>provided_features</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QListWidget" name="provided_features">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>select_feature_provided ({main.widgetid}_faeeture_provided)</string>
+       </property>
+       <property name="action:select_feature_provided" stdset="0">
+        <string>yy</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{provided_features.selected}&gt;0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>Add..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>feature_select_provided?widgetid={main.widgetid}_feature_provided</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_feature_provided</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -357,10 +405,8 @@
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
-  <tabstop>required_features</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>provided_features</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>description</tabstop>

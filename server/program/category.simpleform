@@ -1,3 +1,14 @@
+FORM CategoryFeature
+{
+	CategoryFeature
+	{
+		id @int
+		name string
+		minQuantity int
+		maxQuantity int
+	}
+}
+
 FORM Category
 {
 	category
@@ -14,6 +25,7 @@ FORM Category
 				id @int
 			}
 		}
+		features_required CategoryFeature[]
 	}
 }
 
@@ -46,7 +58,7 @@ FORM CategoryHierarchy
 	}
 }
 
-FORM CategoryPictureListRequest
+FORM BaseCategoryRequest
 {
 	category
 	{
@@ -54,3 +66,25 @@ FORM CategoryPictureListRequest
 	}
 }
 
+FORM CategoryPictureListRequest
+{
+	_ BaseCategoryRequest
+}
+
+FORM CategoryFeatureListRequest
+{
+	_ BaseCategoryRequest
+}
+
+FORM CategoryFeatureRequiredListRequest
+{
+	_ BaseCategoryRequest
+}
+
+FORM CategoryFeatureList
+{
+	CategoryFeatures
+	{
+		CategoryFeature CategoryFeature[]
+	}
+}
