@@ -201,10 +201,10 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createFeature feature {parentID={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}} }</string>
+        <string>createFeature feature {parentID={main.id}; root { {main.root.yes} }; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}} }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>features</string>
