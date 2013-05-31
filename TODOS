@@ -1,0 +1,138 @@
+tags
+
+- delete on tree is much more dangerous than just a leaf,
+  the message should be different for a tree than for a leaf
+- description not so high
+- dialog wider
+
+pictures
+
+- save picture
+- sort order changes table.selected!
+- after deletion: picture list is reselecting an element, but buttons
+  are still disabled (missing a signal?). Same when opening the window
+- suddenly a multiple selection after editing a picture also edit
+  - add picture
+    - main.image condition of Picture uploader
+  - sizing hint of Picture Chooser for the image (is wrong)
+- picture_select:
+  When adding the pictures:
+  WARNING: input form 'PictureThumbnailListRequest' is not defined (document type 'PictureThumbnailListRequest'). treating document as standalone (document processed with root element ignored)
+  - in single picture select (in manufacturers):
+  WARNING: input form 'PictureThumbnailRequest' is not defined (document type 'PictureThumbnailRequest'). treating document as standalone (document processed with root element ignored)
+
+categories
+
+- CategoryPicture with anotation caption and info (overwrite)
+- add CategoryFeature dialog here as subdialog where you can
+  pick from the feature (and requires min/max, provides min/max)
+  - show as features table in categeory add/edit (with min/max prov/req)
+  => former categories_features, this is the template for all other such cases
+
+features
+
+- FeaturePicture with anotation caption and info (overwrite)
+
+manufacturers
+
+components
+
+- add ComponentFeature dialog here as subdialog where you can
+  pick from feature list (and requires min/max, provides min/max)
+  - show as features table in component add/edit (with min/max prov/req)
+
+recipe
+
+- remove button disabled, if no elements selected
+- select category (1)
+- select pictures (N)
+- select list of features needed for the recipe (recipe_content*.ui)
+- select list of components in recipe (recipe_component*.ui)
+
+qtclient
+
+- selection in table widget (PF)
+- reload leads to a second form in MDI window, cancel
+  closes the first form!
+  (dito reset) (PF,ABa)
+- status handling (ABa)
+  - show a '*' edited/modified in window title
+  - make window.title a widget path for setting the name of the edited
+    object (MDI standard)
+  - storing of the current state (data) should be optional and only
+    enabled if there is a dynamic boolean property on the window 'storeState'
+  - ask the user whether he wants to logout with windows in state
+    modified/edited
+    
+discussed
+
+- resize all forms, give them nice default sizes
+- order is again frantic! selection is wrong after sorting in for example
+  table widget (components)
+
+todo discuss
+
+- not all actions in an iconized list view lead to status recalculations
+  in the remove button (state:enabled)
+- philosophical issue: we have a lot of properties again, so the idea of
+  shortening action and answer was maybe not necessary. besides, designer
+  plugins are not very likely to happen to make editing less painful.
+- sort out all errors like
+  CRITICAL: set a dynamic property of QLabel "manufacturer" that is not predefined: "id" QVariant(QString, "5") 
+  => big question, where to define those properties in the first place?
+  
+- how things are coupled in two multiple request cases:
+  'answer' should fit to 'action'
+  'action:select_picture' to 'answer:select_picture'
+- IMHO we should be able to set the values of a form and the overload
+  them and not have to artificially split the form request in 3 parts
+  (see component_edit and manufacturer_select)
+  
+component list:
+  - exact attributes in the component list
+component edit:
+  - manufacturer and category are optional by db model, not in ui
+  
+- search for all select forms
+- picture list is not restored when login in/out, of course, because they
+  are temporary database tables (maybe we should remove temporary tables
+  anyway!)
+- shortcuts for key select everywhere, e.g. &Cancel
+- dito default buttons for all forms
+- property title, so we can put the name of a component into the window title
+  (example add/edit xXXX)
+- why is datasignal:destroyed on the "add new pictures" button?
+  
+CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/description" 
+
+- CRITICAL: element not defined in answer description: QVariant(QString, "picture") at "" 
+  => add the name of the affected widget here!
+- syntax error: code {?}; leads to completly misleading error message:
+  CRITICAL: attribute not defined in answer description: "id" at ""
+- not clear, where the problem is (TDL, simpleform?):
+  ERROR: Error calling procedure: unknown tag  (picture)-.. candidates are {id, thumbnail, caption}
+  ERROR: error in execution of REQUEST ManufacturerPictureRequest:unknown tag  (picture)-.. candidates are {id, thumbnail, caption}
+- seen races between closing of window (edit category) and action
+  (updateCategory)!
+- QTableWidget: state contains the manually changed rulers in the header
+  (for column size), not kept
+- add cursor changes for long-lasting operations, e.g. transcend logo
+- picture dialog:
+  - idea: context menu on listwidget with pictures (with info, exclude)
+- dialog semantics for edit tags: enter and esc shortcuts?
+- info field in pictures?
+    - must select a tag for being able to add a picture?
+- ',' or ', ' in group concat?
+
+seen and postponed or worked around
+
+- modal in modal doesn't work:
+  CRITICAL: illegal form call in modal dialog (only _CLOSE_ as next form allowed) 
+  example info in picture select
+  => at the moment circumvented by using normal MDI windows and the 'destroyed' datasignal
+- designer plugin for Wolframe
+  - plugin for request/answer: multi-line text in a first step as property 
+    edit (qttests repo, experimental)
+  - fails on Qt5 (completly, dynamic properties are not updated or created!)
+  => currently on hold, not sure if that's the right way to go!
+- feature/feature relation is for later (feature_equivalence)
