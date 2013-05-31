@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>dummy</class>
- <widget class="QWidget" name="dummy">
+ <class>edit_picture_form</class>
+ <widget class="QWidget" name="edit_picture_form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -22,6 +22,9 @@
   </property>
   <property name="answer" stdset="0">
    <string>Picture dummy {picture{id={main.id}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{?}}; width{{?}}; size{{?}}; tags{{?}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}}; used_components {{main.used_components}} }; tagwrap[] {id={?};tag{{?}}}}</string>
+  </property>
+  <property name="id" stdset="0">
+   <string/>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -140,6 +143,9 @@
        <property name="datasignal:clicked" stdset="0">
         <string>exclude_tag@main.tags</string>
        </property>
+       <property name="state:enabled" stdset="0">
+        <string>{tags.selected}&gt;0</string>
+       </property>
       </widget>
      </item>
      <item>
@@ -234,6 +240,9 @@
      <property name="global:lastPictureDir" stdset="0">
       <string notr="true">_w_state</string>
      </property>
+     <property name="base64" stdset="0">
+      <string/>
+     </property>
     </widget>
    </item>
    <item row="12" column="0" colspan="2">
@@ -302,6 +311,7 @@
   <tabstop>caption</tabstop>
   <tabstop>info</tabstop>
   <tabstop>tags</tabstop>
+  <tabstop>pushButton</tabstop>
   <tabstop>add_edit_button</tabstop>
   <tabstop>image</tabstop>
   <tabstop>save</tabstop>
