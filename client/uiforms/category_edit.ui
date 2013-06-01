@@ -271,14 +271,19 @@
         <string>add_feature_required ({main.widgetid}_feature_required)</string>
        </property>
        <property name="action:add_feature_required" stdset="0">
-        <string>CategoryFeatureRequiredListRequest category {id={main.id}}</string>
+        <string>CategoryFeatureRequiredListRequest features { feature[] { id={id} }; add[] { id={feature_required_select.feature.selected} } }</string>
        </property>
-       <property name="link:features_required_select" stdset="0">
+       <property name="link:feature_required_select" stdset="0">
         <string>{main.widgetid}_feature_required</string>
        </property>
        <attribute name="headerVisible">
         <bool>false</bool>
        </attribute>
+       <column>
+        <property name="text">
+         <string>id</string>
+        </property>
+       </column>
        <column>
         <property name="text">
          <string>name</string>

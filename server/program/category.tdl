@@ -44,8 +44,7 @@ BEGIN
 		SELECT
 			featureID AS "id",
 			Feature.name as "name",
-			minQuantity as "minQuantity",
-			maxQuantity as "maxQuantity"
+			minQuantity, maxQuantity
 		FROM CategRequires, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
@@ -110,22 +109,18 @@ BEGIN
 END
 
 --
--- selectCategoryFeaturesRequired : get all required features of this category
+-- selectCategoryFeaturesRequired : tempoary relation storage for annotated category/feature relations
 --
-TRANSACTION selectCategoryFeatureRequiredList -- (id)
+TRANSACTION selectCategoryFeatureRequiredList
 BEGIN
-	DO CREATE LOCAL TEMPORARY TABLE IDlist (ID INT) ON COMMIT DROP;
-	DO CREATE LOCAL TEMPORARY TABLE IDunion (ID INT) ON COMMIT DROP;
-	FOREACH /feature DO INSERT INTO IDlist (ID) VALUES ($(id));
-	FOREACH /add DO INSERT INTO IDlist (ID) VALUES ($(id));
-	DO INSERT INTO IDunion SELECT DISTINCT ID FROM IDlist;
+	DO CREATE LOCAL TEMPORARY TABLE IDlist (featureID INT PRIMARY KEY, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
+	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	FOREACH /add DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
 	INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name as "name",
 			minQuantity, maxQuantity
-		FROM CategRequires, Feature, IDunion
-		WHERE categoryID = $(category_id)
-		AND featureID = Feature.ID
+		FROM IDunion, Feature
 		AND Feature.ID = IDunion.ID;
 END
