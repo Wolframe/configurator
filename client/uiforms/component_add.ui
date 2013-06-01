@@ -199,7 +199,7 @@
           <string>{main.widgetid}_category</string>
          </property>
          <property name="answer" stdset="0">
-          <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}} }</string>
+          <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.minQuantity}}; maxQuantity{{required_features.row.maxQuantity}} }  }</string>
          </property>
          <property name="id" stdset="0">
           <string/>
@@ -379,7 +379,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string>createComponent component {code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; picture[] {id={main.pictures.id}}}</string>
+        <string>createComponent component {code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price:0.0}}; picture[] {id={main.pictures.id}}}</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>

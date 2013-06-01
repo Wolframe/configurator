@@ -237,9 +237,6 @@
      <property name="global:lastPictureDir" stdset="0">
       <string notr="true">_w_state</string>
      </property>
-     <property name="base64" stdset="0">
-      <string/>
-     </property>
     </widget>
    </item>
    <item row="12" column="0" colspan="2">

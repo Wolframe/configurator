@@ -59,8 +59,45 @@ general
 
 todo discuss
 
+CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
+
+picture:
+- add:
+  CRITICAL: accessing non existing property "main.tags.item.id" 
+  CRITICAL: accessing non existing property "main.image.base64" 
+  CRITICAL: accessing non existing property "main.image.base64" 
+
+component:
+- add:
+  select category:
+  CRITICAL: element not defined in answer description: QVariant(QString, "features_required") at "" 
+  CRITICAL: failed to validate request answer 
+- no manufacturer:
+  - how can we delete the manufacturer?
+  - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
+CRITICAL: ERROR:  "-save:1067" "REQUEST error in transaction updateComponent: invalid input syntax for integer: "" LINE 2:   categoryID='40', manufacturerID=
+
+unsorted
+
 general
 
+CRITICAL: element not initialized in answer: "image" at "/picture" 
+CRITICAL: accessing non existing property "main.image.size:?" 
+CRITICAL: accessing non existing property "main.tags.item.id:?" 
+CRITICAL: accessing non existing property "main.image.size:?" 
+CRITICAL: accessing non existing property "main.image.size:?" 
+
+CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
+
+CRITICAL: ERROR:  "-add:266" "REQUEST error in transaction addPicture: invalid input syntax for integer: "" LINE 1: ...NSERT INTO PictureTag( pictureID, tagID ) VALUES( '79', '' )                                                                    ^" 
+CRITICAL: ERROR:  "-save:326" "REQUEST error in transaction updatePicture: invalid input syntax for integer: "" LINE 1: ...NSERT INTO PictureTag( pictureID, tagID ) VALUES( '80', '' )                                             
+
+category: delete a tree with subtrees or leaf(s):
+CRITICAL: ERROR:  "-delete_2:633" "REQUEST error in transaction deleteCategory:  Key (id)=(75) is still referenced from table "categorypicture"." 
+
+manufacturer:
+- having an image is mandatory, otherwise we get
+  CRITICAL: ERROR:  "-add:928" "REQUEST error in transaction addManufacturer: invalid input syntax for integer: "" LINE 2:   VALUES ( 'bla', 'bla', 'bla', '' )
 - not all actions in an iconized list view lead to status recalculations
   in the remove button (state:enabled)
 - how things are coupled in two multiple request cases:
