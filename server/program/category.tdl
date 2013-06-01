@@ -43,8 +43,9 @@ BEGIN
 	INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",
-			Feature.name as "name",
-			minQuantity, maxQuantity
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
 		FROM CategRequires, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
@@ -112,8 +113,9 @@ BEGIN
 	INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",
-			Feature.name as "name",
-			minQuantity, maxQuantity
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
 		FROM IDunion, Feature
 		AND Feature.ID = IDunion.ID;
 END
