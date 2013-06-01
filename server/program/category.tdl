@@ -116,6 +116,6 @@ BEGIN
 			Feature.name AS "name",
 			minQuantity AS "minQuantity",
 			maxQuantity AS "maxQuantity"
-		FROM IDunion, Feature
-		AND Feature.ID = IDunion.ID;
+		FROM IDlist, Feature
+		WHERE Feature.ID = IDlist.featureID;
 END

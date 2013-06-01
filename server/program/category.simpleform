@@ -1,12 +1,9 @@
 FORM CategoryFeature
 {
-	CategoryFeature
-	{
-		id @int
-		name string
-		minQuantity int
-		maxQuantity int
-	}
+	id @int
+	name string
+	minQuantity int
+	maxQuantity int
 }
 
 FORM Category
@@ -25,7 +22,13 @@ FORM Category
 				id @int
 			}
 		}
-		features_required CategoryFeature[]
+		features_required []
+		{
+			CategoryFeature
+			{
+				_ CategoryFeature
+			}
+		}
 	}
 }
 
@@ -107,6 +110,9 @@ FORM CategoryFeatureList
 {
 	CategoryFeatures
 	{
-		CategoryFeature CategoryFeature[]
+		CategoryFeature []
+		{
+			_ CategoryFeature
+		}
 	}
 }

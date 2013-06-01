@@ -21,7 +21,7 @@
    <string>CategoryRequest category {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.minQuantity}}; maxQuantity{{required_features.row.maxQuantity}} } } }</string>
+   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.min}}; maxQuantity{{required_features.row.max}} } } }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0" colspan="2">
@@ -271,13 +271,13 @@
         <string>add_feature_required ({main.widgetid}_feature_required)</string>
        </property>
        <property name="action:add_feature_required" stdset="0">
-        <string>CategoryFeatureRequiredListRequest features { feature[] { id={row.id}; }; add[] { id={feature_required_select.feature.selected} } }</string>
+        <string>CategoryFeatureRequiredListRequest features { feature[] { id={main.required_features.row.id}; minQuantity {{main.required_features.row.min}}; maxQuantity{{main.required_features.row.max}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
        </property>
        <property name="link:feature_required_select" stdset="0">
         <string>{main.widgetid}_feature_required</string>
        </property>
        <property name="answer" stdset="0">
-        <string>CategoryFeatures</string>
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
        </property>
        <attribute name="headerVisible">
         <bool>true</bool>
@@ -289,12 +289,12 @@
        </column>
        <column>
         <property name="text">
-         <string>minQuantity</string>
+         <string>min</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>maxQuantity</string>
+         <string>max</string>
         </property>
        </column>
       </widget>
