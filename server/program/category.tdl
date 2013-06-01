@@ -59,13 +59,6 @@ BEGIN
 	INTO features_required DO selectCategoryFeaturesRequired( );
 END
 
-TRANSACTION selectCategoryLabel -- (id)
-BEGIN
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
-		description
-		FROM Category WHERE ID = $(id);
-END
-
 TRANSACTION selectCatogeryPictures -- (id)
 BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption

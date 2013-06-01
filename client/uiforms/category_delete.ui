@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>242</width>
+    <width>289</width>
     <height>76</height>
    </rect>
   </property>
@@ -33,7 +33,7 @@
       <string>CategoryRequest category {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Category category {id={?}; parentID={?}; name{{1}}; description{{?}}}</string>
+      <string>Category category {id={?}; parentID={?}; root{{?}}; name{{1}}; description{{2}}; features_required{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
      </property>
     </widget>
    </item>
