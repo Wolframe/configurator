@@ -77,7 +77,7 @@
      <item>
       <widget class="QPushButton" name="select">
        <property name="text">
-        <string>&amp;Select</string>
+        <string>&amp;Ok</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>

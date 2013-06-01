@@ -268,10 +268,13 @@
         <bool>false</bool>
        </property>
        <property name="dataslot" stdset="0">
-        <string>select_feature_required ({main.widgetid}_feature_required)</string>
+        <string>add_feature_required ({main.widgetid}_feature_required)</string>
        </property>
-       <property name="action:select_feature_required" stdset="0">
+       <property name="action:add_feature_required" stdset="0">
         <string>CategoryFeatureRequiredListRequest category {id={main.id}}</string>
+       </property>
+       <property name="link:features_required_select" stdset="0">
+        <string>{main.widgetid}_feature_required</string>
        </property>
        <attribute name="headerVisible">
         <bool>false</bool>
@@ -352,10 +355,7 @@
         </size>
        </property>
        <property name="dataslot" stdset="0">
-        <string>select_feature_provided ({main.widgetid}_faeeture_provided)</string>
-       </property>
-       <property name="action:select_feature_provided" stdset="0">
-        <string>yy</string>
+        <string>add_feature_provided ({main.widgetid}_feature_provided)</string>
        </property>
       </widget>
      </item>
