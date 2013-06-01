@@ -77,13 +77,13 @@
      <item>
       <widget class="QPushButton" name="select">
        <property name="text">
-        <string>&amp;Select</string>
+        <string>&amp;Ok</string>
        </property>
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>select_feature_required</string>
+        <string>add_feature_required</string>
        </property>
        <property name="state:enabled" stdset="0">
         <string>{feature.selected}&gt;0</string>
