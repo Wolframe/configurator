@@ -76,10 +76,10 @@
          <bool>true</bool>
         </property>
         <property name="action" stdset="0">
-         <string>CategoryRequest category {id={main.id}}</string>
+         <string>CategoryLabelRequest category {id={main.id}}</string>
         </property>
         <property name="answer" stdset="0">
-         <string>Category category {id={?}; parentID={?}; name{{1}}; description{{2}}}</string>
+         <string>CategoryLabel category {id={?}; parentID={?}; name{{1}}; description{{2}}}</string>
         </property>
         <property name="state:visible" stdset="0">
          <string>{main.id}&gt;1</string>

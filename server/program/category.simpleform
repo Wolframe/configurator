@@ -29,6 +29,25 @@ FORM Category
 	}
 }
 
+FORM CategoryLabel
+{
+	category
+	{
+		id @int
+		parentID @int
+		name string
+		description string
+	}
+}
+
+FORM CategoryLabelRequest
+{
+	category
+	{
+		id @int
+	}
+}
+
 FORM deleteCategory
 {
 	category

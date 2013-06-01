@@ -44,7 +44,8 @@ BEGIN
 		SELECT
 			featureID AS "id",
 			Feature.name as "name",
-			minQuantity, maxQuantity
+			minQuantity as "minQuantity",
+			maxQuantity as "maxQuantity"
 		FROM CategRequires, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
@@ -56,6 +57,13 @@ BEGIN
 		description
 		FROM Category WHERE ID = $(id);
 	INTO features_required DO selectCategoryFeaturesRequired( );
+END
+
+TRANSACTION selectCategoryLabel -- (id)
+BEGIN
+	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
+		description
+		FROM Category WHERE ID = $(id);
 END
 
 TRANSACTION selectCatogeryPictures -- (id)

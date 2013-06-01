@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>754</width>
-    <height>354</height>
+    <height>386</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,7 +21,7 @@
    <string>CategoryRequest category {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}} }</string>
+   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.minQuantity}}; maxQuantity{{required_features.row.maxQuantity}} } } }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0" colspan="2">

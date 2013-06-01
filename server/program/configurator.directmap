@@ -11,3 +11,5 @@ PictureThumbnailRequest=getPictureThumbnail(xml):PictureThumbnail;
 
 CategoryFeatureRequiredListRequest=selectCategoryFeatureRequiredList(xml):CategoryFeatureList;
 CategoryFeatureProvidedListRequest=selectCategoryFeatureProvidedList(xml):CategoryFeatureList;
+CategoryLabelRequest=selectCategoryLabel(xml):CategoryLabel;
+
