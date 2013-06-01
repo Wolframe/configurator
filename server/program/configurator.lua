@@ -168,7 +168,6 @@ local function select_node( tablename, elementname, itr)
 			local r = formfunction( "select" .. tablename)( {id=v} )
 			local f = form( tablename)
 			f:fill( r:get(), {elementname})
-			logger:print( "ERROR", f:table( ) );
 			output:print( f:get())
 		end
 	end
