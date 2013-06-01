@@ -86,7 +86,21 @@ FORM CategoryFeatureListRequest
 
 FORM CategoryFeatureRequiredListRequest
 {
-	_ BaseCategoryRequest
+	features
+	{
+		feature []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		add []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+	}
 }
 
 FORM CategoryFeatureList
