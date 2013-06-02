@@ -45,10 +45,10 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateCategory category {id={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}}} </string>
+        <string>updateCategory category { id={main.id}; name{{main.name}}; description{{main.description}}; pictures { picture[] {id={main.pictures.id:?}} } }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>categories</string>
@@ -279,6 +279,9 @@
        <property name="answer" stdset="0">
         <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
        </property>
+       <property name="action:remove_feature_required" stdset="0">
+        <string>CategoryFeatureRequiredListRequest features { feature[] { id = {unselected} } }</string>
+       </property>
        <attribute name="headerVisible">
         <bool>true</bool>
        </attribute>
@@ -321,6 +324,9 @@
          </property>
          <property name="state:enabled" stdset="0">
           <string>{required_features.selected}&gt;0</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>remove_feature_required@main.required_features</string>
          </property>
         </widget>
        </item>

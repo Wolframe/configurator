@@ -53,13 +53,12 @@
     <addaction name="action_manufacturers"/>
     <addaction name="action_components"/>
     <addaction name="separator"/>
+    <addaction name="actionBroken_from_here"/>
+    <addaction name="separator"/>
     <addaction name="action_recipes"/>
     <addaction name="action_recipe_content"/>
     <addaction name="action_recipe_component"/>
-    <addaction name="separator"/>
-    <addaction name="action_categories_features"/>
     <addaction name="action_components_features"/>
-    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuConfiguration">
     <property name="title">
@@ -225,6 +224,11 @@
    </property>
    <property name="singletonWindow" stdset="0">
     <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionBroken_from_here">
+   <property name="text">
+    <string>broken from here..</string>
    </property>
   </action>
  </widget>

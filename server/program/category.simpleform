@@ -22,9 +22,9 @@ FORM Category
 				id @int
 			}
 		}
-		features_required []
+		features_required
 		{
-			CategoryFeature
+			CategoryFeature []
 			{
 				_ CategoryFeature
 			}

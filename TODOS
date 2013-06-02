@@ -81,6 +81,9 @@ unsorted
 
 general
 
+- selection windows should keep the state (expansion, location of last
+  selection), similar to a QFileDialog
+  
 CRITICAL: element not initialized in answer: "image" at "/picture" 
 CRITICAL: accessing non existing property "main.image.size:?" 
 CRITICAL: accessing non existing property "main.tags.item.id:?" 

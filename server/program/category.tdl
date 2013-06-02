@@ -18,6 +18,7 @@ TRANSACTION deleteCategory -- (id)
 BEGIN
 	DO NONEMPTY UNIQUE SELECT lft,rgt,rgt-lft+1 AS width FROM Category WHERE ID = $(id) AND ID != '1';
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
+	DO DELETE FROM CategRequires WHERE categoryID = $(id);
 	DO DELETE FROM Category WHERE lft >= $1 AND lft <= $2;
 	DO UPDATE Category SET lft = lft-$3 WHERE lft>$2;
 	DO UPDATE Category SET rgt = rgt-$3 WHERE rgt>$2;
@@ -28,9 +29,13 @@ END
 --
 TRANSACTION updateCategory -- (id, name, normalizedName, description, pictures/picture/id)
 BEGIN
-	DO UPDATE Category SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
-	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
-	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $(/id), $(id) );
+--	DO UPDATE Category SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
+--	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
+--	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $(/id), $(id) );
+--	DO DELETE FROM CategRequires WHERE categoryID = $(id);
+--	FOREACH features_required/CategoryFeature DO
+--		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
+--			VALUES( $(/id), $(id), $(minQuantity), $(maxQuantity) );
 END
 
 --
