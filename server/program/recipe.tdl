@@ -17,6 +17,7 @@ BEGIN
 		VALUES ( $(name), $(normalizedName), $(description), $(categoryID), datetime('now'), $(comment) );
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Recipe WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO RecipePicture( recipeID, pictureID ) VALUES( $1, $(id) );
+	DO DELETE FROM RecipePicture WHERE pictureID IS NULL;		
 END
 
 TRANSACTION updateRecipe
@@ -27,6 +28,7 @@ BEGIN
 		creationDate=datetime('now'), comment=$(comment)
 		WHERE ID=$(id);
 	FOREACH picture DO INSERT INTO RecipePicture( recipeID, pictureID ) VALUES( $(/id), $(id) );
+	DO DELETE FROM RecipePicture WHERE pictureID IS NULL;		
 END
 
 TRANSACTION deleteRecipe

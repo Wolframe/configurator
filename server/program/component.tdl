@@ -19,6 +19,7 @@ BEGIN
 		VALUES ( $(code), $(name), $(normalizedName), $(categoryID), $(manufacturerID), $(mfgCode), $(webPage), $(description), $(price) );
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Component WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $1, $(id) );
+	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;		
 END
 
 TRANSACTION updateComponent
@@ -30,6 +31,7 @@ BEGIN
 		price=$(price)
 		WHERE ID=$(id);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $(/id), $(id) );
+	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;		
 END
 
 TRANSACTION deleteComponent

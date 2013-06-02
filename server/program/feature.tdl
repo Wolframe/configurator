@@ -9,6 +9,7 @@ BEGIN
 	DO INSERT INTO Feature (parentID, name, normalizedName, description, lft, rgt) VALUES ($(parentID), $(name), $(normalizedName), $(description), $1, $1+1);
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Feature WHERE normalizedName = $(normalizedName) AND parentID = $(parentID);
 	FOREACH pictures/picture DO INSERT INTO FeaturePicture( featureID, pictureID ) VALUES( $1, $(id) );
+	DO DELETE FROM FeaturePicture WHERE pictureID IS NULL;
 END
 
 --
@@ -31,6 +32,7 @@ BEGIN
 	DO UPDATE Feature SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM FeaturePicture WHERE featureID = $(id);
 	FOREACH pictures/picture DO INSERT INTO FeaturePicture( featureID, pictureID ) VALUES( $(/id), $(id) );
+	DO DELETE FROM FeaturePicture WHERE pictureID IS NULL;
 END
 
 --
