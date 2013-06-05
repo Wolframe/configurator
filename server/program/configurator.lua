@@ -179,9 +179,13 @@ local function edit_node( tablename, itr)
 	local description = nil
 	local pictures = nil
 	local id = nil
+	local idseen = false
 	for v,t in itr do
 		if( t == "id" ) then
-			id = v
+			if not idseen then
+				id = v
+				idseen = true
+			end
 		elseif t ==  "name" then
 			if v then
 				name = v
@@ -304,7 +308,10 @@ function TagRequest()
 end
 
 function updateCategory()
-	edit_node( "Category", input:get())
+	local category = input:table( )["category"]
+	category["normalizedName"] = normalizer( "name" )( category["name"] )
+	logger:print( "ERROR", category )
+	formfunction( "updateCategory" )( category )
 end
 
 function updateFeature()

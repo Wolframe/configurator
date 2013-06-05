@@ -59,6 +59,10 @@ general
 
 todo discuss
 
+- TDL:
+=> /id and id both reference the value 'id', clearly wrong. All workarounds
+   destroy the interface in XML. A real show-stopper!
+  
 CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
 
 picture:
