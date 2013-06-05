@@ -91,11 +91,6 @@ FORM CategoryPictureListRequest
 
 FORM CategoryFeatureListRequest
 {
-	_ BaseCategoryRequest
-}
-
-FORM CategoryFeatureRequiredListRequest
-{
 	features
 	{
 		feature []

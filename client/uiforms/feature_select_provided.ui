@@ -83,7 +83,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>select_feature_provided</string>
+        <string>add_feature_provided</string>
        </property>
        <property name="state:enabled" stdset="0">
         <string>{feature.selected}&gt;0</string>

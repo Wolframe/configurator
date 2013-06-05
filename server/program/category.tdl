@@ -137,7 +137,7 @@ END
 --
 -- selectCategoryFeaturesRequired : tempoary relation storage for annotated category/feature relations
 --
-TRANSACTION selectCategoryFeatureRequiredList
+TRANSACTION selectCategoryFeatureList
 BEGIN
 	DO CREATE LOCAL TEMPORARY TABLE IDlist (featureID INT PRIMARY KEY, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
 	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
