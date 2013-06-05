@@ -1,9 +1,6 @@
 TEMPLATE = lib
 
 FORMS += \
-	../uiforms/categories_features_add.ui \
-	../uiforms/categories_features_edit.ui \
-	../uiforms/categories_features.ui \
 	../uiforms/categories.ui \
 	../uiforms/category_add.ui \
 	../uiforms/category_edit.ui \
@@ -22,7 +19,8 @@ FORMS += \
 	../uiforms/feature_equivalence_add.ui \
 	../uiforms/feature_equivalence_edit.ui \
 	../uiforms/feature_equivalence.ui \
-	../uiforms/feature_select.ui \
+	../uiforms/feature_select_required.ui \
+	../uiforms/feature_select_provided.ui \
 	../uiforms/features.ui \
 	../uiforms/manufacturer_add.ui \
 	../uiforms/manufacturer_edit.ui \
