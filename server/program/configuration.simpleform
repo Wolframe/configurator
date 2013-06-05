@@ -36,3 +36,25 @@ FORM deleteConfiguration
 	id @int
 }
 
+FORM ConfigurationRequest
+{
+	configuration
+	{
+		id @int
+	}
+}
+
+FORM ConfigurationList
+{
+	list
+	{
+		configuration []
+		{
+			id @int
+			name string
+			description string
+			categoryName string
+			comment string
+		}
+	}
+}

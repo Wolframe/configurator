@@ -21,7 +21,7 @@
    <string>CategoryRequest category {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.min}}; maxQuantity{{required_features.row.max}} } } }</string>
+   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.min}}; maxQuantity{{required_features.row.max}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id}; name{{provided_features.row.name}}; minQuantity{{provided_features.row.min}}; maxQuantity{{provided_features.row.max}} } } }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0" colspan="2">
@@ -403,9 +403,22 @@
          <height>100</height>
         </size>
        </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
        <column>
         <property name="text">
-         <string notr="true">1</string>
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>min</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>max</string>
         </property>
        </column>
       </widget>

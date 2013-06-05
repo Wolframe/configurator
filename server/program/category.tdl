@@ -10,6 +10,12 @@ BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Category WHERE normalizedName = $(normalizedName) AND parentID = $(parentID);
 	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $1, $(id) );
 	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
+	FOREACH features_required/CategoryFeature DO
+		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $1, $(id), $(minQuantity), $(maxQuantity) );
+	FOREACH features_provided/CategoryFeature DO
+		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $1, $(id), $(minQuantity), $(maxQuantity) );
 END
 
 --
@@ -20,6 +26,7 @@ BEGIN
 	DO NONEMPTY UNIQUE SELECT lft,rgt,rgt-lft+1 AS width FROM Category WHERE ID = $(id) AND ID != '1';
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
 	DO DELETE FROM CategRequires WHERE categoryID = $(id);
+	DO DELETE FROM CategProvides WHERE categoryID = $(id);
 	DO DELETE FROM Category WHERE lft >= $1 AND lft <= $2;
 	DO UPDATE Category SET lft = lft-$3 WHERE lft>$2;
 	DO UPDATE Category SET rgt = rgt-$3 WHERE rgt>$2;
@@ -35,8 +42,12 @@ BEGIN
 	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $(/id), $(id) );
 	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
 	DO DELETE FROM CategRequires WHERE categoryID = $(id);
+	DO DELETE FROM CategProvides WHERE categoryID = $(id);
 	FOREACH features_required/CategoryFeature DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $(/id), $(id), $(minQuantity), $(maxQuantity) );
+	FOREACH features_provided/CategoryFeature DO
+		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
 			VALUES( $(/id), $(id), $(minQuantity), $(maxQuantity) );
 END
 
@@ -58,12 +69,26 @@ BEGIN
 		AND featureID = Feature.ID;
 END
 
+OPERATION selectCategoryFeaturesProvided -- (id)
+BEGIN
+	INTO CategoryFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM CategProvides, Feature
+		WHERE categoryID = $(id)
+		AND featureID = Feature.ID;
+END
+
 TRANSACTION selectCategory -- (id)
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
 		description
 		FROM Category WHERE ID = $(id);
 	INTO features_required DO selectCategoryFeaturesRequired( );
+	INTO features_provided DO selectCategoryFeaturesProvided( );
 END
 
 TRANSACTION selectCatogeryPictures -- (id)

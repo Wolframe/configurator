@@ -54,3 +54,26 @@ FORM addManufacturer
 		}
 	}
 }
+
+FORM ManufacturerRequest
+{
+	manufacturer
+	{
+		id @int
+		form @string
+	}
+}
+
+FORM ManufacturerList
+{
+	list
+	{
+		manufacturer []
+		{
+			id @int
+			name string
+			webPage string
+			thumbnail string
+		}
+	}
+}

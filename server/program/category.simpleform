@@ -29,6 +29,13 @@ FORM Category
 				_ CategoryFeature
 			}
 		}
+		features_provided
+		{
+			CategoryFeature []
+			{
+				_ CategoryFeature
+			}
+		}
 	}
 }
 
