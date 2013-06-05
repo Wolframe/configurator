@@ -8,27 +8,22 @@ tags
 pictures
 
 - save picture
-- sort order changes table.selected!
-- after deletion: picture list is reselecting an element, but buttons
-  are still disabled (missing a signal?). Same when opening the window
-- suddenly a multiple selection after editing a picture also edit
   - add picture
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
-- picture_select:
-  When adding the pictures:
-  WARNING: input form 'PictureThumbnailListRequest' is not defined (document type 'PictureThumbnailListRequest'). treating document as standalone (document processed with root element ignored)
-  - in single picture select (in manufacturers):
-  WARNING: input form 'PictureThumbnailRequest' is not defined (document type 'PictureThumbnailRequest'). treating document as standalone (document processed with root element ignored)
-
+  
 categories
 
 - CategoryPicture with anotation caption and info (overwrite)
-- add CategoryFeature dialog here as subdialog where you can
-  pick from the feature (and requires min/max, provides min/max)
-  - show as features table in categeory add/edit (with min/max prov/req)
-  => former categories_features, this is the template for all other such cases
-
+- feature required/provided
+  - can't add to an empty list:
+    suppressing action "CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id}; minQuantity {{main.required_features.row.min}}; maxQuantity{{main.required_features.row.max}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }" because condition "main.required_features.row.id" is not met (condition not valid) 
+  - remove association
+    - implementation idea: send down complete list, then the unselected id set,
+      build union and send back correct list
+    - OPERATION results are only one row big! No clue why?!
+  - edit assiciation, not implemented yet
+  
 features
 
 - FeaturePicture with anotation caption and info (overwrite)
@@ -58,6 +53,8 @@ general
   - relations like features provided
 
 todo discuss
+
+- sort order is not part of state in table, tree and list widget
 
 - TDL:
 => /id and id both reference the value 'id', clearly wrong. All workarounds
@@ -160,3 +157,9 @@ seen and postponed or worked around
   - fails on Qt5 (completly, dynamic properties are not updated or created!)
   => currently on hold, not sure if that's the right way to go!
 - feature/feature relation is for later (feature_equivalence uis)
+- picture_select:
+  When adding the pictures:
+  WARNING: input form 'PictureThumbnailListRequest' is not defined (document type 'PictureThumbnailListRequest'). treating document as standalone (document processed with root element ignored)
+  - in single picture select (in manufacturers):
+  WARNING: input form 'PictureThumbnailRequest' is not defined (document type 'PictureThumbnailRequest'). treating document as standalone (document processed with root element ignored)
+  => quite complex to define..
