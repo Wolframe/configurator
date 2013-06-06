@@ -39,8 +39,9 @@ components
 - add ComponentFeature dialog here as subdialog where you can
   pick from feature list (and requires min/max, provides min/max)
   - show as features table in component add/edit (with min/max prov/req)
-- order matters?! component_add
-  CRITICAL: element not initialized in answer: "features_provided" at "/features_required" 
+- price{{main.price:0.0}}, or 0, the default value is ignored,
+  the value in the widget wins:
+  <price></price>
 
 recipe
 
