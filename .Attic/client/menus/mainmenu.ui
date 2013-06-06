@@ -52,8 +52,22 @@
     <addaction name="action_categories"/>
     <addaction name="action_manufacturers"/>
     <addaction name="action_components"/>
+    <addaction name="separator"/>
+    <addaction name="actionBroken_from_here"/>
+    <addaction name="separator"/>
+    <addaction name="action_recipes"/>
+    <addaction name="action_recipe_content"/>
+    <addaction name="action_recipe_component"/>
+    <addaction name="action_components_features"/>
+   </widget>
+   <widget class="QMenu" name="menuConfiguration">
+    <property name="title">
+     <string>&amp;Configuration</string>
+    </property>
+    <addaction name="action_configurations"/>
    </widget>
    <addaction name="menuForms"/>
+   <addaction name="menuConfiguration"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_categories_features">

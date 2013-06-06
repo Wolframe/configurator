@@ -7,18 +7,12 @@ FORMS += \
 	../uiforms/category_select.ui \
 	../uiforms/component_add.ui \
 	../uiforms/component_edit.ui \
-	../uiforms/components_features_add.ui \
-	../uiforms/components_features_edit.ui \
-	../uiforms/components_features.ui \
 	../uiforms/components.ui \
 	../uiforms/configuration_add.ui \
 	../uiforms/configuration_edit.ui \
 	../uiforms/configurations.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
-	../uiforms/feature_equivalence_add.ui \
-	../uiforms/feature_equivalence_edit.ui \
-	../uiforms/feature_equivalence.ui \
 	../uiforms/feature_select_required.ui \
 	../uiforms/feature_select_provided.ui \
 	../uiforms/features.ui \
@@ -30,16 +24,6 @@ FORMS += \
 	../uiforms/picture_info.ui \
 	../uiforms/picture_select.ui \
 	../uiforms/pictures.ui \
-	../uiforms/recipe_add.ui \
-	../uiforms/recipe_component_add.ui \
-	../uiforms/recipe_component_edit.ui \
-	../uiforms/recipe_component.ui \
-	../uiforms/recipe_content_add.ui \
-	../uiforms/recipe_content_edit.ui \
-	../uiforms/recipe_content.ui \
-	../uiforms/recipe_edit.ui \
-	../uiforms/recipe_select.ui \
-	../uiforms/recipes.ui \
 	../uiforms/tag_add.ui \
 	../uiforms/tag_edit.ui \
 	../uiforms/tag_select.ui \
