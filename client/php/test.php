@@ -16,12 +16,16 @@ try
 	$search = $_GET["search"];
 	if ($search == "") $search = "logo*";
 	$id = $_GET["id"];
-	if ($id == "") $id = "11";
+	if ($id == "") {
+		if ($what == "pictures") $id = "11";
+		elseif ($what == "features") $id = "1";
+		elseif ($what == "categories") $id = "1";
+	}
 	
 	if ($what == "tags" ) {
 		$query = <<<EOF
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE tag SYSTEM "TagHierarchyRequest">
+<!DOCTYPE tag SYSTEM 'TagHierarchyRequest'>
 <tag id="1"/>
 EOF;
 	} elseif ($what == "pictures") {
@@ -37,6 +41,18 @@ EOF;
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE picture SYSTEM 'PictureRequest'>
 <picture id="$id"/>
+EOF;
+	} elseif( $what == "features") {
+		$query = <<<EOF
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE feature SYSTEM 'FeatureHierarchyRequest'>
+<feature id="$id"/>
+EOF;
+	} elseif( $what == "categories") {
+		$query = <<<EOF
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE category SYSTEM 'CategoryHierarchyRequest'>
+<category id="$id"/>
 EOF;
 	} else {
 		throw new Exception( "unknown what '" . $what . "'");
