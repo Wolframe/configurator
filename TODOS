@@ -22,6 +22,12 @@ categories
 - feature required/provided
   - can't add to an empty list:
     suppressing action "CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id}; minQuantity {{main.required_features.row.min}}; maxQuantity{{main.required_features.row.max}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }" because condition "main.required_features.row.id" is not met (condition not valid) 
+    => removing it leads to the same errors as with '?' default values
+    CRITICAL: accessing non existing property "main.required_features.row.id" 
+    CRITICAL: accessing non existing property "main.required_features.row.min" 
+    CRITICAL: accessing non existing property "main.required_features.row.min" 
+    CRITICAL: accessing non existing property "main.required_features.row.min" 
+    => why is the access order like that?!
   - remove association
     - implementation idea: send down complete list, then the unselected id set,
       build union and send back correct list
