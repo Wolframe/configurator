@@ -18,6 +18,7 @@ try
 	$id = $_GET["id"];
 	if ($id == "") {
 		if ($what == "pictures") $id = "11";
+		elseif ($what == "picture") $id = "10";
 		elseif ($what == "features") $id = "1";
 		elseif ($what == "categories") $id = "1";
 	}
@@ -53,6 +54,18 @@ EOF;
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE category SYSTEM 'CategoryHierarchyRequest'>
 <category id="$id"/>
+EOF;
+	} elseif( $what == "manufacturers") {
+		$query = <<<EOF
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE manufacturer SYSTEM 'ManufacturerListRequest'>
+<manufacturer/>
+EOF;
+	} elseif( $what == "components") {
+		$query = <<<EOF
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE component SYSTEM 'ComponentListRequest'>
+<component/>
 EOF;
 	} else {
 		throw new Exception( "unknown what '" . $what . "'");

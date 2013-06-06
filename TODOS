@@ -1,6 +1,5 @@
 php
 
-- test.php?what=picture&id=11 hangs ?!
 - request for leaves in categories/features lead to an in empty result
  
 tags
