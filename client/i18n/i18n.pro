@@ -8,9 +8,6 @@ FORMS += \
 	../uiforms/component_add.ui \
 	../uiforms/component_edit.ui \
 	../uiforms/components.ui \
-	../uiforms/configuration_add.ui \
-	../uiforms/configuration_edit.ui \
-	../uiforms/configurations.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
 	../uiforms/feature_select_required.ui \
