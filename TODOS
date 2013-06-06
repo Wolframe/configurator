@@ -51,15 +51,10 @@ general
   - properties as price, code, name, etc
   - description and pictures
   - relations like features provided
+- shortcuts for key select everywhere, e.g. &Cancel
 
 todo discuss
 
-- sort order is not part of state in table, tree and list widget
-
-- TDL:
-=> /id and id both reference the value 'id', clearly wrong. All workarounds
-   destroy the interface in XML. A real show-stopper!
-  
 CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
 
 picture:
@@ -84,12 +79,13 @@ general
 
 - selection windows should keep the state (expansion, location of last
   selection), similar to a QFileDialog
-  
-CRITICAL: element not initialized in answer: "image" at "/picture" 
-CRITICAL: accessing non existing property "main.image.size:?" 
-CRITICAL: accessing non existing property "main.tags.item.id:?" 
-CRITICAL: accessing non existing property "main.image.size:?" 
-CRITICAL: accessing non existing property "main.image.size:?" 
+- extremly funny messages, aren't '?' values default values there
+  to substitute the value, if the property doesn't exist:  
+  CRITICAL: element not initialized in answer: "image" at "/picture" 
+  CRITICAL: accessing non existing property "main.image.size:?" 
+  CRITICAL: accessing non existing property "main.tags.item.id:?" 
+  CRITICAL: accessing non existing property "main.image.size:?" 
+  CRITICAL: accessing non existing property "main.image.size:?" 
 
 CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
 
@@ -128,7 +124,6 @@ compoents
 - picture list is not restored when login in/out, of course, because they
   are temporary database tables (maybe we should remove temporary tables
   anyway!)
-- shortcuts for key select everywhere, e.g. &Cancel
 - dito default buttons for all forms
 - property title, so we can put the name of a component into the window title
   (example add/edit xXXX)
