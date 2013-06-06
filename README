@@ -1,2 +1,6 @@
 configurator
 ============
+
+client		- forms and resources for qtClient
+server		- Wolframe server part
+phpclient	- demo Php client for configurator requests
