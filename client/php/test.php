@@ -4,13 +4,12 @@ use Wolframe\Session as Session;
 
 try
 {
-#	$sslpath = "certs";
-#	$sslopt = array(
-#		"local_cert" => "$sslpath/combinedcert.pem",
-#		"verify_peer" => false
-#	);
-#	$conn = new Session( "127.0.0.1", 7961, $sslopt, "NONE");
-	$conn = new Session( "127.0.0.1", 7661, array( ), "NONE");
+	$sslpath = "certs";
+	$sslopt = array(
+		"local_cert" => "$sslpath/combinedcert.pem",
+		"verify_peer" => false
+	);
+	$conn = new Session( "127.0.0.1", 7961, $sslopt, "NONE");
 	
 	$what = $_GET["what"];
 	if ($what == "") $what = "tags";
