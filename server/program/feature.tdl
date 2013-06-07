@@ -52,7 +52,7 @@ BEGIN
 		LEFT JOIN Category
 		ON Category.ID = CategRequires.categoryID
 		WHERE Feature.ID = $(id)
-		GROUP BY Feature.ID;
+		GROUP BY Feature.ID, Feature.parentID, Feature.name, Feature.description;
 END
 
 TRANSACTION selectFeaturePictures -- (id)
