@@ -271,7 +271,7 @@
         <string>add_feature_required ({main.widgetid}_feature_required)</string>
        </property>
        <property name="action:add_feature_required" stdset="0">
-        <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id}; minQuantity {{main.required_features.row.min}}; maxQuantity{{main.required_features.row.max}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
+        <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
        </property>
        <property name="link:feature_required_select" stdset="0">
         <string>{main.widgetid}_feature_required</string>
