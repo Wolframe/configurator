@@ -105,6 +105,10 @@ FORM CategoryFeatureListRequest
 			minQuantity int
 			maxQuantity int
 		}
+		remove []
+		{
+			id @int
+		}
 	}
 }
 

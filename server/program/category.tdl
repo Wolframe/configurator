@@ -143,6 +143,7 @@ BEGIN
 	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));
 	DO DELETE FROM IDlist WHERE featureID IS NULL;
 	FOREACH /add DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	FOREACH /remove DO DELETE FROM IDlist WHERE featureID=$(id);
 	INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",

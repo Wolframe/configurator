@@ -239,6 +239,9 @@
        <property name="text">
         <string>Required features:</string>
        </property>
+       <property name="buddy">
+        <cstring>required_features</cstring>
+       </property>
       </widget>
      </item>
      <item row="1" column="1">
@@ -280,7 +283,7 @@
         <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
        </property>
        <property name="action:remove_feature_required" stdset="0">
-        <string>CategoryFeatureListRequest features { feature[] { id = {unselected} } }</string>
+        <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>
        </property>
        <attribute name="headerVisible">
         <bool>true</bool>
@@ -378,6 +381,9 @@
          <property name="state:enabled" stdset="0">
           <string>{provided_features.selected}&gt;0</string>
          </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>remove_feature_provided@main.provided_features</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -425,7 +431,7 @@
         <string>add_feature_provided ({main.widgetid}_feature_provided)</string>
        </property>
        <property name="action:add_feature_provided" stdset="0">
-        <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id}; minQuantity {{main.provided_features.row.min}}; maxQuantity{{main.provided_features.row.max}} }; add[] { id={feature_provided_select.feature.selected}; minQuantity {{feature_provided_select.min}}; maxQuantity {{feature_provided_select.max}} } }</string>
+        <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; add[] { id={feature_provided_select.feature.selected}; minQuantity {{feature_provided_select.min}}; maxQuantity {{feature_provided_select.max}} } }</string>
        </property>
        <property name="link:feature_provided_select" stdset="0">
         <string>{main.widgetid}_feature_provided</string>
@@ -434,7 +440,7 @@
         <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
        </property>
        <property name="action:remove_feature_provided" stdset="0">
-        <string>CategoryFeatureListRequest features { feature[] { id = {unselected} } }</string>
+        <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; remove[] { id = {selected} } }</string>
        </property>
        <column>
         <property name="text">
@@ -459,8 +465,10 @@
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
+  <tabstop>required_features</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>provided_features</tabstop>
   <tabstop>pushButton_3</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>description</tabstop>

@@ -310,7 +310,6 @@ end
 function updateCategory()
 	local category = input:table( )["category"]
 	category["normalizedName"] = normalizer( "name" )( category["name"] )
-	logger:print( "ERROR", category )
 	formfunction( "updateCategory" )( category )
 end
 
