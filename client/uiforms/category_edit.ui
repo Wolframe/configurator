@@ -408,7 +408,7 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>feature_select_provided_edit?widgetid={main.widgetid}_feature_provided&amp;id={provided_features.selected}</string>
+          <string>feature_select_provided_edit?widgetid={main.widgetid}_feature_provided&amp;id={provided_features.selected}&amp;minQuantity=1&amp;maxQuantity=1</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_feature_provided</string>
