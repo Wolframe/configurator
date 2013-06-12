@@ -21,11 +21,13 @@ categories
 - CategoryPicture with anotation caption and info (overwrite)
 - feature required/provided
   - OPERATION results are only one row big! No clue why?!
-  - edit assiciation, not implemented yet
+  - edit assiciation
+    - how to propagate temporary values (form parameters) into the
+      next form and how to initialize values with it?
   - saving the form not possible if required and
     provided features are missing
-  - remove button can be disabled, edit button not, why?
-      
+  - selected.id, selected.<property>
+  
 features
 
 - FeaturePicture with anotation caption and info (overwrite)
@@ -163,3 +165,7 @@ seen and postponed or worked around
   - in single picture select (in manufacturers):
   WARNING: input form 'PictureThumbnailRequest' is not defined (document type 'PictureThumbnailRequest'). treating document as standalone (document processed with root element ignored)
   => quite complex to define..
+- categories
+  - remove button can be disabled, edit button not, why?
+    => state:enabled is ignored if there is a 'form' dyn. property
+    => using feature_required.selected works around the problem

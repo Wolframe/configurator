@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>feature_select_required</class>
- <widget class="QWidget" name="feature_select_required">
+ <class>feature_select_required_edit</class>
+ <widget class="QWidget" name="feature_select_required_edit">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,11 +11,17 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Required Features</string>
+   <string>Edit Required Features</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>CategoryFeatureEdit feature { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>CategoryFeatureEdit feature { id={feature.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
@@ -51,6 +57,12 @@
    </item>
    <item row="0" column="0" colspan="2">
     <widget class="QTreeWidget" name="feature">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
      <property name="itemsExpandable">
       <bool>true</bool>
      </property>

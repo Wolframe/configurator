@@ -112,6 +112,14 @@ FORM CategoryFeatureListRequest
 	}
 }
 
+FORM CategoryFeatureEdit
+{
+	feature
+	{
+		_ CategoryFeature
+	}
+}
+
 FORM CategoryFeatureList
 {
 	CategoryFeatures

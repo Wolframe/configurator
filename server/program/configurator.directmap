@@ -10,4 +10,4 @@ PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(xml):PictureThumbnail;
 
 CategoryFeatureListRequest=selectCategoryFeatureList(xml):CategoryFeatureList;
-
+CategoryFeatureEdit=selectCategoryFeature(xml):CategoryFeatureEdit;

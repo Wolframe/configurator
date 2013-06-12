@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>feature_select_provided</class>
- <widget class="QWidget" name="feature_select_provided">
+ <class>feature_select_provided_add</class>
+ <widget class="QWidget" name="feature_select_provided_add">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Provided Features</string>
+   <string>Add Provided Features</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
