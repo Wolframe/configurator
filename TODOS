@@ -22,13 +22,11 @@ categories
 - feature required/provided
   - OPERATION results are only one row big! No clue why?!
   - edit assiciation
-    - how to propagate temporary values (form parameters) into the
-      next form and how to initialize values with it?
+    - selected.id, selected.<property>, can't access properties for
+      the selected row/item. better would be a syntax like
+      widget.selected_row.id, widget.selected_row.id.minQuantity, etc.
   - saving the form not possible if required and
     provided features are missing
-  - selected.id, selected.<property>, can't access properties for
-    the selected row/item. better would be a syntax like
-    widget.selected_row.id, widget.selected_row.id.minQuantity, etc.
   
 features
 
