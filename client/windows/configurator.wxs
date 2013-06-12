@@ -99,6 +99,9 @@ Project Wolframe.
 								<File Id="picture_info.ui" Name="picture_info.ui" DiskId="1" Source="..\uiforms\picture_info.ui"/>
 								<File Id="picture_select.ui" Name="picture_select.ui" DiskId="1" Source="..\uiforms\picture_select.ui"/>
 								<File Id="pictures.ui" Name="pictures.ui" DiskId="1" Source="..\uiforms\pictures.ui"/>
+								<File Id="recipe_add.ui" Name="recipe_add.ui" DiskId="1" Source="..\uiforms\recipe_add.ui"/>
+								<File Id="recipe_edit.ui" Name="recipe_edit.ui" DiskId="1" Source="..\uiforms\recipe_edit.ui"/>
+								<File Id="recipes.ui" Name="recipes.ui" DiskId="1" Source="..\uiforms\recipes.ui"/>
 								<File Id="tag_add.ui" Name="tag_add.ui" DiskId="1" Source="..\uiforms\tag_add.ui"/>
 								<File Id="tag_delete.ui" Name="tag_delete.ui" DiskId="1" Source="..\uiforms\tag_delete.ui"/>
 								<File Id="tag_edit.ui" Name="tag_edit.ui" DiskId="1" Source="..\uiforms\tag_edit.ui"/>
