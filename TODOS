@@ -26,7 +26,9 @@ categories
       next form and how to initialize values with it?
   - saving the form not possible if required and
     provided features are missing
-  - selected.id, selected.<property>
+  - selected.id, selected.<property>, can't access properties for
+    the selected row/item. better would be a syntax like
+    widget.selected_row.id, widget.selected_row.id.minQuantity, etc.
   
 features
 
