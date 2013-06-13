@@ -10,11 +10,14 @@ FORMS += \
 	../uiforms/components.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
-	../uiforms/feature_select_required.ui \
-	../uiforms/feature_select_provided.ui \
+	../uiforms/feature_select_required_add.ui \
+	../uiforms/feature_select_required_edit.ui \
+	../uiforms/feature_select_provided_add.ui \
+	../uiforms/feature_select_provided_edit.ui \
 	../uiforms/features.ui \
 	../uiforms/manufacturer_add.ui \
 	../uiforms/manufacturer_edit.ui \
+	../uiforms/manufacturer_select.ui \
 	../uiforms/manufacturers.ui \
 	../uiforms/picture_add.ui \
 	../uiforms/picture_edit.ui \

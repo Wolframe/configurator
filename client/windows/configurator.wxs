@@ -86,12 +86,15 @@ Project Wolframe.
 								<File Id="feature_add.ui" Name="feature_add.ui" DiskId="1" Source="..\uiforms\feature_add.ui"/>
 								<File Id="feature_delete.ui" Name="feature_delete.ui" DiskId="1" Source="..\uiforms\feature_delete.ui"/>
 								<File Id="feature_edit.ui" Name="feature_edit.ui" DiskId="1" Source="..\uiforms\feature_edit.ui"/>
-								<File Id="feature_select_required.ui" Name="feature_select_required.ui" DiskId="1" Source="..\uiforms\feature_select_required.ui"/>
-								<File Id="feature_select_provided.ui" Name="feature_select_provided.ui" DiskId="1" Source="..\uiforms\feature_select_provided.ui"/>
+								<File Id="feature_select_required_add.ui" Name="feature_select_required_add.ui" DiskId="1" Source="..\uiforms\feature_select_required_add.ui"/>
+								<File Id="feature_select_required_edit.ui" Name="feature_select_required_edit.ui" DiskId="1" Source="..\uiforms\feature_select_required_edit.ui"/>
+								<File Id="feature_select_provided_add.ui" Name="feature_select_provided_add.ui" DiskId="1" Source="..\uiforms\feature_select_provided_add.ui"/>
+								<File Id="feature_select_provided_edit.ui" Name="feature_select_provided_edit.ui" DiskId="1" Source="..\uiforms\feature_select_provided_edit.ui"/>
 								<File Id="features.ui" Name="features.ui" DiskId="1" Source="..\uiforms\features.ui"/>
 								<File Id="manufacturer_add.ui" Name="manufacturer_add.ui" DiskId="1" Source="..\uiforms\manufacturer_add.ui"/>
 								<File Id="manufacturer_delete.ui" Name="manufacturer_delete.ui" DiskId="1" Source="..\uiforms\manufacturer_delete.ui"/>
 								<File Id="manufacturer_edit.ui" Name="manufacturer_edit.ui" DiskId="1" Source="..\uiforms\manufacturer_edit.ui"/>
+								<File Id="manufacturer_select.ui" Name="manufacturer_select.ui" DiskId="1" Source="..\uiforms\manufacturer_select.ui"/>
 								<File Id="manufacturers.ui" Name="manufacturers.ui" DiskId="1" Source="..\uiforms\manufacturers.ui"/>
 								<File Id="picture_add.ui" Name="picture_add.ui" DiskId="1" Source="..\uiforms\picture_add.ui"/>
 								<File Id="picture_delete.ui" Name="picture_delete.ui" DiskId="1" Source="..\uiforms\picture_delete.ui"/>
