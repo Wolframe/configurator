@@ -20,13 +20,16 @@ categories
 
 - CategoryPicture with anotation caption and info (overwrite)
 - feature required/provided
-  - OPERATION results are only one row big! No clue why?!
+  - OPERATION results are only one row big! No clue why?!		!!
   - edit assiciation
-    - selected.id, selected.<property>, can't access properties for
+    - selected.id, selected.<property>, can't access properties for	!!
       the selected row/item. better would be a syntax like
       widget.selected_row.id, widget.selected_row.id.minQuantity, etc.
-  - saving the form not possible if required and
+  - saving the form not possible if required and			!!
     provided features are missing
+- category: delete a tree with subtrees or leaf(s):
+  CRITICAL: ERROR:  "-delete_2:633" "REQUEST error in transaction deleteCategory:
+  Key (id)=(75) is still referenced from table "categorypicture"." 
   
 features
 
@@ -36,20 +39,28 @@ manufacturers
 
 components
 
-- add ComponentFeature dialog here as subdialog where you can
+- add ComponentFeature dialog here as subdialog where you can		!!
   pick from feature list (and requires min/max, provides min/max)
   - show as features table in component add/edit (with min/max prov/req)
 - price{{main.price:0.0}}, or 0, the default value is ignored,
   the value in the widget wins:
   <price></price>
+- component edit:
+  - manufacturer and category are optional by db model, not in ui 	!!
+  - how can we delete the manufacturer?
+  - no manufacturer:
+    - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
+      CRITICAL: ERROR:  "-save:1067" "REQUEST error in transaction updateComponent:
+      invalid input syntax for integer: "" LINE 2:   categoryID='40', manufacturerID=
 
 recipe
 
-- remove button disabled, if no elements selected
-- select category (1)
-- select pictures (N)
-- select list of features needed for the recipe (recipe_content*.ui)
-- select list of components in recipe (recipe_component*.ui)
+- redo completly							!!
+  - remove button disabled, if no elements selected
+  - select category (1)
+  - select pictures (N)
+  - select list of features needed for the recipe (recipe_content*.ui)
+  - select list of components in recipe (recipe_component*.ui)
     
 general
 
@@ -62,83 +73,28 @@ general
 
 todo discuss
 
-CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
-
-picture:
-- add:
-  CRITICAL: accessing non existing property "main.tags.item.id" 
-  CRITICAL: accessing non existing property "main.image.base64" 
-  CRITICAL: accessing non existing property "main.image.base64" 
-
-component:
-- no manufacturer:
-  - how can we delete the manufacturer?
-  - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
-CRITICAL: ERROR:  "-save:1067" "REQUEST error in transaction updateComponent: invalid input syntax for integer: "" LINE 2:   categoryID='40', manufacturerID=
-
 unsorted
 
 general
 
 - selection windows should keep the state (expansion, location of last
   selection), similar to a QFileDialog
-- extremly funny messages, aren't '?' values default values there
-  to substitute the value, if the property doesn't exist:  
-  CRITICAL: element not initialized in answer: "image" at "/picture" 
-  CRITICAL: accessing non existing property "main.image.size:?" 
-  CRITICAL: accessing non existing property "main.tags.item.id:?" 
-  CRITICAL: accessing non existing property "main.image.size:?" 
-  CRITICAL: accessing non existing property "main.image.size:?" 
-
-CRITICAL: illegal character in default value (currently only non negative numbers and alphanumeric or empty value allowed): '?' "?" (widget "picture_add_form.add" ) 
-
-CRITICAL: ERROR:  "-add:266" "REQUEST error in transaction addPicture: invalid input syntax for integer: "" LINE 1: ...NSERT INTO PictureTag( pictureID, tagID ) VALUES( '79', '' )                                                                    ^" 
-CRITICAL: ERROR:  "-save:326" "REQUEST error in transaction updatePicture: invalid input syntax for integer: "" LINE 1: ...NSERT INTO PictureTag( pictureID, tagID ) VALUES( '80', '' )                                             
-
-category: delete a tree with subtrees or leaf(s):
-CRITICAL: ERROR:  "-delete_2:633" "REQUEST error in transaction deleteCategory:  Key (id)=(75) is still referenced from table "categorypicture"." 
+- search for all select forms
+- dito default buttons for all forms
 
 manufacturer:
 - having an image is mandatory, otherwise we get
   CRITICAL: ERROR:  "-add:928" "REQUEST error in transaction addManufacturer: invalid input syntax for integer: "" LINE 2:   VALUES ( 'bla', 'bla', 'bla', '' )
 - not all actions in an iconized list view lead to status recalculations
   in the remove button (state:enabled)
-- how things are coupled in two multiple request cases:
-  'answer' should fit to 'action'
-  'action:select_picture' to 'answer:select_picture'
 - IMHO we should be able to set the values of a form and then overload
   them and not have to artificially split the form request in 3 parts
   (see component_edit and manufacturer_select)
-- hard to understand for a developer to put certain dynamic properties
-  to widget to avoid error messages like:
-  CRITICAL: set a dynamic property of QLabel "picture_info_form.image" that is not predefined: "base64" QVariant(QString, "/9j/4AAQSkZJRgABAgAAZABkAAD/7AARRHVja3kAAQAEAAAAPAAA/+4ADkFk...") 
-- we can have multiple selection boxes for the same edit window with
-  lost link behaviour, leads also to error message:
-  CRITICAL: error widget visitor "QLabel" "component_edit.manufacturer" ambiguus widget link reference : "component_edit:1281_manufacturer" 
   
-compoents
+components
 
-- component list:
-  - TBD: exact attributes in the component list
-- component edit:
-  - manufacturer and category are optional by db model, not in ui
-  
-- search for all select forms
-- picture list is not restored when login in/out, of course, because they
-  are temporary database tables (maybe we should remove temporary tables
-  anyway!)
-- dito default buttons for all forms
 - property title, so we can put the name of a component into the window title
   (example add/edit xXXX)
-- syntax error: code {?}; leads to completly misleading error message:
-  CRITICAL: attribute not defined in answer description: "id" at ""
-- not clear, where the problem is (TDL, simpleform?):
-  ERROR: Error calling procedure: unknown tag  (picture)-.. candidates are {id, thumbnail, caption}
-  ERROR: error in execution of REQUEST ManufacturerPictureRequest:unknown tag  (picture)-.. candidates are {id, thumbnail, caption}
-- seen races between closing of window (edit category) and action
-  (updateCategory)!
-- QTableWidget: state contains the manually changed rulers in the header
-  (for column size), not kept
 - add cursor changes for long-lasting operations, e.g. transcend logo
 - picture dialog:
   - idea: context menu on listwidget with pictures (with info, exclude)
@@ -163,5 +119,7 @@ seen and postponed or worked around
   => quite complex to define..
 - categories
   - remove button can be disabled, edit button not, why?
-    => state:enabled is ignored if there is a 'form' dyn. property
     => using feature_required.selected works around the problem
+- picture list is not restored when login in/out, of course, because they
+  are temporary database tables (maybe we should remove temporary tables
+  anyway!)
