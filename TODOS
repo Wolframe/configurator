@@ -71,10 +71,6 @@ picture:
   CRITICAL: accessing non existing property "main.image.base64" 
 
 component:
-- add:
-  select category:
-  CRITICAL: element not defined in answer description: QVariant(QString, "features_required") at "" 
-  CRITICAL: failed to validate request answer 
 - no manufacturer:
   - how can we delete the manufacturer?
   - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
