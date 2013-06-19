@@ -56,9 +56,12 @@ END
 -- selectCategoryByNormalizedName :Get the category by name
 -- selectCategoryList             :Get a list of categories
 --
-OPERATION selectCategoryFeaturesRequired -- (id)
+TRANSACTION selectCategory -- (id)
 BEGIN
-	INTO CategoryFeature DO
+	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
+		description
+		FROM Category WHERE ID = $(id);
+	STRUCT features_required INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -67,11 +70,7 @@ BEGIN
 		FROM CategRequires, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
-END
-
-OPERATION selectCategoryFeaturesProvided -- (id)
-BEGIN
-	INTO CategoryFeature DO
+	STRUCT features_provided INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -80,15 +79,6 @@ BEGIN
 		FROM CategProvides, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
-END
-
-TRANSACTION selectCategory -- (id)
-BEGIN
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
-		description
-		FROM Category WHERE ID = $(id);
-	INTO features_required DO selectCategoryFeaturesRequired( );
-	INTO features_provided DO selectCategoryFeaturesProvided( );
 END
 
 TRANSACTION selectCatogeryPictures -- (id)

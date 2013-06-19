@@ -27,9 +27,6 @@ categories
       widget.selected_row.id, widget.selected_row.id.minQuantity, etc.
   - saving the form not possible if required and			!!
     provided features are missing
-- category: delete a tree with subtrees or leaf(s):
-  CRITICAL: ERROR:  "-delete_2:633" "REQUEST error in transaction deleteCategory:
-  Key (id)=(75) is still referenced from table "categorypicture"." 
   
 features
 
