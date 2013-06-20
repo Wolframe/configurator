@@ -71,7 +71,7 @@
            <string>CategoryRequest category {id={main.id}}</string>
           </property>
           <property name="answer" stdset="0">
-           <string>Category category {id={?}; parentID={?}; root{{?}}; name{{1}}; description{{2}}; features_required{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
+           <string>Category category {id={?}; parentID={?}; root{{?}}; name{{1}}; description{{2}}; features_required{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } };  features_provided{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
           </property>
           <property name="state:visible" stdset="0">
            <string>{main.id}&gt;1</string>
