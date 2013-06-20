@@ -20,11 +20,7 @@ categories
 
 - CategoryPicture with anotation caption and info (overwrite)
 - feature required/provided
-  - OPERATION results are only one row big! No clue why?!		!!
   - edit assiciation
-    - selected.id, selected.<property>, can't access properties for	!!
-      the selected row/item. better would be a syntax like
-      widget.selected_row.id, widget.selected_row.id.minQuantity, etc.
   - saving the form not possible if required and			!!
     provided features are missing
   
