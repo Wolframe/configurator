@@ -12,10 +12,10 @@ BEGIN
 	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
 	FOREACH features_required/CategoryFeature DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
-			VALUES( $1, $(id), $(minQuantity), $(maxQuantity) );
+			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 	FOREACH features_provided/CategoryFeature DO
 		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
-			VALUES( $1, $(id), $(minQuantity), $(maxQuantity) );
+			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
 --

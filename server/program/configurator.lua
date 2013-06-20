@@ -307,6 +307,12 @@ function TagRequest()
 	select_node( "Tag", "tag", input:get())
 end
 
+function createCategory()
+	local category = input:table( )["category"]
+	category["normalizedName"] = normalizer( "name" )( category["name"] )
+	formfunction( "addCategory" )( category )
+end
+
 function updateCategory()
 	local category = input:table( )["category"]
 	category["normalizedName"] = normalizer( "name" )( category["name"] )
@@ -331,10 +337,6 @@ end
 
 function deleteTag()
 	delete_node( "Tag", input:get())
-end
-
-function createCategory()
-	create_node( "Category", input:get())
 end
 
 function createFeature()

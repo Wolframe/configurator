@@ -10,7 +10,7 @@ FORM Category
 {
 	category
 	{
-		id @int
+		id ?@int
 		parentID @int
 		root ?string
 		name string
@@ -53,6 +53,11 @@ FORM deleteCategory
 	{
 		id @int
 	}
+}
+
+FORM createCategory
+{
+	_ Category
 }
 
 FORM updateCategory
