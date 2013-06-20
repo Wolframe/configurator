@@ -45,10 +45,10 @@ BEGIN
 	DO DELETE FROM CategProvides WHERE categoryID = $(id);
 	FOREACH features_required/CategoryFeature DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
-			VALUES( $(/id), $(id), $(minQuantity), $(maxQuantity) );
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 	FOREACH features_provided/CategoryFeature DO
 		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
-			VALUES( $(/id), $(id), $(minQuantity), $(maxQuantity) );
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
 --

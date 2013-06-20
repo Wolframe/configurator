@@ -19,9 +19,6 @@ pictures
 categories
 
 - CategoryPicture with anotation caption and info (overwrite)
-- feature required/provided
-  - saving the form not possible if required and			!!
-    provided features are missing
   
 features
 
