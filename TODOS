@@ -26,6 +26,8 @@ features
 
 manufacturers
 
+- logo should be optional?
+
 components
 
 - add ComponentFeature dialog here as subdialog where you can		!!
