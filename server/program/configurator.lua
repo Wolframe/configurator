@@ -216,6 +216,7 @@ local function delete_node( tablename, itr)
 	formfunction( "delete" .. tablename)( {id=id} )
 end
 
+-- Aba: should go away, is simply unreadable!
 local function create_node( tablename, itr)
 	local name = nil
 	local parentID = nil
@@ -310,6 +311,9 @@ end
 function createCategory()
 	local category = input:table( )["category"]
 	category["normalizedName"] = normalizer( "name" )( category["name"] )
+	if category["root"] and category["root"] == "true" then
+		category["parentID"] = 1
+	end
 	formfunction( "addCategory" )( category )
 end
 
