@@ -364,7 +364,8 @@
           <string>{main.widgetid}_category</string>
          </property>
          <property name="answer" stdset="0">
-          <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}}; features_required{{?}}; features_provided{{?}}  }</string>
+          <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}}; features_required{CategoryFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } }  }
+</string>
          </property>
          <property name="id" stdset="0">
           <string/>
