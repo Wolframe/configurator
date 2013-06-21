@@ -7,6 +7,7 @@ FORMS += \
 	../uiforms/category_select.ui \
 	../uiforms/component_add.ui \
 	../uiforms/component_edit.ui \
+	../uiforms/component_select.ui \
 	../uiforms/components.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
@@ -18,10 +19,15 @@ FORMS += \
 	../uiforms/manufacturer_select.ui \
 	../uiforms/manufacturers.ui \
 	../uiforms/picture_add.ui \
+	../uiforms/picture_delete.ui \
 	../uiforms/picture_edit.ui \
 	../uiforms/picture_info.ui \
 	../uiforms/picture_select.ui \
 	../uiforms/pictures.ui \
+	../uiforms/recipe_add.ui \
+	../uiforms/recipe_delete.ui \
+	../uiforms/recipe_edit.ui \
+	../uiforms/recipes.ui \
 	../uiforms/tag_add.ui \
 	../uiforms/tag_edit.ui \
 	../uiforms/tag_select.ui \

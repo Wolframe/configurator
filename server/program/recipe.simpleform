@@ -26,7 +26,7 @@ FORM updateRecipe
 	_ Recipe
 }
 
-FORM deleteRecipe
+FORM BaseRecipeRequest
 {
 	recipe
 	{
@@ -36,10 +36,12 @@ FORM deleteRecipe
 
 FORM RecipeRequest
 {
-	recipe
-	{
-		id @int
-	}
+	_ BaseRecipeRequest
+}
+
+FORM deleteRecipe
+{
+	_ BaseRecipeRequest
 }
 
 FORM RecipeList

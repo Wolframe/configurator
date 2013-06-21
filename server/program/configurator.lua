@@ -574,6 +574,9 @@ function deleteComponentFeature( )
 	formfunction( "deleteComponentFeature" )( componentFeature )
 end
 
+-- this is from the configurator plugin, should be renamed, name clash
+-- with feature req/prov of component dialogs
+
 --~ function ComponentFeatureRequest( )
 	--~ local componentFeature = input:table( )["ComponentFeature"]
 	--~ local t = formfunction( "selectComponentFeature" )( {
