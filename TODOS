@@ -26,18 +26,18 @@ features
 
 manufacturers
 
-- logo should be optional?
+- logo should be optional? a no icon button, how to set values in
+  qlabel? again a dummy request?
 
 components
 
-- add ComponentFeature dialog here as subdialog where you can		!!
-  pick from feature list (and requires min/max, provides min/max)
-  - show as features table in component add/edit (with min/max prov/req)
 - price{{main.price:0.0}}, or 0, the default value is ignored,
   the value in the widget wins:
   <price></price>
 - component edit:
   - manufacturer and category are optional by db model, not in ui 	!!
+    - manufacturer optional makes sense
+    - category not so much maybe?
   - how can we delete the manufacturer?
   - no manufacturer:
     - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
@@ -55,6 +55,8 @@ recipe
     
 general
 
+- move picture select requests back into main select request, don't
+  force the user to make two requests (think php layer!)
 - resize all forms, give them nice default sizes
 - used stackwidgets in complex dialogs to seperate:
   - properties as price, code, name, etc

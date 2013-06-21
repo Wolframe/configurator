@@ -20,6 +20,12 @@ BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Component WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $1, $(id) );
 	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;		
+	FOREACH features_required/ComponentFeature DO
+		INSERT INTO ComponentRequires( componentID, featureID, minQuantity, maxQuantity )
+			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
+	FOREACH features_provided/ComponentFeature DO
+		INSERT INTO ComponentProvides( componentID, featureID, minQuantity, maxQuantity )
+			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
 TRANSACTION updateComponent
@@ -31,11 +37,21 @@ BEGIN
 		price=$(price)
 		WHERE ID=$(id);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $(/id), $(id) );
-	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;		
+	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;
+	DO DELETE FROM ComponentRequires WHERE componentID = $(id);
+	DO DELETE FROM ComponentProvides WHERE componentID = $(id);
+	FOREACH features_required/ComponentFeature DO
+		INSERT INTO ComponentRequires( componentID, featureID, minQuantity, maxQuantity )
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
+	FOREACH features_provided/ComponentFeature DO
+		INSERT INTO ComponentProvides( componentID, featureID, minQuantity, maxQuantity )
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
 TRANSACTION deleteComponent
 BEGIN
+	DO DELETE FROM ComponentRequires WHERE componentID = $(id);
+	DO DELETE FROM ComponentProvides WHERE componentID = $(id);
 	DO DELETE FROM ComponentPicture WHERE componentID = $(id);
 	DO DELETE FROM Component WHERE ID = $(id);
 END
@@ -59,10 +75,24 @@ BEGIN
 			LEFT JOIN Manufacturer
 			ON manufacturerID = Manufacturer.ID
 			WHERE Component.ID = $(id);
---	INTO picture DO
---		SELECT ComponentPicture.pictureID AS "id"
---			FROM ComponentPicture
---			WHERE ComponentPicture.componentID = $(id);
+	STRUCT features_required INTO ComponentFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM ComponentRequires, Feature
+		WHERE componentID = $(id)
+		AND featureID = Feature.ID;
+	STRUCT features_provided INTO ComponentFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM ComponentProvides, Feature
+		WHERE componentID = $(id)
+		AND featureID = Feature.ID;
 END
 
 TRANSACTION selectComponentPictures -- (id)
@@ -71,4 +101,34 @@ BEGIN
 		FROM ComponentPicture, Picture
 		WHERE ComponentPicture.pictureID = Picture.ID
 		AND ComponentPicture.componentID = $(id);
+END
+
+--
+-- selectComponentFeaturesRequired : temporay relation storage for annotated category/feature relations
+--
+TRANSACTION selectComponentFeatureList
+BEGIN
+	DO CREATE LOCAL TEMPORARY TABLE IDlist (featureID INT, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
+	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));
+	DO DELETE FROM IDlist WHERE featureID IS NULL;
+	FOREACH /add DO DELETE FROM IDlist WHERE featureID=$(id);
+	FOREACH /add DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	FOREACH /remove DO DELETE FROM IDlist WHERE featureID=$(id);
+	INTO ComponentFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM IDlist, Feature
+		WHERE Feature.ID = IDlist.featureID;
+END
+
+TRANSACTION selectComponentFeature
+BEGIN
+	INTO . DO
+		SELECT
+			$(id) AS id,
+			$(minQuantity) AS "minQuantity",
+			$(maxQuantity) AS "maxQuantity";
 END

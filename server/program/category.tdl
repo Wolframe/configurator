@@ -125,7 +125,7 @@ BEGIN
 END
 
 --
--- selectCategoryFeaturesRequired : tempoary relation storage for annotated category/feature relations
+-- selectCategoryFeaturesRequired : temporay relation storage for annotated category/feature relations
 --
 TRANSACTION selectCategoryFeatureList
 BEGIN

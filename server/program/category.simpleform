@@ -39,22 +39,6 @@ FORM Category
 	}
 }
 
-FORM CategoryLabelRequest
-{
-	category
-	{
-		id @int
-	}
-}
-
-FORM deleteCategory
-{
-	category
-	{
-		id @int
-	}
-}
-
 FORM createCategory
 {
 	_ Category
@@ -87,6 +71,11 @@ FORM BaseCategoryRequest
 	{
 		id @int
 	}
+}
+
+FORM deleteCategory
+{
+	_ BaseCategoryRequest
 }
 
 FORM CategoryPictureListRequest
