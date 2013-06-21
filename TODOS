@@ -34,6 +34,8 @@ components
 - price{{main.price:0.0}}, or 0, the default value is ignored,
   the value in the widget wins:
   <price></price>
+  - also: CRITICAL: element not initialized in answer: "price" at "/component" 
+  - convert_to_float maybe?
 - component edit:
   - manufacturer and category are optional by db model, not in ui 	!!
     - manufacturer optional makes sense
