@@ -17,7 +17,6 @@ FORM Recipe
 			id @int
 			_ string
 		}
-		search
 	}
 }
 

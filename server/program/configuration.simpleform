@@ -27,7 +27,6 @@ FORM Configuration
 			description string
 			price float
 		}
-		search
 	}
 }
 
