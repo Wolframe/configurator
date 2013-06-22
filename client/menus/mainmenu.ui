@@ -184,6 +184,10 @@
    </property>
   </action>
   <action name="action_recipes">
+   <property name="icon">
+    <iconset resource="../configurator.qrc">
+     <normaloff>:/images/recipes.png</normaloff>:/images/recipes.png</iconset>
+   </property>
    <property name="text">
     <string>&amp;Recipes</string>
    </property>
