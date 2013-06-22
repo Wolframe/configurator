@@ -80,6 +80,7 @@ Project Wolframe.
 								<File Id="category_delete.ui" Name="category_delete.ui" DiskId="1" Source="..\uiforms\category_delete.ui"/>
 								<File Id="category_edit.ui" Name="category_edit.ui" DiskId="1" Source="..\uiforms\category_edit.ui"/>
 								<File Id="category_select.ui" Name="category_select.ui" DiskId="1" Source="..\uiforms\category_select.ui"/>
+								<File Id="category_select_required.ui" Name="category_select_required.ui" DiskId="1" Source="..\uiforms\category_select_required.ui"/>
 								<File Id="component_add.ui" Name="component_add.ui" DiskId="1" Source="..\uiforms\component_add.ui"/>
 								<File Id="component_edit.ui" Name="component_edit.ui" DiskId="1" Source="..\uiforms\component_edit.ui"/>
 								<File Id="component_delete.ui" Name="component_delete.ui" DiskId="1" Source="..\uiforms\component_delete.ui"/>

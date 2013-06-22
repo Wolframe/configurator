@@ -5,6 +5,7 @@ FORMS += \
 	../uiforms/category_add.ui \
 	../uiforms/category_edit.ui \
 	../uiforms/category_select.ui \
+	../uiforms/category_select_required.ui \
 	../uiforms/component_add.ui \
 	../uiforms/component_edit.ui \
 	../uiforms/component_select.ui \
