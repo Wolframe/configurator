@@ -34,11 +34,21 @@ BEGIN
 		creationDate=datetime('now'), comment=$(comment)
 		WHERE ID=$(id);
 	FOREACH picture DO INSERT INTO RecipePicture( recipeID, pictureID ) VALUES( $(/id), $(id) );
-	DO DELETE FROM RecipePicture WHERE pictureID IS NULL;		
+	DO DELETE FROM RecipePicture WHERE pictureID IS NULL;
+	DO DELETE FROM RecipeContent WHERE recipeID = $(id);
+	DO DELETE FROM RecipeComponent WHERE recipeID = $(id);
+	FOREACH categories_required/RecipeCategory DO
+		INSERT INTO RecipeContent( recipeID, categoryID, minQuantity, maxQuantity )
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
+	FOREACH components_required/RecipeComponent DO
+		INSERT INTO RecipeComponent( recipeID, componentID, quantity )
+		VALUES( $(/id), $(id), convert_to_integer($(quantity)) );	
 END
 
 TRANSACTION deleteRecipe
 BEGIN
+	DO DELETE FROM RecipeContent WHERE recipeID = $(id);
+	DO DELETE FROM RecipeComponent WHERE recipeID = $(id);
 	DO DELETE FROM RecipePicture WHERE recipeID = $(id);
 	DO DELETE FROM Recipe WHERE ID = $(id);
 END
@@ -56,10 +66,23 @@ BEGIN
 			FROM Recipe, Category
 			WHERE Recipe.ID = $(id)
 			AND Recipe.CategoryID = Category.ID;
-	INTO picture DO
-		SELECT RecipePicture.pictureID AS "id"
-			FROM RecipePicture
-			WHERE RecipePicture.recipeID = $(id);
+	STRUCT categories_required INTO RecipeCategory DO
+		SELECT
+			categoryID AS "id",
+			Category.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM RecipeContent, Category
+		WHERE recipeID = $(id)
+		AND categoryID = Category.ID;
+	STRUCT components_required INTO RecipeComponent DO
+		SELECT
+			componentID AS "id",
+			Component.name AS "name",
+			quantity AS "quantity"
+		FROM RecipeComponent, Component
+		WHERE recipeID = $(id)
+		AND componentID = Component.ID;
 END
 
 TRANSACTION selectRecipePictures -- (id)

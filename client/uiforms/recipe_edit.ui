@@ -17,7 +17,7 @@
    <string>RecipeRequest recipe {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Recipe recipe {id={?}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; description{{main.description}}; comment {{main.comment}}; creationDate{{creationDate}}}</string>
+   <string>Recipe recipe {id={?}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; description{{main.description}}; comment {{main.comment}}; creationDate{{creationDate}}; categories_required{ RecipeCategory[] {id={required_categories.row.id}; name{{required_categories.row.name}}; minQuantity{{required_categories.row.min}}; maxQuantity{{required_categories.row.max}} } }; components_required { RecipeComponent[] {id={required_components.row.id}; name{{required_components.row.name}}; quantity{{required_components.row.quantity}} } } }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
