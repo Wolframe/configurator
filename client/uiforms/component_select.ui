@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>manufacturer_select</class>
- <widget class="QWidget" name="manufacturer_select">
+ <class>component_select</class>
+ <widget class="QWidget" name="component_select">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -16,6 +16,12 @@
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>RecipeComponentEdit component { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>RecipeComponentEdit component { id={component.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
@@ -82,7 +88,7 @@
         <string>_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>select_component</string>
+        <string>add_component_required</string>
        </property>
        <property name="state:enabled" stdset="0">
         <string>{component.selected}&gt;0</string>

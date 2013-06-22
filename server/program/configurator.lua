@@ -654,15 +654,15 @@ function RecipeComponentRequest( )
 	output:print( f:get( ) )
 end
 
-function RecipeComponentListRequest( )
-	local recipeComponent = input:table( )["RecipeComponent"]
-	local t = formfunction( "selectRecipeComponentList" )( {
-		recipe_id = recipeComponent["recipe_id"]
-	} )
-	local f = form( "RecipeComponentList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
+--~ function RecipeComponentListRequest( )
+	--~ local recipeComponent = input:table( )["RecipeComponent"]
+	--~ local t = formfunction( "selectRecipeComponentList" )( {
+		--~ recipe_id = recipeComponent["recipe_id"]
+	--~ } )
+	--~ local f = form( "RecipeComponentList" )
+	--~ f:fill( t:get( ) )
+	--~ output:print( f:get( ) )
+--~ end
 
 -- feature equivalences
 

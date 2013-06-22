@@ -17,6 +17,12 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
+  <property name="action" stdset="0">
+   <string>RecipeCategoryEdit category { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>RecipeCategoryEdit category { id={category.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -37,7 +43,7 @@
     </layout>
    </item>
    <item row="0" column="0" colspan="2">
-    <widget class="QTreeWidget" name="category_">
+    <widget class="QTreeWidget" name="category">
      <property name="itemsExpandable">
       <bool>true</bool>
      </property>
@@ -78,7 +84,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>select_category</string>
+        <string>add_category_required</string>
        </property>
        <property name="state:enabled" stdset="0">
         <string>{category.selected}&gt;0</string>
@@ -157,7 +163,7 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>category_</tabstop>
+  <tabstop>category</tabstop>
   <tabstop>expand</tabstop>
   <tabstop>collapse</tabstop>
   <tabstop>min</tabstop>
@@ -172,7 +178,7 @@
   <connection>
    <sender>expand</sender>
    <signal>toggled(bool)</signal>
-   <receiver>category_</receiver>
+   <receiver>category</receiver>
    <slot>expandAll()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -188,7 +194,7 @@
   <connection>
    <sender>collapse</sender>
    <signal>toggled(bool)</signal>
-   <receiver>category_</receiver>
+   <receiver>category</receiver>
    <slot>collapseAll()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -202,7 +208,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>category_</sender>
+   <sender>category</sender>
    <signal>doubleClicked(QModelIndex)</signal>
    <receiver>select</receiver>
    <slot>click()</slot>

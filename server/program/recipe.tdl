@@ -55,3 +55,63 @@ BEGIN
 			FROM RecipePicture
 			WHERE RecipePicture.recipeID = $(id);
 END
+
+--
+-- selectRecipeCategoriesRequired : temporay relation storage for annotated category/feature relations
+--
+TRANSACTION selectRecipeCategoryList
+BEGIN
+	DO CREATE LOCAL TEMPORARY TABLE IDlist (categoryID INT, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
+	FOREACH /category DO INSERT INTO IDlist (categoryID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));
+	DO DELETE FROM IDlist WHERE categoryID IS NULL;
+	FOREACH /add DO DELETE FROM IDlist WHERE categoryID=$(id);
+	FOREACH /add DO INSERT INTO IDlist (categoryID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	FOREACH /remove DO DELETE FROM IDlist WHERE categoryID=$(id);
+	INTO RecipeCategory DO
+		SELECT
+			categoryID AS "id",
+			Category.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM IDlist, Category
+		WHERE Category.ID = IDlist.categoryID;
+END
+
+TRANSACTION selectRecipeCategory
+BEGIN
+	INTO . DO
+		SELECT
+			$(id) AS id,
+			$(minQuantity) AS "minQuantity",
+			$(maxQuantity) AS "maxQuantity";
+END
+
+--
+-- selectRecipeComponentsRequired : temporay relation storage for annotated category/feature relations
+--
+TRANSACTION selectRecipeComponentList
+BEGIN
+	DO CREATE LOCAL TEMPORARY TABLE IDlist (componentID INT, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
+	FOREACH /component DO INSERT INTO IDlist (componentID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));
+	DO DELETE FROM IDlist WHERE componentID IS NULL;
+	FOREACH /add DO DELETE FROM IDlist WHERE componentID=$(id);
+	FOREACH /add DO INSERT INTO IDlist (componentID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	FOREACH /remove DO DELETE FROM IDlist WHERE componentID=$(id);
+	INTO RecipeComponent DO
+		SELECT
+			componentID AS "id",
+			Component.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM IDlist, Component
+		WHERE Component.ID = IDlist.componentID;
+END
+
+TRANSACTION selectRecipeComponent
+BEGIN
+	INTO . DO
+		SELECT
+			$(id) AS id,
+			$(minQuantity) AS "minQuantity",
+			$(maxQuantity) AS "maxQuantity";
+END

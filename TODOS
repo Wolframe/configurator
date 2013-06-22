@@ -52,8 +52,15 @@ recipe
   - remove button disabled, if no elements selected
   - select category (1)
   - select pictures (N)
-  - select list of features needed for the recipe (recipe_content*.ui)
   - select list of components in recipe (recipe_component*.ui)
+- bugs
+  - when editing a category:
+    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/description" 
+    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/description" 
+    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/description" 
+    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/item/item/description" 
+    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/item/item/description" 
+    => looks like an implicit deep search
     
 general
 

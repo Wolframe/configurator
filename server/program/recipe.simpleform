@@ -1,3 +1,19 @@
+FORM RecipeCategory
+{
+	id @int
+	name string
+	minQuantity int
+	maxQuantity int
+}
+
+FORM RecipeComponent
+{
+	id @int
+	name string
+	minQuantity int
+	maxQuantity int
+}
+
 FORM Recipe
 {
 	recipe
@@ -17,7 +33,26 @@ FORM Recipe
 			id @int
 			_ string
 		}
+		categories_required
+		{
+			RecipeCategory []
+			{
+				_ RecipeCategory
+			}
+		}
+		components_required
+		{
+			RecipeComponent []
+			{
+				_ RecipeComponent
+			}
+		}
 	}
+}
+
+FORM createRecipe
+{
+	_ Recipe
 }
 
 FORM updateRecipe
@@ -33,12 +68,17 @@ FORM BaseRecipeRequest
 	}
 }
 
-FORM RecipeRequest
+FORM deleteRecipe
 {
 	_ BaseRecipeRequest
 }
 
-FORM deleteRecipe
+FORM RecipePictureListRequest
+{
+	_ BaseRecipeRequest
+}
+
+FORM RecipeRequest
 {
 	_ BaseRecipeRequest
 }
@@ -55,6 +95,90 @@ FORM RecipeList
 			categoryName string
 			creationDate string
 			comment string
+		}
+	}
+}
+
+FORM RecipeCategoryListRequest
+{
+	categories
+	{
+		category []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		add []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		remove []
+		{
+			id @int
+		}
+	}
+}
+
+FORM RecipeCategoryEdit
+{
+	category
+	{
+		_ RecipeCategory
+	}
+}
+
+FORM RecipeCategoryList
+{
+	RecipeCategories
+	{
+		RecipeCategory []
+		{
+			_ RecipeCategory
+		}
+	}
+}
+
+FORM RecipeComponentListRequest
+{
+	components
+	{
+		component []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		add []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		remove []
+		{
+			id @int
+		}
+	}
+}
+
+FORM RecipeComponentEdit
+{
+	component
+	{
+		_ RecipeComponent
+	}
+}
+
+FORM RecipeComponentList
+{
+	RecipeComponents
+	{
+		RecipeComponent []
+		{
+			_ RecipeComponent
 		}
 	}
 }

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>678</width>
-    <height>297</height>
+    <width>711</width>
+    <height>302</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -108,7 +108,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QTreeWidget" name="required_content">
+      <widget class="QTreeWidget" name="required_categories">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
@@ -134,19 +134,19 @@
         <bool>false</bool>
        </property>
        <property name="dataslot" stdset="0">
-        <string>add_feature_required ({main.widgetid}_feature_required)</string>
-       </property>
-       <property name="action:add_feature_required" stdset="0">
-        <string>ComponentFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
-       </property>
-       <property name="link:feature_required_select" stdset="0">
-        <string>{main.widgetid}_feature_required</string>
+        <string>add_category_required ({main.widgetid}_category_required)</string>
        </property>
        <property name="answer" stdset="0">
-        <string>ComponentFeatures ComponentFeatures {ComponentFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+        <string>RecipeCategories RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
        </property>
-       <property name="action:remove_feature_required" stdset="0">
-        <string>ComponentFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>
+       <property name="action:add_category_required" stdset="0">
+        <string>RecipeCategoryListRequest categories { category[] { id={main.required_categories.row.id:?}; minQuantity {{main.required_categories.row.min:?}}; maxQuantity{{main.required_categories.row.max:?}} }; add[] { id={category_select_required.category.selected}; minQuantity {{category_select_required.min}}; maxQuantity {{category_select_required.max}} } }</string>
+       </property>
+       <property name="link:category_select_required" stdset="0">
+        <string>{main.widgetid}_category_required</string>
+       </property>
+       <property name="action:remove_category_required" stdset="0">
+        <string>RecipeCategoryListRequest categories { category[] { id={main.required_categories.row.id:?}; minQuantity {{main.required_categories.row.min:?}}; maxQuantity{{main.required_categories.row.max:?}} }; remove[] { id = {selected} } }</string>
        </property>
        <attribute name="headerVisible">
         <bool>true</bool>
@@ -174,7 +174,7 @@
         <string>Required categories:</string>
        </property>
        <property name="buddy">
-        <cstring>required_content</cstring>
+        <cstring>required_categories</cstring>
        </property>
       </widget>
      </item>
@@ -199,10 +199,10 @@
           <string>Remove</string>
          </property>
          <property name="state:enabled" stdset="0">
-          <string>{required_features.selected}&gt;0</string>
+          <string>{required_categories.selected}&gt;0</string>
          </property>
          <property name="datasignal:clicked" stdset="0">
-          <string>remove_feature_required@main.required_features</string>
+          <string>remove_category_required@main.required_categories</string>
          </property>
         </widget>
        </item>
@@ -212,13 +212,13 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>category_select_required?widgetid={main.widgetid}_feature_required&amp;id={required_features.selected}&amp;minQuantity={required_features.selected_min}&amp;maxQuantity={required_features.selected_max}</string>
+          <string>category_select_required?widgetid={main.widgetid}_category_required&amp;id={required_categories.selected}&amp;minQuantity={required_categories.selected_min}&amp;maxQuantity={required_categories.selected_max}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_feature_required</string>
+          <string>close@{main.widgetid}_category_required</string>
          </property>
          <property name="state:enabled" stdset="0">
-          <string>{required_features.selected}&gt;0</string>
+          <string>{required_categories.selected}&gt;0</string>
          </property>
         </widget>
        </item>
@@ -228,10 +228,10 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>category_select_required?widgetid={main.widgetid}_feature_required</string>
+          <string>category_select_required?widgetid={main.widgetid}_category_required</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_feature_required</string>
+          <string>close@{main.widgetid}_category_required</string>
          </property>
         </widget>
        </item>
@@ -264,19 +264,19 @@
         <bool>false</bool>
        </property>
        <property name="dataslot" stdset="0">
-        <string>add_feature_provided ({main.widgetid}_feature_provided)</string>
-       </property>
-       <property name="action:add_feature_provided" stdset="0">
-        <string>ComponentFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; add[] { id={feature_provided_select.feature.selected}; minQuantity {{feature_provided_select.min}}; maxQuantity {{feature_provided_select.max}} } }</string>
-       </property>
-       <property name="link:feature_provided_select" stdset="0">
-        <string>{main.widgetid}_feature_provided</string>
+        <string>add_component_required ({main.widgetid}_component_required)</string>
        </property>
        <property name="answer" stdset="0">
-        <string>ComponentFeatures ComponentFeatures {ComponentFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+        <string>RecipeComponents RecipeComponents {RecipeComponent[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
        </property>
-       <property name="action:remove_feature_provided" stdset="0">
-        <string>ComponentFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; remove[] { id = {selected} } }</string>
+       <property name="action:add_component_required" stdset="0">
+        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; minQuantity {{main.required_components.row.min:?}}; maxQuantity{{main.required_components.row.max:?}} }; add[] { id={component_required_select.component.selected}; minQuantity {{component_required_select.min}}; maxQuantity {{component_required_select.max}} } }</string>
+       </property>
+       <property name="link:component_required_select" stdset="0">
+        <string>{main.widgetid}_component_required</string>
+       </property>
+       <property name="action:remove_component_required" stdset="0">
+        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; minQuantity {{main.required_components.row.min:?}}; maxQuantity{{main.required_components.row.max:?}} }; remove[] { id = {selected} } }</string>
        </property>
        <column>
         <property name="text">
@@ -326,10 +326,10 @@
           <string>Remove</string>
          </property>
          <property name="state:enabled" stdset="0">
-          <string>{provided_features.selected}&gt;0</string>
+          <string>{required_components.selected}&gt;0</string>
          </property>
          <property name="datasignal:clicked" stdset="0">
-          <string>remove_feature_provided@main.provided_features</string>
+          <string>remove_component_required@main.required_components</string>
          </property>
         </widget>
        </item>
@@ -339,13 +339,13 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>component_select?widgetid={main.widgetid}_feature_provided&amp;id={provided_features.selected}&amp;minQuantity={provided_features.selected_min}&amp;maxQuantity={provided_features.selected_max}</string>
+          <string>component_select?widgetid={main.widgetid}_component_required&amp;id={required_components.selected}&amp;minQuantity={required_components.selected_min}&amp;maxQuantity={required_components.selected_max}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_feature_provided</string>
+          <string>close@{main.widgetid}_component_required</string>
          </property>
          <property name="state:enabled" stdset="0">
-          <string>{provided_features.selected}&gt;0</string>
+          <string>{required_components.selected}&gt;0</string>
          </property>
         </widget>
        </item>
@@ -355,10 +355,10 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>component_select?widgetid={main.widgetid}_feature_provided</string>
+          <string>component_select?widgetid={main.widgetid}_component_required</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
-          <string>close@{main.widgetid}_feature_provided</string>
+          <string>close@{main.widgetid}_component_required</string>
          </property>
         </widget>
        </item>
@@ -576,7 +576,7 @@
  <tabstops>
   <tabstop>name</tabstop>
   <tabstop>pushButton</tabstop>
-  <tabstop>required_content</tabstop>
+  <tabstop>required_categories</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton_3</tabstop>
@@ -598,7 +598,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>required_content</sender>
+   <sender>required_categories</sender>
    <signal>doubleClicked(QModelIndex)</signal>
    <receiver>pushButton_5</receiver>
    <slot>click()</slot>

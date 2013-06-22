@@ -1,8 +1,0 @@
-FORM RecipeComponentListRequest
-{
-	RecipeComponent
-	{
-		recipe_id @int
-		id @int
-	}
-}
