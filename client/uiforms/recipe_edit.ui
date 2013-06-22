@@ -267,16 +267,16 @@
         <string>add_component_required ({main.widgetid}_component_required)</string>
        </property>
        <property name="answer" stdset="0">
-        <string>RecipeComponents RecipeComponents {RecipeComponent[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+        <string>RecipeComponents RecipeComponents {RecipeComponent[] {id={row.id}; name{{row.name}}; quantity{{row.quantity}} }</string>
        </property>
        <property name="action:add_component_required" stdset="0">
-        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; minQuantity {{main.required_components.row.min:?}}; maxQuantity{{main.required_components.row.max:?}} }; add[] { id={component_required_select.component.selected}; minQuantity {{component_required_select.min}}; maxQuantity {{component_required_select.max}} } }</string>
+        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; quantity {{main.required_components.row.quantity:?}} }; add[] { id={component_required_select.component.selected}; quantity {{component_required_select.quantity}} } }</string>
        </property>
        <property name="link:component_required_select" stdset="0">
         <string>{main.widgetid}_component_required</string>
        </property>
        <property name="action:remove_component_required" stdset="0">
-        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; minQuantity {{main.required_components.row.min:?}}; maxQuantity{{main.required_components.row.max:?}} }; remove[] { id = {selected} } }</string>
+        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; quantity {{main.required_components.row.quantity:?}} }; remove[] { id = {selected} } }</string>
        </property>
        <column>
         <property name="text">
@@ -285,12 +285,7 @@
        </column>
        <column>
         <property name="text">
-         <string>min</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>max</string>
+         <string>quantity</string>
         </property>
        </column>
       </widget>
@@ -339,7 +334,7 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>component_select?widgetid={main.widgetid}_component_required&amp;id={required_components.selected}&amp;minQuantity={required_components.selected_min}&amp;maxQuantity={required_components.selected_max}</string>
+          <string>component_select?widgetid={main.widgetid}_component_required&amp;id={required_components.selected}&amp;quantity={required_components.selected_quantity}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_component_required</string>
@@ -457,7 +452,7 @@
         <bool>false</bool>
        </property>
        <property name="action" stdset="0">
-        <string>ComponentPictureListRequest component {id={main.id}}</string>
+        <string>RecipePictureListRequest recipe {id={main.id}}</string>
        </property>
        <property name="answer" stdset="0">
         <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>

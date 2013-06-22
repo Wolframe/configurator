@@ -10,8 +10,7 @@ FORM RecipeComponent
 {
 	id @int
 	name string
-	minQuantity int
-	maxQuantity int
+	quantity int
 }
 
 FORM Recipe
@@ -148,14 +147,12 @@ FORM RecipeComponentListRequest
 		component []
 		{
 			id @int
-			minQuantity int
-			maxQuantity int
+			quantity int
 		}
 		add []
 		{
 			id @int
-			minQuantity int
-			maxQuantity int
+			quantity int
 		}
 		remove []
 		{
