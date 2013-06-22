@@ -33,7 +33,7 @@
       <string>RecipeRequest recipe {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Recipe recipe {id={?}; name{{1}}; category{id={?}; {{?}} }; description{{?}}; comment {{?}}; creationDate{{creationDate}}}</string>
+      <string>Recipe recipe {id={?}; name{{1}}; category{id={?}; {{?}} }; description{{?}}; comment {{?}}; creationDate{{?}}; categories_required{ RecipeCategory[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; components_required { RecipeComponent[] {id={?}; name{{?}}; quantity{{?}} } } }</string>
      </property>
     </widget>
    </item>
@@ -61,7 +61,7 @@
         <string>deleteRecipe recipe {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string notr="true">components</string>
+        <string notr="true">recipes</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>

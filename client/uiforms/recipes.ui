@@ -115,7 +115,7 @@
       <string notr="true">recipe_delete?id={selected:1}</string>
      </property>
      <property name="dataslot" stdset="0">
-      <string notr="true">recipe</string>
+      <string notr="true">recipes</string>
      </property>
      <property name="action" stdset="0">
       <string notr="true">RecipeListRequest recipe {}</string>

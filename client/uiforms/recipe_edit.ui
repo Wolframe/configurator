@@ -537,10 +537,10 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateRecipe recipe {id={main.id}; name{{main.name}}; description{{main.description}}; category {{main.category}}; comment {{main.comment}}}</string>
+        <string>updateRecipe recipe {id={main.id}; name{{main.name}}; category{id={main.category.id}}; description{{main.description}}; comment{{main.comment}}; picture[] {id={main.pictures.id}}; categories_required{RecipeCategory[]{ id={required_categories.row.id:?}; name{{required_categories.row.name:?}}; minQuantity{{required_categories.row.min:?}}; maxQuantity{{required_categories.row.max:?}} }}; components_required{RecipeComponent[]{ id={required_components.row.id:?}; name{{required_components.row.name:?}}; quantity{{required_components.row.quantity:?}} }} }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
       </widget>
      </item>

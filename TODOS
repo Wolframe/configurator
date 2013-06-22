@@ -48,20 +48,9 @@ components
 
 recipe
 
-- redo completly							!!
-  - remove button disabled, if no elements selected
-  - select category (1)
-  - select pictures (N)
-  - select list of components in recipe (recipe_component*.ui)
-- bugs
-  - when editing a category:
-    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/description" 
-    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/description" 
-    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/description" 
-    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/item/item/description" 
-    CRITICAL: "failed to set property (content value)'description'" in XML tag "/item/item/item/item/description" 
-    => looks like an implicit deep search
-    
+- category can be option in DB model, here I thing the model is wrong and
+  the client right.
+      
 general
 
 - move picture select requests back into main select request, don't
