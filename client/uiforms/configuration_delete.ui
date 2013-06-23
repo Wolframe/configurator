@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>category_delete_form</class>
- <widget class="QWidget" name="category_delete_form">
+ <class>configuration_delete_form</class>
+ <widget class="QWidget" name="configuration_delete_form">
   <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
@@ -9,16 +9,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>289</width>
+    <width>238</width>
     <height>76</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Delete category</string>
+   <string>Delete configuration</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
-    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
+    <normaloff>:/images/configuration.png</normaloff>:/images/configuration.png</iconset>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
@@ -27,13 +27,13 @@
    <item row="2" column="1">
     <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Do you really want to delete  '%1' ?</string>
+      <string>Do you really want to delete '%1' ?</string>
      </property>
      <property name="action" stdset="0">
-      <string>CategoryRequest category {id={main.id}}</string>
+      <string>ConfigurationRequest configuration {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Category category {id={?}; parentID={?}; root{{?}}; name{{1}}; description{{2}}; features_required{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; features_provided{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
+      <string>Configuration configuration {id={?}; code {{?}}; name{{1}}; description{{?}}; comment{{?}}; category{id={?}; {?}} }</string>
      </property>
     </widget>
    </item>
@@ -58,10 +58,10 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string>deleteComponent component {id={main.id}}</string>
+        <string>deleteConfiguration configuration {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string notr="true">categories</string>
+        <string notr="true">configurations</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>

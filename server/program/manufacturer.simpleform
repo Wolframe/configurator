@@ -20,14 +20,6 @@ FORM ManufacturerPictureRequest
 	}
 }
 
-FORM deleteManufacturer
-{
-	manufacturer
-	{
-		id @int
-	}
-}
-
 FORM updateManufacturer
 {
 	manufacturer
@@ -55,13 +47,22 @@ FORM addManufacturer
 	}
 }
 
-FORM ManufacturerRequest
+FORM BaseManufacturerRequest
 {
 	manufacturer
 	{
 		id @int
-		form @string
 	}
+}
+
+FORM deleteManufacturer
+{
+	_ BaseManufacturerRequest
+}
+
+FORM ManufacturerRequest
+{
+	_ BaseManufacturerRequest
 }
 
 FORM ManufacturerList

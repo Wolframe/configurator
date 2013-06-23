@@ -507,7 +507,7 @@ function createConfiguration( )
 	output:print( f:get( ) )
 end
 
-function editConfiguration( )
+function updateConfiguration( )
 	local configuration = input:table( )["configuration"]
 	if configuration["category"] then
 		configuration["categoryID"] = configuration["category"]["id"]
@@ -522,6 +522,13 @@ end
 function ConfigurationRequest( )
 	local t = formfunction( "selectConfiguration" )( { id = input:table( )["configuration"]["id"] } )
 	local f = form( "Configuration" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguredComponentsRequest( )
+	local t = formfunction( "selectConfiguredComponents" )( { configID = input:table( )["component"]["configID"] } )
+	local f = form( "ConfiguredComponents" )
 	f:fill( t:get( ) )
 	output:print( f:get( ) )
 end
@@ -667,4 +674,3 @@ end
 function deletePicture( )
 	delete_picture( input:get())
 end
-

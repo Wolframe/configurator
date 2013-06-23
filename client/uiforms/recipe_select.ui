@@ -1,66 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>recipes_form</class>
- <widget class="QWidget" name="recipes_form">
+ <class>recipe_select</class>
+ <widget class="QWidget" name="recipe_select">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>556</width>
-    <height>318</height>
+    <width>388</width>
+    <height>266</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Recipes</string>
   </property>
-  <property name="singletonWindow" stdset="0">
-   <bool>true</bool>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/recipes.png</normaloff>:/images/recipes.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>RecipeComponentEdit component { id={main.id}; quantity {{main.quantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>RecipeComponentEdit component { id={component.selected}; quantity {{quantity}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="0">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="add">
+      <widget class="QPushButton" name="select">
        <property name="text">
-        <string>Add</string>
+        <string>&amp;Select</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">recipe_add</string>
+        <string>_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>select_recipe</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{recipe.selected}&gt;0</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="delete">
+      <widget class="QPushButton" name="cancel">
        <property name="text">
-        <string>Delete</string>
+        <string>&amp;Cancel</string>
        </property>
        <property name="form" stdset="0">
-        <string>recipe_delete?id={recipe.selected}</string>
+        <string notr="true">_CLOSE_</string>
        </property>
       </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="edit">
-       <property name="text">
-        <string>Edit</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">recipe_edit?id={recipe.selected}</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>
@@ -87,35 +77,11 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
-     <property name="contextmenu" stdset="0">
-      <string notr="true">add, edit, delete</string>
-     </property>
-     <property name="contextmenu:add" stdset="0">
-      <string>Add Recipe</string>
-     </property>
-     <property name="contextmenu:edit" stdset="0">
-      <string>Edit Recipe</string>
-     </property>
-     <property name="contextmenu:delete" stdset="0">
-      <string>Delete Recipe</string>
-     </property>
-     <property name="form:add" stdset="0">
-      <string notr="true">recipe_add</string>
-     </property>
-     <property name="form:edit" stdset="0">
-      <string notr="true">recipe_edit?id={selected:1}</string>
-     </property>
-     <property name="form:delete" stdset="0">
-      <string notr="true">recipe_delete?id={selected:1}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string notr="true">recipes</string>
-     </property>
      <property name="action" stdset="0">
       <string notr="true">RecipeListRequest recipe {}</string>
      </property>
      <property name="synonym:recipe" stdset="0">
-      <string notr="true">row</string>
+      <string>row</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -154,25 +120,26 @@
  </widget>
  <tabstops>
   <tabstop>recipe</tabstop>
-  <tabstop>add</tabstop>
-  <tabstop>delete</tabstop>
-  <tabstop>edit</tabstop>
+  <tabstop>select</tabstop>
+  <tabstop>cancel</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>recipe</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>edit</receiver>
+   <receiver>select</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>199</x>
-     <y>131</y>
+     <x>105</x>
+     <y>124</y>
     </hint>
     <hint type="destinationlabel">
-     <x>209</x>
-     <y>297</y>
+     <x>108</x>
+     <y>245</y>
     </hint>
    </hints>
   </connection>

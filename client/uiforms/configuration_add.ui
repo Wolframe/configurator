@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>configuration_add</class>
+ <widget class="QWidget" name="configuration_add">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>355</width>
+    <height>274</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Add configuration</string>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_name">
+     <property name="text">
+      <string>Name:</string>
+     </property>
+     <property name="buddy">
+      <cstring>name</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="name">
+     <property name="initialFocus" stdset="0">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_description_2">
+     <property name="text">
+      <string>Description:</string>
+     </property>
+     <property name="buddy">
+      <cstring>description</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPlainTextEdit" name="description">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_description">
+     <property name="text">
+      <string>Comment:</string>
+     </property>
+     <property name="buddy">
+      <cstring>comment</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPlainTextEdit" name="comment">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Recipe:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add">
+       <property name="text">
+        <string>Add</string>
+       </property>
+       <property name="action" stdset="0">
+        <string>createConfiguration configuration {name{{main.name}}; description{{main.description}}; comment{{main.comment}}; recipe{id={main.recipe.id}}}</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>configurations</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{main.recipe.id}&gt;0</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QLabel" name="recipe">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>select_recipe ({main.widgetid}_recipe)</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>Recipe recipe {id={id}; name{{text}}; description{{?}}; category{id={?}; {?}}; creationDate{{?}}; comment{{?}}; categories_required{RecipeCategory[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; components_required{RecipeComponent[] {id={?}; name{{?}}; quantity{{?}} } }  }</string>
+       </property>
+       <property name="id" stdset="0">
+        <string/>
+       </property>
+       <property name="link:recipe_change" stdset="0">
+        <string>{main.widgetid}_recipe</string>
+       </property>
+       <property name="action:select_recipe" stdset="0">
+        <string>RecipeRequest recipe {id={recipe_change.recipe.selected}}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Edit</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>recipe_select?widgetid={main.widgetid}_recipe</string>
+       </property>
+       <property name="datasignal:destroyed" stdset="0">
+        <string>close@{main.widgetid}_recipe</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>name</tabstop>
+  <tabstop>description</tabstop>
+  <tabstop>comment</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>add</tabstop>
+  <tabstop>cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
+ <connections/>
+</ui>

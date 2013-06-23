@@ -18,7 +18,6 @@ FORM Recipe
 	recipe
 	{
 		id @int
-		form @string
 		name string
 		description string
 		category {
