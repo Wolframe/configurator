@@ -76,7 +76,7 @@ Project Wolframe.
 						<Directory Id="UiFormsDir" Name="uiforms">
 							<Component Id="ConfiguratorPlugins" Guid="{b9fe7b56-d479-4738-9a2e-301e46ffc1b4}">
 								<?ifdef var.debug?>
-									<File Id="configuratord.dll" Name="configuratord.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configuratord.dll"/>
+									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configuratord.dll"/>
 								<?else?>
 									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configurator.dll"/>
 								<?endif?>
