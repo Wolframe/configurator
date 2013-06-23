@@ -674,3 +674,34 @@ end
 function deletePicture( )
 	delete_picture( input:get())
 end
+
+-- configurator (the C++ plugin)
+
+function ConfiguredComponentsFixRequest( )
+	local t = formfunction( "selectConfiguredComponentsFix" )( { configID = input:table( )["component"]["configID"] } )
+	local f = form( "ConfiguredComponentsFix" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguredComponentsUserRequest( )
+	local t = formfunction( "selectConfiguredComponentsUser" )( { configID = input:table( )["component"]["configID"] } )
+	local f = form( "ConfiguredComponentsUser" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguratorRequiredFeaturesRequest( )
+	local t = formfunction( "selectRequiredFeatures" )( { configID = input:table( )["configuration"]["configID"] } )
+	local f = form( "ConfiguratorRequiredFeatures" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguratorAddComponentRequest( )
+	local t = formfunction( "ConfiguratorAddComponent" )( input:table( ) )
+end
+
+function ConfiguratorDeleteComponentRequest( )
+	local t = formfunction( "ConfiguratorDeleteComponent" )( input:table( ) )
+end

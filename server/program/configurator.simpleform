@@ -1,0 +1,104 @@
+FORM ConfiguredComponentsFixRequest
+{
+	component
+	{
+		id @int
+		configID @int
+	}
+}
+
+FORM ConfiguredComponentsUserRequest
+{
+	component
+	{
+		id @int
+		configID @int
+	}
+}
+
+FORM ConfiguredComponentsFix
+{
+	list
+	{
+		component []
+		{
+			id @int
+			code string
+			name string
+			categoryName string
+			manufacturerName string
+			mfgCode string
+			webPage string
+			description string
+			quantity int
+			price float
+		}
+	}
+}
+
+FORM ConfiguredComponentsUser
+{
+	list
+	{
+		component []
+		{
+			id @int
+			code string
+			name string
+			categoryName string
+			manufacturerName string
+			mfgCode string
+			webPage string
+			description string
+			quantity int
+			price float
+			featureMinQuantity int
+			featureMaxQuantity int
+		}
+	}
+}
+
+FORM ConfiguratorRequiredFeaturesRequest
+{
+	configuration
+	{
+		id @int
+		configID @int
+	}
+}
+
+FORM ConfiguratorRequiredFeatures
+{
+	list
+	{
+		category []
+		{
+			id int
+			name string
+			minQuantity string
+			maxQuantity string
+			componentID int
+			componentName string
+			componentCategory string
+		}
+	}
+}
+
+FORM ConfiguratorAddComponentRequest
+{
+	configuration
+	{
+		id int
+		componentID int
+		quantity int
+	}
+}
+
+FORM ConfiguratorDeleteComponentRequest
+{
+	configuration
+	{
+		id int
+		componentID int
+	}
+}

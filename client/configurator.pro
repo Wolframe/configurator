@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 
-SUBDIRS = resources i18n
+SUBDIRS = resources i18n plugins
 
 CONFIG += qt debug
 

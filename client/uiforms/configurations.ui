@@ -98,7 +98,7 @@
       <bool>true</bool>
      </property>
      <property name="contextmenu" stdset="0">
-      <string notr="true">add, edit, delete</string>
+      <string notr="true">add, edit, modify, delete</string>
      </property>
      <property name="contextmenu:add" stdset="0">
       <string>Add Configuration</string>
@@ -126,6 +126,12 @@
      </property>
      <property name="synonym:configuration" stdset="0">
       <string>row</string>
+     </property>
+     <property name="contextmenu:modify" stdset="0">
+      <string>Modify configuration</string>
+     </property>
+     <property name="form:modify" stdset="0">
+      <string>configurator?configID={selected}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

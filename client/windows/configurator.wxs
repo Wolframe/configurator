@@ -74,6 +74,14 @@ Project Wolframe.
 				<Directory Id="WolframeGroup" Name="Wolframe Group">
 					<Directory Id="INSTALLDIR" Name="Wolframe Configurator">
 						<Directory Id="UiFormsDir" Name="uiforms">
+							<Component Id="ConfiguratorPlugins" Guid="{b9fe7b56-d479-4738-9a2e-301e46ffc1b4}">
+								<?ifdef var.debug?>
+									<File Id="configuratord.dll" Name="configuratord.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configuratord.dll"/>
+								<?else?>
+									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configurator.dll"/>
+								<?endif?>
+							</Component>							
+
 							<Component Id="UiForms" Guid="{27dac1e1-3f6d-4545-9e94-fe9679fae54a}">
 								<File Id="categories.ui" Name="categories.ui" DiskId="1" Source="..\uiforms\categories.ui"/>
 								<File Id="category_add.ui" Name="category_add.ui" DiskId="1" Source="..\uiforms\category_add.ui"/>
@@ -173,6 +181,7 @@ Project Wolframe.
 		         Display="expand" Level="1" ConfigurableDirectory="INSTALLDIR">
 			<Feature Id="configurator" Title="Configurator" Description="Wolframe configurator client" Level="1">
 				<ComponentRef Id="ApplicationShortcut"/>
+				<ComponentRef Id="ConfiguratorPlugins"/>
 				<ComponentRef Id="UiForms"/>
 				<ComponentRef Id="Menus"/>
 				<ComponentRef Id="Resources"/>

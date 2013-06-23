@@ -56,37 +56,37 @@ configurations
 
 - can't make editing of recipe mandatory (see qtclient problem with action
   used in parallel with state:enabled!)
+- configurator
+  - plugin: close doesn't work
+  - respect modality of plugin window
   
-general
-
-- move picture select requests back into main select request, don't
-  force the user to make two requests (think php layer!)
-- resize all forms, give them nice default sizes
-- used stackwidgets in complex dialogs to seperate:
-  - properties as price, code, name, etc
-  - description and pictures
-  - relations like features provided
-- shortcuts for key select everywhere, e.g. &Cancel
-
 todo discuss
 
 unsorted
 
 general
 
+- resprect transactional and message character of requests and answers:
+  - move picture select requests back into main select request, don't
+    force the user to make two requests (think php layer!)
+  - IMHO we should be able to set the values of a form and then overload
+    them and not have to artificially split the form request in 3 parts
+    (see component_edit and manufacturer_select)
+- fix simpleforms, make them consistend (also for Php layer!)
+- resize all forms, give them nice default sizes
+- used stackwidgets in complex dialogs to seperate:
+  - properties as price, code, name, etc
+  - description and pictures
+  - relations like features provided
+- shortcuts for key select everywhere, e.g. &Cancel
 - selection windows should keep the state (expansion, location of last
   selection), similar to a QFileDialog
 - search for all select forms
 - dito default buttons for all forms
 
 manufacturer:
-- having an image is mandatory, otherwise we get
-  CRITICAL: ERROR:  "-add:928" "REQUEST error in transaction addManufacturer: invalid input syntax for integer: "" LINE 2:   VALUES ( 'bla', 'bla', 'bla', '' )
 - not all actions in an iconized list view lead to status recalculations
   in the remove button (state:enabled)
-- IMHO we should be able to set the values of a form and then overload
-  them and not have to artificially split the form request in 3 parts
-  (see component_edit and manufacturer_select)
   
 components
 

@@ -1,8 +1,0 @@
-FORM RequiredFeaturesRequest
-{
-	configuration
-	{
-		id @int
-		configID @int
-	}
-}

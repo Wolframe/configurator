@@ -112,7 +112,7 @@ void ConfiguratorWidget::initialize( )
 	sendRequest( "ConfiguredComponentsUserRequest.simpleform", "component", "ConfiguredComponentsUser" );
 
 // trigger filling of features still required to be fulfilled
-	sendRequest( "RequiredFeaturesRequest.simpleform", "configuration", "RequiredFeatures" );
+	sendRequest( "ConfiguratorRequiredFeaturesRequest.simpleform", "configuration", "ConfiguratorRequiredFeatures" );
 }
 
 void ConfiguratorWidget::rest( )
@@ -338,7 +338,7 @@ void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray d
 				userComponentsLayout->addLayout(horizontalLayout_3);
 			}
 		}
-	} else if( widgetCmd == "RequiredFeatures" ) {
+	} else if( widgetCmd == "ConfiguratorRequiredFeatures" ) {
 		QXmlStreamReader xml( data );
 		QString name;
 		int minQuantity;

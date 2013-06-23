@@ -1,8 +1,0 @@
-FORM ConfiguredComponentsUserRequest
-{
-	component
-	{
-		id @int
-		configID @int
-	}
-}

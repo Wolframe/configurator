@@ -1,8 +1,0 @@
-FORM ConfiguredComponentsFixRequest
-{
-	component
-	{
-		id @int
-		configID @int
-	}
-}
