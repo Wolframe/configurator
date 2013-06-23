@@ -15,13 +15,6 @@ function ConfiguredComponentsUserRequest( )
 	output:print( f:get( ) )
 end
 
-function ConfiguredComponentsRequest( )
-	local t = formfunction( "selectConfiguredComponents" )( { configID = input:table( )["component"]["configID"] } )
-	local f = form( "ConfiguredComponents" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 function RequiredFeaturesRequest( )
 	local t = formfunction( "selectRequiredFeatures" )( { configID = input:table( )["configuration"]["configID"] } )
 	local f = form( "RequiredFeatures" )

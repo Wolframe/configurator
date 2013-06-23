@@ -197,6 +197,7 @@
   <tabstop>name</tabstop>
   <tabstop>description</tabstop>
   <tabstop>comment</tabstop>
+  <tabstop>pushButton</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
-    <height>264</height>
+    <width>812</width>
+    <height>486</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,15 @@
   <property name="action" stdset="0">
    <string notr="true">ConfigurationRequest configuration {id={id}}</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="6" column="1">
+  <layout class="QFormLayout" name="formLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Category:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -43,6 +50,9 @@
        <property name="form" stdset="0">
         <string notr="true">_CLOSE_</string>
        </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>configurations</string>
+       </property>
       </widget>
      </item>
      <item>
@@ -50,8 +60,8 @@
        <property name="text">
         <string>Reset</string>
        </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">main</string>
+       <property name="form" stdset="0">
+        <string>_RESET_</string>
        </property>
       </widget>
      </item>
@@ -67,145 +77,139 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
-    <layout class="QFormLayout" name="formLayout">
-     <item row="0" column="1">
-      <widget class="QLabel" name="category">
-       <property name="text">
-        <string>&lt;category&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="text">
-        <string>Category:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="name">
-       <property name="initialFocus" stdset="0">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QPlainTextEdit" name="description">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>80</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QPlainTextEdit" name="comment">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>80</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_name">
-       <property name="text">
-        <string>Name:</string>
-       </property>
-       <property name="buddy">
-        <cstring>name</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_description_2">
-       <property name="text">
-        <string>Description:</string>
-       </property>
-       <property name="buddy">
-        <cstring>description</cstring>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_description">
-       <property name="text">
-        <string>Comment:</string>
-       </property>
-       <property name="buddy">
-        <cstring>comment</cstring>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="0" column="1">
-    <layout class="QFormLayout" name="formLayout_2">
-     <property name="fieldGrowthPolicy">
-      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    <widget class="QLabel" name="category">
+     <property name="text">
+      <string>&lt;category&gt;</string>
      </property>
-     <item row="0" column="1">
-      <widget class="QTreeWidget" name="component">
-       <property name="rootIsDecorated">
-        <bool>false</bool>
-       </property>
-       <property name="itemsExpandable">
-        <bool>false</bool>
-       </property>
-       <property name="action" stdset="0">
-        <string>ConfiguredComponentsRequest component{configID={main.id}}</string>
-       </property>
-       <column>
-        <property name="text">
-         <string>quantity</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>code</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>name</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>categoryName</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>manufacturerName</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>mfgCode</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>price</string>
-        </property>
-       </column>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Components:</string>
-       </property>
-       <property name="buddy">
-        <cstring>component</cstring>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="name">
+     <property name="initialFocus" stdset="0">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPlainTextEdit" name="description">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPlainTextEdit" name="comment">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QTreeWidget" name="component">
+     <property name="minimumSize">
+      <size>
+       <width>700</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="action" stdset="0">
+      <string>ConfiguredComponentsRequest component{configID={main.id}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>ConfiguredComponents list { component[] { id={row.id}; code {{row.code}}; name{{row.name}}; description{{?}}; categoryName{{row.categoryName}}; manufacturerName{{row.manufacturerName}}; mfgCode{{row.mfgCode}}; webPage{{row.webPage}}; quantity{{row.quantity}}; price{{row.price}} }</string>
+     </property>
+     <column>
+      <property name="text">
+       <string>quantity</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>code</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>name</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>categoryName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>manufacturerName</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>mfgCode</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>price</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_description_2">
+     <property name="text">
+      <string>Description:</string>
+     </property>
+     <property name="buddy">
+      <cstring>description</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_name">
+     <property name="text">
+      <string>Name:</string>
+     </property>
+     <property name="buddy">
+      <cstring>name</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_description">
+     <property name="text">
+      <string>Comment:</string>
+     </property>
+     <property name="buddy">
+      <cstring>comment</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Components:</string>
+     </property>
+     <property name="buddy">
+      <cstring>component</cstring>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>
