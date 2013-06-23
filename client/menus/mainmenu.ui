@@ -117,6 +117,10 @@
    </property>
   </action>
   <action name="action_configurations">
+   <property name="icon">
+    <iconset resource="../configurator.qrc">
+     <normaloff>:/images/configuration.png</normaloff>:/images/configuration.png</iconset>
+   </property>
    <property name="text">
     <string>Configurations</string>
    </property>

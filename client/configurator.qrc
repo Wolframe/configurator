@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/">
+    <file>images/configuration.png</file>
     <file>images/recipes.png</file>
     <file>images/wolframe.png</file>
     <file>images/16x16/disconnected.png</file>

@@ -22,6 +22,7 @@ categories
   
 features
 
+- "used in categories" doesn't work, shows always "none"
 - FeaturePicture with anotation caption and info (overwrite)
 
 manufacturers
@@ -51,6 +52,11 @@ recipe
 - category can be option in DB model, here I thing the model is wrong and
   the client right.
       
+configurations
+
+- can't make editing of recipe mandatory (see qtclient problem with action
+  used in parallel with state:enabled!)
+  
 general
 
 - move picture select requests back into main select request, don't
