@@ -1,13 +1,15 @@
 php
 
 - request for leaves in categories/features lead to an in empty result
- 
+- return trees just up to a certain depth
+
 tags
 
 - delete on tree is much more dangerous than just a leaf,
   the message should be different for a tree than for a leaf
 - description not so high
 - dialog wider
+- selecting non-leaf-nodes should implicitly select the subtree
 
 pictures
 
@@ -15,6 +17,7 @@ pictures
   - add picture
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
+- the path of tags should be respected when searching the pictures
   
 categories
 
@@ -24,6 +27,10 @@ features
 
 - "used in categories" doesn't work, shows always "none"
 - FeaturePicture with anotation caption and info (overwrite)
+
+feature equivalences
+
+- add separate dialog for feature equivalences
 
 manufacturers
 
@@ -46,6 +53,10 @@ components
     - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
       CRITICAL: ERROR:  "-save:1067" "REQUEST error in transaction updateComponent:
       invalid input syntax for integer: "" LINE 2:   categoryID='40', manufacturerID=
+- more than one description field (ca. 4 should be enough), should be able to
+  contain HTML
+- show inherited features, all features defined along the path of category of
+  the component
 
 recipe
 
@@ -54,12 +65,21 @@ recipe
       
 configurations
 
+- change the dialog when adding a new confiugration, ask for the recipe
+  first (mandatory), then continue to the add page (more in wizard style)
 - can't make editing of recipe mandatory (see qtclient problem with action
   used in parallel with state:enabled!)
 - configurator
   - plugin: close doesn't work
   - respect modality of plugin window
-  
+
+general
+
+- use stackwidgets in complex dialogs to seperate:
+  - properties as price, code, name, etc
+  - description and pictures
+  - relations like features provided
+
 todo discuss
 
 unsorted
@@ -74,10 +94,6 @@ general
     (see component_edit and manufacturer_select)
 - fix simpleforms, make them consistend (also for Php layer!)
 - resize all forms, give them nice default sizes
-- used stackwidgets in complex dialogs to seperate:
-  - properties as price, code, name, etc
-  - description and pictures
-  - relations like features provided
 - shortcuts for key select everywhere, e.g. &Cancel
 - selection windows should keep the state (expansion, location of last
   selection), similar to a QFileDialog
