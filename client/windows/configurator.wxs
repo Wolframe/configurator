@@ -96,6 +96,7 @@ Project Wolframe.
 								<File Id="components.ui" Name="components.ui" DiskId="1" Source="..\uiforms\components.ui"/>
 								<File Id="configurations.ui" Name="configurations.ui" DiskId="1" Source="..\uiforms\configurations.ui"/>
 								<File Id="configuration_add.ui" Name="configuration_add.ui" DiskId="1" Source="..\uiforms\configuration_add.ui"/>
+								<File Id="configuration_add_recipe.ui" Name="configuration_add_recipe.ui" DiskId="1" Source="..\uiforms\configuration_add_recipe.ui"/>
 								<File Id="configuration_edit.ui" Name="configuration_edit.ui" DiskId="1" Source="..\uiforms\configuration_edit.ui"/>
 								<File Id="configuration_delete.ui" Name="configuration_delete.ui" DiskId="1" Source="..\uiforms\configuration_delete.ui"/>								
 								<File Id="feature_add.ui" Name="feature_add.ui" DiskId="1" Source="..\uiforms\feature_add.ui"/>
@@ -119,7 +120,6 @@ Project Wolframe.
 								<File Id="recipe_delete.ui" Name="recipe_delete.ui" DiskId="1" Source="..\uiforms\recipe_delete.ui"/>
 								<File Id="recipe_edit.ui" Name="recipe_edit.ui" DiskId="1" Source="..\uiforms\recipe_edit.ui"/>
 								<File Id="recipes.ui" Name="recipes.ui" DiskId="1" Source="..\uiforms\recipes.ui"/>
-								<File Id="recipe_select.ui" Name="recipe_select.ui" DiskId="1" Source="..\uiforms\recipe_select.ui"/>
 								<File Id="tag_add.ui" Name="tag_add.ui" DiskId="1" Source="..\uiforms\tag_add.ui"/>
 								<File Id="tag_delete.ui" Name="tag_delete.ui" DiskId="1" Source="..\uiforms\tag_delete.ui"/>
 								<File Id="tag_edit.ui" Name="tag_edit.ui" DiskId="1" Source="..\uiforms\tag_edit.ui"/>

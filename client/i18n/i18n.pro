@@ -12,6 +12,7 @@ FORMS += \
 	../uiforms/components.ui \
 	../uiforms/configurations.ui \
 	../uiforms/configuration_add.ui \
+	../uiforms/configuration_add_recipe.ui \
 	../uiforms/configuration_edit.ui \
 	../uiforms/configuration_delete.ui \
 	../uiforms/feature_add.ui \
@@ -33,7 +34,6 @@ FORMS += \
 	../uiforms/recipe_delete.ui \
 	../uiforms/recipe_edit.ui \
 	../uiforms/recipes.ui \
-	../uiforms/recipe_select.ui \
 	../uiforms/tag_add.ui \
 	../uiforms/tag_edit.ui \
 	../uiforms/tag_select.ui \

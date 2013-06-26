@@ -24,37 +24,7 @@
    <string>RecipeComponentEdit component { id={component.selected}; quantity {{quantity}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="select">
-       <property name="text">
-        <string>&amp;Select</string>
-       </property>
-       <property name="form" stdset="0">
-        <string>_CLOSE_</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string>select_recipe</string>
-       </property>
-       <property name="state:enabled" stdset="0">
-        <string>{recipe.selected}&gt;0</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="0">
+   <item row="1" column="0">
     <widget class="QTableWidget" name="recipe">
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -114,6 +84,43 @@
        <string>comment</string>
       </property>
      </column>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="select">
+       <property name="text">
+        <string>&amp;Create Configuration</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>configuration_add?recipe_id={recipe.selected}</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>select_recipe</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{recipe.selected}&gt;0</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Pick recipe to build a new configuration from:</string>
+     </property>
     </widget>
    </item>
   </layout>

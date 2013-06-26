@@ -25,7 +25,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">configuration_add</string>
+        <string notr="true">configuration_add_recipe</string>
        </property>
       </widget>
      </item>

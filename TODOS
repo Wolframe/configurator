@@ -65,8 +65,7 @@ recipe
       
 configurations
 
-- change the dialog when adding a new confiugration, ask for the recipe
-  first (mandatory), then continue to the add page (more in wizard style)
+- how to NOT open a new window? how to close a window AND open a new window?
 - can't make editing of recipe mandatory (see qtclient problem with action
   used in parallel with state:enabled!)
 - configurator
@@ -79,7 +78,9 @@ general
   - properties as price, code, name, etc
   - description and pictures
   - relations like features provided
-
+- fix all XML request, make them look consistent
+  (important for PHP layer)
+  
 todo discuss
 
 unsorted

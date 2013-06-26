@@ -498,9 +498,6 @@ end
 
 function createConfiguration( )
 	local configuration = input:table( )["configuration"]
-	if configuration["category"] then
-		configuration["categoryID"] = configuration["category"]["id"]
-	end
 	local t = formfunction( "addConfiguration" )( configuration )
 	local f = form( "Configuration" )
 	f:fill( t:get( ) )
@@ -509,9 +506,6 @@ end
 
 function updateConfiguration( )
 	local configuration = input:table( )["configuration"]
-	if configuration["category"] then
-		configuration["categoryID"] = configuration["category"]["id"]
-	end
 	formfunction( "updateConfiguration" )( configuration )
 end
 
