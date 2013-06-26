@@ -542,6 +542,9 @@
        <property name="form" stdset="0">
         <string>_CLOSE_</string>
        </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>recipes</string>
+       </property>
       </widget>
      </item>
      <item>

@@ -11,12 +11,12 @@ END
 TRANSACTION addManufacturer
 BEGIN
 	DO INSERT INTO Manufacturer( name, normalizedName, webPage, logo )
-		VALUES ( $(name), $(normalizedName), $(webPage), convert_to_integer($(logo)) );
+		VALUES ( $(name), $(normalizedName), $(webPage), convert_to_integer($(picture/id)) );
 END
 
 TRANSACTION updateManufacturer
 BEGIN
-	DO UPDATE Manufacturer SET name=$(name), normalizedName=$(normalizedName), webPage=$(webPage), logo=convert_to_integer($(logo))
+	DO UPDATE Manufacturer SET name=$(name), normalizedName=$(normalizedName), webPage=$(webPage), logo=convert_to_integer($(picture/id))
 		WHERE ID=$(id);
 END
 

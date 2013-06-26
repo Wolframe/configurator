@@ -363,9 +363,6 @@ end
 
 function addManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
-	if manufacturer["picture"] then
-		manufacturer["logo"] = manufacturer["picture"]["id"]
-	end
 	if manufacturer["name"] then
 		manufacturer["normalizedName"] = normalizer( "name" )( manufacturer["name"] )
 	end
@@ -374,9 +371,6 @@ end
 
 function updateManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
-	if manufacturer["picture"] then
-		manufacturer["logo"] = manufacturer["picture"]["id"]
-	end
 	if manufacturer["name"] then
 		manufacturer["normalizedName"] = normalizer( "name" )( manufacturer["name"] )
 	end
@@ -406,12 +400,6 @@ end
 
 function createComponent( )
 	local component = input:table( )["component"]
-	if component["category"] then
-		component["categoryID"] = component["category"]["id"]
-	end
-	if component["manufacturer"] then
-		component["manufacturerID"] = component["manufacturer"]["id"]
-	end
 	if component["name"] then
 		component["normalizedName"] = normalizer( "name" )( component["name"] )
 	end
@@ -420,12 +408,6 @@ end
 
 function updateComponent( )
 	local component = input:table( )["component"]
-	if component["category"] then
-		component["categoryID"] = component["category"]["id"]
-	end
-	if component["manufacturer"] then
-		component["manufacturerID"] = component["manufacturer"]["id"]
-	end
 	if component["name"] then
 		component["normalizedName"] = normalizer( "name" )( component["name"] )
 	end
@@ -455,9 +437,6 @@ end
 
 function createRecipe( )
 	local recipe = input:table( )["recipe"]
-	if recipe["category"] then
-		recipe["categoryID"] = recipe["category"]["id"]
-	end
 	if recipe["name"] then
 		recipe["normalizedName"] = normalizer( "name" )( recipe["name"] )
 	end
@@ -466,9 +445,6 @@ end
 
 function updateRecipe( )
 	local recipe = input:table( )["recipe"]
-	if recipe["category"] then
-		recipe["categoryID"] = recipe["category"]["id"]
-	end
 	if recipe["name"] then
 		recipe["normalizedName"] = normalizer( "name" )( recipe["name"] )
 	end
