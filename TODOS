@@ -61,8 +61,6 @@ recipe
 configurations
 
 - how to NOT open a new window? how to close a window AND open a new window?
-- can't make editing of recipe mandatory (see qtclient problem with action
-  used in parallel with state:enabled!)
 - configurator
   - plugin: close doesn't work
   - respect modality of plugin window
