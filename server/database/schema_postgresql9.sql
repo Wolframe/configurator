@@ -303,3 +303,16 @@ BEGIN
 RETURN v_int_value;
 END;
 $$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION convert_to_numeric(v_input text)
+RETURNS NUMERIC(10, 2) AS $$
+DECLARE v_numeric_value NUMERIC(10, 2) DEFAULT NULL;
+BEGIN
+    BEGIN
+        v_numeric_value := v_input::NUMERIC(10, 2);
+    EXCEPTION WHEN OTHERS THEN
+        RETURN NULL;
+    END;
+RETURN v_numeric_value;
+END;
+$$ LANGUAGE plpgsql;

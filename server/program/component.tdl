@@ -16,7 +16,7 @@ END
 TRANSACTION addComponent
 BEGIN
 	DO INSERT INTO Component( code, name, normalizedName, categoryID, manufacturerID, mfgCode, webPage, description, price )
-		VALUES ( $(code), $(name), $(normalizedName), $(category/id), $(manufacturer/id), $(mfgCode), $(webPage), $(description), $(price) );
+		VALUES ( $(code), $(name), $(normalizedName), $(category/id), $(manufacturer/id), $(mfgCode), $(webPage), $(description), convert_to_numeric($(price)) );
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Component WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $1, $(id) );
 	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;		
@@ -34,7 +34,7 @@ BEGIN
 	DO UPDATE Component SET code=$(code), name=$(name), normalizedName=$(normalizedName),
 		categoryID=$(category/id), manufacturerID=$(manufacturer/id),
 		mfgCode=$(mfgCode), webPage=$(webPage), description=$(description),
-		price=$(price)
+		price=convert_to_numeric($(price))
 		WHERE ID=$(id);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $(/id), $(id) );
 	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;
