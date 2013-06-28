@@ -134,7 +134,7 @@ void ConfiguratorWidget::rest( )
 	closeButton = new QPushButton(this);
 	closeButton->setObjectName(QString::fromUtf8("closeButton"));
 	closeButton->setText(QApplication::translate("Form", "Close", 0));
-	closeButton->setProperty("form", QVariant(QString::fromUtf8("configurations")));
+	closeButton->setProperty("form", QVariant(QString::fromUtf8("_CLOSE_")));
 	horizontalLayout_5->addWidget(closeButton);
 
 	verticalLayout->addLayout(horizontalLayout_5);
