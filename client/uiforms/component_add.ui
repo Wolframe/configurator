@@ -161,7 +161,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string>createComponent component {code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price:0}}; picture[] {id={main.pictures.id}}; features_required{ComponentFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{ComponentFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
+        <string>createComponent component {code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; picture[] {id={main.pictures.id}}; features_required{ComponentFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{ComponentFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>

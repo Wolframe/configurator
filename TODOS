@@ -40,14 +40,17 @@ manufacturers
 components
 
 - component edit:
-  - manufacturer and category are optional by db model, not in ui 	!!
-    - manufacturer optional makes sense
-    - category not so much maybe?
   - how can we delete the manufacturer?
   - no manufacturer:
     - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
       CRITICAL: ERROR:  "-save:1067" "REQUEST error in transaction updateComponent:
       invalid input syntax for integer: "" LINE 2:   categoryID='40', manufacturerID=
+- list of components can contain NULL values for prices in DB model, qtClient
+  croaks with
+  CRITICAL: element not initialized in answer: "price" at "/component" 
+  which is plain wrong!
+  
+plugin
 - more than one description field (ca. 4 should be enough), should be able to
   contain HTML
 - show inherited features, all features defined along the path of category of
@@ -61,7 +64,7 @@ recipe
 configurations
 
 - how to NOT open a new window? how to close a window AND open a new window?
-- configurator
+- configurator form widget initial size is weird, related to the layout warnings?
 
 general
 
