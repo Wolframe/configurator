@@ -87,10 +87,6 @@ general
 - fix selection
 - fix sort order (keeping it), what is the default sort order? shouldn't
   it be by 'id'?
-- reactivate sqlite
-  - database specific functions (e.g. sqlite C function for convert_to_integer)
-  - database specific sections in TDL (e.g. creation of temporary table) or
-    specific functions again
 - resprect transactional and message character of requests and answers:
   - move picture select requests back into main select request, don't
     force the user to make two requests (think php layer!)
