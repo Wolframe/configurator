@@ -58,7 +58,7 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string>deleteComponent component {id={main.id}}</string>
+        <string>deleteCategory category {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string notr="true">categories</string>

@@ -18,7 +18,12 @@ pictures
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
 - the path of tags should be respected when searching the pictures
-  
+- edit picture:
+  - sometimes thumbnail disappears
+  - again one of those!
+    "updatePicture picture {id={main.id}; caption{{main.caption}}; info {{main.info}}; tagwrap { tag[] {id={main.tags.item.id:?}}}; image {size={main.image.size:?}; {main.image.base64:?}}}" 
+    "updatePicture picture {id = {main.id}; caption { {main.caption} }; info { {main.info} }; tagwrap { tag[] { id = {main.tags.item.id:?} } }; image { {main.image.base64:?} }}" 
+
 categories
 
 - CategoryPicture with anotation caption and info (overwrite)

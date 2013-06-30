@@ -1,13 +1,16 @@
 TRANSACTION getPictureThumbnailList
 BEGIN
-	DO CREATE LOCAL TEMPORARY TABLE IDlist (ID INT) ON COMMIT DROP;
-	DO CREATE LOCAL TEMPORARY TABLE IDunion (ID INT) ON COMMIT DROP;
+	DO createIdList();
+	DO createIdUnion();
 
 	FOREACH /picture DO INSERT INTO IDlist (ID) VALUES ($(id));
 	FOREACH /add DO INSERT INTO IDlist (ID) VALUES ($(id));
 
 	DO INSERT INTO IDunion SELECT DISTINCT ID FROM IDlist;
 	INTO picture DO SELECT Picture.ID AS "id", thumbnail, caption FROM Picture, IDunion WHERE Picture.ID = IDunion.ID;
+
+	DO dropIdList();
+	DO dropIdUnion();	
 END
 
 TRANSACTION getPictureThumbnail

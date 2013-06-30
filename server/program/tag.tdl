@@ -46,13 +46,16 @@ END
 
 TRANSACTION selectTagSet -- (/tag/id)
 BEGIN
-	DO CREATE LOCAL TEMPORARY TABLE IDlist (ID INT) ON COMMIT DROP;
-	DO CREATE LOCAL TEMPORARY TABLE IDunion (ID INT) ON COMMIT DROP;
+	DO createIdList();
+	DO createIdUnion();
 	FOREACH /tag DO INSERT INTO IDlist (ID) VALUES ($(id));
 	FOREACH /add DO INSERT INTO IDlist (ID) VALUES ($(id));
 	DO INSERT INTO IDunion SELECT DISTINCT ID FROM IDlist;
 
 	INTO tag DO SELECT tag.ID AS id,name,description FROM Tag,IDunion WHERE tag.ID = IDunion.ID ORDER BY tag.ID;
+	
+	DO dropIdList();
+	DO dropIdUnion();
 END
 
 TRANSACTION selectPictureTagSet -- (id)

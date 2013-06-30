@@ -129,7 +129,7 @@ END
 --
 TRANSACTION selectCategoryFeatureList
 BEGIN
-	DO CREATE LOCAL TEMPORARY TABLE IDlist (featureID INT, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
+	DO createFeatureIDlist();
 	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));
 	DO DELETE FROM IDlist WHERE featureID IS NULL;
 	FOREACH /add DO DELETE FROM IDlist WHERE featureID=$(id);
@@ -143,6 +143,7 @@ BEGIN
 			maxQuantity AS "maxQuantity"
 		FROM IDlist, Feature
 		WHERE Feature.ID = IDlist.featureID;
+	DO dropIdList();
 END
 
 TRANSACTION selectCategoryFeature
