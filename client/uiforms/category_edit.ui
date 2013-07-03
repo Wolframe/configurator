@@ -21,7 +21,7 @@
    <string>CategoryRequest category {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.minQuantity}}; maxQuantity{{required_features.row.maxQuantity}} } } }</string>
+   <string>Category category {id={?}; parentID={?}; root{{?}}; name{{main.name}}; description{{main.description}}; features_required{CategoryFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.min}}; maxQuantity{{required_features.row.max}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id}; name{{provided_features.row.name}}; minQuantity{{provided_features.row.min}}; maxQuantity{{provided_features.row.max}} } } }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0" colspan="2">
@@ -45,10 +45,10 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateCategory category {id={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}}} </string>
+        <string>updateCategory category {id={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id} } }; features_required{CategoryFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>categories</string>
@@ -239,6 +239,9 @@
        <property name="text">
         <string>Required features:</string>
        </property>
+       <property name="buddy">
+        <cstring>required_features</cstring>
+       </property>
       </widget>
      </item>
      <item row="1" column="1">
@@ -262,7 +265,7 @@
         <bool>false</bool>
        </property>
        <property name="headerHidden">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
        <property name="expandsOnDoubleClick">
         <bool>false</bool>
@@ -271,19 +274,20 @@
         <string>add_feature_required ({main.widgetid}_feature_required)</string>
        </property>
        <property name="action:add_feature_required" stdset="0">
-        <string>CategoryFeatureRequiredListRequest features { feature[] { id={id} }; add[] { id={feature_required_select.feature.selected} } }</string>
+        <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
        </property>
        <property name="link:feature_required_select" stdset="0">
         <string>{main.widgetid}_feature_required</string>
        </property>
+       <property name="answer" stdset="0">
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+       </property>
+       <property name="action:remove_feature_required" stdset="0">
+        <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>
+       </property>
        <attribute name="headerVisible">
-        <bool>false</bool>
+        <bool>true</bool>
        </attribute>
-       <column>
-        <property name="text">
-         <string>id</string>
-        </property>
-       </column>
        <column>
         <property name="text">
          <string>name</string>
@@ -291,12 +295,12 @@
        </column>
        <column>
         <property name="text">
-         <string>minQuantity</string>
+         <string>min</string>
         </property>
        </column>
        <column>
         <property name="text">
-         <string>maxQuantity</string>
+         <string>max</string>
         </property>
        </column>
       </widget>
@@ -320,6 +324,25 @@
         <widget class="QPushButton" name="pushButton_2">
          <property name="text">
           <string>Remove</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{required_features.selected}&gt;0</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>remove_feature_required@main.required_features</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>Edit..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>feature_select_required?widgetid={main.widgetid}_feature_required&amp;id={required_features.selected}&amp;minQuantity={required_features.selected_min}&amp;maxQuantity={required_features.selected_max}</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_feature_required</string>
          </property>
          <property name="state:enabled" stdset="0">
           <string>{required_features.selected}&gt;0</string>
@@ -351,19 +374,6 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QListWidget" name="provided_features">
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>100</height>
-        </size>
-       </property>
-       <property name="dataslot" stdset="0">
-        <string>add_feature_provided ({main.widgetid}_feature_provided)</string>
-       </property>
-      </widget>
-     </item>
      <item row="4" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
@@ -387,6 +397,25 @@
          <property name="state:enabled" stdset="0">
           <string>{provided_features.selected}&gt;0</string>
          </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>remove_feature_provided@main.provided_features</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="text">
+          <string>Edit..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>feature_select_provided?widgetid={main.widgetid}_feature_provided&amp;id={provided_features.selected}&amp;minQuantity={provided_features.selected_min}&amp;maxQuantity={provided_features.selected_max}</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_feature_provided</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{provided_features.selected}&gt;0</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -404,15 +433,77 @@
        </item>
       </layout>
      </item>
+     <item row="3" column="1">
+      <widget class="QTreeWidget" name="provided_features">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
+       <property name="itemsExpandable">
+        <bool>false</bool>
+       </property>
+       <property name="headerHidden">
+        <bool>false</bool>
+       </property>
+       <property name="expandsOnDoubleClick">
+        <bool>false</bool>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>add_feature_provided ({main.widgetid}_feature_provided)</string>
+       </property>
+       <property name="action:add_feature_provided" stdset="0">
+        <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; add[] { id={feature_provided_select.feature.selected}; minQuantity {{feature_provided_select.min}}; maxQuantity {{feature_provided_select.max}} } }</string>
+       </property>
+       <property name="link:feature_provided_select" stdset="0">
+        <string>{main.widgetid}_feature_provided</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+       </property>
+       <property name="action:remove_feature_provided" stdset="0">
+        <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; remove[] { id = {selected} } }</string>
+       </property>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>min</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>max</string>
+        </property>
+       </column>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
+  <tabstop>required_features</tabstop>
   <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>provided_features</tabstop>
   <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton_6</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>description</tabstop>
   <tabstop>pictures</tabstop>
@@ -425,5 +516,38 @@
  <resources>
   <include location="../configurator.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>required_features</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>pushButton_5</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>156</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>provided_features</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>pushButton_6</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>287</x>
+     <y>227</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>292</x>
+     <y>293</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

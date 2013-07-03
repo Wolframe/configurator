@@ -1,8 +1,16 @@
+FORM ComponentFeature
+{
+	id @int
+	name string
+	minQuantity int
+	maxQuantity int
+}
+
 FORM Component
 {
 	component
 	{
-		id @int
+		id ?@int
 		code string
 		name string
 		category {
@@ -22,13 +30,21 @@ FORM Component
 			id @int
 			_ string
 		}
-		search
+		features_required
+		{
+			ComponentFeature []
+			{
+				_ ComponentFeature
+			}
+		}
+		features_provided
+		{
+			ComponentFeature []
+			{
+				_ ComponentFeature
+			}
+		}
 	}
-}
-
-FORM updateComponent
-{
-	_ Component
 }
 
 FORM createComponent
@@ -36,7 +52,12 @@ FORM createComponent
 	_ Component
 }
 
-FORM deleteComponent
+FORM updateComponent
+{
+	_ Component
+}
+
+FORM BaseComponentRequest
 {
 	component
 	{
@@ -44,10 +65,78 @@ FORM deleteComponent
 	}
 }
 
+FORM deleteComponent
+{
+	_ BaseComponentRequest
+}
+
 FORM ComponentPictureListRequest
 {
-	component
+	_ BaseComponentRequest
+}
+
+FORM ComponentRequest
+{
+	_ BaseComponentRequest
+}
+
+FORM ComponentList
+{
+	list
 	{
-		id @int
+		component []
+		{
+			id @int
+			code string
+			name string
+			categoryName string
+			manufacturerName string
+			mfgCode string
+			webPage string
+			description string
+			price float			
+		}
+	}
+}
+
+FORM ComponentFeatureListRequest
+{
+	features
+	{
+		feature []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		add []
+		{
+			id @int
+			minQuantity int
+			maxQuantity int
+		}
+		remove []
+		{
+			id @int
+		}
+	}
+}
+
+FORM ComponentFeatureEdit
+{
+	feature
+	{
+		_ ComponentFeature
+	}
+}
+
+FORM ComponentFeatureList
+{
+	ComponentFeatures
+	{
+		ComponentFeature []
+		{
+			_ ComponentFeature
+		}
 	}
 }

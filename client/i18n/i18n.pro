@@ -1,46 +1,38 @@
 TEMPLATE = lib
 
 FORMS += \
-	../uiforms/categories_features_add.ui \
-	../uiforms/categories_features_edit.ui \
-	../uiforms/categories_features.ui \
 	../uiforms/categories.ui \
 	../uiforms/category_add.ui \
 	../uiforms/category_edit.ui \
 	../uiforms/category_select.ui \
+	../uiforms/category_select_required.ui \
 	../uiforms/component_add.ui \
 	../uiforms/component_edit.ui \
-	../uiforms/components_features_add.ui \
-	../uiforms/components_features_edit.ui \
-	../uiforms/components_features.ui \
+	../uiforms/component_select.ui \
 	../uiforms/components.ui \
-	../uiforms/configuration_add.ui \
-	../uiforms/configuration_edit.ui \
 	../uiforms/configurations.ui \
+	../uiforms/configuration_add.ui \
+	../uiforms/configuration_add_recipe.ui \
+	../uiforms/configuration_edit.ui \
+	../uiforms/configuration_delete.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
-	../uiforms/feature_equivalence_add.ui \
-	../uiforms/feature_equivalence_edit.ui \
-	../uiforms/feature_equivalence.ui \
-	../uiforms/feature_select.ui \
+	../uiforms/feature_select_required.ui \
+	../uiforms/feature_select_provided.ui \
 	../uiforms/features.ui \
 	../uiforms/manufacturer_add.ui \
 	../uiforms/manufacturer_edit.ui \
+	../uiforms/manufacturer_select.ui \
 	../uiforms/manufacturers.ui \
 	../uiforms/picture_add.ui \
+	../uiforms/picture_delete.ui \
 	../uiforms/picture_edit.ui \
 	../uiforms/picture_info.ui \
 	../uiforms/picture_select.ui \
 	../uiforms/pictures.ui \
 	../uiforms/recipe_add.ui \
-	../uiforms/recipe_component_add.ui \
-	../uiforms/recipe_component_edit.ui \
-	../uiforms/recipe_component.ui \
-	../uiforms/recipe_content_add.ui \
-	../uiforms/recipe_content_edit.ui \
-	../uiforms/recipe_content.ui \
+	../uiforms/recipe_delete.ui \
 	../uiforms/recipe_edit.ui \
-	../uiforms/recipe_select.ui \
 	../uiforms/recipes.ui \
 	../uiforms/tag_add.ui \
 	../uiforms/tag_edit.ui \

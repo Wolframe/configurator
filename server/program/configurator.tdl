@@ -1,0 +1,40 @@
+TRANSACTION selectRequiredFeatures
+RESULT INTO list
+BEGIN
+	INTO category DO
+		SELECT DISTINCT
+			RecipeContent.categoryID AS "id",
+			Category.name as "name",
+			RecipeContent.minQuantity AS "minQuantity",
+			RecipeContent.maxQuantity AS "maxQuantity",
+			Component.ID as "componentID",
+			Component.name as "componentName",
+			ComponentCategory.name as "componentCategory"
+		FROM RecipeContent, Category, CategProvides,
+			ComponentProvides, Component, Configuration,
+			Category as ComponentCategory
+		WHERE RecipeContent.categoryID = Category.ID
+		AND CategProvides.categoryID = RecipeContent.categoryID
+		AND CategProvides.minQuantity >= RecipeContent.minQuantity
+		AND ComponentProvides.featureID = CategProvides.featureID
+		AND ComponentProvides.minQuantity >= CategProvides.minQuantity
+		AND Component.ID = ComponentProvides.componentID
+		AND Component.categoryID = ComponentCategory.ID
+		AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE fromRecipe='0')
+		AND RecipeContent.recipeID = Configuration.recipeID
+		AND Configuration.ID = $(configID);
+END
+
+TRANSACTION ConfiguratorAddComponent
+BEGIN
+	DO INSERT INTO ConfigComponent( configID, componentID, quantity, fromRecipe )
+		VALUES( $(configuration/id), $(configuration/componentID),
+			$(configuration/quantity), '0' );
+END
+
+TRANSACTION ConfiguratorDeleteComponent
+BEGIN
+	DO DELETE FROM ConfigComponent
+		WHERE configID = $(configuration/id)
+		AND componentID = $(configuration/componentID);
+END

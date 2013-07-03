@@ -9,6 +9,13 @@ BEGIN
 	DO INSERT INTO Category (parentID, name, normalizedName, description, lft, rgt) VALUES ($(parentID), $(name), $(normalizedName), $(description), $1, $1+1);
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Category WHERE normalizedName = $(normalizedName) AND parentID = $(parentID);
 	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $1, $(id) );
+	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
+	FOREACH features_required/CategoryFeature DO
+		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
+	FOREACH features_provided/CategoryFeature DO
+		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
 --
@@ -18,6 +25,8 @@ TRANSACTION deleteCategory -- (id)
 BEGIN
 	DO NONEMPTY UNIQUE SELECT lft,rgt,rgt-lft+1 AS width FROM Category WHERE ID = $(id) AND ID != '1';
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
+	DO DELETE FROM CategRequires WHERE categoryID = $(id);
+	DO DELETE FROM CategProvides WHERE categoryID = $(id);
 	DO DELETE FROM Category WHERE lft >= $1 AND lft <= $2;
 	DO UPDATE Category SET lft = lft-$3 WHERE lft>$2;
 	DO UPDATE Category SET rgt = rgt-$3 WHERE rgt>$2;
@@ -31,6 +40,15 @@ BEGIN
 	DO UPDATE Category SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
 	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $(/id), $(id) );
+	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
+	DO DELETE FROM CategRequires WHERE categoryID = $(id);
+	DO DELETE FROM CategProvides WHERE categoryID = $(id);
+	FOREACH features_required/CategoryFeature DO
+		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
+	FOREACH features_provided/CategoryFeature DO
+		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
+			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
 --
@@ -38,24 +56,29 @@ END
 -- selectCategoryByNormalizedName :Get the category by name
 -- selectCategoryList             :Get a list of categories
 --
-OPERATION selectCategoryFeaturesRequired -- (id)
-BEGIN
-	INTO CategoryFeature DO
-		SELECT
-			featureID AS "id",
-			Feature.name as "name",
-			minQuantity, maxQuantity
-		FROM CategRequires, Feature
-		WHERE categoryID = $(id)
-		AND featureID = Feature.ID;
-END
-
 TRANSACTION selectCategory -- (id)
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
 		description
 		FROM Category WHERE ID = $(id);
-	INTO features_required DO selectCategoryFeaturesRequired( );
+	STRUCT features_required INTO CategoryFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM CategRequires, Feature
+		WHERE categoryID = $(id)
+		AND featureID = Feature.ID;
+	STRUCT features_provided INTO CategoryFeature DO
+		SELECT
+			featureID AS "id",
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM CategProvides, Feature
+		WHERE categoryID = $(id)
+		AND featureID = Feature.ID;
 END
 
 TRANSACTION selectCatogeryPictures -- (id)
@@ -102,18 +125,32 @@ BEGIN
 END
 
 --
--- selectCategoryFeaturesRequired : tempoary relation storage for annotated category/feature relations
+-- selectCategoryFeaturesRequired : temporay relation storage for annotated category/feature relations
 --
-TRANSACTION selectCategoryFeatureRequiredList
+TRANSACTION selectCategoryFeatureList
 BEGIN
-	DO CREATE LOCAL TEMPORARY TABLE IDlist (featureID INT PRIMARY KEY, minQuantity INT, maxQuantity INT) ON COMMIT DROP;
-	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	DO createFeatureIDlist();
+	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));
+	DO DELETE FROM IDlist WHERE featureID IS NULL;
+	FOREACH /add DO DELETE FROM IDlist WHERE featureID=$(id);
 	FOREACH /add DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
+	FOREACH /remove DO DELETE FROM IDlist WHERE featureID=$(id);
 	INTO CategoryFeature DO
 		SELECT
 			featureID AS "id",
-			Feature.name as "name",
-			minQuantity, maxQuantity
-		FROM IDunion, Feature
-		AND Feature.ID = IDunion.ID;
+			Feature.name AS "name",
+			minQuantity AS "minQuantity",
+			maxQuantity AS "maxQuantity"
+		FROM IDlist, Feature
+		WHERE Feature.ID = IDlist.featureID;
+	DO dropIdList();
+END
+
+TRANSACTION selectCategoryFeature
+BEGIN
+	INTO . DO
+		SELECT
+			$(id) AS id,
+			$(minQuantity) AS "minQuantity",
+			$(maxQuantity) AS "maxQuantity";
 END

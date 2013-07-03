@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>category_select_required</class>
+ <widget class="QWidget" name="category_select_required">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>360</width>
+    <height>299</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Categories</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>RecipeCategoryEdit category { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>RecipeCategoryEdit category { id={category.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QRadioButton" name="expand">
+       <property name="text">
+        <string>expand all</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="collapse">
+       <property name="text">
+        <string>collapse all</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QTreeWidget" name="category">
+     <property name="itemsExpandable">
+      <bool>true</bool>
+     </property>
+     <property name="action" stdset="0">
+      <string notr="true">CategoryHierarchyRequest category {id=1}</string>
+     </property>
+     <attribute name="headerDefaultSectionSize">
+      <number>250</number>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>category</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="select">
+       <property name="text">
+        <string>&amp;Ok</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>add_category_required</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{category.selected}&gt;0</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Required:</string>
+       </property>
+       <property name="buddy">
+        <cstring>min</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QLabel" name="label_min_requires">
+         <property name="text">
+          <string>min.</string>
+         </property>
+         <property name="buddy">
+          <cstring>min</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="min"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_max_requires">
+         <property name="text">
+          <string>max.</string>
+         </property>
+         <property name="buddy">
+          <cstring>max</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="max"/>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>category</tabstop>
+  <tabstop>expand</tabstop>
+  <tabstop>collapse</tabstop>
+  <tabstop>min</tabstop>
+  <tabstop>max</tabstop>
+  <tabstop>select</tabstop>
+  <tabstop>cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>expand</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>category</receiver>
+   <slot>expandAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>76</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>71</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>collapse</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>category</receiver>
+   <slot>collapseAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>155</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>category</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>select</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>27</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>28</x>
+     <y>294</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

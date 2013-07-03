@@ -1,14 +1,23 @@
 TagSetRequest=selectTagSet(xml):TagList;
-PictureTagSetRequest=selectPictureTagSet(xml):TagList;
-
-CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
-FeaturePictureListRequest=selectFeaturePictures(xml):PictureThumbnailList;
-ManufacturerPictureRequest=selectManufacturerPicture(xml):PictureThumbnail;
-ComponentPictureListRequest=selectComponentPictures(xml):PictureThumbnailList;
 
 PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(xml):PictureThumbnail;
+PictureTagSetRequest=selectPictureTagSet(xml):TagList;
 
-CategoryFeatureRequiredListRequest=selectCategoryFeatureRequiredList(xml):CategoryFeatureList;
-CategoryFeatureProvidedListRequest=selectCategoryFeatureProvidedList(xml):CategoryFeatureList;
+FeaturePictureListRequest=selectFeaturePictures(xml):PictureThumbnailList;
 
+CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
+CategoryFeatureListRequest=selectCategoryFeatureList(xml):CategoryFeatureList;
+CategoryFeatureEdit=selectCategoryFeature(xml):CategoryFeatureEdit;
+
+ComponentPictureListRequest=selectComponentPictures(xml):PictureThumbnailList;
+ComponentFeatureListRequest=selectComponentFeatureList(xml):ComponentFeatureList;
+ComponentFeatureEdit=selectComponentFeature(xml):ComponentFeatureEdit;
+
+ManufacturerPictureRequest=selectManufacturerPicture(xml):PictureThumbnail;
+
+RecipePictureListRequest=selectRecipePictures(xml):PictureThumbnailList;
+RecipeCategoryListRequest=selectRecipeCategoryList(xml):RecipeCategoryList;
+RecipeCategoryEdit=selectRecipeCategory(xml):RecipeCategoryEdit;
+RecipeComponentListRequest=selectRecipeComponentList(xml):RecipeComponentList;
+RecipeComponentEdit=selectRecipeComponent(xml):RecipeComponentEdit;

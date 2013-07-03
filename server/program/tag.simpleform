@@ -38,3 +38,39 @@ FORM TagHierarchy
 	}
 }
 
+FORM TagSetRequest
+{
+	tags
+	{
+		tag []
+		{
+			id @int
+		}
+		add []
+		{
+			id @int
+		}
+	}
+}
+
+FORM PictureTagSetRequest
+{
+	tags
+	{
+		id @int
+	}
+}
+
+FORM TagList
+{
+	tags
+	{
+		tag []
+		{
+			id @int
+			name string
+			description string
+		}
+	}
+}
+

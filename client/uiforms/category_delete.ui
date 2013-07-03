@@ -33,7 +33,7 @@
       <string>CategoryRequest category {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Category category {id={?}; parentID={?}; root{{?}}; name{{1}}; description{{2}}; features_required{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
+      <string>Category category {id={?}; parentID={?}; root{{?}}; name{{1}}; description{{2}}; features_required{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; features_provided{CategoryFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
      </property>
     </widget>
    </item>
@@ -58,7 +58,7 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">deleteCategory category {id={main.id}}</string>
+        <string>deleteCategory category {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string notr="true">categories</string>

@@ -1,19 +1,16 @@
 FORM CategoryFeature
 {
-	CategoryFeature
-	{
-		id @int
-		name string
-		minQuantity int
-		maxQuantity int
-	}
+	id @int
+	name string
+	minQuantity int
+	maxQuantity int
 }
 
 FORM Category
 {
 	category
 	{
-		id @int
+		id ?@int
 		parentID @int
 		root ?string
 		name string
@@ -25,24 +22,26 @@ FORM Category
 				id @int
 			}
 		}
-		features_required CategoryFeature[]
+		features_required
+		{
+			CategoryFeature []
+			{
+				_ CategoryFeature
+			}
+		}
+		features_provided
+		{
+			CategoryFeature []
+			{
+				_ CategoryFeature
+			}
+		}
 	}
 }
 
-FORM CategoryLabelRequest
+FORM createCategory
 {
-	category
-	{
-		id @int
-	}
-}
-
-FORM deleteCategory
-{
-	category
-	{
-		id @int
-	}
+	_ Category
 }
 
 FORM updateCategory
@@ -74,17 +73,17 @@ FORM BaseCategoryRequest
 	}
 }
 
+FORM deleteCategory
+{
+	_ BaseCategoryRequest
+}
+
 FORM CategoryPictureListRequest
 {
 	_ BaseCategoryRequest
 }
 
 FORM CategoryFeatureListRequest
-{
-	_ BaseCategoryRequest
-}
-
-FORM CategoryFeatureRequiredListRequest
 {
 	features
 	{
@@ -100,6 +99,18 @@ FORM CategoryFeatureRequiredListRequest
 			minQuantity int
 			maxQuantity int
 		}
+		remove []
+		{
+			id @int
+		}
+	}
+}
+
+FORM CategoryFeatureEdit
+{
+	feature
+	{
+		_ CategoryFeature
 	}
 }
 
@@ -107,6 +118,9 @@ FORM CategoryFeatureList
 {
 	CategoryFeatures
 	{
-		CategoryFeature CategoryFeature[]
+		CategoryFeature []
+		{
+			_ CategoryFeature
+		}
 	}
 }

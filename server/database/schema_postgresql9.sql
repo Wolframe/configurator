@@ -290,3 +290,29 @@ CREATE OR REPLACE FUNCTION datetime(text)
 RETURNS timestamp AS $$
 	SELECT now( )::timestamp
 $$ IMMUTABLE LANGUAGE SQL;
+
+CREATE OR REPLACE FUNCTION convert_to_integer(v_input text)
+RETURNS INTEGER AS $$
+DECLARE v_int_value INTEGER DEFAULT NULL;
+BEGIN
+    BEGIN
+        v_int_value := v_input::INTEGER;
+    EXCEPTION WHEN OTHERS THEN
+        RETURN NULL;
+    END;
+RETURN v_int_value;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION convert_to_numeric(v_input text)
+RETURNS NUMERIC(10, 2) AS $$
+DECLARE v_numeric_value NUMERIC(10, 2) DEFAULT NULL;
+BEGIN
+    BEGIN
+        v_numeric_value := v_input::NUMERIC(10, 2);
+    EXCEPTION WHEN OTHERS THEN
+        RETURN NULL;
+    END;
+RETURN v_numeric_value;
+END;
+$$ LANGUAGE plpgsql;

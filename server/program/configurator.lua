@@ -168,7 +168,6 @@ local function select_node( tablename, elementname, itr)
 			local r = formfunction( "select" .. tablename)( {id=v} )
 			local f = form( tablename)
 			f:fill( r:get(), {elementname})
-			logger:print( "ERROR", f:table( ) );
 			output:print( f:get())
 		end
 	end
@@ -180,9 +179,13 @@ local function edit_node( tablename, itr)
 	local description = nil
 	local pictures = nil
 	local id = nil
+	local idseen = false
 	for v,t in itr do
 		if( t == "id" ) then
-			id = v
+			if not idseen then
+				id = v
+				idseen = true
+			end
 		elseif t ==  "name" then
 			if v then
 				name = v
@@ -213,6 +216,7 @@ local function delete_node( tablename, itr)
 	formfunction( "delete" .. tablename)( {id=id} )
 end
 
+-- Aba: should go away, is simply unreadable!
 local function create_node( tablename, itr)
 	local name = nil
 	local parentID = nil
@@ -304,8 +308,19 @@ function TagRequest()
 	select_node( "Tag", "tag", input:get())
 end
 
+function createCategory()
+	local category = input:table( )["category"]
+	category["normalizedName"] = normalizer( "name" )( category["name"] )
+	if category["root"] and category["root"] == "true" then
+		category["parentID"] = 1
+	end
+	formfunction( "addCategory" )( category )
+end
+
 function updateCategory()
-	edit_node( "Category", input:get())
+	local category = input:table( )["category"]
+	category["normalizedName"] = normalizer( "name" )( category["name"] )
+	formfunction( "updateCategory" )( category )
 end
 
 function updateFeature()
@@ -328,10 +343,6 @@ function deleteTag()
 	delete_node( "Tag", input:get())
 end
 
-function createCategory()
-	create_node( "Category", input:get())
-end
-
 function createFeature()
 	create_node( "Feature", input:get())
 end
@@ -352,9 +363,6 @@ end
 
 function addManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
-	if manufacturer["picture"] then
-		manufacturer["logo"] = manufacturer["picture"]["id"]
-	end
 	if manufacturer["name"] then
 		manufacturer["normalizedName"] = normalizer( "name" )( manufacturer["name"] )
 	end
@@ -363,9 +371,6 @@ end
 
 function updateManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
-	if manufacturer["picture"] then
-		manufacturer["logo"] = manufacturer["picture"]["id"]
-	end
 	if manufacturer["name"] then
 		manufacturer["normalizedName"] = normalizer( "name" )( manufacturer["name"] )
 	end
@@ -395,12 +400,6 @@ end
 
 function createComponent( )
 	local component = input:table( )["component"]
-	if component["category"] then
-		component["categoryID"] = component["category"]["id"]
-	end
-	if component["manufacturer"] then
-		component["manufacturerID"] = component["manufacturer"]["id"]
-	end
 	if component["name"] then
 		component["normalizedName"] = normalizer( "name" )( component["name"] )
 	end
@@ -409,12 +408,6 @@ end
 
 function updateComponent( )
 	local component = input:table( )["component"]
-	if component["category"] then
-		component["categoryID"] = component["category"]["id"]
-	end
-	if component["manufacturer"] then
-		component["manufacturerID"] = component["manufacturer"]["id"]
-	end
 	if component["name"] then
 		component["normalizedName"] = normalizer( "name" )( component["name"] )
 	end
@@ -444,20 +437,14 @@ end
 
 function createRecipe( )
 	local recipe = input:table( )["recipe"]
-	if recipe["category"] then
-		recipe["categoryID"] = recipe["category"]["id"]
-	end
 	if recipe["name"] then
 		recipe["normalizedName"] = normalizer( "name" )( recipe["name"] )
 	end
 	formfunction( "addRecipe" )( recipe )
 end
 
-function editRecipe( )
+function updateRecipe( )
 	local recipe = input:table( )["recipe"]
-	if recipe["category"] then
-		recipe["categoryID"] = recipe["category"]["id"]
-	end
 	if recipe["name"] then
 		recipe["normalizedName"] = normalizer( "name" )( recipe["name"] )
 	end
@@ -487,20 +474,14 @@ end
 
 function createConfiguration( )
 	local configuration = input:table( )["configuration"]
-	if configuration["category"] then
-		configuration["categoryID"] = configuration["category"]["id"]
-	end
 	local t = formfunction( "addConfiguration" )( configuration )
 	local f = form( "Configuration" )
 	f:fill( t:get( ) )
 	output:print( f:get( ) )
 end
 
-function editConfiguration( )
+function updateConfiguration( )
 	local configuration = input:table( )["configuration"]
-	if configuration["category"] then
-		configuration["categoryID"] = configuration["category"]["id"]
-	end
 	formfunction( "updateConfiguration" )( configuration )
 end
 
@@ -515,171 +496,9 @@ function ConfigurationRequest( )
 	output:print( f:get( ) )
 end
 
-function ConfiguredComponentsFixRequest( )
-	local t = formfunction( "selectConfiguredComponentsFix" )( { configID = input:table( )["component"]["configID"] } )
-	local f = form( "ConfiguredComponentsFix" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function ConfiguredComponentsUserRequest( )
-	local t = formfunction( "selectConfiguredComponentsUser" )( { configID = input:table( )["component"]["configID"] } )
-	local f = form( "ConfiguredComponentsUser" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 function ConfiguredComponentsRequest( )
 	local t = formfunction( "selectConfiguredComponents" )( { configID = input:table( )["component"]["configID"] } )
 	local f = form( "ConfiguredComponents" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function RequiredFeaturesRequest( )
-	local t = formfunction( "selectRequiredFeatures" )( { configID = input:table( )["configuration"]["configID"] } )
-	local f = form( "RequiredFeatures" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function ConfiguratorAddComponentRequest( )
-	local t = formfunction( "ConfiguratorAddComponent" )( input:table( ) )
-end
-
-function ConfiguratorDeleteComponentRequest( )
-	local t = formfunction( "ConfiguratorDeleteComponent" )( input:table( ) )
-end
-
--- components/features associations
-
-function createComponentFeature( )
-	local componentFeature = input:table( )["ComponentFeature"]
-	formfunction( "addComponentFeature" )( componentFeature )
-end
-
-function deleteComponentFeature( )
-	local componentFeature = input:table( )["ComponentFeature"]
-	formfunction( "deleteComponentFeature" )( componentFeature )
-end
-
-function ComponentFeatureRequest( )
-	local componentFeature = input:table( )["ComponentFeature"]
-	local t = formfunction( "selectComponentFeature" )( {
-		component_id = componentFeature["component_id"],
-		feature_id = componentFeature["feature_id"]
-	} )
-	local f = form( "ComponentFeature" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function ComponentFeatureListRequest( )
-	local componentFeature = input:table( )["ComponentFeature"]
-	local t = formfunction( "selectComponentFeatureList" )( {
-		component_id = componentFeature["component_id"]
-	} )
-	local f = form( "ComponentFeatureList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
--- recipe/category (content) associations
-
-function createRecipeContent( )
-	local recipeContent = input:table( )["RecipeContent"]
-	formfunction( "addRecipeContent" )( recipeContent )
-end
-
-function deleteRecipeContent( )
-	local recipeContent = input:table( )["RecipeContent"]
-	formfunction( "deleteRecipeContent" )( recipeContent )
-end
-
-function RecipeContentRequest( )
-	local recipeContent = input:table( )["RecipeContent"]
-	local t = formfunction( "selectRecipeContent" )( {
-		recipe_id = recipeContent["recipe_id"],
-		category_id = recipeContent["category_id"]
-	} )
-	local f = form( "RecipeContent" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function RecipeContentListRequest( )
-	local recipeContent = input:table( )["RecipeContent"]
-	local t = formfunction( "selectRecipeContentList" )( {
-		recipe_id = recipeContent["recipe_id"]
-	} )
-	local f = form( "RecipeContentList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
--- recipe/component associations
-
-function createRecipeComponent( )
-	local recipeComponent = input:table( )["RecipeComponent"]
-	formfunction( "addRecipeComponent" )( recipeComponent )
-end
-
-function deleteRecipeComponent( )
-	local recipeComponent = input:table( )["RecipeComponent"]
-	formfunction( "deleteRecipeComponent" )( recipeComponent )
-end
-
-function RecipeComponentRequest( )
-	local recipeComponent = input:table( )["RecipeComponent"]
-	local t = formfunction( "selectRecipeComponent" )( {
-		recipe_id = recipeComponent["recipe_id"],
-		component_id = recipeComponent["component_id"]
-	} )
-	local f = form( "RecipeComponent" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function RecipeComponentListRequest( )
-	local recipeComponent = input:table( )["RecipeComponent"]
-	local t = formfunction( "selectRecipeComponentList" )( {
-		recipe_id = recipeComponent["recipe_id"]
-	} )
-	local f = form( "RecipeComponentList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
--- feature equivalences
-
-function createFeatureEquivalence( )
-	local featureEquivalence = input:table( )["FeatureEquivalence"]
-	formfunction( "addFeatureEquivalence" )( featureEquivalence )
-end
-
-function deleteFeatureEquivalence( )
-	local featureEquivalence = input:table( )["FeatureEquivalence"]
-	formfunction( "deleteFeatureEquivalence" )( featureEquivalence )
-end
-
-function FeatureEquivalenceRequest( )
-	local featureEquivalence = input:table( )["FeatureEquivalence"]
-	
-	local t = formfunction( "selectFeatureEquivalence" )( {
-		feature_id = featureEquivalence["feature_id"],
-		fulfill_id = featureEquivalence["fulfill_id"]
-	} )
-	local f = form( "FeatureEquivalence" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function FeatureEquivalenceListRequest( )
-	local featureEquivalence = input:table( )["FeatureEquivalence"]
-	local t = formfunction( "selectFeatureEquivalenceList" )( {
-		feature_id = featureEquivalence["feature_id"]
-	} )
-	local f = form( "FeatureEquivalenceList" )
 	f:fill( t:get( ) )
 	output:print( f:get( ) )
 end
@@ -826,3 +645,33 @@ function deletePicture( )
 	delete_picture( input:get())
 end
 
+-- configurator (the C++ plugin)
+
+function ConfiguredComponentsFixRequest( )
+	local t = formfunction( "selectConfiguredComponentsFix" )( { configID = input:table( )["component"]["configID"] } )
+	local f = form( "ConfiguredComponentsFix" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguredComponentsUserRequest( )
+	local t = formfunction( "selectConfiguredComponentsUser" )( { configID = input:table( )["component"]["configID"] } )
+	local f = form( "ConfiguredComponentsUser" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguratorRequiredFeaturesRequest( )
+	local t = formfunction( "selectRequiredFeatures" )( { configID = input:table( )["configuration"]["configID"] } )
+	local f = form( "ConfiguratorRequiredFeatures" )
+	f:fill( t:get( ) )
+	output:print( f:get( ) )
+end
+
+function ConfiguratorAddComponentRequest( )
+	local t = formfunction( "ConfiguratorAddComponent" )( input:table( ) )
+end
+
+function ConfiguratorDeleteComponentRequest( )
+	local t = formfunction( "ConfiguratorDeleteComponent" )( input:table( ) )
+end

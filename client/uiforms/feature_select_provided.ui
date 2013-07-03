@@ -6,16 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>274</width>
+    <width>304</width>
     <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Provided Features</string>
+   <string>Provided Feature</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>CategoryFeatureEdit feature { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>CategoryFeatureEdit feature { id={feature.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
@@ -83,7 +89,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>select_feature_provided</string>
+        <string>add_feature_provided</string>
        </property>
        <property name="state:enabled" stdset="0">
         <string>{feature.selected}&gt;0</string>
@@ -109,17 +115,20 @@
        <property name="text">
         <string>Provided:</string>
        </property>
+       <property name="buddy">
+        <cstring>min</cstring>
+       </property>
       </widget>
      </item>
      <item row="0" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_7">
        <item>
-        <widget class="QLabel" name="label_min_requires_3">
+        <widget class="QLabel" name="label_min_requires">
          <property name="text">
           <string>min.</string>
          </property>
          <property name="buddy">
-          <cstring>min_requires</cstring>
+          <cstring>min</cstring>
          </property>
         </widget>
        </item>
@@ -127,12 +136,12 @@
         <widget class="QSpinBox" name="min"/>
        </item>
        <item>
-        <widget class="QLabel" name="label_max_requires_3">
+        <widget class="QLabel" name="label_max_requires">
          <property name="text">
           <string>max.</string>
          </property>
          <property name="buddy">
-          <cstring>max_requires</cstring>
+          <cstring>max</cstring>
          </property>
         </widget>
        </item>

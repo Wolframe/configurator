@@ -25,7 +25,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">configuration_add</string>
+        <string notr="true">configuration_add_recipe</string>
        </property>
       </widget>
      </item>
@@ -34,11 +34,8 @@
        <property name="text">
         <string>Delete</string>
        </property>
-       <property name="action" stdset="0">
-        <string notr="true">deleteConfiguration configuration {id={configuration.selected}}</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">configurations</string>
+       <property name="form" stdset="0">
+        <string>configuration_delete?id={configuration.selected}</string>
        </property>
       </widget>
      </item>
@@ -100,6 +97,27 @@
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
+     <property name="contextmenu" stdset="0">
+      <string notr="true">add, edit, modify, delete</string>
+     </property>
+     <property name="contextmenu:add" stdset="0">
+      <string>Add Configuration</string>
+     </property>
+     <property name="contextmenu:edit" stdset="0">
+      <string>Edit Configuration</string>
+     </property>
+     <property name="contextmenu:delete" stdset="0">
+      <string>Delete Configuration</string>
+     </property>
+     <property name="form:add" stdset="0">
+      <string notr="true">configuration_add</string>
+     </property>
+     <property name="form:edit" stdset="0">
+      <string notr="true">configuration_edit?id={selected:1}</string>
+     </property>
+     <property name="form:delete" stdset="0">
+      <string notr="true">configuration_delete?id={selected:1}</string>
+     </property>
      <property name="dataslot" stdset="0">
       <string notr="true">configurations</string>
      </property>
@@ -108,6 +126,12 @@
      </property>
      <property name="synonym:configuration" stdset="0">
       <string>row</string>
+     </property>
+     <property name="contextmenu:modify" stdset="0">
+      <string>Modify configuration</string>
+     </property>
+     <property name="form:modify" stdset="0">
+      <string>configurator?configID={selected}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

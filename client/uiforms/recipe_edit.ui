@@ -6,216 +6,517 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
-    <height>932</height>
+    <width>711</width>
+    <height>302</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Edit recipe</string>
   </property>
   <property name="action" stdset="0">
-   <string notr="true">RecipeRequest recipe {id={id}}</string>
+   <string>RecipeRequest recipe {id={id}}</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <property name="fieldGrowthPolicy">
-    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-   </property>
+  <property name="answer" stdset="0">
+   <string>Recipe recipe {id={?}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; description{{main.description}}; comment {{main.comment}}; creationDate{{creationDate}}; categories_required{ RecipeCategory[] {id={required_categories.row.id}; name{{required_categories.row.name}}; minQuantity{{required_categories.row.min}}; maxQuantity{{required_categories.row.max}} } }; components_required { RecipeComponent[] {id={required_components.row.id}; name{{required_components.row.name}}; quantity{{required_components.row.quantity}} } } }</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_name">
-     <property name="text">
-      <string>Name:</string>
-     </property>
-     <property name="buddy">
-      <cstring>name</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="name"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_description">
-     <property name="text">
-      <string>Description:</string>
-     </property>
-     <property name="buddy">
-      <cstring>description</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPlainTextEdit" name="description"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_category">
-     <property name="text">
-      <string>Category:</string>
-     </property>
-     <property name="buddy">
-      <cstring>category</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QTreeWidget" name="category">
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="headerHidden">
-      <bool>false</bool>
-     </property>
-     <property name="expandsOnDoubleClick">
-      <bool>false</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string>CategoryHierarchyRequest category {id=1}</string>
-     </property>
-     <attribute name="headerDefaultSectionSize">
-      <number>200</number>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>category</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>description</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_comment">
-     <property name="text">
-      <string>Comment:</string>
-     </property>
-     <property name="buddy">
-      <cstring>comment</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QPlainTextEdit" name="comment"/>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>Pictures:</string>
-     </property>
-     <property name="buddy">
-      <cstring>picture</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="name"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_name">
+       <property name="text">
+        <string>Name:</string>
        </property>
-       <property name="sizeHint" stdset="0">
+       <property name="buddy">
+        <cstring>name</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="category">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="dataslot" stdset="0">
+          <string>select_category ({main.widgetid}_category)</string>
+         </property>
+         <property name="action:select_category" stdset="0">
+          <string>CategoryRequest category {id={category_change.category.selected}}</string>
+         </property>
+         <property name="link:category_change" stdset="0">
+          <string>{main.widgetid}_category</string>
+         </property>
+         <property name="answer" stdset="0">
+          <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}}; features_required{CategoryFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }
+</string>
+         </property>
+         <property name="id" stdset="0">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Edit</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>category_select?widgetid={main.widgetid}_category</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_category</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Category:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QTreeWidget" name="required_categories">
+       <property name="maximumSize">
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>16777215</width>
+         <height>100</height>
         </size>
        </property>
-      </spacer>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
+       <property name="itemsExpandable">
+        <bool>false</bool>
+       </property>
+       <property name="headerHidden">
+        <bool>false</bool>
+       </property>
+       <property name="expandsOnDoubleClick">
+        <bool>false</bool>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>add_category_required ({main.widgetid}_category_required)</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>RecipeCategories RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+       </property>
+       <property name="action:add_category_required" stdset="0">
+        <string>RecipeCategoryListRequest categories { category[] { id={main.required_categories.row.id:?}; minQuantity {{main.required_categories.row.min:?}}; maxQuantity{{main.required_categories.row.max:?}} }; add[] { id={category_select_required.category.selected}; minQuantity {{category_select_required.min}}; maxQuantity {{category_select_required.max}} } }</string>
+       </property>
+       <property name="link:category_select_required" stdset="0">
+        <string>{main.widgetid}_category_required</string>
+       </property>
+       <property name="action:remove_category_required" stdset="0">
+        <string>RecipeCategoryListRequest categories { category[] { id={main.required_categories.row.id:?}; minQuantity {{main.required_categories.row.min:?}}; maxQuantity{{main.required_categories.row.max:?}} }; remove[] { id = {selected} } }</string>
+       </property>
+       <attribute name="headerVisible">
+        <bool>true</bool>
+       </attribute>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>min</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>max</string>
+        </property>
+       </column>
+      </widget>
      </item>
-     <item>
+     <item row="2" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Filter pictures by:</string>
+        <string>Required categories:</string>
+       </property>
+       <property name="buddy">
+        <cstring>required_categories</cstring>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLineEdit" name="search"/>
+     <item row="3" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{required_categories.selected}&gt;0</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>remove_category_required@main.required_categories</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_5">
+         <property name="text">
+          <string>Edit..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>category_select_required?widgetid={main.widgetid}_category_required&amp;id={required_categories.selected}&amp;minQuantity={required_categories.selected_min}&amp;maxQuantity={required_categories.selected_max}</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_category_required</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{required_categories.selected}&gt;0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="text">
+          <string>Add..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>category_select_required?widgetid={main.widgetid}_category_required</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_category_required</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
-     <item>
-      <widget class="QPushButton" name="searchButton">
+     <item row="4" column="1">
+      <widget class="QTreeWidget" name="required_components">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="rootIsDecorated">
+        <bool>false</bool>
+       </property>
+       <property name="itemsExpandable">
+        <bool>false</bool>
+       </property>
+       <property name="headerHidden">
+        <bool>false</bool>
+       </property>
+       <property name="expandsOnDoubleClick">
+        <bool>false</bool>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>add_component_required ({main.widgetid}_component_required)</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>RecipeComponents RecipeComponents {RecipeComponent[] {id={row.id}; name{{row.name}}; quantity{{row.quantity}} }</string>
+       </property>
+       <property name="action:add_component_required" stdset="0">
+        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; quantity {{main.required_components.row.quantity:?}} }; add[] { id={component_required_select.component.selected}; quantity {{component_required_select.quantity}} } }</string>
+       </property>
+       <property name="link:component_required_select" stdset="0">
+        <string>{main.widgetid}_component_required</string>
+       </property>
+       <property name="action:remove_component_required" stdset="0">
+        <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; quantity {{main.required_components.row.quantity:?}} }; remove[] { id = {selected} } }</string>
+       </property>
+       <column>
+        <property name="text">
+         <string>name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>quantity</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Search..</string>
+        <string>Required components:</string>
        </property>
-       <property name="global:searchState" stdset="0">
-        <string notr="true">_w_state</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string notr="true">picture</string>
+       <property name="buddy">
+        <cstring>required_components</cstring>
        </property>
       </widget>
+     </item>
+     <item row="5" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="text">
+          <string>Remove</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{required_components.selected}&gt;0</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>remove_component_required@main.required_components</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_6">
+         <property name="text">
+          <string>Edit..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>component_select?widgetid={main.widgetid}_component_required&amp;id={required_components.selected}&amp;quantity={required_components.selected_quantity}</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_component_required</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{required_components.selected}&gt;0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_7">
+         <property name="text">
+          <string>Add..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>component_select?widgetid={main.widgetid}_component_required</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_component_required</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
-   <item row="9" column="1">
-    <widget class="QTableWidget" name="picture">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
+   <item row="0" column="1">
+    <layout class="QFormLayout" name="formLayout_3">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
      </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::MultiSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">PictureListRequest picture {search{{main.search}}}</string>
-     </property>
-     <property name="answer" stdset="0">
-      <string notr="true">PictureList list {picture[] {id={row.id}; caption{{row.caption}}; info{{row.info}}; thumbnail{{row.thumbnail.pixmap}}; tags{{?}}}}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string notr="true">picture</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>thumbnail</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>caption</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>info</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>tags</string>
-      </property>
-     </column>
-    </widget>
+     <item row="0" column="1">
+      <widget class="QPlainTextEdit" name="description">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>80</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_description">
+       <property name="text">
+        <string>Description:</string>
+       </property>
+       <property name="buddy">
+        <cstring>description</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPlainTextEdit" name="comment">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>80</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_comment">
+       <property name="text">
+        <string>Comment:</string>
+       </property>
+       <property name="buddy">
+        <cstring>comment</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Pictures:</string>
+       </property>
+       <property name="buddy">
+        <cstring>pictures</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QListWidget" name="pictures">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>100</width>
+         <height>100</height>
+        </size>
+       </property>
+       <property name="movement">
+        <enum>QListView::Static</enum>
+       </property>
+       <property name="isWrapping" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::IconMode</enum>
+       </property>
+       <property name="selectionRectVisible">
+        <bool>false</bool>
+       </property>
+       <property name="action" stdset="0">
+        <string>RecipePictureListRequest recipe {id={main.id}}</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>select_picture ({main.widgetid}_picture)</string>
+       </property>
+       <property name="link:picture_add" stdset="0">
+        <string>{main.widgetid}_picture</string>
+       </property>
+       <property name="action:select_picture" stdset="0">
+        <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
+       </property>
+       <property name="action:exclude_picture" stdset="0">
+        <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exclude_pictures">
+         <property name="text">
+          <string>Remove Picture</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>exclude_picture@main.pictures</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{pictures.selected}&gt;0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="new_pictures">
+         <property name="text">
+          <string>Add picture..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>picture_select?widgetid={main.widgetid}_picture</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_picture</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
-   <item row="10" column="1">
+   <item row="5" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -236,10 +537,13 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updateRecipe recipe {id={main.id}; name{{main.name}}; description{{main.description}}; category {{main.category}}; comment {{main.comment}}}</string>
+        <string>updateRecipe recipe {id={main.id}; name{{main.name}}; category{id={main.category.id}}; description{{main.description}}; comment{{main.comment}}; picture[] {id={main.pictures.id}}; categories_required{RecipeCategory[]{ id={required_categories.row.id:?}; name{{required_categories.row.name:?}}; minQuantity{{required_categories.row.min:?}}; maxQuantity{{required_categories.row.max:?}} }}; components_required{RecipeComponent[]{ id={required_components.row.id:?}; name{{required_components.row.name:?}}; quantity{{required_components.row.quantity:?}} }} }</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>recipes</string>
        </property>
       </widget>
      </item>
@@ -269,12 +573,20 @@
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>required_categories</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_5</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>required_components</tabstop>
+  <tabstop>pushButton_4</tabstop>
+  <tabstop>pushButton_6</tabstop>
+  <tabstop>pushButton_7</tabstop>
   <tabstop>description</tabstop>
-  <tabstop>category</tabstop>
   <tabstop>comment</tabstop>
-  <tabstop>search</tabstop>
-  <tabstop>searchButton</tabstop>
-  <tabstop>picture</tabstop>
+  <tabstop>pictures</tabstop>
+  <tabstop>exclude_pictures</tabstop>
+  <tabstop>new_pictures</tabstop>
   <tabstop>save</tabstop>
   <tabstop>reset</tabstop>
   <tabstop>cancel</tabstop>
@@ -284,18 +596,34 @@
  </resources>
  <connections>
   <connection>
-   <sender>search</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchButton</receiver>
+   <sender>required_categories</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>pushButton_5</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>368</x>
-     <y>689</y>
+     <x>263</x>
+     <y>105</y>
     </hint>
     <hint type="destinationlabel">
-     <x>449</x>
-     <y>691</y>
+     <x>262</x>
+     <y>145</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>required_components</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>pushButton_6</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>265</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>238</y>
     </hint>
    </hints>
   </connection>

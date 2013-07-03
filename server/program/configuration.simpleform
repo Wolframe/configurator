@@ -2,8 +2,7 @@ FORM Configuration
 {
 	configuration
 	{
-		id @int
-		form @string
+		id ?@int
 		name string
 		description string
 		category {
@@ -18,7 +17,6 @@ FORM Configuration
 		component {
 			id @int
 			code string
-			form string
 			name string
 			categoryName string
 			manufacturerName string
@@ -27,12 +25,78 @@ FORM Configuration
 			description string
 			price float
 		}
-		search
+	}
+}
+
+FORM createConfiguration
+{
+	_ Configuration
+}
+
+FORM updateConfiguration
+{
+	_ Configuration
+}
+
+FORM BaseConfigurationRequest
+{
+	configuration
+	{
+		id @int
 	}
 }
 
 FORM deleteConfiguration
 {
-	id @int
+	_ BaseConfigurationRequest
 }
 
+FORM ConfigurationRequest
+{
+	_ BaseConfigurationRequest
+}
+
+FORM ConfigurationList
+{
+	list
+	{
+		configuration []
+		{
+			id @int
+			name string
+			description string
+			categoryName string
+			comment string
+		}
+	}
+}
+
+FORM ConfiguredComponentsRequest
+{
+	component
+	{
+		id @int
+		configID @int
+	}
+}
+
+FORM ConfiguredComponents
+{
+	list
+	{
+		component []
+		{
+			id @int
+			code string
+			form string
+			name string
+			categoryName string
+			manufacturerName string
+			mfgCode string
+			webPage string
+			description string
+			quantity int
+			price float
+		}
+	}
+}

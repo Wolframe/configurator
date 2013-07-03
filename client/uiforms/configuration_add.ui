@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>351</width>
-    <height>696</height>
+    <width>355</width>
+    <height>264</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,14 @@
     </widget>
    </item>
    <item row="1" column="1">
-    <widget class="QPlainTextEdit" name="description"/>
+    <widget class="QPlainTextEdit" name="description">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_description">
@@ -58,78 +65,20 @@
     </widget>
    </item>
    <item row="2" column="1">
-    <widget class="QPlainTextEdit" name="comment"/>
+    <widget class="QPlainTextEdit" name="comment">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>80</height>
+      </size>
+     </property>
+    </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Recipe:</string>
      </property>
-     <property name="buddy">
-      <cstring>recipe</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QTableWidget" name="recipe">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="showGrid">
-      <bool>true</bool>
-     </property>
-     <property name="gridStyle">
-      <enum>Qt::DotLine</enum>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">RecipeListRequest recipe {}</string>
-     </property>
-     <property name="synonym:recipe" stdset="0">
-      <string>row</string>
-     </property>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-     <attribute name="verticalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>name</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>description</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>categoryName</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>creationDate</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>comment</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item row="4" column="1">
@@ -153,13 +102,16 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">createConfiguration configuration {name{{main.name}}; description{{main.description}}; comment{{main.comment}}; recipe{id={main.recipe.selected}}}</string>
+        <string>createConfiguration configuration {name{{main.name}}; description{{main.description}}; comment{{main.comment}}; recipe{id={main.recipe.id}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
-       <property name="global:configID" stdset="0">
-        <string>id</string>
+       <property name="datasignal:clicked" stdset="0">
+        <string>configurations</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{main.recipe.id}&gt;0</string>
        </property>
       </widget>
      </item>
@@ -175,13 +127,37 @@
      </item>
     </layout>
    </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="recipe">
+     <property name="minimumSize">
+      <size>
+       <width>100</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="answer" stdset="0">
+      <string>Recipe recipe {id={id}; name{{text}}; description{{?}}; category{id={?}; {?}}; creationDate{{?}}; comment{{?}}; categories_required{RecipeCategory[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; components_required{RecipeComponent[] {id={?}; name{{?}}; quantity{{?}} } }  }</string>
+     </property>
+     <property name="action" stdset="0">
+      <string>RecipeRequest recipe {id={main.recipe_id}}</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
   <tabstop>name</tabstop>
   <tabstop>description</tabstop>
   <tabstop>comment</tabstop>
-  <tabstop>recipe</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
