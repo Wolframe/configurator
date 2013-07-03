@@ -10,7 +10,8 @@ BEGIN
 		LEFT JOIN Category
 		ON Component.categoryID = Category.ID
 		LEFT JOIN Manufacturer
-		ON Component.manufacturerID = Manufacturer.ID;
+		ON Component.manufacturerID = Manufacturer.ID
+		ORDER BY Component.ID;
 END
 
 TRANSACTION addComponent

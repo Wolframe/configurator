@@ -8,7 +8,8 @@ BEGIN
 			creationDate AS "creationDate", comment
 		FROM Recipe
 		LEFT JOIN Category
-		ON Recipe.categoryID = Category.ID;
+		ON Recipe.categoryID = Category.ID
+		ORDER BY Recipe.ID;
 END
 
 TRANSACTION addRecipe
