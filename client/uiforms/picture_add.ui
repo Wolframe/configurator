@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>332</width>
-    <height>512</height>
+    <width>572</width>
+    <height>358</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,124 +17,175 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
   </property>
-  <layout class="QFormLayout" name="formLayout">
-   <property name="fieldGrowthPolicy">
-    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-   </property>
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label_caption">
-     <property name="text">
-      <string>Caption:</string>
-     </property>
-     <property name="buddy">
-      <cstring>caption</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLineEdit" name="caption">
-     <property name="initialFocus" stdset="0">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_info">
-     <property name="text">
-      <string>Info:</string>
-     </property>
-     <property name="buddy">
-      <cstring>info</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPlainTextEdit" name="info">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>50</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_tags">
-     <property name="text">
-      <string>Tags</string>
-     </property>
-     <property name="buddy">
-      <cstring>tags</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Remove Tag</string>
-       </property>
-       <property name="datasignal:clicked" stdset="0">
-        <string>exclude_tag@main.tags</string>
-       </property>
-       <property name="state:enabled" stdset="0">
-        <string>{tags.selected}&gt;0</string>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="caption">
+       <property name="initialFocus" stdset="0">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="add_edit_button_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_caption">
        <property name="text">
-        <string>Add Tag(s)..</string>
+        <string>Caption:</string>
        </property>
-       <property name="form" stdset="0">
-        <string>tag_select?widgetid={main.widgetid}_tag</string>
+       <property name="buddy">
+        <cstring>caption</cstring>
        </property>
-       <property name="datasignal:destroyed" stdset="0">
-        <string>close@{main.widgetid}_tag</string>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPlainTextEdit" name="info">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>50</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QListWidget" name="tags">
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="flow">
+        <enum>QListView::LeftToRight</enum>
+       </property>
+       <property name="isWrapping" stdset="0">
+        <bool>true</bool>
+       </property>
+       <property name="action" stdset="0">
+        <string>PictureTagSetRequest tags {id = {main.id}}</string>
+       </property>
+       <property name="action:add_tag" stdset="0">
+        <string>TagSetRequest tags { tag [] { id = {id}}; add [] { id = {tag_select.tag.selected}}}</string>
+       </property>
+       <property name="dataslot" stdset="0">
+        <string>add_tag ({main.widgetid}_tag)</string>
+       </property>
+       <property name="link:tag_select" stdset="0">
+        <string>{main.widgetid}_tag</string>
+       </property>
+       <property name="synonym:tag" stdset="0">
+        <string>item</string>
+       </property>
+       <property name="synonym:name" stdset="0">
+        <string/>
+       </property>
+       <property name="action:exclude_tag" stdset="0">
+        <string>TagSetRequest tags { tag [] { id = {unselected}}}</string>
+       </property>
+       <property name="synonym:description" stdset="0">
+        <string>?</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_info">
+       <property name="text">
+        <string>Info:</string>
+       </property>
+       <property name="buddy">
+        <cstring>info</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_tags">
+       <property name="text">
+        <string>Tags:</string>
+       </property>
+       <property name="buddy">
+        <cstring>tags</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Remove Tag</string>
+         </property>
+         <property name="datasignal:clicked" stdset="0">
+          <string>exclude_tag@main.tags</string>
+         </property>
+         <property name="state:enabled" stdset="0">
+          <string>{tags.selected}&gt;0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="add_edit_button_2">
+         <property name="text">
+          <string>Add Tag(s)..</string>
+         </property>
+         <property name="form" stdset="0">
+          <string>tag_select?widgetid={main.widgetid}_tag</string>
+         </property>
+         <property name="datasignal:destroyed" stdset="0">
+          <string>close@{main.widgetid}_tag</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="1">
+    <layout class="QFormLayout" name="formLayout_2">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_picture">
+       <property name="text">
+        <string>Picture:</string>
+       </property>
+       <property name="buddy">
+        <cstring>image</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="PictureChooser" name="image">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>150</height>
+        </size>
+       </property>
+       <property name="global:lastPictureDir" stdset="0">
+        <string notr="true">_w_state</string>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_picture">
-     <property name="text">
-      <string>Picture:</string>
-     </property>
-     <property name="buddy">
-      <cstring>image</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="PictureChooser" name="image">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>150</height>
-      </size>
-     </property>
-     <property name="global:lastPictureDir" stdset="0">
-      <string notr="true">_w_state</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
+   <item row="6" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
@@ -177,49 +228,6 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="1">
-    <widget class="QListWidget" name="tags">
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
-     </property>
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="flow">
-      <enum>QListView::LeftToRight</enum>
-     </property>
-     <property name="isWrapping" stdset="0">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string>PictureTagSetRequest tags {id = {main.id}}</string>
-     </property>
-     <property name="action:add_tag" stdset="0">
-      <string>TagSetRequest tags { tag [] { id = {id}}; add [] { id = {tag_select.tag.selected}}}</string>
-     </property>
-     <property name="dataslot" stdset="0">
-      <string>add_tag ({main.widgetid}_tag)</string>
-     </property>
-     <property name="link:tag_select" stdset="0">
-      <string>{main.widgetid}_tag</string>
-     </property>
-     <property name="synonym:tag" stdset="0">
-      <string>item</string>
-     </property>
-     <property name="synonym:name" stdset="0">
-      <string/>
-     </property>
-     <property name="action:exclude_tag" stdset="0">
-      <string>TagSetRequest tags { tag [] { id = {unselected}}}</string>
-     </property>
-     <property name="synonym:description" stdset="0">
-      <string>?</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -230,12 +238,8 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>caption</tabstop>
-  <tabstop>info</tabstop>
-  <tabstop>tags</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>add_edit_button_2</tabstop>
-  <tabstop>image</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
