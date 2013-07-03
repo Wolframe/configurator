@@ -125,6 +125,9 @@
       <string>Manufacturer list {manufacturer[] {id={row.id}; name{{row.name}}; webPage{{row.webPage}};  thumbnail{{row.icon.pixmap}} } }
 </string>
      </property>
+     <property name="row:height" stdset="0">
+      <UInt>50</UInt>
+     </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
      </attribute>

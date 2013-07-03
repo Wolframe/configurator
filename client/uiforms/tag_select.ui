@@ -55,10 +55,13 @@
    <item row="1" column="0" colspan="2">
     <widget class="QTreeWidget" name="tag">
      <property name="selectionMode">
-      <enum>QAbstractItemView::MultiSelection</enum>
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="itemsExpandable">
       <bool>true</bool>
+     </property>
+     <property name="animated">
+      <bool>false</bool>
      </property>
      <property name="action" stdset="0">
       <string notr="true">TagHierarchyRequest tag {id=1}</string>
@@ -125,12 +128,12 @@
    <slot>expandAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>66</x>
-     <y>270</y>
+     <x>76</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>62</x>
-     <y>234</y>
+     <x>71</x>
+     <y>200</y>
     </hint>
    </hints>
   </connection>
@@ -141,12 +144,28 @@
    <slot>collapseAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>265</y>
+     <x>195</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>227</y>
+     <x>155</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tag</sender>
+   <signal>doubleClicked(QModelIndex)</signal>
+   <receiver>add</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>43</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>44</x>
+     <y>252</y>
     </hint>
    </hints>
   </connection>

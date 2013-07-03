@@ -5,7 +5,8 @@ BEGIN
 		SELECT Manufacturer.ID AS "id", name, webPage AS "webPage", thumbnail
 		FROM Manufacturer
 		LEFT JOIN Picture
-		ON Manufacturer.logo = Picture.ID;
+		ON Manufacturer.logo = Picture.ID
+		ORDER BY Manufacturer.ID;
 END
 
 TRANSACTION addManufacturer

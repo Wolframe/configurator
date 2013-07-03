@@ -33,7 +33,8 @@ BEGIN
 		ON PictureTag.tagID = Tag.ID
 		WHERE coalesce( Tag.normalizedName, '' ) like $(search)
 		GROUP BY Picture.ID, Picture.thumbnail, Picture.caption, Picture.info,
-			Picture.width, Picture.height, Picture.image;
+			Picture.width, Picture.height, Picture.image
+		ORDER BY Picture.ID;
 END
 
 TRANSACTION selectPicture -- (/picture/id)

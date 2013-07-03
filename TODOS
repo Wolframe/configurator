@@ -79,11 +79,14 @@ general
   - relations like features provided
 - fix all XML request, make them look consistent
   (important for PHP layer)
-  
+    
 todo discuss
     
 general
 
+- selection forms
+  - keep all states (last selected item, expanded items)
+  - search for all select forms
 - fix selection
 - fix sort order (keeping it), what is the default sort order? shouldn't
   it be by 'id'?
@@ -98,7 +101,6 @@ general
 - shortcuts for key select everywhere, e.g. &Cancel
 - selection windows should keep the state (expansion, location of last
   selection), similar to a QFileDialog
-- search for all select forms
 - dito default buttons for all forms
 
 manufacturer:
@@ -117,6 +119,7 @@ components
 - info field in pictures?
     - must select a tag for being able to add a picture?
 - ',' or ', ' in group concat?
+- show thumbnail, first one?
 
 seen and postponed or worked around
 

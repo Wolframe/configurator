@@ -86,6 +86,7 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>delete_2</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
  <resources>

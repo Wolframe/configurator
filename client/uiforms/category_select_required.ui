@@ -128,7 +128,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="min"/>
+        <widget class="QSpinBox" name="min">
+         <property name="maximum">
+          <number>999</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="label_max_requires">
@@ -141,7 +145,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="max"/>
+        <widget class="QSpinBox" name="max">
+         <property name="maximum">
+          <number>999</number>
+         </property>
+        </widget>
        </item>
        <item>
         <spacer name="horizontalSpacer_4">
