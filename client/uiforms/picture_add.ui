@@ -238,8 +238,12 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>caption</tabstop>
+  <tabstop>info</tabstop>
+  <tabstop>tags</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>add_edit_button_2</tabstop>
+  <tabstop>image</tabstop>
   <tabstop>add</tabstop>
   <tabstop>cancel</tabstop>
  </tabstops>
