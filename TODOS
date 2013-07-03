@@ -119,6 +119,7 @@ components
 - info field in pictures?
     - must select a tag for being able to add a picture?
 - ',' or ', ' in group concat?
+- show thumbnail, first one?
 
 seen and postponed or worked around
 
