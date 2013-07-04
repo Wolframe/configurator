@@ -76,7 +76,7 @@ BEGIN
 			LEFT JOIN Manufacturer
 			ON manufacturerID = Manufacturer.ID
 			WHERE Component.ID = $(id);
-	STRUCT features_required INTO ComponentFeature DO
+	INTO features_required/ComponentFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -85,7 +85,7 @@ BEGIN
 		FROM ComponentRequires, Feature
 		WHERE componentID = $(id)
 		AND featureID = Feature.ID;
-	STRUCT features_provided INTO ComponentFeature DO
+	INTO features_provided/ComponentFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",

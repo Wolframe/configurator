@@ -61,7 +61,7 @@ BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
 		description
 		FROM Category WHERE ID = $(id);
-	STRUCT features_required INTO CategoryFeature DO
+	INTO features_required/CategoryFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -70,7 +70,7 @@ BEGIN
 		FROM CategRequires, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
-	STRUCT features_provided INTO CategoryFeature DO
+	INTO features_provided/CategoryFeature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",

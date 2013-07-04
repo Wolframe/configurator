@@ -67,7 +67,7 @@ BEGIN
 			FROM Recipe, Category
 			WHERE Recipe.ID = $(id)
 			AND Recipe.CategoryID = Category.ID;
-	STRUCT categories_required INTO RecipeCategory DO
+	INTO categories_required/RecipeCategory DO
 		SELECT
 			categoryID AS "id",
 			Category.name AS "name",
@@ -76,7 +76,7 @@ BEGIN
 		FROM RecipeContent, Category
 		WHERE recipeID = $(id)
 		AND categoryID = Category.ID;
-	STRUCT components_required INTO RecipeComponent DO
+	INTO components_required/RecipeComponent DO
 		SELECT
 			componentID AS "id",
 			Component.name AS "name",
