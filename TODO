@@ -18,15 +18,12 @@ pictures
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
 - the path of tags should be respected when searching the pictures
-- edit picture:
-  - sometimes thumbnail disappears
-  - again one of those!
-    "updatePicture picture {id={main.id}; caption{{main.caption}}; info {{main.info}}; tagwrap { tag[] {id={main.tags.item.id:?}}}; image {size={main.image.size:?}; {main.image.base64:?}}}" 
-    "updatePicture picture {id = {main.id}; caption { {main.caption} }; info { {main.info} }; tagwrap { tag[] { id = {main.tags.item.id:?} } }; image { {main.image.base64:?} }}" 
 
 categories
 
 - CategoryPicture with anotation caption and info (overwrite)
+- show inherited features, all features defined along the path of category of
+  the category
   
 features
 
@@ -54,10 +51,6 @@ components
   croaks with
   CRITICAL: element not initialized in answer: "price" at "/component" 
   which is plain wrong!
-  
-plugin
-- more than one description field (ca. 4 should be enough), should be able to
-  contain HTML
 - show inherited features, all features defined along the path of category of
   the component
 
@@ -79,18 +72,16 @@ general
   - relations like features provided
 - fix all XML request, make them look consistent
   (important for PHP layer)
-    
+   
 todo discuss
     
 general
 
+- short and long description 
 - selection forms
   - keep all states (last selected item, expanded items)
   - search for all select forms
-- fix selection
-- fix sort order (keeping it), what is the default sort order? shouldn't
-  it be by 'id'?
-- resprect transactional and message character of requests and answers:
+- respect transactional and message character of requests and answers:
   - move picture select requests back into main select request, don't
     force the user to make two requests (think php layer!)
   - IMHO we should be able to set the values of a form and then overload
