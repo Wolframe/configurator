@@ -65,7 +65,7 @@ FORM BaseComponentRequest
 	}
 }
 
-FORM deleteComponent
+FORM DeleteComponentRequest
 {
 	_ BaseComponentRequest
 }

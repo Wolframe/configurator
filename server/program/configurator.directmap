@@ -10,12 +10,14 @@ CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
 CategoryFeatureListRequest=selectCategoryFeatureList(xml):CategoryFeatureList;
 CategoryFeatureEdit=selectCategoryFeature(xml):CategoryFeatureEdit;
 
+DeleteComponentRequest=deleteComponent(xml);
 ComponentPictureListRequest=selectComponentPictures(xml):PictureThumbnailList;
 ComponentFeatureListRequest=selectComponentFeatureList(xml):ComponentFeatureList;
 ComponentFeatureEdit=selectComponentFeature(xml):ComponentFeatureEdit;
 
 ManufacturerPictureRequest=selectManufacturerPicture(xml):PictureThumbnail;
 
+DeleteRecipeRequest=deleteRecipe(xml);
 RecipePictureListRequest=selectRecipePictures(xml):PictureThumbnailList;
 RecipeCategoryListRequest=selectRecipeCategoryList(xml):RecipeCategoryList;
 RecipeCategoryEdit=selectRecipeCategory(xml):RecipeCategoryEdit;

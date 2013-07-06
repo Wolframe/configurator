@@ -58,7 +58,7 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string>deleteRecipe recipe {id={main.id}}</string>
+        <string>DeleteRecipeRequest recipe {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string notr="true">recipes</string>

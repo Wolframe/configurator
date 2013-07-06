@@ -414,10 +414,6 @@ function updateComponent( )
 	formfunction( "updateComponent" )( component )
 end
 
-function deleteComponent( )
-	formfunction( "deleteComponent" )( { id = input:table( )["component"]["id"] } )
-end
-
 function ComponentRequest( )
 	local t = formfunction( "selectComponent" )( { id = input:table( )["component"]["id"] } )
 	local f = form( "Component" )
