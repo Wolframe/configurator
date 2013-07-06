@@ -21,3 +21,9 @@ RecipeCategoryListRequest=selectRecipeCategoryList(xml):RecipeCategoryList;
 RecipeCategoryEdit=selectRecipeCategory(xml):RecipeCategoryEdit;
 RecipeComponentListRequest=selectRecipeComponentList(xml):RecipeComponentList;
 RecipeComponentEdit=selectRecipeComponent(xml):RecipeComponentEdit;
+
+ConfiguredComponentsFixRequest=selectConfiguredComponentsFix(xml):ConfiguredComponentsFix;
+ConfiguredComponentsUserRequest=selectConfiguredComponentsUser(xml):ConfiguredComponentsUser;
+ConfiguratorRequiredFeaturesRequest=selectRequiredFeatures(xml):ConfiguratorRequiredFeatures;
+ConfiguratorAddComponentRequest=ConfiguratorAddComponent(xml);
+ConfiguratorDeleteComponentRequest=ConfiguratorDeleteComponent(xml);

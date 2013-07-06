@@ -56,7 +56,6 @@ BEGIN
 END
 
 TRANSACTION selectConfiguredComponentsFix
-RESULT INTO list
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
@@ -76,7 +75,6 @@ BEGIN
 END
 
 TRANSACTION selectConfiguredComponentsUser
-RESULT INTO list
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
