@@ -1,5 +1,6 @@
 TagSetRequest=selectTagSet(xml):TagList;
 
+DeletePictureRequest=deletePicture(xml);
 PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(xml):PictureThumbnail;
 PictureTagSetRequest=selectPictureTagSet(xml):TagList;

@@ -74,12 +74,22 @@ FORM Picture
 	}
 }
 
-FORM deletePicture
+FORM BasePictureRequest
 {
 	picture
 	{
 		id @int
 	}
+}
+
+FORM DeletePictureRequest
+{
+	_ BasePictureRequest
+}
+
+FORM PictureRequest
+{
+	_ BasePictureRequest
 }
 
 FORM PictureListRequest

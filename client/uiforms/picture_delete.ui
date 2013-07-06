@@ -61,7 +61,7 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">deletePicture picture {id={main.id}}</string>
+        <string notr="true">DeletePictureRequest picture {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string notr="true">picture</string>

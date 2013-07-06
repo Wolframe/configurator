@@ -530,34 +530,12 @@ local function transform_picture( itr )
 	return picture
 end
 
-local function delete_picture( itr)
-	local id = nil
-	for v,t in itr do
-		if t == "id" then
-			id = v
-		end
-	end
-	formfunction( "deletePicture" )( { id = id } )
-end
-
-local function update_picture( itr)
-	local picture = transform_picture( itr)
+function updatePicture( )
+	local picture = transform_picture( input:get())
 	formfunction( "updatePicture" )( { picture = picture } )
 end
 
-local function create_picture( itr)
-	local picture = transform_picture( itr)
-	formfunction( "addPicture" )( { picture = picture } )
-end
-
-function updatePicture( )
-	update_picture( input:get())
-end
-
 function createPicture( )
-	create_picture( input:get())
-end
-
-function deletePicture( )
-	delete_picture( input:get())
+	local picture = transform_picture( input:get())
+	formfunction( "addPicture" )( { picture = picture } )
 end
