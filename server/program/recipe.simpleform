@@ -76,6 +76,11 @@ FORM RecipePictureListRequest
 	_ BaseRecipeRequest
 }
 
+FORM RecipeListRequest
+{
+	_ BaseRecipeRequest
+}
+
 FORM RecipeRequest
 {
 	_ BaseRecipeRequest

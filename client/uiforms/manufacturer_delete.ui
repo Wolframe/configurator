@@ -58,7 +58,7 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">deleteManufacturer manufacturer {id={main.id}}</string>
+        <string notr="true">DeleteManufacturerRequest manufacturer {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string notr="true">manufacturers</string>

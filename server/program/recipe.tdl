@@ -1,5 +1,4 @@
 TRANSACTION selectRecipeList
-RESULT INTO list
 BEGIN
 	INTO recipe DO
 		SELECT Recipe.ID AS "id", Recipe.name AS "name",

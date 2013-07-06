@@ -1,5 +1,4 @@
 TRANSACTION selectManufacturerList
-RESULT INTO list
 BEGIN
 	INTO manufacturer DO
 		SELECT Manufacturer.ID AS "id", name, webPage AS "webPage", thumbnail
@@ -27,7 +26,6 @@ BEGIN
 END
 
 TRANSACTION selectManufacturer
-RESULT INTO manufacturer
 BEGIN
 	INTO . DO
 		SELECT Manufacturer.ID AS "id", name, webPage AS "webPage"

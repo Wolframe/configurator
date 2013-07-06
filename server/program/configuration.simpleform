@@ -51,6 +51,11 @@ FORM DeleteConfigurationRequest
 	_ BaseConfigurationRequest
 }
 
+FORM ConfigurationListRequest
+{
+	_ BaseConfigurationRequest
+}
+
 FORM ConfigurationRequest
 {
 	_ BaseConfigurationRequest

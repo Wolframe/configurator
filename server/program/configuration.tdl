@@ -1,5 +1,4 @@
 TRANSACTION selectConfigurationList
-RESULT INTO list
 BEGIN
 	INTO configuration DO
 		SELECT Configuration.ID AS "id", Configuration.name AS "name",

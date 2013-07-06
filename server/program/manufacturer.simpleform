@@ -55,7 +55,12 @@ FORM BaseManufacturerRequest
 	}
 }
 
-FORM deleteManufacturer
+FORM DeleteManufacturerRequest
+{
+	_ BaseManufacturerRequest
+}
+
+FORM ManufacturerListRequest
 {
 	_ BaseManufacturerRequest
 }

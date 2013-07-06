@@ -353,14 +353,6 @@ end
 
 -- manufacturers
 
-function ManufacturerListRequest( )
-	output:as( {root='list', system='manufacturerList.simpleform'})
-	local t = formfunction( "selectManufacturerList" )( {} )
-	local f = form( "ManufacturerList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 function addManufacturer( )
 	local manufacturer = input:table( )["manufacturer"]
 	if manufacturer["name"] then
@@ -377,26 +369,7 @@ function updateManufacturer( )
 	formfunction( "updateManufacturer" )( manufacturer )
 end
 
-function deleteManufacturer( )
-	formfunction( "deleteManufacturer" )( { id = input:table( )["manufacturer"]["id"] } )
-end
-
-function ManufacturerRequest( )
-	local t = formfunction( "selectManufacturer" )( { id = input:table( )["manufacturer"]["id"] } )
-	local f = form( "Manufacturer" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 -- components
-
-function ComponentListRequest( )
-	output:as( {root='list', system='componentList.simpleform'})
-	local t = formfunction( "selectComponentList" )( {} )
-	local f = form( "ComponentList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
 
 function createComponent( )
 	local component = input:table( )["component"]
@@ -414,22 +387,7 @@ function updateComponent( )
 	formfunction( "updateComponent" )( component )
 end
 
-function ComponentRequest( )
-	local t = formfunction( "selectComponent" )( { id = input:table( )["component"]["id"] } )
-	local f = form( "Component" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 -- recipes
-
-function RecipeListRequest( )
-	output:as( {root='list', system='recipeList.simpleform'})
-	local t = formfunction( "selectRecipeList" )( {} )
-	local f = form( "RecipeList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
 
 function createRecipe( )
 	local recipe = input:table( )["recipe"]
@@ -448,14 +406,6 @@ function updateRecipe( )
 end
 
 -- configurations
-
-function ConfigurationListRequest( )
-	output:as( {root='list', system='configurationList.simpleform'})
-	local t = formfunction( "selectConfigurationList" )( {} )
-	local f = form( "ConfigurationList" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
 
 function createConfiguration( )
 	local configuration = input:table( )["configuration"]

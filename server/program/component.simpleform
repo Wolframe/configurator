@@ -75,6 +75,11 @@ FORM ComponentPictureListRequest
 	_ BaseComponentRequest
 }
 
+FORM ComponentListRequest
+{
+	_ BaseComponentRequest
+}
+
 FORM ComponentRequest
 {
 	_ BaseComponentRequest

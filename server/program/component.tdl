@@ -1,5 +1,4 @@
 TRANSACTION selectComponentList
-RESULT INTO list
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
@@ -58,7 +57,6 @@ BEGIN
 END
 
 TRANSACTION selectComponent
-RESULT INTO component
 BEGIN
 	INTO . DO
 		SELECT Component.ID AS "id", code, name,
