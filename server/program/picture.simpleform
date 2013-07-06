@@ -1,12 +1,4 @@
-FORM PictureAttrRequest
-{
-	picture
-	{
-		id @int
-	}
-}
-
-FORM PictureAttrResult
+FORM PictureAttributes
 {
 	attr
 	{
@@ -80,6 +72,11 @@ FORM BasePictureRequest
 	{
 		id @int
 	}
+}
+
+FORM PictureAttributeRequest
+{
+	_ BasePictureRequest
 }
 
 FORM DeletePictureRequest

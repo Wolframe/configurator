@@ -59,7 +59,7 @@ BEGIN
 		WHERE Picture.ID = $(id);
 END
 
-TRANSACTION selectPictureAttr -- (/picture/id)
+TRANSACTION selectPictureAttributes -- (/picture/id)
 BEGIN
 	INTO picture DO UNIQUE
 		SELECT Picture.ID AS "id", caption, coalesce( info, '' ) AS "info" FROM Picture

@@ -30,10 +30,10 @@
       <string>Do you really want to delete  '%1' ?</string>
      </property>
      <property name="action" stdset="0">
-      <string>PictureAttrRequest picture {id={main.id}}</string>
+      <string>PictureAttributeRequest picture {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>PictureAttrResult attr {picture {id={?}; caption{{1}}; info{{?}}}; tag[]{id={?}; {?}}}</string>
+      <string>PictureAttributes attr {picture {id={?}; caption{{1}}; info{{?}}}; tag[]{id={?}; {?}}}</string>
      </property>
     </widget>
    </item>
