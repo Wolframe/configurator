@@ -41,7 +41,6 @@ BEGIN
 END
 
 TRANSACTION selectConfiguration
-RESULT INTO configuration
 BEGIN
 	INTO . DO
 		SELECT Configuration.ID AS "id", name, description,
@@ -96,7 +95,6 @@ BEGIN
 END
 
 TRANSACTION selectConfiguredComponents
-RESULT INTO list
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",

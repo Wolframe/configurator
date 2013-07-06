@@ -58,7 +58,7 @@
         <string>Delete</string>
        </property>
        <property name="action" stdset="0">
-        <string>deleteConfiguration configuration {id={main.id}}</string>
+        <string>DeleteConfigurationRequest configuration {id={main.id}}</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string notr="true">configurations</string>

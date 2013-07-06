@@ -485,24 +485,6 @@ function updateConfiguration( )
 	formfunction( "updateConfiguration" )( configuration )
 end
 
-function deleteConfiguration( )
-	formfunction( "deleteConfiguration" )( { id = input:table( )["configuration"]["id"] } )
-end
-
-function ConfigurationRequest( )
-	local t = formfunction( "selectConfiguration" )( { id = input:table( )["configuration"]["id"] } )
-	local f = form( "Configuration" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function ConfiguredComponentsRequest( )
-	local t = formfunction( "selectConfiguredComponents" )( { configID = input:table( )["component"]["configID"] } )
-	local f = form( "ConfiguredComponents" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 -- pictures
 
 function PictureListRequest( )
