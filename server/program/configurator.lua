@@ -447,17 +447,6 @@ function updateRecipe( )
 	formfunction( "updateRecipe" )( recipe )
 end
 
-function deleteRecipe( )
-	formfunction( "deleteRecipe" )( { id = input:table( )["recipe"]["id"] } )
-end
-
-function RecipeRequest( )
-	local t = formfunction( "selectRecipe" )( { id = input:table( )["recipe"]["id"] } )
-	local f = form( "Recipe" )
-	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
 -- configurations
 
 function ConfigurationListRequest( )

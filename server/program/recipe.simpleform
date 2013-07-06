@@ -66,7 +66,7 @@ FORM BaseRecipeRequest
 	}
 }
 
-FORM deleteRecipe
+FORM DeleteRecipeRequest
 {
 	_ BaseRecipeRequest
 }

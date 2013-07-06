@@ -18,6 +18,7 @@ ComponentFeatureEdit=selectComponentFeature(xml):ComponentFeatureEdit;
 ManufacturerPictureRequest=selectManufacturerPicture(xml):PictureThumbnail;
 
 DeleteRecipeRequest=deleteRecipe(xml);
+RecipeRequest=selectRecipe(xml):Recipe;
 RecipePictureListRequest=selectRecipePictures(xml):PictureThumbnailList;
 RecipeCategoryListRequest=selectRecipeCategoryList(xml):RecipeCategoryList;
 RecipeCategoryEdit=selectRecipeCategory(xml):RecipeCategoryEdit;

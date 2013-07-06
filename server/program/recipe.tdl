@@ -55,7 +55,6 @@ BEGIN
 END
 
 TRANSACTION selectRecipe
-RESULT INTO recipe
 BEGIN
 	INTO . DO
 		SELECT Recipe.ID AS "id", name, description,
