@@ -45,10 +45,10 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string notr="true">updatePicture picture {id={main.id}; caption{{main.caption}}; info {{main.info}}; tagwrap { tag[] {id={main.tags.item.id:?}}}; image {size={main.image.size:?}; {main.image.base64:?}}}</string>
+        <string>updatePicture picture {id={main.id}; caption{{main.caption}}; info {{main.info}}; tags { tag[] {id={main.tags.item.id:?}}}; image {size={main.image.size:?}; {main.image.base64:?}}}</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">_CLOSE_</string>
+        <string>_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>picture</string>

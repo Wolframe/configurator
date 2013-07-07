@@ -49,6 +49,16 @@ FORM Picture
 	}
 }
 
+FORM createPicture
+{
+	_ Picture
+}
+
+FORM updatePicture
+{
+	_ Picture
+}
+
 FORM PictureList
 {	
 	list

@@ -444,44 +444,7 @@ local function round( num, idp )
 	return math.floor( num * mult + 0.5 ) / mult
 end
 
-local function transform_picture( itr )
-	-- should be a form transformation, not lua code :-)
-	local picture = {}
-	picture["tags"] = {}
-	local intag = false
-	local intagwrap = false
-	local inid = false
-	for v,t in itr do
-		if( not v and t ) then
-			-- begin tag
-			if( t == "tagwrap" ) then
-				intagwrap = true
-			elseif( t == "tag" ) then
-				intag = true
-			elseif( t == "caption" or t == "info" or t == "image" ) then
-				picture[ t] = content_value( scope( itr))
-			end
-		elseif( v and t ) then
-			-- attribute
-			inid = true
-			if ( ( t == "id" ) and not intagwrap and not intag ) then
-				picture[ t] = v
-			elseif( t == "id" and intag and intagwrap ) then
-				table.insert( picture["tags"], { ["id"] = v } )
-			end
-		elseif( not v and not t ) then
-			-- end tag
-			if( inid ) then
-				inid = false
-			elseif( intag and intagwrap ) then
-				intag = false
-			elseif( intagwrap ) then
-				intagwrap = false
-			end
-		else
-			-- dummy content
-		end
-	end
+local function transform_picture( picture )
 	info = formfunction( "imageInfo" )( { [ "data"] = picture["image"] } ):table( )
 	width = info.width
 	height = info.height
@@ -503,11 +466,11 @@ local function transform_picture( itr )
 end
 
 function updatePicture( )
-	local picture = transform_picture( input:get())
+	local picture = transform_picture( input:table()["picture"] )
 	formfunction( "updatePicture" )( { picture = picture } )
 end
 
 function createPicture( )
-	local picture = transform_picture( input:get())
+	local picture = transform_picture( input:table()["picture"] )
 	formfunction( "addPicture" )( { picture = picture } )
 end

@@ -75,7 +75,7 @@ BEGIN
 		width = $(width), height = $(height), thumbnail = $(thumbnail)
 		WHERE ID = $(id);
 	FOREACH picture DO DELETE FROM PictureTag WHERE pictureID = $(id);
-	FOREACH picture/tags DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/picture/id), $(id) );
+	FOREACH picture/tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/picture/id), $(id) );
 	DO DELETE FROM PictureTag WHERE tagID IS NULL;	
 END
 
@@ -84,7 +84,7 @@ BEGIN
 	FOREACH picture DO INSERT INTO Picture( caption, info, image, width, height, thumbnail )
 		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail) );
 	DO NONEMPTY UNIQUE getLastPictureID( );
-	FOREACH picture/tags DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(id) );
+	FOREACH picture/tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(id) );
 	DO DELETE FROM PictureTag WHERE tagID IS NULL;	
 END
 
