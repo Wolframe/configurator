@@ -76,17 +76,11 @@
        <property name="link:tag_select" stdset="0">
         <string>{main.widgetid}_tag</string>
        </property>
-       <property name="synonym:tag" stdset="0">
-        <string>item</string>
-       </property>
-       <property name="synonym:name" stdset="0">
-        <string/>
-       </property>
        <property name="action:exclude_tag" stdset="0">
         <string>TagSetRequest tags { tag [] { id = {unselected}}}</string>
        </property>
-       <property name="synonym:description" stdset="0">
-        <string>?</string>
+       <property name="answer" stdset="0">
+        <string>Picture tags { tag[] { id={item.id}; name {{item}} }</string>
        </property>
       </widget>
      </item>

@@ -52,7 +52,7 @@ BEGIN
 	FOREACH /add DO INSERT INTO IDlist (ID) VALUES ($(id));
 	DO INSERT INTO IDunion SELECT DISTINCT ID FROM IDlist;
 
-	INTO tag DO SELECT tag.ID AS id,name,description FROM Tag,IDunion WHERE tag.ID = IDunion.ID ORDER BY tag.ID;
+	INTO tag DO SELECT tag.ID AS id,name FROM Tag,IDunion WHERE tag.ID = IDunion.ID ORDER BY tag.ID;
 	
 	DO dropIdList();
 	DO dropIdUnion();
@@ -60,7 +60,7 @@ END
 
 TRANSACTION selectPictureTagSet -- (id)
 BEGIN
-	INTO tag DO SELECT PictureTag.tagID AS id,Tag.name,Tag.description FROM Tag,PictureTag WHERE Tag.ID = PictureTag.tagID AND PictureTag.pictureID = $(id) ORDER BY PictureTag.tagID;
+	INTO tag DO SELECT PictureTag.tagID AS id,Tag.name FROM Tag,PictureTag WHERE Tag.ID = PictureTag.tagID AND PictureTag.pictureID = $(id) ORDER BY PictureTag.tagID;
 END
 
 --
