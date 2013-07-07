@@ -18,10 +18,10 @@
     <normaloff>:/images/picture.png</normaloff>:/images/picture.png</iconset>
   </property>
   <property name="action" stdset="0">
-   <string notr="true">PictureRequest picture {id={id}}</string>
+   <string>PictureRequest picture {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Picture dummy {picture{id={main.id}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{?}}; width{{?}}; size{{?}}; tags{{?}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}}; used_components {{main.used_components}} }; tagwrap[] {id={?};tag{{?}}}}</string>
+   <string>Picture picture{id={?}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{?}}; width{{?}}; size{{?}}; tagstring{{?}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}};  used_components {{main.used_components}}; tags { tag[] { id={?};{{?}}}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="11" column="0" colspan="2">

@@ -3,7 +3,7 @@ RESULT INTO list
 BEGIN
 	INTO picture DO
 		SELECT Picture.ID AS "id", thumbnail, caption, coalesce( info, '' ) AS "info",
-			coalesce( group_concat( Tag.name ), '' ) as tags
+			coalesce( group_concat( Tag.name ), '' ) as tagstring
 		FROM Picture
 		LEFT JOIN PictureTag
 		ON PictureTag.pictureID = Picture.ID
@@ -17,9 +17,9 @@ END
 
 TRANSACTION selectPicture -- (/picture/id)
 BEGIN
-	INTO picture DO UNIQUE
+	INTO . DO UNIQUE
 		SELECT Picture.ID AS "id", image, caption, coalesce( info, '' ) AS "info", width, height,
-			coalesce( group_concat( distinct Tag.name ), '' ) as tags,
+			coalesce( group_concat( distinct Tag.name ), '' ) as tagstring,
 			3*length(image)/4+2 as size,
 			coalesce( group_concat( distinct Category.name ), '(none)' ) as used_categories,
 			coalesce( group_concat( distinct Feature.name ), '(none)' ) as used_features,
@@ -48,9 +48,8 @@ BEGIN
 		GROUP BY Picture.ID, Picture.image, Picture.caption, Picture.info,
 			Picture.width, Picture.height;
 
-	-- HACK from here, see wrapper element in LUA code, no other solution found..
-	INTO tagwrap DO
-		select Tag.ID AS "id", name as tag
+	INTO tags/tag DO
+		select Tag.ID AS "id", name as "_"
 		FROM Tag
 		LEFT JOIN PictureTag
 		ON PictureTag.tagID = Tag.ID

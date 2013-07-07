@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>481</width>
-    <height>302</height>
+    <height>252</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
    <string>PictureRequest picture {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Picture dummy {picture{id={main.id}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{main.height}}; width{{main.width}}; size{{main.size}}; tags{{main.tags}}; used_categories {{main.used_categories}}; used_features {{main.used_features}}; used_manufacturers {{main.used_manufacturers}}; used_components {{main.used_components}} }; tagwrap[] {id={?};tag{{?}} }</string>
+   <string>Picture picture{id={?}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{main.height}}; width{{main.width}}; size{{main.size}}; tagstring{{main.tags}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}};  used_components {{main.used_components}}; tags { tag[] { id={?};{{?}}}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0" colspan="3">
@@ -66,13 +66,6 @@
       </spacer>
      </item>
     </layout>
-   </item>
-   <item row="1" column="2">
-    <widget class="QLabel" name="info">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
    </item>
    <item row="0" column="0" rowspan="2">
     <layout class="QFormLayout" name="formLayout">
@@ -245,6 +238,13 @@
       <widget class="QLabel" name="used_components">
        <property name="text">
         <string>(none)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="info">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

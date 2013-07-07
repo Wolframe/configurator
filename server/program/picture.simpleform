@@ -16,6 +16,12 @@ FORM PictureAttributes
 	}
 }
 
+FORM PictureTag
+{
+	id @int
+	_ string
+}
+
 FORM Picture
 {
 	picture
@@ -28,27 +34,23 @@ FORM Picture
 		width int
 		height int
 		size int
-		tags string
+		tagstring string
 		used_categories string
 		used_features string
 		used_manufacturers string
 		used_components string
-		tagwrap
+		tags
 		{
-			id @int
 			tag []
 			{
-				id @int
+				_ PictureTag
 			}
 		}
 	}
-	
-	tagwrap []
-	{
-		id @int
-		tag string
-	}
+}
 
+FORM PictureList
+{	
 	list
 	{
 		picture []
@@ -61,7 +63,7 @@ FORM Picture
 			width int
 			height int
 			size int
-			tags string
+			tagstring string
 		}
 	}
 }
@@ -94,21 +96,6 @@ FORM PictureListRequest
 	picture
 	{
 		search string
-	}
-}
-
-FORM PictureList
-{
-	list
-	{
-		picture []
-		{
-			id @int
-			caption string
-			info string
-			thumbnail string
-			tags string
-		}
 	}
 }
 

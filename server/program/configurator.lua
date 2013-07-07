@@ -434,36 +434,8 @@ function PictureListRequest( )
 		search = "%%"
 	end
 	local t = formfunction( "selectPictureList" )( { search = search } )
-	local f = form( "Picture" )
+	local f = form( "PictureList" )
 	f:fill( t:get( ) )
-	output:print( f:get( ) )
-end
-
-function PictureRequest( )
-	output:as( {root='dummy', system='Picture.simpleform'})
-	filter().empty = false
-	local id = nil
-	for v,t in input:get( ) do
-		if t == "id" then
-			id = v
-		end
-	end
-	local t = formfunction( "selectPicture" )( { id = id } )
-	local f = form( "Picture" )
-	f:fill( t:get( ) )
-	-- hack again, can't get the right subtags in TDL..
-	output:opentag( "dummy" )
-	output:print( f:get( ) )
-	output:closetag( )
-end
-
-function PictureAttrRequest( )
-	output:as( {root='dummy', system='PictureAttrResult.simpleform'})
-	filter().empty = false
-	inp = input:table()
-	local t = formfunction( "selectPictureAttr" )( { id = inp["picture"]["id"]} )
-	local f = form( "PictureAttrResult" )
-	f:fill( t:get( ), {"attr"})
 	output:print( f:get( ) )
 end
 
