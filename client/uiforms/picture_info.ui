@@ -24,7 +24,7 @@
    <string>PictureRequest picture {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Picture picture{id={?}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{main.height}}; width{{main.width}}; size{{main.size}}; tagstring{{main.tags}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}};  used_components {{main.used_components}}; tags { tag[] { id={?};{{?}}}} }</string>
+   <string>Picture picture{id={?}; caption{{main.caption}}; info{{main.info}}; image{{main.image.base64}}; height{{main.height}}; width{{main.width}}; size{{main.size}}; tagstring{{main.tags}}; used_categories{{main.used_categories}}; used_features{{main.used_features}}; used_manufacturers {{main.used_manufacturers}};  used_components {{main.used_components}}; tags { tag[] { id={?}; {?} }} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0" colspan="3">
