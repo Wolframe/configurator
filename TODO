@@ -18,8 +18,6 @@ pictures
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
 - the path of tags should be respected when searching the pictures
-- no image when adding new image:
-  ERROR: Error calling procedure: atomic value expected instead of attribute (size) at /picture/image
   
 categories
 
