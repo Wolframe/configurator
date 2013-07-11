@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Recipes</string>
+   <string>Manage recipes</string>
   </property>
   <property name="singletonWindow" stdset="0">
    <bool>true</bool>
