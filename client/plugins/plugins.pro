@@ -1,6 +1,6 @@
 TEMPLATE = subdirs
 
-SUBDIRS = configurator
+SUBDIRS = configurator exportplugin
 
 CONFIG += qt debug
 

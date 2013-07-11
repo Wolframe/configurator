@@ -77,8 +77,10 @@ Project Wolframe.
 							<Component Id="ConfiguratorPlugins" Guid="{b9fe7b56-d479-4738-9a2e-301e46ffc1b4}">
 								<?ifdef var.debug?>
 									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configuratord.dll"/>
+									<File Id="exportplugin.dll" Name="exportplugin.dll" DiskId="1" Source="..\plugins\exportplugin\\$(var.builddir)\exportplugind.dll"/>
 								<?else?>
 									<File Id="configurator.dll" Name="configurator.dll" DiskId="1" Source="..\plugins\configurator\\$(var.builddir)\configurator.dll"/>
+									<File Id="exportplugin.dll" Name="exportplugin.dll" DiskId="1" Source="..\plugins\exportplugin\\$(var.builddir)\exportplugin.dll"/>
 								<?endif?>
 							</Component>							
 
