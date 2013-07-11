@@ -137,7 +137,7 @@
         <string>add_category_required ({main.widgetid}_category_required)</string>
        </property>
        <property name="answer" stdset="0">
-        <string>RecipeCategories RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }</string>
+        <string>RecipeCategories RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }}</string>
        </property>
        <property name="action:add_category_required" stdset="0">
         <string>RecipeCategoryListRequest categories { category[] { id={main.required_categories.row.id:?}; minQuantity {{main.required_categories.row.min:?}}; maxQuantity{{main.required_categories.row.max:?}} }; add[] { id={category_select_required.category.selected}; minQuantity {{category_select_required.min}}; maxQuantity {{category_select_required.max}} } }</string>
@@ -267,7 +267,7 @@
         <string>add_component_required ({main.widgetid}_component_required)</string>
        </property>
        <property name="answer" stdset="0">
-        <string>RecipeComponents RecipeComponents {RecipeComponent[] {id={row.id}; name{{row.name}}; quantity{{row.quantity}} }</string>
+        <string>RecipeComponents RecipeComponents {RecipeComponent[] {id={row.id}; name{{row.name}}; quantity{{row.quantity}} }}</string>
        </property>
        <property name="action:add_component_required" stdset="0">
         <string>RecipeComponentListRequest components { component[] { id={main.required_components.row.id:?}; quantity {{main.required_components.row.quantity:?}} }; add[] { id={component_required_select.component.selected}; quantity {{component_required_select.quantity}} } }</string>
