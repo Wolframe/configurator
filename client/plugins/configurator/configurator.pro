@@ -9,7 +9,7 @@ DEFINES += LIBWOLFRAMECLIENT_VISIBILITY=Q_DECL_IMPORT X_EXPORT=Q_DECL_EXPORT BUI
 INCLUDEPATH += $(QTCLIENT_DIR)/qtclient $(QTCLIENT_DIR)/libqtwolframeclient
 
 unix:LIBS += -L$(QTCLIENT_DIR)/libqtwolframeclient -lqtwolframeclient
-win32:LIBS += $(QTCLIENT_DIR)/libqtwolframeclient/debug/qtwolframeclient0.lib
+#win32:LIBS += $(QTCLIENT_DIR)/libqtwolframeclient/debug/qtwolframeclient0.lib
 macx:LIBS += $(QTCLIENT_DIR)/libqtwolframeclient/build/Release/libqtwolframeclient0.dylib
 
 QT += core gui network
