@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>export_form</class>
+ <widget class="QWidget" name="export_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>275</width>
+    <height>92</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Export XML</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/tag_blue.png</normaloff>:/images/tag_blue.png</iconset>
+  </property>
+  <property name="singletonWindow" stdset="0">
+   <bool>true</bool>
+  </property>
+  <layout class="QFormLayout" name="formLayout">
+   <property name="fieldGrowthPolicy">
+    <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+   </property>
+   <item row="0" column="1">
+    <widget class="FileChooser" name="filename">
+     <property name="selectionMode">
+      <enum>FileChooser::SelectAnyFile</enum>
+     </property>
+     <property name="title">
+      <string>XML file to export to..</string>
+     </property>
+     <property name="fileName">
+      <string>./export.xml</string>
+     </property>
+     <property name="filename" stdset="0">
+      <string>export.xml</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exportButton">
+       <property name="text">
+        <string>Export</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>exportplugin?filename={main.filename.file.name}</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>XML Export file:</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FileChooser</class>
+   <extends>QWidget</extends>
+   <header>FileChooser.hpp</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,19 @@
+TRANSACTION exportData
+BEGIN
+	INTO tags/tag DO
+		SELECT id AS "id", parentID AS "parentID",
+			name AS "name", description AS "description"
+		FROM Tag;
+
+	INTO pictures/picture DO
+		SELECT Picture.ID AS "id",
+			caption AS "caption",
+			info AS "info",
+			image AS "image"
+		FROM Picture;
+
+	INTO pictures_tags/relation DO
+		SELECT pictureID AS "pictureID",
+			tagID AS "tagID"
+		FROM PictureTag;
+END
