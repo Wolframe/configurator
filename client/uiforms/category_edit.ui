@@ -280,7 +280,7 @@
         <string>{main.widgetid}_feature_required</string>
        </property>
        <property name="answer" stdset="0">
-        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }</string>
        </property>
        <property name="action:remove_feature_required" stdset="0">
         <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>
@@ -469,7 +469,7 @@
         <string>{main.widgetid}_feature_provided</string>
        </property>
        <property name="answer" stdset="0">
-        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}}</string>
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }</string>
        </property>
        <property name="action:remove_feature_provided" stdset="0">
         <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; remove[] { id = {selected} } }</string>

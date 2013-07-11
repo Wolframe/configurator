@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>974</width>
+    <width>1086</width>
     <height>390</height>
    </rect>
   </property>
@@ -21,7 +21,7 @@
    <string>ComponentRequest component {id={main.id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Component component {id={?}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; manufacturer{id={main.manufacturer.id}; {main.manufacturer.text}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; features_required{ComponentFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.min}}; maxQuantity{{required_features.row.max}} } }; features_provided{ComponentFeature[] {id={provided_features.row.id}; name{{provided_features.row.name}}; minQuantity{{provided_features.row.min}}; maxQuantity{{provided_features.row.max}} } } }</string>
+   <string>Component component {id={?}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}; {main.category.text}}; manufacturer{id={main.manufacturer.id:?}; {main.manufacturer.text}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price:?}}; features_required{ComponentFeature[] {id={required_features.row.id}; name{{required_features.row.name}}; minQuantity{{required_features.row.min}}; maxQuantity{{required_features.row.max}} } }; features_provided{ComponentFeature[] {id={provided_features.row.id}; name{{provided_features.row.name}}; minQuantity{{provided_features.row.min}}; maxQuantity{{provided_features.row.max}} } } }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="5" column="0" colspan="4">
@@ -48,7 +48,7 @@
         <string>_CLOSE_</string>
        </property>
        <property name="action" stdset="0">
-        <string>updateComponent component {id={main.id}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price}}; picture[] {id={main.pictures.id}}; features_required{ComponentFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{ComponentFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
+        <string>updateComponent component {id={main.id}; code{{main.code}}; name{{main.name}}; category{id={main.category.id}}; manufacturer{id={main.manufacturer.id}}; mfgCode{{main.mfgCode}}; webPage{{main.webPage}}; description{{main.description}}; price{{main.price:0}}; picture[] {id={main.pictures.id}}; features_required{ComponentFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{ComponentFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
         <string>components</string>
