@@ -3,13 +3,13 @@ RESULT INTO list
 BEGIN
 	INTO picture DO
 		SELECT Picture.ID AS "id", thumbnail, caption, coalesce( info, '' ) AS "info",
-			coalesce( group_concat( Tag.name ), '' ) as tagstring
+			coalesce( group_concat( TagPath.name ), '' ) as tagstring
 		FROM Picture
 		LEFT JOIN PictureTag
 		ON PictureTag.pictureID = Picture.ID
-		LEFT JOIN Tag
-		ON PictureTag.tagID = Tag.ID
-		WHERE coalesce( Tag.normalizedName, '' ) like $(search)
+		LEFT JOIN TagPath
+		ON PictureTag.tagID = TagPath.ID
+		WHERE coalesce( TagPath.normalizedName, '' ) like $(search)
 		GROUP BY Picture.ID, Picture.thumbnail, Picture.caption, Picture.info,
 			Picture.width, Picture.height, Picture.image
 		ORDER BY Picture.ID;
@@ -19,7 +19,7 @@ TRANSACTION selectPicture -- (/picture/id)
 BEGIN
 	INTO . DO UNIQUE
 		SELECT Picture.ID AS "id", image, caption, coalesce( info, '' ) AS "info", width, height,
-			coalesce( group_concat( distinct Tag.name ), '' ) as tagstring,
+			coalesce( group_concat( distinct TagPath.name ), '' ) as tagstring,
 			3*length(image)/4+2 as size,
 			coalesce( group_concat( distinct Category.name ), '(none)' ) as used_categories,
 			coalesce( group_concat( distinct Feature.name ), '(none)' ) as used_features,
@@ -28,8 +28,8 @@ BEGIN
 		FROM Picture
 		LEFT JOIN PictureTag
 		ON PictureTag.pictureID = Picture.ID
-		LEFT JOIN Tag
-		ON PictureTag.tagID = Tag.ID
+		LEFT JOIN TagPath
+		ON PictureTag.tagID = TagPath.ID
 		LEFT JOIN CategoryPicture
 		ON CategoryPicture.pictureID = Picture.ID
 		LEFT JOIN Category
@@ -92,6 +92,15 @@ TRANSACTION deletePicture -- (id)
 BEGIN
 	DO DELETE FROM PictureTag WHERE PictureID = $(id);
 	DO DELETE FROM Picture WHERE ID = $(id);
+END
+
+TRANSACTION selectPictureTagSet -- (id)
+BEGIN
+	INTO tag DO SELECT PictureTag.tagID AS id, name
+		FROM PictureTag, TagPath
+		WHERE PictureTag.tagID = TagPath.ID
+		AND PictureTag.pictureID = $(id)
+		ORDER BY PictureTag.tagID;
 END
 
 TRANSACTION getPictureThumbnailList
