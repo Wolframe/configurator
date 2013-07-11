@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Pictures</string>
+   <string>Manage pictures</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">

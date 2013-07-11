@@ -23,6 +23,29 @@ CREATE TABLE Tag	(
 INSERT INTO Tag( parentID, name, normalizedName, description, lft, rgt )
 	VALUES ( NULL, '_ROOT_', '_ROOT_', 'Tags tree root', 1, 2 );
 
+CREATE VIEW TagPath AS
+	SELECT T1.ID,
+	replace(replace(ltrim(
+	replace( coalesce( T6.name, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T5.name, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T4.name, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T3.name, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T2.name, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T1.name, '' ), ' ', '_' ) ), ' ', '/' ), '_', ' ' ) AS name,
+	replace(replace(ltrim(
+	replace( coalesce( T6.normalizedName, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T5.normalizedName, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T4.normalizedName, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T3.normalizedName, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T2.normalizedName, '' ), ' ', '_' ) || ' ' ||
+	replace( coalesce( T1.normalizedName, '' ), ' ', '_' ) ), ' ', '/' ), '_', ' ' ) AS normalizedName
+	FROM Tag AS T1
+	LEFT JOIN Tag AS T2 ON ( T2.ID = T1.parentID AND NOT T2.ID = 1 )
+	LEFT JOIN Tag AS T3 ON ( T3.ID = T2.parentID AND NOT T3.ID = 1 )
+	LEFT JOIN Tag AS T4 ON ( T4.ID = T3.parentID AND NOT T4.ID = 1 )
+	LEFT JOIN Tag AS T5 ON ( T5.ID = T4.parentID AND NOT T5.ID = 1 )
+	LEFT JOIN Tag AS T6 ON ( T6.ID = T5.parentID AND NOT T6.ID = 1 )
+	ORDER BY T1.ID;
 
 -- The list of images used
 --

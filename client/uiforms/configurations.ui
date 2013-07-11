@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Configurations</string>
+   <string>Manage configurations</string>
   </property>
   <property name="singletonWindow" stdset="0">
    <bool>true</bool>

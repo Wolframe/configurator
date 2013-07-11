@@ -1,0 +1,4 @@
+cd client
+qmake-qt4 -config debug
+make QTCLIENT_DIR=/home/xxx/qtClient
+cp plugins/configurator/libconfigurator.so uiforms/

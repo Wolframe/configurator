@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Components</string>
+   <string>Manage components</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">

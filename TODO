@@ -1,5 +1,3 @@
-ERROR: error in execution of REQUEST updatePicture:atomic value expected instead
-of attribute (size) at /picture/image
 php
 
 - request for leaves in categories/features lead to an in empty result
@@ -21,9 +19,6 @@ pictures
   - sizing hint of Picture Chooser for the image (is wrong)
 - the path of tags should be respected when searching the pictures
 - picture size is weird (base64/4*3 of length?)
-- editing/adding a picture 
-  ERROR: error in execution of REQUEST updatePicture:atomic value 
-  expected instead of attribute (size) at /picture/image
 
 categories
 
@@ -47,33 +42,17 @@ manufacturers
 
 components
 
-- component edit:
-  - how can we delete the manufacturer?
-  - no manufacturer:
-    - CRITICAL: element not initialized in answer: "id" at "/manufacturer" 
-      CRITICAL: ERROR:  "-save:1067" "REQUEST error in transaction updateComponent:
-      invalid input syntax for integer: "" LINE 2:   categoryID='40', manufacturerID=
-- list of components can contain NULL values for prices in DB model, qtClient
-  croaks with
-  CRITICAL: element not initialized in answer: "price" at "/component" 
-  which is plain wrong!
+- how can we delete the manufacturer of a component
+  (aka set it to NULL in the DB)?
+- category is not optional, manufacturer is optional, how to configure
+  the "save" request, so that this is checked?
 - show inherited features, all features defined along the path of category of
   the component
-- edit/add component:
-  adding required and provided features doesn't work:
-  CRITICAL: invalid action result definition: "ComponentFeatures
-  ComponentFeatures {ComponentFeature[] {id={row.id}; name{{row.name}};
-  minQuantity{{row.min}}; maxQuantity{{row.max}}" 
 
 recipe
 
-- category can be option in DB model, here I thing the model is wrong and
-  the client right.
-- edit/add recipe:
-  adding required categories fails:               
-  CRITICAL: invalid action result definition: "RecipeCategories
-  RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}};
-  minQuantity{{row.min}}; maxQuantity{{row.max}}" 
+- category is mandatory, how to check for it in the save request?
+  should also be fixed in the DB model IMHO
       
 configurations
 
