@@ -1,5 +1,3 @@
-ERROR: error in execution of REQUEST updatePicture:atomic value expected instead
-of attribute (size) at /picture/image
 php
 
 - request for leaves in categories/features lead to an in empty result
@@ -21,9 +19,6 @@ pictures
   - sizing hint of Picture Chooser for the image (is wrong)
 - the path of tags should be respected when searching the pictures
 - picture size is weird (base64/4*3 of length?)
-- editing/adding a picture 
-  ERROR: error in execution of REQUEST updatePicture:atomic value 
-  expected instead of attribute (size) at /picture/image
 
 categories
 
