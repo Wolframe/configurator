@@ -99,6 +99,7 @@ Project Wolframe.
 								<File Id="configuration_add_recipe.ui" Name="configuration_add_recipe.ui" DiskId="1" Source="..\uiforms\configuration_add_recipe.ui"/>
 								<File Id="configuration_edit.ui" Name="configuration_edit.ui" DiskId="1" Source="..\uiforms\configuration_edit.ui"/>
 								<File Id="configuration_delete.ui" Name="configuration_delete.ui" DiskId="1" Source="..\uiforms\configuration_delete.ui"/>								
+								<File Id="export.ui" Name="export.ui" DiskId="1" Source="..\uiforms\export.ui"/>
 								<File Id="feature_add.ui" Name="feature_add.ui" DiskId="1" Source="..\uiforms\feature_add.ui"/>
 								<File Id="feature_delete.ui" Name="feature_delete.ui" DiskId="1" Source="..\uiforms\feature_delete.ui"/>
 								<File Id="feature_edit.ui" Name="feature_edit.ui" DiskId="1" Source="..\uiforms\feature_edit.ui"/>

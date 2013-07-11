@@ -15,6 +15,7 @@ FORMS += \
 	../uiforms/configuration_add_recipe.ui \
 	../uiforms/configuration_edit.ui \
 	../uiforms/configuration_delete.ui \
+	../uiforms/export.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
 	../uiforms/feature_select_required.ui \
