@@ -1,3 +1,5 @@
+ERROR: error in execution of REQUEST updatePicture:atomic value expected instead
+of attribute (size) at /picture/image
 php
 
 - request for leaves in categories/features lead to an in empty result
@@ -18,7 +20,11 @@ pictures
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
 - the path of tags should be respected when searching the pictures
-  
+- picture size is weird (base64/4*3 of length?)
+- editing/adding a picture 
+  ERROR: error in execution of REQUEST updatePicture:atomic value 
+  expected instead of attribute (size) at /picture/image
+
 categories
 
 - CategoryPicture with anotation caption and info (overwrite)
@@ -53,16 +59,30 @@ components
   which is plain wrong!
 - show inherited features, all features defined along the path of category of
   the component
+- edit/add component:
+  adding required and provided features doesn't work:
+  CRITICAL: invalid action result definition: "ComponentFeatures
+  ComponentFeatures {ComponentFeature[] {id={row.id}; name{{row.name}};
+  minQuantity{{row.min}}; maxQuantity{{row.max}}" 
 
 recipe
 
 - category can be option in DB model, here I thing the model is wrong and
   the client right.
+- edit/add recipe:
+  adding required categories fails:               
+  CRITICAL: invalid action result definition: "RecipeCategories
+  RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}};
+  minQuantity{{row.min}}; maxQuantity{{row.max}}" 
       
 configurations
 
 - how to NOT open a new window? how to close a window AND open a new window?
 - configurator form widget initial size is weird, related to the layout warnings?
+- the component list is empty with
+  CRITICAL: array size do not match != 5 1
+  CRITICAL: set a dynamic property of QLabel "configuration_edit.category"
+  that is not predefined: "id" QVariant(QString, "41")
 
 general
 
