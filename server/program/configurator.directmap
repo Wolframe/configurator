@@ -44,3 +44,5 @@ ConfiguredComponentsUserRequest=selectConfiguredComponentsUser(xml):ConfiguredCo
 ConfiguratorRequiredFeaturesRequest=selectRequiredFeatures(xml):ConfiguratorRequiredFeatures;
 ConfiguratorAddComponentRequest=ConfiguratorAddComponent(xml);
 ConfiguratorDeleteComponentRequest=ConfiguratorDeleteComponent(xml);
+
+ExportRequest=exportData(xml):ExportData;

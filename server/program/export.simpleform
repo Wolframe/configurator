@@ -1,0 +1,51 @@
+FORM ExportedTag
+{
+	id @int
+	parentID @int
+	name string
+	description string
+}
+
+FORM ExportedPicture
+{
+	id @int
+	caption string
+	info string
+	image string
+}
+
+FORM ExportData
+{
+	export
+	{
+		tags
+		{
+			tag []
+			{
+				_ ExportedTag
+			}
+		}
+		pictures
+		{
+			picture []
+			{
+				_ ExportedPicture
+			}
+		}
+		pictures_tags
+		{
+			relation []
+			{
+				pictureID @int
+				tagID @int
+			}
+		}
+	}
+}
+
+FORM ExportRequest
+{
+	export
+	{
+	}
+}

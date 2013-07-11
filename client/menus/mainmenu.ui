@@ -60,8 +60,15 @@
     </property>
     <addaction name="action_configurations"/>
    </widget>
+   <widget class="QMenu" name="menu_Administration">
+    <property name="title">
+     <string>&amp;Administration</string>
+    </property>
+    <addaction name="action_export_data"/>
+   </widget>
    <addaction name="menuForms"/>
    <addaction name="menuConfiguration"/>
+   <addaction name="menu_Administration"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_categories_features">
@@ -231,6 +238,17 @@
   <action name="actionBroken_from_here">
    <property name="text">
     <string>broken from here..</string>
+   </property>
+  </action>
+  <action name="action_export_data">
+   <property name="text">
+    <string>&amp;Export data..</string>
+   </property>
+   <property name="form" stdset="0">
+    <string>export</string>
+   </property>
+   <property name="singletonWindow" stdset="0">
+    <bool>true</bool>
    </property>
   </action>
  </widget>
