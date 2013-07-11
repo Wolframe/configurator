@@ -59,21 +59,11 @@ components
   which is plain wrong!
 - show inherited features, all features defined along the path of category of
   the component
-- edit/add component:
-  adding required and provided features doesn't work:
-  CRITICAL: invalid action result definition: "ComponentFeatures
-  ComponentFeatures {ComponentFeature[] {id={row.id}; name{{row.name}};
-  minQuantity{{row.min}}; maxQuantity{{row.max}}" 
 
 recipe
 
 - category can be option in DB model, here I thing the model is wrong and
   the client right.
-- edit/add recipe:
-  adding required categories fails:               
-  CRITICAL: invalid action result definition: "RecipeCategories
-  RecipeCategories {RecipeCategory[] {id={row.id}; name{{row.name}};
-  minQuantity{{row.min}}; maxQuantity{{row.max}}" 
       
 configurations
 
