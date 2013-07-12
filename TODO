@@ -1,5 +1,6 @@
 php
 
+- fix all XML request, make them look consistent
 - request for leaves in categories/features lead to an in empty result
 - return trees just up to a certain depth
 
@@ -55,10 +56,6 @@ configurations
 
 - how to NOT open a new window? how to close a window AND open a new window?
 - configurator form widget initial size is weird, related to the layout warnings?
-- the component list is empty with
-  CRITICAL: array size do not match != 5 1
-  CRITICAL: set a dynamic property of QLabel "configuration_edit.category"
-  that is not predefined: "id" QVariant(QString, "41")
 
 general
 
@@ -66,9 +63,8 @@ general
   - properties as price, code, name, etc
   - description and pictures
   - relations like features provided
-- fix all XML request, make them look consistent
-  (important for PHP layer)
 - short and long description or description1, description2, ... , description4
+- sorting in tables doesn't work
    
 todo discuss
     
