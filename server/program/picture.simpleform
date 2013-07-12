@@ -109,6 +109,29 @@ FORM PictureListRequest
 	}
 }
 
+FORM PictureThumbnailListRequest
+{
+	pictures
+	{
+		picture []
+		{
+			id @int
+		}
+		add []
+		{
+			id @int
+		}
+	}
+}
+
+FORM PictureThumbnailRequest
+{
+	picture
+	{
+		id @int
+	}
+}
+
 FORM PictureThumbnailList
 {
 	pictures

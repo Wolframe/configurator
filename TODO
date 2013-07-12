@@ -105,7 +105,6 @@ components
   - idea: context menu on listwidget with pictures (with info, exclude)
 - dialog semantics for edit tags: enter and esc shortcuts?
 - info field in pictures?
-    - must select a tag for being able to add a picture?
 - ',' or ', ' in group concat?
 - show thumbnail, first one?
 
@@ -117,12 +116,6 @@ seen and postponed or worked around
   - fails on Qt5 (completly, dynamic properties are not updated or created!)
   => currently on hold, not sure if that's the right way to go!
 - feature/feature relation is for later (feature_equivalence uis)
-- picture_select:
-  When adding the pictures:
-  WARNING: input form 'PictureThumbnailListRequest' is not defined (document type 'PictureThumbnailListRequest'). treating document as standalone (document processed with root element ignored)
-  - in single picture select (in manufacturers):
-  WARNING: input form 'PictureThumbnailRequest' is not defined (document type 'PictureThumbnailRequest'). treating document as standalone (document processed with root element ignored)
-  => quite complex to define..
 - categories
   - remove button can be disabled, edit button not, why?
     => using feature_required.selected works around the problem
