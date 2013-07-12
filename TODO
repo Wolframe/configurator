@@ -17,8 +17,6 @@ pictures
   - add picture
     - main.image condition of Picture uploader
   - sizing hint of Picture Chooser for the image (is wrong)
-- the path of tags should be respected when searching the pictures
-- picture size is weird (base64/4*3 of length?)
 
 categories
 
@@ -28,7 +26,6 @@ categories
   
 features
 
-- "used in categories" doesn't work, shows always "none"
 - FeaturePicture with anotation caption and info (overwrite)
 
 feature equivalences
@@ -71,6 +68,7 @@ general
   - relations like features provided
 - fix all XML request, make them look consistent
   (important for PHP layer)
+- short and long description or description1, description2, ... , description4
    
 todo discuss
     
