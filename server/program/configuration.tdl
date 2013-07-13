@@ -58,16 +58,12 @@ BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
 			Category.name AS "categoryName",
-			Manufacturer.name AS "manufacturerName",
 			mfgCode AS "mfgCode",
-			Component.webPage AS "webPage",
-			Component.description AS "description",
 			quantity,
 			price
-			FROM ConfigComponent, Component, Category, Manufacturer
+			FROM ConfigComponent, Category, Component
 			WHERE Component.ID = ConfigComponent.componentID
 			AND Component.categoryID = Category.ID
-			AND Component.manufacturerID = Manufacturer.ID
 			AND configID = $(configID)
 			AND fromRecipe = '1';
 END
@@ -77,18 +73,14 @@ BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
 			Category.name AS "categoryName",
-			Manufacturer.name AS "manufacturerName",
 			mfgCode AS "mfgCode",
-			Component.webPage AS "webPage",
-			Component.description AS "description",
 			quantity,
 			quantity as "featureMinQuantity",
 			quantity as "featureMaxQuantity",
 			price
-			FROM ConfigComponent, Component, Category, Manufacturer
+			FROM ConfigComponent, Category, Component
 			WHERE Component.ID = ConfigComponent.componentID
 			AND Component.categoryID = Category.ID
-			AND Component.manufacturerID = Manufacturer.ID
 			AND configID = $(configID)
 			AND fromRecipe = '0';
 END
@@ -98,15 +90,12 @@ BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
 			Category.name AS "categoryName",
-			Manufacturer.name AS "manufacturerName",
 			mfgCode AS "mfgCode",
-			Component.webPage AS "webPage",
 			Component.description AS "description",
 			quantity,
 			price
-			FROM ConfigComponent, Component, Category, Manufacturer
+			FROM ConfigComponent, Component, Category
 			WHERE Component.ID = ConfigComponent.componentID
 			AND Component.categoryID = Category.ID
-			AND Component.manufacturerID = Manufacturer.ID
 			AND configID = $(configID);
 END

@@ -19,9 +19,7 @@ FORM Configuration
 			code string
 			name string
 			categoryName string
-			manufacturerName string
 			mfgCode string
-			webPage string
 			description string
 			price float
 		}
