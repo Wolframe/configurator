@@ -1,4 +1,4 @@
-TRANSACTION selectRequiredFeatures
+TRANSACTION selectRequiredFeaturesOld
 BEGIN
 	INTO category DO
 		SELECT DISTINCT
@@ -19,9 +19,31 @@ BEGIN
 		AND ComponentProvides.minQuantity >= CategProvides.minQuantity
 		AND Component.ID = ComponentProvides.componentID
 		AND Component.categoryID = ComponentCategory.ID
-		AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE fromRecipe='0')
+		AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE configID=$(configID) AND fromRecipe='0')
 		AND RecipeContent.recipeID = Configuration.recipeID
 		AND Configuration.ID = $(configID);
+END
+
+TRANSACTION selectRequiredFeatures
+BEGIN
+INTO category DO
+	SELECT
+		RecipeContent.categoryID AS "id",
+		Category.name as "name",
+		RecipeContent.minQuantity AS "minQuantity",
+		RecipeContent.maxQuantity AS "maxQuantity",
+		Component.ID as "componentID",
+		Component.name as "componentName",
+		ComponentCategory.name as "componentCategory"
+	FROM RecipeContent, Category,
+		Component, Configuration,
+		Category as ComponentCategory
+	WHERE RecipeContent.categoryID = Category.ID
+	AND RecipeContent.categoryID = Component.categoryID
+	AND Component.categoryID = ComponentCategory.ID
+	AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE configID=$(configID) AND fromRecipe='0')
+	AND RecipeContent.recipeID = Configuration.recipeID
+	AND Configuration.ID = $(configID);
 END
 
 TRANSACTION ConfiguratorAddComponent
