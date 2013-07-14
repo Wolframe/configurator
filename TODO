@@ -56,9 +56,12 @@ configurations
 
 - how to NOT open a new window? how to close a window AND open a new window?
 - configurator form widget initial size is weird, related to the layout warnings?
+- rename selectConfiguredComponentsFix
 
 general
 
+- all edit dialogs with quantities should only show the current selection as
+  label and only allow the quantity to be changed
 - use stackwidgets in complex dialogs to seperate:
   - properties as price, code, name, etc
   - description and pictures
