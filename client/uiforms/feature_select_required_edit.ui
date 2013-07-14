@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>304</width>
-    <height>269</height>
+    <width>314</width>
+    <height>94</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Select required Feature</string>
+   <string>Edit required feature</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
@@ -24,67 +24,7 @@
    <string>CategoryFeatureEdit feature { id={feature.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QRadioButton" name="expand">
-       <property name="text">
-        <string>expand all</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="collapse">
-       <property name="text">
-        <string>collapse all</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="1">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QTreeWidget" name="feature">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="itemsExpandable">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">FeatureHierarchyRequest feature {id=1}</string>
-     </property>
-     <attribute name="headerDefaultSectionSize">
-      <number>250</number>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>feature</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>description</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="4" column="0">
+   <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="select">
@@ -114,7 +54,7 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
       <widget class="QLabel" name="label">
@@ -179,12 +119,22 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="feature">
+     <property name="text">
+      <string>%1</string>
+     </property>
+     <property name="action" stdset="0">
+      <string>FeatureRequest feature {id={main.id}}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string>Feature feature {id={?}; parentID={?}; name{{1}}; description{{?}}; used_categories{{?}}}</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>feature</tabstop>
-  <tabstop>expand</tabstop>
-  <tabstop>collapse</tabstop>
   <tabstop>min</tabstop>
   <tabstop>max</tabstop>
   <tabstop>select</tabstop>
@@ -193,54 +143,5 @@
  <resources>
   <include location="../configurator.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>expand</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>feature</receiver>
-   <slot>expandAll()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>75</x>
-     <y>196</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>65</x>
-     <y>170</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>collapse</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>feature</receiver>
-   <slot>collapseAll()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>195</x>
-     <y>196</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>187</x>
-     <y>170</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>feature</sender>
-   <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>select</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>28</x>
-     <y>166</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>41</x>
-     <y>258</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

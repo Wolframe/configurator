@@ -212,7 +212,7 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>category_select_required?widgetid={main.widgetid}_category_required&amp;id={required_categories.selected}&amp;minQuantity={required_categories.selected_min}&amp;maxQuantity={required_categories.selected_max}</string>
+          <string>category_select_required_edit?widgetid={main.widgetid}_category_required&amp;id={required_categories.selected}&amp;minQuantity={required_categories.selected_min}&amp;maxQuantity={required_categories.selected_max}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_category_required</string>
@@ -228,7 +228,7 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>category_select_required?widgetid={main.widgetid}_category_required</string>
+          <string>category_select_required_add?widgetid={main.widgetid}_category_required</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_category_required</string>
@@ -334,7 +334,7 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>component_select?widgetid={main.widgetid}_component_required&amp;id={required_components.selected}&amp;quantity={required_components.selected_quantity}</string>
+          <string>component_select_edit?widgetid={main.widgetid}_component_required&amp;id={required_components.selected}&amp;quantity={required_components.selected_quantity}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_component_required</string>
@@ -350,7 +350,7 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>component_select?widgetid={main.widgetid}_component_required</string>
+          <string>component_select_add?widgetid={main.widgetid}_component_required</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_component_required</string>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>component_select</class>
+ <widget class="QWidget" name="component_select">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>183</width>
+    <height>94</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit required component</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>RecipeComponentEdit component { id={main.id}; quantity {{main.quantity}} }</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>RecipeComponentEdit component { id={component.selected}; quantity {{quantity}} }</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="select">
+       <property name="text">
+        <string>&amp;Select</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>add_component_required</string>
+       </property>
+       <property name="state:enabled" stdset="0">
+        <string>{component.selected}&gt;0</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0">
+    <layout class="QFormLayout" name="formLayout">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Quantity:</string>
+       </property>
+       <property name="buddy">
+        <cstring>quantity</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QSpinBox" name="quantity">
+         <property name="maximum">
+          <number>999</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QLabel" name="component">
+       <property name="text">
+        <string>%1</string>
+       </property>
+       <property name="action" stdset="0">
+        <string>ComponentRequest component {id={main.id}}</string>
+       </property>
+       <property name="answer" stdset="0">
+        <string>Component component {id={?}; code {{?}}; name{{1}}; category{id={?}; {?}}; manufacturer{id={?}; {?}}; mfgCode{{?}}; webPage{{?}}; price{{?}}; description{{?}}; features_required{ComponentFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; features_provided{ComponentFeature[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } } }</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>quantity</tabstop>
+  <tabstop>select</tabstop>
+  <tabstop>cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
+ <connections/>
+</ui>

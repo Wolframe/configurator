@@ -60,8 +60,6 @@ configurations
 
 general
 
-- all edit dialogs with quantities should only show the current selection as
-  label and only allow the quantity to be changed
 - use stackwidgets in complex dialogs to seperate:
   - properties as price, code, name, etc
   - description and pictures
@@ -121,3 +119,7 @@ seen and postponed or worked around
 - picture list is not restored when login in/out, of course, because they
   are temporary database tables (maybe we should remove temporary tables
   anyway!)
+- using a QLabel feature to set dynamic property selected in order not to
+  have to distinguish the edit/add cases in all quantity related dialogs.
+  this is a hack, but fixing needs a lot of work..
+  

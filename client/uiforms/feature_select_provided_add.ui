@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>category_select_required</class>
- <widget class="QWidget" name="category_select_required">
+ <class>feature_select_provided</class>
+ <widget class="QWidget" name="feature_select_provided">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>299</height>
+    <width>304</width>
+    <height>269</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Select category</string>
+   <string>Add provided feature</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../configurator.qrc">
-    <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
+    <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
   </property>
   <property name="action" stdset="0">
-   <string>RecipeCategoryEdit category { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
+   <string>CategoryFeatureEdit feature { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
   </property>
   <property name="answer" stdset="0">
-   <string>RecipeCategoryEdit category { id={category.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
+   <string>CategoryFeatureEdit feature { id={feature.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <widget class="QRadioButton" name="expand">
        <property name="text">
@@ -42,24 +42,6 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QTreeWidget" name="category">
-     <property name="itemsExpandable">
-      <bool>true</bool>
-     </property>
-     <property name="action" stdset="0">
-      <string notr="true">CategoryHierarchyRequest category {id=1}</string>
-     </property>
-     <attribute name="headerDefaultSectionSize">
-      <number>250</number>
-     </attribute>
-     <column>
-      <property name="text">
-       <string>category</string>
-      </property>
-     </column>
-    </widget>
-   </item>
    <item row="1" column="1">
     <spacer name="horizontalSpacer">
      <property name="orientation">
@@ -73,6 +55,29 @@
      </property>
     </spacer>
    </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QTreeWidget" name="feature">
+     <property name="itemsExpandable">
+      <bool>true</bool>
+     </property>
+     <property name="action" stdset="0">
+      <string notr="true">FeatureHierarchyRequest feature {id=1}</string>
+     </property>
+     <attribute name="headerDefaultSectionSize">
+      <number>250</number>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>feature</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>description</string>
+      </property>
+     </column>
+    </widget>
+   </item>
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
@@ -84,10 +89,10 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>add_category_required</string>
+        <string>add_feature_provided</string>
        </property>
        <property name="state:enabled" stdset="0">
-        <string>{category.selected}&gt;0</string>
+        <string>{feature.selected}&gt;0</string>
        </property>
       </widget>
      </item>
@@ -103,12 +108,12 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item row="2" column="0" colspan="2">
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Required:</string>
+        <string>Provided:</string>
        </property>
        <property name="buddy">
         <cstring>min</cstring>
@@ -171,7 +176,7 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>category</tabstop>
+  <tabstop>feature</tabstop>
   <tabstop>expand</tabstop>
   <tabstop>collapse</tabstop>
   <tabstop>min</tabstop>
@@ -186,48 +191,48 @@
   <connection>
    <sender>expand</sender>
    <signal>toggled(bool)</signal>
-   <receiver>category</receiver>
+   <receiver>feature</receiver>
    <slot>expandAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>76</x>
-     <y>245</y>
+     <x>75</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
-     <x>71</x>
-     <y>219</y>
+     <x>65</x>
+     <y>170</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>collapse</sender>
    <signal>toggled(bool)</signal>
-   <receiver>category</receiver>
+   <receiver>feature</receiver>
    <slot>collapseAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>303</x>
-     <y>245</y>
+     <x>195</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
-     <x>155</x>
-     <y>219</y>
+     <x>187</x>
+     <y>170</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>category</sender>
+   <sender>feature</sender>
    <signal>doubleClicked(QModelIndex)</signal>
    <receiver>select</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>27</x>
-     <y>174</y>
+     <x>28</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
-     <x>28</x>
-     <y>294</y>
+     <x>41</x>
+     <y>258</y>
     </hint>
    </hints>
   </connection>

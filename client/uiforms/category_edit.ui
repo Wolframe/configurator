@@ -339,7 +339,7 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>feature_select_required?widgetid={main.widgetid}_feature_required&amp;id={required_features.selected}&amp;minQuantity={required_features.selected_min}&amp;maxQuantity={required_features.selected_max}</string>
+          <string>feature_select_required_edit?widgetid={main.widgetid}_feature_required&amp;id={required_features.selected}&amp;minQuantity={required_features.selected_min}&amp;maxQuantity={required_features.selected_max}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_feature_required</string>
@@ -355,7 +355,7 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>feature_select_required?widgetid={main.widgetid}_feature_required</string>
+          <string>feature_select_required_add?widgetid={main.widgetid}_feature_required</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_feature_required</string>
@@ -408,7 +408,7 @@
           <string>Edit..</string>
          </property>
          <property name="form" stdset="0">
-          <string>feature_select_provided?widgetid={main.widgetid}_feature_provided&amp;id={provided_features.selected}&amp;minQuantity={provided_features.selected_min}&amp;maxQuantity={provided_features.selected_max}</string>
+          <string>feature_select_provided_edit?widgetid={main.widgetid}_feature_provided&amp;id={provided_features.selected}&amp;minQuantity={provided_features.selected_min}&amp;maxQuantity={provided_features.selected_max}</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_feature_provided</string>
@@ -424,7 +424,7 @@
           <string>Add..</string>
          </property>
          <property name="form" stdset="0">
-          <string>feature_select_provided?widgetid={main.widgetid}_feature_provided</string>
+          <string>feature_select_provided_add?widgetid={main.widgetid}_feature_provided</string>
          </property>
          <property name="datasignal:destroyed" stdset="0">
           <string>close@{main.widgetid}_feature_provided</string>
