@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>feature_edit_form</class>
+ <widget class="QWidget" name="feature_edit_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>424</width>
+    <height>338</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Edit feature</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../configurator.qrc">
+    <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
+  </property>
+  <property name="action" stdset="0">
+   <string>FeatureRequest feature {id={id}}</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.tabs.meta.name}}; description{{main.tags.meta.description}}; used_categories {{main.tags.pictures.used_categories}}; picture[] {picture {id={?}}}}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabs">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="meta">
+      <attribute name="title">
+       <string>&amp;Metadata</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_name">
+         <property name="text">
+          <string>Name:</string>
+         </property>
+         <property name="buddy">
+          <cstring>name</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="name">
+         <property name="initialFocus" stdset="0">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_description">
+         <property name="text">
+          <string>Description:</string>
+         </property>
+         <property name="buddy">
+          <cstring>description</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QPlainTextEdit" name="description"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pictures">
+      <attribute name="title">
+       <string>&amp;Pictures</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_2">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Used in categories:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="used_categories">
+         <property name="text">
+          <string>(none)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Pictures:</string>
+         </property>
+         <property name="buddy">
+          <cstring>pictures</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QListWidget" name="pictures">
+         <property name="iconSize">
+          <size>
+           <width>50</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="movement">
+          <enum>QListView::Static</enum>
+         </property>
+         <property name="viewMode">
+          <enum>QListView::IconMode</enum>
+         </property>
+         <property name="action" stdset="0">
+          <string>FeaturePictureListRequest feature {id={main.id}}</string>
+         </property>
+         <property name="answer" stdset="0">
+          <string>PictureThumbnailList pictures {picture[] {id={item.id}; thumbnail{{item.icon}}; caption{{item.tooltip}} }}</string>
+         </property>
+         <property name="dataslot" stdset="0">
+          <string>exclude_picture, select_picture ({main.widgetid}_picture)</string>
+         </property>
+         <property name="link:picture_add" stdset="0">
+          <string>{main.widgetid}_picture</string>
+         </property>
+         <property name="action:select_picture" stdset="0">
+          <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
+         </property>
+         <property name="action:exclude_picture" stdset="0">
+          <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="exclude_pictures">
+           <property name="text">
+            <string>Remove picture</string>
+           </property>
+           <property name="datasignal:clicked" stdset="0">
+            <string>exclude_picture@main.pictures</string>
+           </property>
+           <property name="state:enabled" stdset="0">
+            <string>{pictures.selected}&gt;0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="new_pictures">
+           <property name="text">
+            <string>Add picture..</string>
+           </property>
+           <property name="form" stdset="0">
+            <string>picture_select?widgetid={main.widgetid}_picture</string>
+           </property>
+           <property name="datasignal:destroyed" stdset="0">
+            <string>close@{main.widgetid}_picture</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="relations">
+      <attribute name="title">
+       <string>&amp;Relations</string>
+      </attribute>
+      <layout class="QFormLayout" name="formLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>fullfilled features:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_2">
+           <property name="text">
+            <string>Remove</string>
+           </property>
+           <property name="state:enabled" stdset="0">
+            <string>{required_features.selected}&gt;0</string>
+           </property>
+           <property name="datasignal:clicked" stdset="0">
+            <string>remove_feature_required@main.required_features</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="text">
+            <string>Edit..</string>
+           </property>
+           <property name="form" stdset="0">
+            <string>feature_select_required_edit?widgetid={main.widgetid}_feature_required&amp;id={required_features.selected}&amp;minQuantity={required_features.selected_min}&amp;maxQuantity={required_features.selected_max}</string>
+           </property>
+           <property name="datasignal:destroyed" stdset="0">
+            <string>close@{main.widgetid}_feature_required</string>
+           </property>
+           <property name="state:enabled" stdset="0">
+            <string>{required_features.selected}&gt;0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton">
+           <property name="text">
+            <string>Add..</string>
+           </property>
+           <property name="form" stdset="0">
+            <string>feature_select_required_add?widgetid={main.widgetid}_feature_required</string>
+           </property>
+           <property name="datasignal:destroyed" stdset="0">
+            <string>close@{main.widgetid}_feature_required</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="1">
+        <widget class="QTreeWidget" name="required_features">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>100</height>
+          </size>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="rootIsDecorated">
+          <bool>false</bool>
+         </property>
+         <property name="itemsExpandable">
+          <bool>false</bool>
+         </property>
+         <property name="expandsOnDoubleClick">
+          <bool>false</bool>
+         </property>
+         <property name="dataslot" stdset="0">
+          <string>add_feature_required ({main.widgetid}_feature_required)</string>
+         </property>
+         <property name="action:add_feature_required" stdset="0">
+          <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
+         </property>
+         <property name="link:feature_required_select" stdset="0">
+          <string>{main.widgetid}_feature_required</string>
+         </property>
+         <property name="answer" stdset="0">
+          <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }</string>
+         </property>
+         <property name="action:remove_feature_required" stdset="0">
+          <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>
+         </property>
+         <column>
+          <property name="text">
+           <string>name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>min</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>max</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="save">
+       <property name="text">
+        <string>Save</string>
+       </property>
+       <property name="action" stdset="0">
+        <string notr="true">updateFeature feature {id={main.id}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}} }</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+       <property name="datasignal:clicked" stdset="0">
+        <string>features</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="reset">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_RESET_</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+       <property name="form" stdset="0">
+        <string notr="true">_CLOSE_</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>exclude_pictures</tabstop>
+  <tabstop>new_pictures</tabstop>
+  <tabstop>save</tabstop>
+  <tabstop>reset</tabstop>
+  <tabstop>cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../configurator.qrc"/>
+ </resources>
+ <connections/>
+</ui>
