@@ -25,13 +25,15 @@ INSERT INTO Tag( parentID, name, normalizedName, description, lft, rgt )
 	VALUES ( NULL, '_ROOT_', '_ROOT_', 'Tags tree root', 1, 2 );
 
 CREATE VIEW TagPath AS
-	SELECT T1.ID,
-		replace( group_concat( T2.name, '/' ) || '/' || T1.name, '_ROOT_/', '' ) AS name,
-		replace( group_concat( T2.normalizedName, '/' ) || '/' || T1.normalizedName, '_ROOT_/', '' ) AS normalizedName
-		FROM Tag AS T1, Tag AS T2
-		WHERE T2.lft <= T1.lft AND T2.rgt > T1.rgt
-		GROUP BY T1.ID
-		ORDER BY T1.ID;
+	SELECT ID,
+		group_concat( name, '/' ) AS name,
+		group_concat( normalizedName, '/' ) AS normalizedName
+		FROM ( SELECT T1.ID, T2.name, T2.normalizedName
+			FROM Tag AS T1, Tag AS T2
+			WHERE T2.lft <= T1.lft AND T2.rgt >= T1.rgt
+			AND NOT T2.ID=1
+		ORDER BY T2.lft ) AS bla
+	GROUP BY ID;
 
 -- The list of images used
 --
