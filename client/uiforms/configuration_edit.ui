@@ -14,7 +14,11 @@
    <string>Edit configuration</string>
   </property>
   <property name="action" stdset="0">
-   <string notr="true">ConfigurationRequest configuration {id={id}}</string>
+   <string>ConfigurationRequest configuration {id={id}}</string>
+  </property>
+  <property name="answer" stdset="0">
+   <string>Configuration configuration {id={main.id}; name{{main.name}}; description{{main.description}}; category {id={?}; {main.category} }; comment {{main.comment}}; recipe { id={?}; {?} }; picture { id={?}; thumbnail {?} } }
+</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
    <property name="fieldGrowthPolicy">
