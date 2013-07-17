@@ -21,13 +21,13 @@
    <string>FeatureRequest feature {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.tabs.meta.name}}; description{{main.tags.meta.description}}; used_categories {{main.tags.pictures.used_categories}}; picture[] {picture {id={?}}}}</string>
+   <string>Feature feature {id={main.id}; parentID={?}; root{{?}}; name{{main.tabs.meta.name}}; description{{main.tabs.meta.description}}; used_categories {{main.tabs.pictures.used_categories}}; picture[] {picture {id={?}}}}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabs">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="meta">
       <attribute name="title">
@@ -128,10 +128,10 @@
           <string>{main.widgetid}_picture</string>
          </property>
          <property name="action:select_picture" stdset="0">
-          <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
+          <string>PictureThumbnailListRequest pictures {picture[]{id={main.tabs.pictures.pictures.id}}; add[]{id={picture_add.picture.selected}}}</string>
          </property>
          <property name="action:exclude_picture" stdset="0">
-          <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+          <string>PictureThumbnailListRequest pictures {picture[]{id={main.tabs.pictures.pictures.unselected}}}</string>
          </property>
         </widget>
        </item>
@@ -156,10 +156,10 @@
             <string>Remove picture</string>
            </property>
            <property name="datasignal:clicked" stdset="0">
-            <string>exclude_picture@main.pictures</string>
+            <string>exclude_picture@main.tabs.pictures.pictures</string>
            </property>
            <property name="state:enabled" stdset="0">
-            <string>{pictures.selected}&gt;0</string>
+            <string>{main.tags.pictures.pictures.selected}&gt;0</string>
            </property>
           </widget>
          </item>
@@ -271,6 +271,9 @@
          <property name="itemsExpandable">
           <bool>false</bool>
          </property>
+         <property name="headerHidden">
+          <bool>true</bool>
+         </property>
          <property name="expandsOnDoubleClick">
           <bool>false</bool>
          </property>
@@ -289,6 +292,9 @@
          <property name="action:remove_feature_required" stdset="0">
           <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>
          </property>
+         <attribute name="headerVisible">
+          <bool>false</bool>
+         </attribute>
          <column>
           <property name="text">
            <string>name</string>
