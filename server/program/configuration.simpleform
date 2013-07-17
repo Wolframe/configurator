@@ -23,6 +23,10 @@ FORM Configuration
 			description string
 			price float
 		}
+		picture {
+			id @int
+			thumbnail ?string
+		}
 	}
 }
 

@@ -57,6 +57,7 @@ configurations
 - how to NOT open a new window? how to close a window AND open a new window?
 - configurator form widget initial size is weird, related to the layout warnings?
 - rename selectConfiguredComponentsFix
+- use image from recipe as image in configuration
 
 general
 

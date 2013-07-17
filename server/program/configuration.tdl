@@ -51,11 +51,33 @@ BEGIN
 			comment
 			FROM Configuration
 			WHERE Configuration.ID = $(id);
+			
 	INTO category DO
 		SELECT categoryID AS "id", Category.name AS "_"
 			FROM Configuration, Category
 			WHERE Configuration.ID = $(id)
 			AND Configuration.CategoryID = Category.ID;
+	
+	INTO recipe DO
+		SELECT recipeID AS "id", Recipe.name AS "_"
+			FROM Configuration, Recipe
+			WHERE Configuration.recipeID = Recipe.ID
+			AND Configuration.ID = $(id);
+	
+	INTO picture DO
+		SELECT Picture.ID AS "id", thumbnail
+			FROM Configuration
+			LEFT JOIN RecipePicture
+			ON Configuration.recipeID = RecipePicture.recipeID
+			AND RecipePicture.pictureID <=
+			(
+				SELECT min(pictureID) AS ID FROM RecipePicture
+					WHERE RecipePicture.recipeID = Configuration.recipeID
+					AND Configuration.ID = $(id)
+			)
+			LEFT JOIN Picture
+			ON RecipePicture.pictureID = Picture.ID
+			WHERE Configuration.ID = $(id);
 END
 
 TRANSACTION selectConfiguredComponentsFix
