@@ -33,7 +33,8 @@
       <string>ConfigurationRequest configuration {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Configuration configuration {id={?}; code {{?}}; name{{1}}; description{{?}}; comment{{?}}; category{id={?}; {?}} }</string>
+      <string>Configuration configuration {id={?}; code {{?}}; name{{1}}; description{{?}}; comment{{?}}; category{id={?}; {?}}; recipe { id={?}; {?} }; picture { id={?}; thumbnail {?} } }
+</string>
      </property>
     </widget>
    </item>
