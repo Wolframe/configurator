@@ -5,10 +5,12 @@ FORMS += \
 	../uiforms/category_add.ui \
 	../uiforms/category_edit.ui \
 	../uiforms/category_select.ui \
-	../uiforms/category_select_required.ui \
+	../uiforms/category_select_required_add.ui \
+	../uiforms/category_select_required_edit.ui \
 	../uiforms/component_add.ui \
 	../uiforms/component_edit.ui \
-	../uiforms/component_select.ui \
+	../uiforms/component_select_add.ui \
+	../uiforms/component_select_edit.ui \
 	../uiforms/components.ui \
 	../uiforms/configurations.ui \
 	../uiforms/configuration_add.ui \
@@ -19,8 +21,10 @@ FORMS += \
 	../uiforms/export.ui \
 	../uiforms/feature_add.ui \
 	../uiforms/feature_edit.ui \
-	../uiforms/feature_select_required.ui \
-	../uiforms/feature_select_provided.ui \
+	../uiforms/feature_select_required_add.ui \
+	../uiforms/feature_select_required_edit.ui \
+	../uiforms/feature_select_provided_add.ui \
+	../uiforms/feature_select_provided_edit.ui \
 	../uiforms/features.ui \
 	../uiforms/manufacturer_add.ui \
 	../uiforms/manufacturer_edit.ui \

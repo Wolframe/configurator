@@ -62,7 +62,7 @@ setup.exe: configurator.msi
 clean:
 	@-erase *.wixobj configurator.wixpdb configurator.msi setup.exe *.log 2>NUL
 
-distclean:
+distclean: clean
 
 test: configurator.msi
 	$(SMOKE) configurator.msi

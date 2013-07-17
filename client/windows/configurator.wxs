@@ -90,11 +90,13 @@ Project Wolframe.
 								<File Id="category_delete.ui" Name="category_delete.ui" DiskId="1" Source="..\uiforms\category_delete.ui"/>
 								<File Id="category_edit.ui" Name="category_edit.ui" DiskId="1" Source="..\uiforms\category_edit.ui"/>
 								<File Id="category_select.ui" Name="category_select.ui" DiskId="1" Source="..\uiforms\category_select.ui"/>
-								<File Id="category_select_required.ui" Name="category_select_required.ui" DiskId="1" Source="..\uiforms\category_select_required.ui"/>
+								<File Id="category_select_required_add.ui" Name="category_select_required_add.ui" DiskId="1" Source="..\uiforms\category_select_required_add.ui"/>
+								<File Id="category_select_required_edit.ui" Name="category_select_required_edit.ui" DiskId="1" Source="..\uiforms\category_select_required_edit.ui"/>
 								<File Id="component_add.ui" Name="component_add.ui" DiskId="1" Source="..\uiforms\component_add.ui"/>
 								<File Id="component_edit.ui" Name="component_edit.ui" DiskId="1" Source="..\uiforms\component_edit.ui"/>
 								<File Id="component_delete.ui" Name="component_delete.ui" DiskId="1" Source="..\uiforms\component_delete.ui"/>
-								<File Id="component_select.ui" Name="component_select.ui" DiskId="1" Source="..\uiforms\component_select.ui"/>
+								<File Id="component_select_add.ui" Name="component_select_add.ui" DiskId="1" Source="..\uiforms\component_select_add.ui"/>
+								<File Id="component_select_edit.ui" Name="component_select_edit.ui" DiskId="1" Source="..\uiforms\component_select_edit.ui"/>
 								<File Id="components.ui" Name="components.ui" DiskId="1" Source="..\uiforms\components.ui"/>
 								<File Id="configurations.ui" Name="configurations.ui" DiskId="1" Source="..\uiforms\configurations.ui"/>
 								<File Id="configuration_add.ui" Name="configuration_add.ui" DiskId="1" Source="..\uiforms\configuration_add.ui"/>
@@ -106,8 +108,10 @@ Project Wolframe.
 								<File Id="feature_add.ui" Name="feature_add.ui" DiskId="1" Source="..\uiforms\feature_add.ui"/>
 								<File Id="feature_delete.ui" Name="feature_delete.ui" DiskId="1" Source="..\uiforms\feature_delete.ui"/>
 								<File Id="feature_edit.ui" Name="feature_edit.ui" DiskId="1" Source="..\uiforms\feature_edit.ui"/>
-								<File Id="feature_select_required.ui" Name="feature_select_required.ui" DiskId="1" Source="..\uiforms\feature_select_required.ui"/>
-								<File Id="feature_select_provided.ui" Name="feature_select_provided.ui" DiskId="1" Source="..\uiforms\feature_select_provided.ui"/>
+								<File Id="feature_select_required_add.ui" Name="feature_select_required_add.ui" DiskId="1" Source="..\uiforms\feature_select_required_add.ui"/>
+								<File Id="feature_select_required_edit.ui" Name="feature_select_required_edit.ui" DiskId="1" Source="..\uiforms\feature_select_required_edit.ui"/>
+								<File Id="feature_select_provided_add.ui" Name="feature_select_provided_add.ui" DiskId="1" Source="..\uiforms\feature_select_provided_add.ui"/>
+								<File Id="feature_select_provided_edit.ui" Name="feature_select_provided_edit.ui" DiskId="1" Source="..\uiforms\feature_select_provided_edit.ui"/>
 								<File Id="features.ui" Name="features.ui" DiskId="1" Source="..\uiforms\features.ui"/>
 								<File Id="manufacturer_add.ui" Name="manufacturer_add.ui" DiskId="1" Source="..\uiforms\manufacturer_add.ui"/>
 								<File Id="manufacturer_delete.ui" Name="manufacturer_delete.ui" DiskId="1" Source="..\uiforms\manufacturer_delete.ui"/>
