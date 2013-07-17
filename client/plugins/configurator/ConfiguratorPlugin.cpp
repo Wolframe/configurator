@@ -102,21 +102,6 @@ void ConfiguratorWidget::initialize( )
 	toPickComponentsLayout->setObjectName(QString::fromUtf8("toPickComponentsLayout"));
 	verticalLayout->addLayout(toPickComponentsLayout);
 
-// TODO: remove
-	rest( );
-
-// trigger filling of preconfigured components (given by the recipe)
-	sendRequest( "ConfiguredComponentsFixRequest.simpleform", "component", "ConfiguredComponentsFix" );
-
-// trigger filling of configured components (choosen by user)
-	sendRequest( "ConfiguredComponentsUserRequest.simpleform", "component", "ConfiguredComponentsUser" );
-
-// trigger filling of features still required to be fulfilled
-	sendRequest( "ConfiguratorRequiredFeaturesRequest.simpleform", "configuration", "ConfiguratorRequiredFeatures" );
-}
-
-void ConfiguratorWidget::rest( )
-{
 // close button, adding a dynamic property for form switching
 	QHBoxLayout *horizontalLayout_5;
 	QSpacerItem *horizontalSpacer_5;
@@ -140,6 +125,34 @@ void ConfiguratorWidget::rest( )
 	verticalLayout->addLayout(horizontalLayout_5);
 
 	QMetaObject::connectSlotsByName(this);
+
+// if we have a config ID, fill in data now
+	m_configID = getFormParam( "configID" );
+	if( !m_configID.isEmpty( ) ) {
+		fillData( );
+	} else {
+// otherwise issue a get last config ID request (assuming more or less
+// we are alone from a transaction point of view! This is very bad but
+// the qtclient can't map answers into the next form request at the moment)
+		getLastConfigId( );
+	}
+}
+
+void ConfiguratorWidget::getLastConfigId( )
+{
+	sendRequest( "LastConfigurationIDRequest.simpleform", "configuration", "LastConfigurationID" );
+}
+
+void ConfiguratorWidget::fillData( )
+{
+// trigger filling of preconfigured components (given by the recipe)
+	sendRequest( "ConfiguredComponentsFixRequest.simpleform", "component", "ConfiguredComponentsFix" );
+
+// trigger filling of configured components (choosen by user)
+	sendRequest( "ConfiguredComponentsUserRequest.simpleform", "component", "ConfiguredComponentsUser" );
+
+// trigger filling of features still required to be fulfilled
+	sendRequest( "ConfiguratorRequiredFeaturesRequest.simpleform", "configuration", "ConfiguratorRequiredFeatures" );
 }
 
 void ConfiguratorWidget::sendRequest( const QString &docType, const QString &rootElement, const QString &widgetCmd )
@@ -158,9 +171,8 @@ void ConfiguratorWidget::sendRequest( const QString &docType, const QString &roo
 	xml.writeStartDocument( );
 	xml.writeDTD( QString( "<!DOCTYPE %1 SYSTEM '%2'>" ).arg( rootElement ).arg( docType ) );
 	xml.writeStartElement( "", rootElement );
-	xml.writeAttribute( "id", "1" );
-	QString configID = getFormParam( "configID" );
-	xml.writeAttribute( "configID", configID );
+	xml.writeAttribute( "id", "1" );	
+	xml.writeAttribute( "configID", m_configID );
 	xml.writeEndElement( );
 	xml.writeEndDocument( );
 
@@ -244,7 +256,22 @@ void ConfiguratorWidget::gotAnswer( const QString &widgetCmd, const QByteArray d
 {
 	qDebug( ) << "got self-made XML answer for request: " << widgetCmd << ":\n" << data;
 
-	if( widgetCmd == "ConfiguredComponentsFix" ) {
+	if( widgetCmd == "LastConfigurationID" ) {
+		QXmlStreamReader xml( data );
+		while( !xml.atEnd( ) ) {
+			xml.readNext( );	
+					
+			if( xml.isStartElement( ) && ( xml.name( ) == "configuration" ) ) {
+				QXmlStreamAttributes attributes = xml.attributes( );
+				foreach( QXmlStreamAttribute attr, attributes ) {
+					if( attr.name( ) == "id" ) {
+						m_configID = attr.value( ).toString( );
+					}
+				}
+			}
+		}
+		fillData( );
+	} else if( widgetCmd == "ConfiguredComponentsFix" ) {
 		QXmlStreamReader xml( data );
 		QString name;
 		QString quantity;
@@ -434,22 +461,18 @@ void ConfiguratorWidget::addComponent( QObject *object )
 		<< quantity
 		<< componentWidgets->m_componentBox->itemText( componentWidgets->m_componentBox->currentIndex( ) );
 
-	int configID = getFormParam( "configID" ).toInt( );
-
-	sendAddComponentRequest( configID, componentID, quantity );	
+	sendAddComponentRequest( m_configID.toInt( ), componentID, quantity );	
 }
 
 void ConfiguratorWidget::deleteComponent( QObject *object )
 {
 	DeleteComponentWidgets *componentWidgets = qobject_cast<DeleteComponentWidgets *>( object );
-
-	int configID = getFormParam( "configID" ).toInt( );
 	
 	qDebug( )
 		<< "DELETE"
 		<< componentWidgets->m_componentID;
 		
-	sendDeleteComponentRequest( configID, componentWidgets->m_componentID );
+	sendDeleteComponentRequest( m_configID.toInt( ), componentWidgets->m_componentID );
 }
 
 // ConfiguratorPlugin

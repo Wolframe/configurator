@@ -102,3 +102,12 @@ FORM ConfiguratorDeleteComponentRequest
 		componentID int
 	}
 }
+
+FORM LastConfigurationIDRequest
+{
+	configuration
+	{
+		id ?@int
+		configID ?@int
+	}
+}

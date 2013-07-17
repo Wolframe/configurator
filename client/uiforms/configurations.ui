@@ -20,12 +20,12 @@
    <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="add">
+      <widget class="QPushButton" name="show">
        <property name="text">
-        <string>Add</string>
+        <string>Show</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">configuration_add_recipe</string>
+        <string>configuration_show?id={configuration.selected}</string>
        </property>
       </widget>
      </item>
@@ -36,6 +36,16 @@
        </property>
        <property name="form" stdset="0">
         <string>configuration_delete?id={configuration.selected}</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>New</string>
+       </property>
+       <property name="form" stdset="0">
+        <string>configuration_add_recipe</string>
        </property>
       </widget>
      </item>
@@ -98,10 +108,10 @@
       <bool>true</bool>
      </property>
      <property name="contextmenu" stdset="0">
-      <string notr="true">add, edit, modify, delete</string>
+      <string notr="true">show, add, edit, modify, delete</string>
      </property>
      <property name="contextmenu:add" stdset="0">
-      <string>Add Configuration</string>
+      <string>New Configuration</string>
      </property>
      <property name="contextmenu:edit" stdset="0">
       <string>Edit Configuration</string>
@@ -110,7 +120,7 @@
       <string>Delete Configuration</string>
      </property>
      <property name="form:add" stdset="0">
-      <string notr="true">configuration_add</string>
+      <string notr="true">configuration_add_recipe</string>
      </property>
      <property name="form:edit" stdset="0">
       <string notr="true">configuration_edit?id={selected:1}</string>
@@ -132,6 +142,12 @@
      </property>
      <property name="form:modify" stdset="0">
       <string>configurator?configID={selected}</string>
+     </property>
+     <property name="form:show" stdset="0">
+      <string>configuration_show?id={selected:1}</string>
+     </property>
+     <property name="contextmenu:show" stdset="0">
+      <string>Show configuration</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -164,26 +180,27 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>configuration</tabstop>
-  <tabstop>add</tabstop>
+  <tabstop>show</tabstop>
+  <tabstop>delete</tabstop>
   <tabstop>edit</tabstop>
   <tabstop>modify</tabstop>
+  <tabstop>configuration</tabstop>
  </tabstops>
  <resources/>
  <connections>
   <connection>
    <sender>configuration</sender>
    <signal>doubleClicked(QModelIndex)</signal>
-   <receiver>edit</receiver>
+   <receiver>show</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>217</x>
-     <y>216</y>
+     <x>42</x>
+     <y>155</y>
     </hint>
     <hint type="destinationlabel">
-     <x>216</x>
-     <y>294</y>
+     <x>47</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>

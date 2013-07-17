@@ -59,6 +59,7 @@
      <string>&amp;Configuration</string>
     </property>
     <addaction name="action_configurations"/>
+    <addaction name="action_Add_configuration"/>
    </widget>
    <widget class="QMenu" name="menu_Administration">
     <property name="title">
@@ -129,7 +130,7 @@
      <normaloff>:/images/configuration.png</normaloff>:/images/configuration.png</iconset>
    </property>
    <property name="text">
-    <string>Configurations</string>
+    <string>&amp;Configurations</string>
    </property>
    <property name="form" stdset="0">
     <string notr="true">configurations</string>
@@ -249,6 +250,18 @@
    </property>
    <property name="singletonWindow" stdset="0">
     <bool>true</bool>
+   </property>
+  </action>
+  <action name="action_Add_configuration">
+   <property name="icon">
+    <iconset resource="../configurator.qrc">
+     <normaloff>:/images/configuration.png</normaloff>:/images/configuration.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New configuration</string>
+   </property>
+   <property name="form" stdset="0">
+    <string>configuration_add_recipe</string>
    </property>
   </action>
  </widget>

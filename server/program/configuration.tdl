@@ -25,6 +25,11 @@ BEGIN
 	INTO configuration DO NONEMPTY UNIQUE getLastConfigurationID( );
 END
 
+TRANSACTION getLastConfigurationID
+BEGIN
+	INTO . DO NONEMPTY UNIQUE SELECT MAX(id) AS "id" FROM Configuration;
+END
+
 TRANSACTION updateConfiguration
 BEGIN
 	DO UPDATE Configuration SET name=$(name),
@@ -85,12 +90,14 @@ BEGIN
 			AND fromRecipe = '0';
 END
 
+-- coalesce necessary because of the way NULL, '', '    ' is demarshalled
+-- in the client (keyword trim, empty element handling, 
+-- CRITICAL: array size do not match != 4 3)
 TRANSACTION selectConfiguredComponents
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
 			Category.name AS "categoryName",
-			mfgCode AS "mfgCode",
 			Component.description AS "description",
 			quantity,
 			price

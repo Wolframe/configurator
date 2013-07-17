@@ -86,7 +86,8 @@ class ConfiguratorWidget : public QWidget
 		
 	private:
 		void initialize( );
-		void rest( );
+		void fillData( );
+		void getLastConfigId( );
 		void sendRequest( const QString &docType, const QString &rootElement, const QString &widgetCmd );
 		void sendAddComponentRequest( int configID, int componentID, int quantity );
 		void sendDeleteComponentRequest( int configID, int componentID );
@@ -103,6 +104,7 @@ class ConfiguratorWidget : public QWidget
 		QVBoxLayout *fixedComponentsLayout;
 		QVBoxLayout *userComponentsLayout;
 		QVBoxLayout *toPickComponentsLayout;
+		QString m_configID;
 	
 	signals:
 		void reload( );
