@@ -1,4 +1,5 @@
 <?php 
+header("Content-Type: text/xml");
 require 'session.php';
 use Wolframe\Session as Session;
 
@@ -11,12 +12,19 @@ try
 	);
 	$conn = new Session( "127.0.0.1", 7961, $sslopt, "NONE");
 	
-	$what = $_GET["what"];
-	if ($what == "") $what = "tags";
-	$search = $_GET["search"];
-	if ($search == "") $search = "logo*";
-	$id = $_GET["id"];
-	if ($id == "") {
+	if( array_key_exists( "what", $_GET ) ) {
+		$what = $_GET["what"];
+	} else {
+		$what = "tags";
+	}
+	if( array_key_exists( "search", $_GET ) ) {
+		$search = $_GET["search"];
+	} else {
+		$search = "logo*";
+	}
+	if( array_key_exists( "id", $_GET ) ) {
+		$id = $_GET["id"];
+	} else {
 		if ($what == "pictures") $id = "11";
 		elseif ($what == "picture") $id = "10";
 		elseif ($what == "features") $id = "1";
@@ -77,7 +85,7 @@ EOF;
 	}
 	else
 	{
-		echo "<html><head><title>" . $doctype . "</title></head><body>" . htmlspecialchars($result) . "</body></html>";
+		echo str_replace( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n", "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<?xml-stylesheet type=\"text/css\" href=\"css/test.css\"?>\n", $result );
 	}
 	unset( $conn);
 }
