@@ -1,0 +1,42 @@
+list
+{
+margin:10px;
+background-color:#eeffee;
+font-family:verdana,helvetica,sans-serif;
+}
+
+component
+{
+display:block;
+font-weight:bold;
+border-style: groove;
+}
+
+name,description,categoryName,comment
+{
+display:block;
+color:#000077;
+font-size:small;
+font-style:italic;
+}
+
+name:before
+{
+	content:"Name:";
+}
+
+description:before
+{
+	content:"Description:";
+}
+
+categoryName:before
+{
+	content:"Category:";
+}
+
+comment:before
+{
+	content:"Comment:";
+}
+

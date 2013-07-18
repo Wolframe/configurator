@@ -91,13 +91,14 @@ EOF;
 	}
 	else
 	{
+		$random = uniqid( md5( rand( ) ) );
 		preg_match('/[<][!]DOCTYPE[ ]*\w+ SYSTEM[ ]*["](\w+)[.]/', $result, $matches);
 		$rr = explode( '?>', $result, 2);
 		$output = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'
 			. "\n"
 			. '<?xml-stylesheet type="text/css" href="css/'
 			. $matches[1]
-			. '.css"?>'
+			. ".css?random=$random\"?>"
 			. "\n"
 			. $rr[1];
 		echo $output;
