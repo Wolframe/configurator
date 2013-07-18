@@ -24,14 +24,17 @@ name:before
 {
 	content:"Name:";
 }
+
 description:before
 {
 	content:"Description:";
 }
+
 categoryName:before
 {
 	content:"Category:";
 }
+
 comment:before
 {
 	content:"Comment:";
