@@ -75,6 +75,12 @@ EOF;
 <!DOCTYPE component SYSTEM 'ComponentListRequest'>
 <component/>
 EOF;
+	} elseif( $what == "configurations") {
+		$query = <<<EOF
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE configuration SYSTEM 'ConfigurationListRequest'>
+<configuration/>
+EOF;
 	} else {
 		throw new Exception( "unknown what '" . $what . "'");
 	}
@@ -85,7 +91,16 @@ EOF;
 	}
 	else
 	{
-		echo str_replace( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n", "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n<?xml-stylesheet type=\"text/css\" href=\"css/test.css\"?>\n", $result );
+		preg_match('/[<][!]DOCTYPE[ ]*\w+ SYSTEM[ ]*["](\w+)[.]/', $result, $matches);
+		$rr = explode( '?>', $result, 2);
+		$output = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>'
+			. "\n"
+			. '<?xml-stylesheet type="text/css" href="css/'
+			. $matches[1]
+			. '.css"?>'
+			. "\n"
+			. $rr[1];
+		echo $output;
 	}
 	unset( $conn);
 }
