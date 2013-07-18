@@ -1,0 +1,72 @@
+list
+{
+margin:10px;
+background-color:#eeffee;
+font-family:verdana,helvetica,sans-serif;
+}
+
+component
+{
+display:block;
+border-style: groove;
+}
+
+recipe:before
+{
+content: "Recipe:";
+}
+
+category:before
+{
+content: "Category:";
+}
+
+configuration
+{
+display:block;
+font-weight:bold;
+border-style: groove;
+}
+
+name,description,categoryName,comment,price,quantity,recipe,category
+{
+display:block;
+color:#000077;
+font-size:small;
+font-style:italic;
+}
+
+name:before
+{
+	content:"Name:";
+}
+
+description:before
+{
+	content:"Description:";
+}
+
+categoryName:before
+{
+	content:"Category:";
+}
+
+comment:before
+{
+	content:"Comment:";
+}
+
+thumbnail
+{
+	display: none;
+}
+
+price:before
+{
+	content: "Price:";
+}
+
+quantity:after
+{
+	content: " piece";
+}

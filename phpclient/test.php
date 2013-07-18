@@ -81,6 +81,12 @@ EOF;
 <!DOCTYPE configuration SYSTEM 'ConfigurationListRequest'>
 <configuration/>
 EOF;
+	} elseif( $what == "configuration") {
+		$query = <<<EOF
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE configuration SYSTEM 'ConfigurationRequest'>
+<configuration id="$id"/>
+EOF;
 	} else {
 		throw new Exception( "unknown what '" . $what . "'");
 	}
