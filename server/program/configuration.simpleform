@@ -14,7 +14,7 @@ FORM Configuration
 			id @int
 			_ string
 		}
-		component {
+		component [] {
 			id @int
 			code string
 			name string
@@ -22,6 +22,7 @@ FORM Configuration
 			mfgCode string
 			description string
 			price float
+			quantity ?int
 		}
 		picture {
 			id @int

@@ -63,6 +63,17 @@ BEGIN
 			FROM Configuration, Recipe
 			WHERE Configuration.recipeID = Recipe.ID
 			AND Configuration.ID = $(id);
+
+	INTO component DO
+		SELECT Component.ID AS "id", code, Component.name AS "name",
+			Category.name AS "categoryName",
+			Component.description AS "description",
+			price,
+			quantity
+			FROM ConfigComponent, Component, Category
+			WHERE Component.ID = ConfigComponent.componentID
+			AND Component.categoryID = Category.ID
+			AND configID = $(id);
 	
 	INTO picture DO
 		SELECT Picture.ID AS "id", thumbnail
