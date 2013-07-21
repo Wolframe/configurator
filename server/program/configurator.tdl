@@ -41,19 +41,7 @@ INTO category DO
 	WHERE RecipeContent.categoryID = Category.ID
 	AND RecipeContent.categoryID = Component.categoryID
 	AND Component.categoryID = ComponentCategory.ID
--- remove all components which are hard-coded in the recipe
-	AND Component.ID NOT IN (
-		SELECT componentID FROM ConfigComponent
-			WHERE configID=$(configID) AND fromRecipe='1'
-	)
--- remove all components (for now, later, count quantities) which are
--- directly of a certain category (i.e. laptop platform). The user
--- picked them already
-	AND Component.categoryID NOT IN (
-		SELECT categoryID
-			FROM ConfigComponent,Component WHERE configID=$(configID)
-			AND Component.ID=ConfigComponent.componentID
-                        AND fromRecipe='0')
+	AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE configID=$(configID) AND fromRecipe='0')
 	AND RecipeContent.recipeID = Configuration.recipeID
 	AND Configuration.ID = $(configID);
 END
