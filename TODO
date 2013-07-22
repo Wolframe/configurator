@@ -28,6 +28,7 @@ categories
 features
 
 - FeaturePicture with anotation caption and info (overwrite)
+- feature/feature relation (feature equivalence)
 
 feature equivalences
 
@@ -57,7 +58,7 @@ configurations
 - how to NOT open a new window? how to close a window AND open a new window?
 - configurator form widget initial size is weird, related to the layout warnings?
 - rename selectConfiguredComponentsFix
-- use image from recipe as image in configuration
+- finish the SQLs
 
 general
 
@@ -72,9 +73,9 @@ todo discuss
     
 general
 
-- short and long description 
 - selection forms
-  - keep all states (last selected item, expanded items)
+  - selection windows should keep the state (expansion, location of last
+    selection), similar to a QFileDialog
   - search for all select forms
 - respect transactional and message character of requests and answers:
   - move picture select requests back into main select request, don't
@@ -85,26 +86,28 @@ general
 - fix simpleforms, make them consistend (also for Php layer!)
 - resize all forms, give them nice default sizes
 - shortcuts for key select everywhere, e.g. &Cancel
-- selection windows should keep the state (expansion, location of last
-  selection), similar to a QFileDialog
 - dito default buttons for all forms
 
-manufacturer:
+manufacturer
 
-- not all actions in an iconized list view lead to status recalculations
-  in the remove button (state:enabled)
-  
+- how to set no logo for the manufacturer (NULL in DB model)?
+
 components
 
 - property title, so we can put the name of a component into the window title
   (example add/edit xXXX)
-- add cursor changes for long-lasting operations, e.g. transcend logo
 - picture dialog:
   - idea: context menu on listwidget with pictures (with info, exclude)
 - dialog semantics for edit tags: enter and esc shortcuts?
 - info field in pictures?
 - ',' or ', ' in group concat?
-- show thumbnail, first one?
+
+general
+
+- show thumbnails, first one?
+- add cursor changes for long-lasting operations, e.g. transcend logo,
+  currently only the loading of the form and its translation shows
+  a wait indicator
 
 seen and postponed or worked around
 
@@ -113,11 +116,10 @@ seen and postponed or worked around
     edit (qttests repo, experimental)
   - fails on Qt5 (completly, dynamic properties are not updated or created!)
   => currently on hold, not sure if that's the right way to go!
-- feature/feature relation is for later (feature_equivalence uis)
 - categories
   - remove button can be disabled, edit button not, why?
     => using feature_required.selected works around the problem
-- picture list is not restored when login in/out, of course, because they
+- picture list is not restored when logging in/out, of course, because they
   are temporary database tables (maybe we should remove temporary tables
   anyway!)
 - using a QLabel feature to set dynamic property selected in order not to
