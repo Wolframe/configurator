@@ -54,14 +54,14 @@ FORM CategoryHierarchyNode
 	id @int
 	parentID @int
 	name string
-	item CategoryHierarchyNode[]
+	item ^CategoryHierarchyNode[]
 }
 
 FORM CategoryHierarchy
 {
 	tree
 	{
-		item CategoryHierarchyNode[]
+		item ^CategoryHierarchyNode[]
 	}
 }
 

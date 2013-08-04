@@ -27,14 +27,14 @@ FORM TagHierarchyNode
 	id @int
 	parentID @int
 	name string
-	item TagHierarchyNode[]
+	item ^TagHierarchyNode[]
 }
 
 FORM TagHierarchy
 {
 	tree
 	{
-		item TagHierarchyNode[]
+		item ^TagHierarchyNode[]
 	}
 }
 
