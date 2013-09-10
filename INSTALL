@@ -1,4 +1,4 @@
 cd client
 qmake-qt4 -config debug
-make QTCLIENT_DIR=/home/xxx/qtClient
+make WOLFCLIENT_DIR=/home/xxx/wolfclient
 cp plugins/configurator/libconfigurator.so uiforms/
