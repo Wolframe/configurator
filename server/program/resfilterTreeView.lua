@@ -20,7 +20,7 @@ local function map_tree_node( treenodes, nodeid, tagname)
 end
 
 -- IN tree := { name = treename, nodes = { name=STRING, description=STRING, pictures=INT[], parentID=INT, children=INT[] } }
-function treefilter( tree)
+function resfilterTreeView( tree)
 	local id2nodemap = {}
 	local parentmap = {}
 	local tagname = tree[ "name"]

@@ -1,7 +1,11 @@
 --
 -- addCategory
 --
-TRANSACTION addCategory -- (parentID, name, normalizedName, description, pictures/picture/id)
+TRANSACTION addCategory -- (parentID, name, description, pictures/picture/id)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO NONEMPTY UNIQUE SELECT rgt FROM Category WHERE ID = $(parentID);
 	DO UPDATE Category SET rgt = rgt + 2 WHERE rgt >= $1;
@@ -35,7 +39,11 @@ END
 --
 -- updateCategory
 --
-TRANSACTION updateCategory -- (id, name, normalizedName, description, pictures/picture/id)
+TRANSACTION updateCategory -- (id, name, description, pictures/picture/id)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO UPDATE Category SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
@@ -89,7 +97,11 @@ BEGIN
 		AND CategoryPicture.categoryID = $(id);
 END
 
-TRANSACTION selectCategoryByNormalizedName -- (normalizedName)
+TRANSACTION selectCategoryByName -- (name)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT ID AS id, parentID AS "parentID", name,
