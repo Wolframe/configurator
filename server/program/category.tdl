@@ -129,9 +129,10 @@ BEGIN
 END
 
 --
--- selectSubCategory       :Get the Category
+-- selectCategoryTree       :Get the category tree
 --
-TRANSACTION selectSubCategory -- (id)
+TRANSACTION selectCategoryTree -- (id)
+RESULT FILTER resfilterTreeView
 BEGIN
 	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM category AS P1, category AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END

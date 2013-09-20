@@ -3,12 +3,15 @@ local function map_tree_node( treenodes, nodeid, tagname)
 	local tree = nil
 	if treenodes[ nodeid ] then
 		tree[ "id"] = nodeid
-		tree[ tagname] = tree[ nodeid ].name
-		if tree[ nodeid ].description then
-			tree[ "description"] = tree[ nodeid ].description
+		tree[ tagname] = treenodes[ nodeid ].name
+		if treenodes[ nodeid ].description then
+			tree[ "description"] = treenodes[ nodeid ].description
+		end
+		if treenodes[ nodeid ].pictures then
+			tree[ "pictures"] = treenodes[ nodeid ].description
 		end
 		local children = {}
-		for i,v in pairs( tree[ nodeid].children) do
+		for i,v in pairs( treenodes[ nodeid].children) do
 			local childnode = map_tree_node( treenodes, v, tagname)
 			table.insert( children, childnode)
 		end

@@ -82,9 +82,10 @@ BEGIN
 END
 
 --
--- selectSubTag       :Get the tag
+-- selectTagTree       :Get the tag tree
 --
-TRANSACTION selectSubTag -- (id)
+TRANSACTION selectTagTree -- (id)
+RESULT FILTER resfilterTreeView
 BEGIN
 	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END
