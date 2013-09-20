@@ -12,6 +12,10 @@ BEGIN
 END
 
 TRANSACTION addRecipe
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO INSERT INTO Recipe( name, normalizedName, description, categoryID, creationDate, comment )
 		VALUES ( $(name), $(normalizedName), $(description), $(category/id), datetime('now'), $(comment) );
@@ -27,6 +31,10 @@ BEGIN
 END
 
 TRANSACTION updateRecipe
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO DELETE FROM RecipePicture WHERE recipeID = $(id);
 	DO UPDATE Recipe SET name=$(name), normalizedName=$(normalizedName),
@@ -42,7 +50,7 @@ BEGIN
 			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 	FOREACH components_required/RecipeComponent DO
 		INSERT INTO RecipeComponent( recipeID, componentID, quantity )
-		VALUES( $(/id), $(id), convert_to_integer($(quantity)) );	
+		VALUES( $(/id), $(id), convert_to_integer($(quantity)) );
 END
 
 TRANSACTION deleteRecipe
@@ -111,7 +119,7 @@ BEGIN
 			maxQuantity AS "maxQuantity"
 		FROM IDlist, Category
 		WHERE Category.ID = IDlist.categoryID;
-	DO dropIdList();		
+	DO dropIdList();
 END
 
 TRANSACTION selectRecipeCategory
@@ -141,7 +149,7 @@ BEGIN
 			quantity AS "quantity"
 		FROM IDlist, Component
 		WHERE Component.ID = IDlist.componentID;
-	DO dropIdList();		
+	DO dropIdList();
 END
 
 TRANSACTION selectRecipeComponent

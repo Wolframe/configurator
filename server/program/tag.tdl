@@ -1,7 +1,11 @@
 --
 -- addTag
 --
-TRANSACTION addTag -- (parentID, name, normalizedName, description)
+TRANSACTION addTag -- (parentID, name, description)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO NONEMPTY UNIQUE SELECT rgt FROM Tag WHERE ID = $(parentID);
 	DO UPDATE Tag SET rgt = rgt + 2 WHERE rgt >= $1;
@@ -24,14 +28,18 @@ END
 --
 -- updateTag
 --
-TRANSACTION updateTag -- (id, name, normalizedName, description)
+TRANSACTION updateTag -- (id, name, description)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO UPDATE Tag SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 END
 
 --
 -- selectTag                 :Get the tag
--- selectTagByNormalizedName :Get the tag by name
+-- selectTagByName           :Get the tag by name
 -- selectTagList             :Get a list of categories
 --
 TRANSACTION selectTag -- (id)
@@ -39,7 +47,11 @@ BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE ID = $(id);
 END
 
-TRANSACTION selectTagByNormalizedName -- (normalizedName)
+TRANSACTION selectTagByName -- (name)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE normalizedName = $(normalizedName);
 END
@@ -56,7 +68,7 @@ BEGIN
 		FROM TagPath, IDunion
 		WHERE TagPath.ID = IDunion.ID
 		ORDER BY TagPath.ID;
-	
+
 	DO dropIdList();
 	DO dropIdUnion();
 END

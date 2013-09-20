@@ -1,7 +1,11 @@
 --
 -- addFeature
 --
-TRANSACTION addFeature -- (parentID, name, normalizedName, description, pictures/picture/id)
+TRANSACTION addFeature -- (parentID, name, description, pictures/picture/id)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO NONEMPTY UNIQUE SELECT rgt FROM Feature WHERE ID = $(parentID);
 	DO UPDATE Feature SET rgt = rgt + 2 WHERE rgt >= $1;
@@ -27,7 +31,11 @@ END
 --
 -- updateFeature
 --
-TRANSACTION updateFeature -- (id, name, normalizedName, description, pictures/picture/id)
+TRANSACTION updateFeature -- (id, name, description, pictures/picture/id)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO UPDATE Feature SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM FeaturePicture WHERE featureID = $(id);
@@ -37,7 +45,7 @@ END
 
 --
 -- selectFeature                 :Get the feature
--- selectFeatureByNormalizedName :Get the feature by name
+-- selectFeatureByName           :Get the feature by name
 -- selectFeatureList             :Get a list of categories
 --
 TRANSACTION selectFeature -- (id)
@@ -63,7 +71,11 @@ BEGIN
 		AND FeaturePicture.featureID = $(id);
 END
 
-TRANSACTION selectFeatureByNormalizedName -- (normalizedName)
+TRANSACTION selectFeatureByName -- (name)
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT ID AS id, parentID AS "parentID", name,

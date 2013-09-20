@@ -2,7 +2,7 @@ TRANSACTION selectComponentList
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
-			coalesce( Category.name, '' ) AS "categoryName", 
+			coalesce( Category.name, '' ) AS "categoryName",
 			coalesce( Manufacturer.name, '' ) AS "manufacturerName",
 			mfgCode AS "mfgCode", Component.webPage AS "webPage", Component.description, price
 		FROM Component
@@ -14,12 +14,16 @@ BEGIN
 END
 
 TRANSACTION addComponent
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO INSERT INTO Component( code, name, normalizedName, categoryID, manufacturerID, mfgCode, webPage, description, price )
 		VALUES ( $(code), $(name), $(normalizedName), convert_to_integer($(category/id)), convert_to_integer($(manufacturer/id)), $(mfgCode), $(webPage), $(description), convert_to_numeric($(price)) );
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Component WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $1, $(id) );
-	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;		
+	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;
 	FOREACH features_required/ComponentFeature DO
 		INSERT INTO ComponentRequires( componentID, featureID, minQuantity, maxQuantity )
 			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
@@ -29,6 +33,10 @@ BEGIN
 END
 
 TRANSACTION updateComponent
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO DELETE FROM ComponentPicture WHERE componentID = $(id);
 	DO UPDATE Component SET code=$(code), name=$(name), normalizedName=$(normalizedName),

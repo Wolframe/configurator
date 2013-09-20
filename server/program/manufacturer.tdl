@@ -9,12 +9,20 @@ BEGIN
 END
 
 TRANSACTION addManufacturer
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO INSERT INTO Manufacturer( name, normalizedName, webPage, logo )
 		VALUES ( $(name), $(normalizedName), $(webPage), convert_to_integer($(picture/id)) );
 END
 
 TRANSACTION updateManufacturer
+PREPROCESS
+BEGIN
+	INTO normalizedName DO name( name );	-- call 'name' normalizer
+END
 BEGIN
 	DO UPDATE Manufacturer SET name=$(name), normalizedName=$(normalizedName), webPage=$(webPage), logo=convert_to_integer($(picture/id))
 		WHERE ID=$(id);
