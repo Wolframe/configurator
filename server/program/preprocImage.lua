@@ -3,7 +3,8 @@ local function round( num, idp )
 	return math.floor( num * mult + 0.5 ) / mult
 end
 
-function preprocImage( picture )
+function preprocImage( picture_ )
+	local picture = picture_:table()
 	info = formfunction( "imageInfo" )( { [ "data"] = picture["image"] } ):table( )
 	width = info.width
 	height = info.height

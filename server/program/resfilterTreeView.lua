@@ -22,12 +22,13 @@ local function map_tree_node( treenodes, nodeid, tagname)
 	return tree
 end
 
--- IN tree := { name = treename, nodes = { name=STRING, description=STRING, pictures=INT[], parentID=INT, children=INT[] } }
-function resfilterTreeView( tree)
+-- IN tree := { name = treename, node = { name=STRING, description=STRING, pictures=INT[], parentID=INT, children=INT[] } }
+function resfilterTreeView( tree_)
+	local tree = tree_:table()
 	local id2nodemap = {}
 	local parentmap = {}
 	local tagname = tree[ "name"]
-	local treenodes = tree[ "nodes"]
+	local treenodes = tree[ "node"]
 
 	for i,v in pairs( treenodes) do
 		local pi = tonumber( v.parentID)

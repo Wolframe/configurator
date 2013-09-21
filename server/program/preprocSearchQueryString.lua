@@ -1,5 +1,6 @@
 
-function preprocSearchQueryString( search)
+function preprocSearchQueryString( search_)
+	local search = search_:table()
 	if search then
 		search = "%" .. normalizer( "name" )( search ) .. "%"
 	end

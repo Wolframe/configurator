@@ -1,5 +1,8 @@
 TRANSACTION selectPictureList
-RESULT INTO list
+PREPROCESS
+BEGIN
+	INTO searchkey DO preprocSearchQueryString( search );	-- call 'name' normalizer
+END
 BEGIN
 	INTO picture DO
 		SELECT Picture.ID AS "id", thumbnail, caption, coalesce( info, '' ) AS "info",
@@ -9,7 +12,7 @@ BEGIN
 		ON PictureTag.pictureID = Picture.ID
 		LEFT JOIN TagPath
 		ON PictureTag.tagID = TagPath.ID
-		WHERE coalesce( TagPath.normalizedName, '' ) like $(search)
+		WHERE coalesce( TagPath.normalizedName, '' ) like $(searchkey)
 		GROUP BY Picture.ID, Picture.thumbnail, Picture.caption, Picture.info,
 			Picture.width, Picture.height, Picture.image
 		ORDER BY Picture.ID;
@@ -76,7 +79,7 @@ BEGIN
 		WHERE ID = $(id);
 	FOREACH picture DO DELETE FROM PictureTag WHERE pictureID = $(id);
 	FOREACH picture/tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/picture/id), $(id) );
-	DO DELETE FROM PictureTag WHERE tagID IS NULL;	
+	DO DELETE FROM PictureTag WHERE tagID IS NULL;
 END
 
 TRANSACTION addPicture -- (picture/caption, picture/info, picture/image, picture/width, picture/height, picture/thumbnail)
@@ -85,7 +88,7 @@ BEGIN
 		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail) );
 	DO NONEMPTY UNIQUE getLastPictureID( );
 	FOREACH picture/tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(id) );
-	DO DELETE FROM PictureTag WHERE tagID IS NULL;	
+	DO DELETE FROM PictureTag WHERE tagID IS NULL;
 END
 
 TRANSACTION deletePicture -- (id)
@@ -115,7 +118,7 @@ BEGIN
 	INTO picture DO SELECT Picture.ID AS "id", thumbnail, caption FROM Picture, IDunion WHERE Picture.ID = IDunion.ID;
 
 	DO dropIdList();
-	DO dropIdUnion();	
+	DO dropIdUnion();
 END
 
 TRANSACTION getPictureThumbnail

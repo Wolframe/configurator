@@ -1,14 +1,21 @@
+TagRequest=selectTag(xml):Tag;
+TagHierarchyRequest=selectTagTree(xml):TagHierarchy;
 TagSetRequest=selectTagSet(xml):TagList;
 
 PictureRequest=selectPicture(xml):Picture;
+PictureListRequest=selectPictureList(xml):PictureList;
 DeletePictureRequest=deletePicture(xml);
 PictureAttributeRequest=selectPictureAttributes(xml):PictureAttributes;
 PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(xml):PictureThumbnail;
 PictureTagSetRequest=selectPictureTagSet(xml):TagList;
 
+FeatureRequest=selectFeature(xml):Feature;
+FeatureHierarchyRequest=selectFeatureTree(xml):FeatureHierarchy;
 FeaturePictureListRequest=selectFeaturePictures(xml):PictureThumbnailList;
 
+CategoryRequest=selectCategory(xml):Category;
+CategoryHierarchyRequest=selectCategoryTree(xml):CategoryHierarchy;
 CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
 CategoryFeatureListRequest=selectCategoryFeatureList(xml):CategoryFeatureList;
 CategoryFeatureEdit=selectCategoryFeature(xml):CategoryFeatureEdit;
