@@ -1,32 +1,29 @@
-FORM Tag
+STRUCT TagContent
 {
-	tag
-	{
-		id @int
-		parentID @int
-		name string
-		description string
-	}
+	id @int
+	parentID ?@int
+	name string
+	description string
+}
+
+STRUCT TagReference
+{
+	id @int
 }
 
 FORM deleteTag
 {
-	tag
-	{
-		id @int
-	}
+	tag TagReference
 }
 
 FORM updateTag
 {
-	_ Tag
+	tag TagContent
 }
 
 FORM TagHierarchyNode
 {
-	id @int
-	parentID @int
-	name string
+	_ TagContent
 	item ^TagHierarchyNode[]
 }
 
@@ -42,35 +39,21 @@ FORM TagSetRequest
 {
 	tags
 	{
-		tag []
-		{
-			id @int
-		}
-		add []
-		{
-			id @int
-		}
+		tag TagReference[]
+		add TagReference[]
 	}
 }
 
 FORM PictureTagSetRequest
 {
-	tags
-	{
-		id @int
-	}
+	tags TagReference
 }
 
 FORM TagList
 {
 	tags
 	{
-		tag []
-		{
-			id @int
-			name string
-			description string
-		}
+		tag TagContent[]
 	}
 }
 

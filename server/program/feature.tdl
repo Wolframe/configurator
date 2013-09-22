@@ -107,7 +107,7 @@ END
 TRANSACTION selectFeatureTree -- (id)
 RESULT FILTER resfilterTreeView
 BEGIN
-	INTO name print "feature"
+	INTO name print "feature";
 	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM Feature AS P1, Feature AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END
 
