@@ -9,7 +9,6 @@ function preprocSearchQueryString( search_)
 	if search == nil then
 		search = "%%"
 	end
-	logger.printc( "SEARCH RESULT ", search)
 	return search
 end
 

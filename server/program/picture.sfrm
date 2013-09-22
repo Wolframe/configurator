@@ -60,7 +60,7 @@ FORM updatePicture
 }
 
 FORM PictureList
-{	
+{
 	list
 	{
 		picture []
@@ -73,6 +73,21 @@ FORM PictureList
 			width int
 			height int
 			size int
+			tagstring string
+		}
+	}
+}
+
+FORM PicturePreviewList
+{
+	list
+	{
+		picture []
+		{
+			id @int
+			caption string
+			info string
+			thumbnail string
 			tagstring string
 		}
 	}

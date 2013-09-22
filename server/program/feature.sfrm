@@ -3,10 +3,10 @@ FORM Feature
 	feature
 	{
 		id @int
-		parentID @int
+		parentID ?@int
 		root ?string
 		name string
-		description string
+		description ?string
 		used_categories string
 	}
 }
@@ -27,8 +27,9 @@ FORM updateFeature
 FORM FeatureHierarchyNode
 {
 	id @int
-	parentID @int
+	parentID ?@int
 	name string
+	description ?string
 	item ^FeatureHierarchyNode[]
 }
 
@@ -40,7 +41,7 @@ FORM FeatureHierarchy
 	}
 }
 
-FORM FeaturePictureListRequest 
+FORM FeaturePictureListRequest
 {
 	feature
 	{

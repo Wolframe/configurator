@@ -11,25 +11,25 @@ FORM Category
 	category
 	{
 		id ?@int
-		parentID @int
+		parentID ?@int
 		root ?string
 		name string
-		description string
-		pictures
+		description ?string
+		pictures ?
 		{
 			picture []
 			{
 				id @int
 			}
 		}
-		features_required
+		features_required ?
 		{
 			CategoryFeature []
 			{
 				_ CategoryFeature
 			}
 		}
-		features_provided
+		features_provided ?
 		{
 			CategoryFeature []
 			{
@@ -52,8 +52,9 @@ FORM updateCategory
 FORM CategoryHierarchyNode
 {
 	id @int
-	parentID @int
+	parentID ?@int
 	name string
+	description ?string
 	item ^CategoryHierarchyNode[]
 }
 

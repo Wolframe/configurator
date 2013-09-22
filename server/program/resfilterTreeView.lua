@@ -43,13 +43,11 @@ end
 --
 function resfilterTreeView( tree_)
 	local tree = tree_:table()
-	logger.printc( "TREE=", tree)
 	local id2nodemap = {}
 	local parentmap = {}
 	local tagname = tree[ "name"]
 	local treenodes = tree[ "node"]
 
-	logger.printc( "TREENODES=", treenodes)
 	for i,v in pairs( treenodes) do
 		local pi = 0
 		if v.parentID then
@@ -59,7 +57,6 @@ function resfilterTreeView( tree_)
 		parentmap[ ti] = pi
 		table.insert( id2nodemap, ti, { name=v.name, description=v.description, pictures=v.pictures, parentID=pi, children = {} } )
 	end
-	logger.printc( "PARENTMAP=", parentmap)
 	local rootID = nil
 	for i,v in pairs( parentmap) do
 		if not parentmap[ v] and parentmap[ v] ~= 0 then
@@ -76,10 +73,8 @@ function resfilterTreeView( tree_)
 			end
 		end
 		local rt = map_tree_node( id2nodemap, rootID, tagname);
-		logger.printc( "RESULT resfilterTreeView: ", rt)
 		return {item = rt[ "item"]}
 	else
-		logger.printc( "RESULT OF resfilterTreeView IS EMPTY")
 		return nil
 	end
 end
