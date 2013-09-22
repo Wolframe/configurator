@@ -3,7 +3,7 @@ STRUCT TagContent
 	id @int
 	parentID ?@int
 	name string
-	description string
+	description ?string
 }
 
 STRUCT TagReference
@@ -25,6 +25,11 @@ FORM TagHierarchyNode
 {
 	_ TagContent
 	item ^TagHierarchyNode[]
+}
+
+FORM Tag
+{
+	tag TagContent
 }
 
 FORM TagHierarchy

@@ -1,10 +1,10 @@
 
 --\brief Local function resfilterTreeView
 --		Recursiv build of the node of a tree
-local function map_tree_node( treenodes, nodeid)
+local function map_tree_node( treenodes, nodeid, tagname)
 	local tree = nil
 	if treenodes[ nodeid ] then
-		tree = { id = nodeid, name = treenodes[ nodeid ].name }
+		tree = { id = nodeid, name = treenodes[ nodeid ].name}
 		if treenodes[ nodeid ].description then
 			tree[ "description"] = treenodes[ nodeid ].description
 		end
@@ -13,7 +13,7 @@ local function map_tree_node( treenodes, nodeid)
 		end
 		local children = {}
 		for i,v in pairs( treenodes[ nodeid].children) do
-			local childnode = map_tree_node( treenodes, v)
+			local childnode = map_tree_node( treenodes, v, tagname)
 			table.insert( children, childnode)
 		end
 		if #children > 0 then
@@ -62,7 +62,7 @@ function resfilterTreeView( tree_)
 	logger.printc( "PARENTMAP=", parentmap)
 	local rootID = nil
 	for i,v in pairs( parentmap) do
-		if not parentmap[ v] or parentmap[ v] == 0 then
+		if not parentmap[ v] and parentmap[ v] ~= 0 then
 			if rootID then
 				error("filter tree called with multiple root nodes")
 			end
@@ -75,9 +75,9 @@ function resfilterTreeView( tree_)
 				table.insert( id2nodemap[ v.parentID ].children, i )
 			end
 		end
-		local rt = map_tree_node( id2nodemap, rootID);
+		local rt = map_tree_node( id2nodemap, rootID, tagname);
 		logger.printc( "RESULT resfilterTreeView: ", rt)
-		return rt
+		return {item = rt[ "item"]}
 	else
 		logger.printc( "RESULT OF resfilterTreeView IS EMPTY")
 		return nil

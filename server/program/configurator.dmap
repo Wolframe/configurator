@@ -1,7 +1,12 @@
+createTag=addTag(xml);
+editTag=updateTag(xml);
+deleteTag=deleteTag(xml);
 TagRequest=selectTag(xml):Tag;
 TagHierarchyRequest=selectTagTree(xml):TagHierarchy;
 TagSetRequest=selectTagSet(xml):TagList;
 
+createPicture=addPicture(xml);
+updatePicture=updatePicture(xml);
 PictureRequest=selectPicture(xml):Picture;
 PictureListRequest=selectPictureList(xml):PictureList;
 DeletePictureRequest=deletePicture(xml);
@@ -10,16 +15,24 @@ PictureThumbnailListRequest=getPictureThumbnailList(xml):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(xml):PictureThumbnail;
 PictureTagSetRequest=selectPictureTagSet(xml):TagList;
 
+createFeature=addFeature(xml);
+updateFeature=updateFeature(xml);
+deleteFeature=deleteFeature(xml);
 FeatureRequest=selectFeature(xml):Feature;
 FeatureHierarchyRequest=selectFeatureTree(xml):FeatureHierarchy;
 FeaturePictureListRequest=selectFeaturePictures(xml):PictureThumbnailList;
 
+createCategory=addCategory(xml);
+updateCategory=updateCategory(xml);
+deleteCategory=deleteCategory(xml);
 CategoryRequest=selectCategory(xml):Category;
 CategoryHierarchyRequest=selectCategoryTree(xml):CategoryHierarchy;
 CategoryPictureListRequest=selectCatogeryPictures(xml):PictureThumbnailList;
 CategoryFeatureListRequest=selectCategoryFeatureList(xml):CategoryFeatureList;
 CategoryFeatureEdit=selectCategoryFeature(xml):CategoryFeatureEdit;
 
+createComponent=addComponent(xml);
+updateComponent=updateComponent(xml);
 ComponentListRequest=selectComponentList(xml):ComponentList;
 ComponentRequest=selectComponent(xml):Component;
 DeleteComponentRequest=deleteComponent(xml);
@@ -27,11 +40,15 @@ ComponentPictureListRequest=selectComponentPictures(xml):PictureThumbnailList;
 ComponentFeatureListRequest=selectComponentFeatureList(xml):ComponentFeatureList;
 ComponentFeatureEdit=selectComponentFeature(xml):ComponentFeatureEdit;
 
+addManufacturer=addManufacturer(xml);
+updateManufacturer=updateManufacturer(xml);
 ManufacturerListRequest=selectManufacturerList(xml):ManufacturerList;
 ManufacturerRequest=selectManufacturer(xml):Manufacturer;
 DeleteManufacturerRequest=deleteManufacturer(xml);
 ManufacturerPictureRequest=selectManufacturerPicture(xml):PictureThumbnail;
 
+createRecipe=addRecipe(xml);
+updateRecipe=updateRecipe(xml);
 RecipeListRequest=selectRecipeList(xml):RecipeList;
 RecipeRequest=selectRecipe(xml):Recipe;
 DeleteRecipeRequest=deleteRecipe(xml);
@@ -41,6 +58,8 @@ RecipeCategoryEdit=selectRecipeCategory(xml):RecipeCategoryEdit;
 RecipeComponentListRequest=selectRecipeComponentList(xml):RecipeComponentList;
 RecipeComponentEdit=selectRecipeComponent(xml):RecipeComponentEdit;
 
+createConfiguration=addConfiguration(xml):Configuration;
+updateConfiguration=updateConfiguration(xml);
 ConfigurationListRequest=selectConfigurationList(xml):ConfigurationList;
 ConfigurationRequest=selectConfiguration(xml):Configuration;
 DeleteConfigurationRequest=deleteConfiguration(xml);
@@ -54,3 +73,5 @@ ConfiguratorDeleteComponentRequest=ConfiguratorDeleteComponent(xml);
 LastConfigurationIDRequest=getLastConfigurationID(xml):Configuration;
 
 ExportRequest=exportData(xml):ExportData;
+
+

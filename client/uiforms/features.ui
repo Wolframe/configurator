@@ -58,7 +58,7 @@
      </attribute>
      <column>
       <property name="text">
-       <string>feature</string>
+       <string>name</string>
       </property>
      </column>
      <column>

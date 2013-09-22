@@ -1,17 +1,18 @@
 --
 -- addCategory
 --
-TRANSACTION addCategory -- (parentID, name, description, pictures/picture/id)
+TRANSACTION addCategory -- (?parentID, name, description, pictures/picture/id)
 PREPROCESS
 BEGIN
-	INTO normalizedName DO name( name );	-- call 'name' normalizer
+	INTO normalizedName DO name( name );			-- call 'name' normalizer
+	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
 END
 BEGIN
-	DO NONEMPTY UNIQUE SELECT rgt FROM Category WHERE ID = $(parentID);
+	DO NONEMPTY UNIQUE SELECT rgt FROM Category WHERE ID = $(_parentID);
 	DO UPDATE Category SET rgt = rgt + 2 WHERE rgt >= $1;
 	DO UPDATE Category SET lft = lft + 2 WHERE lft > $1;
-	DO INSERT INTO Category (parentID, name, normalizedName, description, lft, rgt) VALUES ($(parentID), $(name), $(normalizedName), $(description), $1, $1+1);
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Category WHERE normalizedName = $(normalizedName) AND parentID = $(parentID);
+	DO INSERT INTO Category (parentID, name, normalizedName, description, lft, rgt) VALUES ($(_parentID), $(name), $(normalizedName), $(description), $1, $1+1);
+	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Category WHERE normalizedName = $(normalizedName) AND parentID = $(_parentID);
 	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $1, $(id) );
 	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
 	FOREACH features_required/CategoryFeature DO

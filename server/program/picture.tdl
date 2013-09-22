@@ -1,7 +1,7 @@
 TRANSACTION selectPictureList
 PREPROCESS
 BEGIN
-	INTO searchkey DO preprocSearchQueryString( search );	-- call 'name' normalizer
+	FOREACH search INTO key DO preprocSearchQueryString( . );	-- call 'name' normalizer
 END
 BEGIN
 	INTO picture DO
@@ -12,7 +12,7 @@ BEGIN
 		ON PictureTag.pictureID = Picture.ID
 		LEFT JOIN TagPath
 		ON PictureTag.tagID = TagPath.ID
-		WHERE coalesce( TagPath.normalizedName, '' ) like $(searchkey)
+		WHERE coalesce( TagPath.normalizedName, '' ) like $(search/key)
 		GROUP BY Picture.ID, Picture.thumbnail, Picture.caption, Picture.info,
 			Picture.width, Picture.height, Picture.image
 		ORDER BY Picture.ID;
@@ -72,6 +72,10 @@ BEGIN
 END
 
 TRANSACTION updatePicture -- (picture/id, picture/caption, picture/info, picture/image, picture/width, picture/height, picture/thumbnail)
+PREPROCESS
+BEGIN
+	FOREACH picture INTO . DO preprocImage( . );	-- call image preprocessing
+END
 BEGIN
 	FOREACH picture DO UPDATE Picture SET
 		caption = $(caption), info = $(info), image = $(image),
@@ -83,6 +87,10 @@ BEGIN
 END
 
 TRANSACTION addPicture -- (picture/caption, picture/info, picture/image, picture/width, picture/height, picture/thumbnail)
+PREPROCESS
+BEGIN
+	FOREACH picture INTO . DO preprocImage( . );	-- call image preprocessing
+END
 BEGIN
 	FOREACH picture DO INSERT INTO Picture( caption, info, image, width, height, thumbnail )
 		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail) );
