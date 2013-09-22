@@ -1,4 +1,6 @@
 
+--\brief Local function resfilterTreeView
+--		Recursiv build of the node of a tree
 local function map_tree_node( treenodes, nodeid)
 	local tree = nil
 	if treenodes[ nodeid ] then
@@ -21,7 +23,24 @@ local function map_tree_node( treenodes, nodeid)
 	return tree
 end
 
--- IN tree := { name = treename, node = { name=STRING, description=STRING, pictures=INT[], parentID=INT, children=INT[] } }
+--\brief TDL Result Filter Function resfilterTreeView
+--		Builds a tree structure out from a list of nodes linked with ID integer numbers (parent,children)
+--\param[in] tree structure with tree properties
+--		name : Name of the tree
+--		node : list of structure
+--			{
+--				name		: name of the node
+--				description	: description of the node
+--				pictures	: list of picture ids
+--				parentID	: id of the parent in the tree
+--				children	: list of children ids
+--			}
+--\return recursively defined list (*) of tree structure with
+--		name		: name of the node
+--		description	: description of the node
+--		pictures	: list of picture ids
+--		item		: Array of child tree nodes (*)
+--
 function resfilterTreeView( tree_)
 	local tree = tree_:table()
 	logger.printc( "TREE=", tree)
@@ -56,8 +75,7 @@ function resfilterTreeView( tree_)
 				table.insert( id2nodemap[ v.parentID ].children, i )
 			end
 		end
-		local rt = {}
-		rt[ "item"] = map_tree_node( id2nodemap, rootID)
+		local rt = map_tree_node( id2nodemap, rootID);
 		logger.printc( "RESULT resfilterTreeView: ", rt)
 		return rt
 	else

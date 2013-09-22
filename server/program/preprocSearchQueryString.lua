@@ -1,4 +1,6 @@
 
+--\brief TDL Preprocess Function preprocSearchQueryString
+--		Builds a query string to be usable in a SQL 'like' statement argument
 function preprocSearchQueryString( search_)
 	local search = search_:table()
 	if search then
