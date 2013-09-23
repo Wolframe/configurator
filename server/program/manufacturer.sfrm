@@ -4,10 +4,10 @@ FORM Manufacturer
 	{
 		id @int
 		name string
-		webPage string
-		picture
+		webPage ?string
+		picture ?
 		{
-			id @int
+			id ?@int
 		}
 	}
 }
@@ -26,10 +26,10 @@ FORM updateManufacturer
 	{
 		id @int
 		name string
-		webPage string
-		picture
+		webPage ?string
+		picture ?
 		{
-			id @int
+			id ?@int
 		}
 	}
 }
@@ -39,10 +39,10 @@ FORM addManufacturer
 	manufacturer
 	{
 		name string
-		webPage string
-		picture
+		webPage ?string
+		picture ?
 		{
-			id @int
+			id ?@int
 		}
 	}
 }
@@ -62,7 +62,9 @@ FORM DeleteManufacturerRequest
 
 FORM ManufacturerListRequest
 {
-	_ BaseManufacturerRequest
+	manufacturer
+	{
+	}
 }
 
 FORM ManufacturerRequest
@@ -78,8 +80,8 @@ FORM ManufacturerList
 		{
 			id @int
 			name string
-			webPage string
-			thumbnail string
+			webPage ?string
+			thumbnail ?string
 		}
 	}
 }

@@ -89,9 +89,6 @@
        <property name="action:select_picture" stdset="0">
         <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}</string>
        </property>
-       <property name="id" stdset="0">
-        <string/>
-       </property>
        <property name="tooltip" stdset="0">
         <string/>
        </property>
@@ -152,7 +149,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string>addManufacturer manufacturer {name {{main.name}}; webPage {{main.webPage}}; picture{id={main.image.id} } }</string>
+        <string>addManufacturer manufacturer {name {{main.name}}; webPage {{main.webPage}}; picture{id={main.image.id:?} } }</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>

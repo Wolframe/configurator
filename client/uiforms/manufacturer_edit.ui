@@ -162,7 +162,7 @@
         <string>Save</string>
        </property>
        <property name="action" stdset="0">
-        <string>updateManufacturer manufacturer {id={main.id}; name {{main.name}}; webPage {{main.webPage}}; picture{id={main.image.id} } }</string>
+        <string>updateManufacturer manufacturer {id={main.id}; name {{main.name}}; webPage {{main.webPage}}; picture{id={main.image.id:?} } }</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>
