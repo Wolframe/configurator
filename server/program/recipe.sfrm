@@ -13,44 +13,53 @@ FORM RecipeComponent
 	quantity int
 }
 
+STRUCT RecipeContent
+{
+	name string
+	description ?string
+	category ?
+	{
+		id ?@int
+		_ ?string
+	}
+	creationDate ?string
+	comment ?string
+	picture []
+	{
+		id @int
+		_ ?string
+	}
+	categories_required ?
+	{
+		RecipeCategory []
+		{
+			_ RecipeCategory
+		}
+	}
+	components_required ?
+	{
+		RecipeComponent []
+		{
+			_ RecipeComponent
+		}
+	}
+}
+
 FORM Recipe
 {
 	recipe
 	{
 		id @int
-		name string
-		description string
-		category {
-			id @int
-			_ string
-		}
-		creationDate string
-		comment string
-		picture []
-		{
-			id @int
-			_ string
-		}
-		categories_required
-		{
-			RecipeCategory []
-			{
-				_ RecipeCategory
-			}
-		}
-		components_required
-		{
-			RecipeComponent []
-			{
-				_ RecipeComponent
-			}
-		}
+		_ RecipeContent
 	}
 }
 
 FORM createRecipe
 {
-	_ Recipe
+	recipe
+	{
+		_ RecipeContent
+	}
 }
 
 FORM updateRecipe
@@ -78,7 +87,9 @@ FORM RecipePictureListRequest
 
 FORM RecipeListRequest
 {
-	_ BaseRecipeRequest
+	recipe
+	{
+	}
 }
 
 FORM RecipeRequest
@@ -94,10 +105,10 @@ FORM RecipeList
 		{
 			id @int
 			name string
-			description string
-			categoryName string
-			creationDate string
-			comment string
+			description ?string
+			categoryName ?string
+			creationDate ?string
+			comment ?string
 		}
 	}
 }

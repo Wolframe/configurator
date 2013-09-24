@@ -55,7 +55,7 @@
      </attribute>
      <column>
       <property name="text">
-       <string>category</string>
+       <string>name</string>
       </property>
      </column>
     </widget>

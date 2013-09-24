@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>238</width>
-    <height>93</height>
+    <width>428</width>
+    <height>246</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@
       <string>RecipeRequest recipe {id={main.id}}</string>
      </property>
      <property name="answer" stdset="0">
-      <string>Recipe recipe {id={?}; name{{1}}; category{id={?}; {{?}} }; description{{?}}; comment {{?}}; creationDate{{?}}; categories_required{ RecipeCategory[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; components_required { RecipeComponent[] {id={?}; name{{?}}; quantity{{?}} } } }</string>
+      <string>Recipe recipe {id={?}; name{{1}}; category{id={?}; {?} }; description{{?}}; comment {{?}}; creationDate{{?}}; categories_required{ RecipeCategory[] {id={?}; name{{?}}; minQuantity{{?}}; maxQuantity{{?}} } }; components_required { RecipeComponent[] {id={?}; name{{?}}; quantity{{?}} } } }</string>
      </property>
     </widget>
    </item>

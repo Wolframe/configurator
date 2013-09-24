@@ -1,7 +1,7 @@
 --\brief TDL Preprocess Tree Node Attributes
 --		Interpretes some tree node attributes and set some values accordingly
 --\param[in] node structure with tree node attributes
---		root : "true"/"false" defines if the node is the root node
+--		root		: "true"/"false" defines if the node is the root node
 --\return node structure with tree node attributes
 --		ancessor	: 1 if node["root"] == "true" else node["parentID"]
 --

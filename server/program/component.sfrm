@@ -14,30 +14,30 @@ FORM Component
 		code string
 		name string
 		category {
-			id @int
-			_ string
+			id ?@int
+			_ ?string
 		}
 		manufacturer {
-			id @int
-			_ string
+			id ?@int
+			_ ?string
 		}
-		mfgCode string
-		webPage string
-		description string
+		mfgCode ?string
+		webPage ?string
+		description ?string
 		price float
 		picture []
 		{
 			id @int
 			_ string
 		}
-		features_required
+		features_required ?
 		{
 			ComponentFeature []
 			{
 				_ ComponentFeature
 			}
 		}
-		features_provided
+		features_provided ?
 		{
 			ComponentFeature []
 			{
@@ -77,7 +77,9 @@ FORM ComponentPictureListRequest
 
 FORM ComponentListRequest
 {
-	_ BaseComponentRequest
+	component
+	{
+	}
 }
 
 FORM ComponentRequest
@@ -99,7 +101,7 @@ FORM ComponentList
 			mfgCode string
 			webPage string
 			description string
-			price float			
+			price float
 		}
 	}
 }

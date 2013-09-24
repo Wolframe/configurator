@@ -7,7 +7,7 @@ end
 --\brief TDL Preprocess Function preprocImage
 --		Enriches a structure with picture attributes with values calculated by the Wolframe graphix library module
 --\param[in] picture structure with picture properties
---		image : base64 encoded picture data
+--		image		: base64 encoded picture data
 --\return picture structure with picture properties
 --		width		: Calculated width of the picture
 --		height		: Calculated height of the picture

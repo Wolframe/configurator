@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>711</width>
-    <height>302</height>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -35,7 +35,7 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string>createRecipe recipe {name{{main.name}}; category{id={main.category.id}}; description{{main.description}}; comment{{main.comment}}; picture[] {id={main.pictures.id}}; categories_required{RecipeCategory[]{ id={required_categories.row.id:?}; name{{required_categories.row.name:?}}; minQuantity{{required_categories.row.min:?}}; maxQuantity{{required_categories.row.max:?}} }}; components_required{RecipeComponent[]{ id={required_components.row.id:?}; name{{required_components.row.name:?}}; quantity{{required_components.row.quantity:?}} }} }</string>
+        <string>createRecipe recipe {name{{main.name}}; category{id={main.category.id:?}}; description{{main.description}}; comment{{main.comment}}; picture[] {id={main.pictures.id}}; categories_required{RecipeCategory[]{ id={required_categories.row.id:?}; name{{required_categories.row.name:?}}; minQuantity{{required_categories.row.min:?}}; maxQuantity{{required_categories.row.max:?}} }}; components_required{RecipeComponent[]{ id={required_components.row.id:?}; name{{required_components.row.name:?}}; quantity{{required_components.row.quantity:?}} }} }</string>
        </property>
        <property name="form" stdset="0">
         <string>_CLOSE_</string>
@@ -103,9 +103,6 @@
          <property name="answer" stdset="0">
           <string>Category category {id={id}; parentID={?}; root{{?}}; name{{text}}; description{{?}}; features_required{CategoryFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }
 </string>
-         </property>
-         <property name="id" stdset="0">
-          <string/>
          </property>
         </widget>
        </item>

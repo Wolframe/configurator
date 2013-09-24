@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>274</width>
-    <height>269</height>
+    <width>689</width>
+    <height>403</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -71,7 +71,7 @@
      </attribute>
      <column>
       <property name="text">
-       <string>tag</string>
+       <string>name</string>
       </property>
      </column>
      <column>

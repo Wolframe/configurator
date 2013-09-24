@@ -18,7 +18,7 @@ BEGIN
 		ORDER BY Picture.ID;
 END
 
-TRANSACTION selectPicture -- (/picture/id)
+TRANSACTION selectPicture -- (id)
 BEGIN
 	INTO . DO UNIQUE
 		SELECT Picture.ID AS "id", image, caption, coalesce( info, '' ) AS "info", width, height,
@@ -61,7 +61,7 @@ BEGIN
 		WHERE Picture.ID = $(id);
 END
 
-TRANSACTION selectPictureAttributes -- (/picture/id)
+TRANSACTION selectPictureAttributes -- (id)
 BEGIN
 	INTO picture DO UNIQUE
 		SELECT Picture.ID AS "id", caption, coalesce( info, '' ) AS "info" FROM Picture
@@ -71,31 +71,31 @@ BEGIN
 		WHERE PictureTag.tagID = Tag.ID AND PictureTag.pictureID = Picture.ID AND Picture.ID = $(id);
 END
 
-TRANSACTION updatePicture -- (picture/id, picture/caption, picture/info, picture/image, picture/width, picture/height, picture/thumbnail)
+TRANSACTION updatePicture -- (id, caption, info, image)
 PREPROCESS
 BEGIN
-	FOREACH picture INTO . DO preprocImage( . );	-- call image preprocessing
+	INTO . DO preprocImage( . );	-- call image preprocessing
 END
 BEGIN
-	FOREACH picture DO UPDATE Picture SET
+	DO UPDATE Picture SET
 		caption = $(caption), info = $(info), image = $(image),
 		width = $(width), height = $(height), thumbnail = $(thumbnail)
 		WHERE ID = $(id);
-	FOREACH picture DO DELETE FROM PictureTag WHERE pictureID = $(id);
-	FOREACH picture/tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/picture/id), $(id) );
+	DO DELETE FROM PictureTag WHERE pictureID = $(id);
+	FOREACH tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/picture/id), $(id) );
 	DO DELETE FROM PictureTag WHERE tagID IS NULL;
 END
 
-TRANSACTION addPicture -- (picture/caption, picture/info, picture/image, picture/width, picture/height, picture/thumbnail)
+TRANSACTION addPicture -- (caption, info, image)
 PREPROCESS
 BEGIN
-	FOREACH picture INTO . DO preprocImage( . );	-- call image preprocessing
+	INTO . DO preprocImage( . );	-- call image preprocessing
 END
 BEGIN
-	FOREACH picture DO INSERT INTO Picture( caption, info, image, width, height, thumbnail )
+	DO INSERT INTO Picture( caption, info, image, width, height, thumbnail )
 		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail) );
 	DO NONEMPTY UNIQUE getLastPictureID( );
-	FOREACH picture/tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(id) );
+	FOREACH tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(id) );
 	DO DELETE FROM PictureTag WHERE tagID IS NULL;
 END
 
