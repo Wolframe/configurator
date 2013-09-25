@@ -1,7 +1,6 @@
 FORM CategoryFeature
 {
 	id @int
-	name string
 	minQuantity int
 	maxQuantity int
 }

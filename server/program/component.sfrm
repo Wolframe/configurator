@@ -1,4 +1,4 @@
-FORM ComponentFeature
+STRUCT ComponentFeatureStruct
 {
 	id @int
 	name string
@@ -24,25 +24,19 @@ FORM Component
 		mfgCode ?string
 		webPage ?string
 		description ?string
-		price float
+		price ?float
 		picture []
 		{
 			id @int
-			_ string
+			_ ?string
 		}
 		features_required ?
 		{
-			ComponentFeature []
-			{
-				_ ComponentFeature
-			}
+			ComponentFeature ComponentFeatureStruct[]
 		}
 		features_provided ?
 		{
-			ComponentFeature []
-			{
-				_ ComponentFeature
-			}
+			ComponentFeature ComponentFeatureStruct[]
 		}
 	}
 }
@@ -101,7 +95,7 @@ FORM ComponentList
 			mfgCode string
 			webPage string
 			description string
-			price float
+			price ?float
 		}
 	}
 }
@@ -133,7 +127,7 @@ FORM ComponentFeatureEdit
 {
 	feature
 	{
-		_ ComponentFeature
+		_ ComponentFeatureStruct
 	}
 }
 
@@ -141,9 +135,6 @@ FORM ComponentFeatureList
 {
 	ComponentFeatures
 	{
-		ComponentFeature []
-		{
-			_ ComponentFeature
-		}
+		ComponentFeature ComponentFeatureStruct[]
 	}
 }

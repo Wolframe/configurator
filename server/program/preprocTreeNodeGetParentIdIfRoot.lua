@@ -3,7 +3,7 @@
 --\param[in] node structure with tree node attributes
 --		root		: "true"/"false" defines if the node is the root node
 --\return node structure with tree node attributes
---		ancessor	: 1 if node["root"] == "true" else node["parentID"]
+--		_parentID	: 1 if node["root"] == "true" else node["parentID"]
 --
 function preprocTreeNodeGetParentIdIfRoot( node_ )
 	local rt = {}
