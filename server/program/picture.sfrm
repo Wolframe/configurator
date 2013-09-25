@@ -54,7 +54,7 @@ FORM Picture
 		id @int
 		caption ?string
 		info ?string
-		thumbnail string
+		thumbnail ?string
 		image string
 		width int
 		height int
