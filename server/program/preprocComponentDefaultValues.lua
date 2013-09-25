@@ -5,11 +5,15 @@
 function preprocComponentDefaultValues( node_ )
 	local rt = {}
 	local node = node_:table()
-	if not node["price"] then
-		rt["price"] = 0
+	if not node["price"] or node["price"] == '' then
+		rt["_price"] = 0
+	else
+		rt["_price"] = node["price"]
 	end
 	if not node["priceCurrency"] then
-		rt["priceCurrency"] = 'E'
+		rt["_priceCurrency"] = 'E'
+	else
+		rt["_priceCurrency"] = node["priceCurrency"]
 	end
 	return rt
 end

@@ -21,7 +21,7 @@ BEGIN
 END
 BEGIN
 	DO INSERT INTO Component( code, name, normalizedName, categoryID, manufacturerID, mfgCode, webPage, description, price, priceCurrency )
-		VALUES ( $(code), $(name), $(normalizedName), convert_to_integer($(category/id)), convert_to_integer($(manufacturer/id)), $(mfgCode), $(webPage), $(description), convert_to_numeric($(price)), 'E' );
+		VALUES ( $(code), $(name), $(normalizedName), convert_to_integer($(category/id)), convert_to_integer($(manufacturer/id)), $(mfgCode), $(webPage), $(description), convert_to_numeric($(_price)), $(_priceCurrency));
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Component WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $1, $(id) );
 	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;
@@ -36,14 +36,15 @@ END
 TRANSACTION updateComponent
 PREPROCESS
 BEGIN
-	INTO normalizedName DO name( name );	-- call 'name' normalizer
+	INTO normalizedName DO name( name );		-- call 'name' normalizer
+	INTO . DO preprocComponentDefaultValues( . );	-- get default values for non defined things
 END
 BEGIN
 	DO DELETE FROM ComponentPicture WHERE componentID = $(id);
 	DO UPDATE Component SET code=$(code), name=$(name), normalizedName=$(normalizedName),
 		categoryID=convert_to_integer($(category/id)), manufacturerID=convert_to_integer($(manufacturer/id)),
 		mfgCode=$(mfgCode), webPage=$(webPage), description=$(description),
-		price=convert_to_numeric($(price))
+		price=convert_to_numeric($(_price))
 		WHERE ID=$(id);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $(/id), $(id) );
 	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;
