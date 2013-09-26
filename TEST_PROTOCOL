@@ -1,0 +1,44 @@
+- tags:
+  - add a tag in the tree
+  - test also root switch
+  - create two tags with same name => constraint violation, must fail
+  - create two tags with same name, but in different levels of the
+    tree => should work
+  - edit a tag, try to match a name on the same level
+    => constraint violation, must fail
+  - edit a tag, change the name and the description
+  - remove tags again
+  - create a tag in a tag (small subtree), delete root of that subtree
+- picture
+  - add a picture, fill in at least two tags
+  - show picture (info)
+  - edit picture, replace image, change tags (remove some, add some more)
+  - use a tag added above, try to remove the tag above
+    => constraint violation, must fail (picture still references tag)
+- feature
+  - add feature with image added in previous step, the picture picker
+    must search by name/tag.
+  - edit feature: remove an image, pick another one
+- categories
+  - add category with features required and features provided and pictures
+  - edit category, especially change quantities of features and remove and
+    add features
+  - delete category, again try trees
+  - try to delete a feature which is still references in a category
+- components
+  - add a componennt with features and pictures
+  - edit component, especially change quantities of features and remove and
+    add features
+  - delete component
+  - try to delete a feature which is still references in a component
+- recipe
+  - add a recipe with minimal properties (only name), test 0:n relations this way
+  - set category
+  - set required features and components, edit them
+  - add multiple pictures, see if first picture appears in configuration based 
+    on this recipe
+- configuration
+  - create one, pick a recipe, set properties
+  - use configurator on the configuration, choose components till the recipe
+    is done
+  - show configuration info

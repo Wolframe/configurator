@@ -1,0 +1,25 @@
+- pictures
+  - edit picture looses tag selection
+  - in wolfclient: WARNING: libpng warning: iCCP: known incorrect sRGB profile
+- features
+  - add: "as child of %1"
+  - edit:
+    - REQUEST unkonw tag (pictures) at /feature-.. candidates are {id, parentID, root, name, description, used_categories}
+  - delete
+    - REQUEST error in transaction deleteFeature: Key(id)=(xx) is still referenced from table "featurepicture"
+- categories
+  - edit a category with feature relations
+    -  ERROR:  "category_edit_form:1810" "REQUEST unknown tag  (name) at /features_required/CategoryFeature-.. candidates are {id, minQuantity, maxQuantity}" 
+  - picker for features broken (in category_edit when setting the features)
+- components
+  - add compoment:
+    REQUEST failed to call transaction preprocessing function 'preprocComponentDefaultValues': function not defined"
+  - edit dito
+  - rest currently untestable
+- recipe:
+  - edit picker for category in recipe:
+
+- still a lot of:
+  - CRITICAL: ERROR:  "recipe_edit_form:1136_category_required" "REQUEST schema validation failed: undefined non optional structure element (name) at /category" 
+  - REQUEST failed to call transaction preprocessing function 'preprocComponentDefaultValues': function not defined"
+
