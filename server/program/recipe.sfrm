@@ -9,7 +9,7 @@ FORM RecipeCategory
 FORM RecipeComponent
 {
 	id @int
-	name string
+	name ?string
 	quantity int
 }
 

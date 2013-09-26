@@ -13,8 +13,4 @@
   - picker for features broken (in category_edit when setting the features)
 - components
   - add compoment:
-    - manufacturer is again mandatory
-  - edit dito
-  - rest currently untestable
-- recipe:
-  - edit picker for category in recipe:
+    - manufacturer is again mandatory, should be optional IMHO
