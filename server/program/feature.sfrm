@@ -1,3 +1,11 @@
+STRUCT PictureArray
+{
+	picture []
+	{
+		id @int
+	}
+}
+
 FORM Feature
 {
 	feature
@@ -7,7 +15,8 @@ FORM Feature
 		root ?string
 		name string
 		description ?string
-		used_categories string
+		used_categories ?string
+		pictures ?PictureArray
 	}
 }
 

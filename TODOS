@@ -2,9 +2,6 @@
   - edit picture looses tag selection
   - in wolfclient: WARNING: libpng warning: iCCP: known incorrect sRGB profile
 - features
-  - add: "as child of %1"
-  - edit:
-    - REQUEST unkonw tag (pictures) at /feature-.. candidates are {id, parentID, root, name, description, used_categories}
   - delete
     - REQUEST error in transaction deleteFeature: Key(id)=(xx) is still referenced from table "featurepicture"
 - categories
