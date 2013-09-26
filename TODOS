@@ -13,7 +13,7 @@
   - picker for features broken (in category_edit when setting the features)
 - components
   - add compoment:
-    - ERROR: error in execution of REQUEST createComponent:error in transaction addComponent: column "pricecurrency" of relation "component" does not exist LINE 1: ...facturerID, mfgCode, webPage, description, price, priceCurre...                                                              ^ 
+    - manufacturer is again mandatory
   - edit dito
   - rest currently untestable
 - recipe:
