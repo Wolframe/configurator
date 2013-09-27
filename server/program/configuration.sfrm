@@ -1,3 +1,21 @@
+STRUCT CategoryRef
+{
+	id @int
+	_ string
+}
+
+STRUCT PictureRef
+{
+	id @int
+	thumbnail ?string
+}
+
+STRUCT RecipeRef
+{
+	id @int
+	_ ?string	
+}
+
 FORM Configuration
 {
 	configuration
@@ -5,29 +23,20 @@ FORM Configuration
 		id ?@int
 		name string
 		description string
-		category {
-			id @int
-			_ string
-		}
+		category ?CategoryRef
 		comment string
-		recipe {
-			id @int
-			_ string
-		}
+		recipe ?RecipeRef
 		component [] {
 			id @int
 			code string
 			name string
 			categoryName string
-			mfgCode string
+			mfgCode ?string
 			description string
 			price float
 			quantity ?int
 		}
-		picture {
-			id @int
-			thumbnail ?string
-		}
+		picture ?PictureRef
 	}
 }
 

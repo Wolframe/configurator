@@ -58,7 +58,7 @@ RecipeCategoryEdit=selectRecipeCategory(xml):RecipeCategoryEdit;
 RecipeComponentListRequest=selectRecipeComponentList(xml):RecipeComponentList;
 RecipeComponentEdit=selectRecipeComponent(xml):RecipeComponentEdit;
 
-createConfiguration=addConfiguration(xml):Configuration;
+createConfiguration=addConfiguration(xml);
 updateConfiguration=updateConfiguration(xml);
 ConfigurationListRequest=selectConfigurationList(xml):ConfigurationList;
 ConfigurationRequest=selectConfiguration(xml):Configuration;
