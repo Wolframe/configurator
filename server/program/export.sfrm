@@ -1,16 +1,16 @@
 FORM ExportedTag
 {
 	id @int
-	parentID @int
+	parentID ?@int
 	name string
-	description string
+	description ?string
 }
 
 FORM ExportedPicture
 {
 	id @int
 	caption string
-	info string
+	info ?string
 	image string
 }
 
