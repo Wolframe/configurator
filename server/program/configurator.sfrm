@@ -109,5 +109,6 @@ FORM LastConfigurationIDRequest
 	{
 		id ?@int
 		configID ?@int
+		name ?string
 	}
 }

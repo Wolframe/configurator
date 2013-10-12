@@ -21,10 +21,10 @@ FORM Configuration
 	configuration
 	{
 		id ?@int
-		name string
-		description string
+		name ?string
+		description ?string
 		category ?CategoryRef
-		comment string
+		comment ?string
 		recipe ?RecipeRef
 		component [] {
 			id @int
