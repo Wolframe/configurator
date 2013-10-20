@@ -48,6 +48,9 @@ function resfilterTreeView( tree_)
 	local tagname = tree[ "name"]
 	local treenodes = tree[ "node"]
 
+	if not treenodes then
+		return {}
+	end
 	for i,v in pairs( treenodes) do
 		local pi = 0
 		if v.parentID then
@@ -75,7 +78,7 @@ function resfilterTreeView( tree_)
 		local rt = map_tree_node( id2nodemap, rootID, tagname);
 		return {item = rt[ "item"]}
 	else
-		return nil
+		return {}
 	end
 end
 

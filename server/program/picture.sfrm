@@ -136,7 +136,7 @@ FORM PictureListRequest
 {
 	picture
 	{
-		search string
+		search ?string
 	}
 }
 
