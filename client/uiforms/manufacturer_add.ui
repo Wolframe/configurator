@@ -87,7 +87,7 @@
         <string>{main.widgetid}_picture</string>
        </property>
        <property name="action:select_picture" stdset="0">
-        <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}</string>
+        <string>PictureThumbnailRequest picture{id={picture_change.picture.selected}}</string>
        </property>
        <property name="tooltip" stdset="0">
         <string/>
