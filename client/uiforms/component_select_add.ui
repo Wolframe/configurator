@@ -54,7 +54,7 @@
       <UInt>80</UInt>
      </property>
      <property name="answer" stdset="0">
-      <string>Component list {component[] {id={row.id}; code{{row.code}}; name{{row.name}}; categoryName{{?}}; manufacturerName{{?}}; mfgCode{{?}}; webPage{{?}}; description{{?}}; price{{?}} }</string>
+      <string>Component list {component[] {id={row.id}; code{{row.code}}; name{{row.name}}; categoryName{{?}}; manufacturerName{{?}}; mfgCode{{?}}; webPage{{?}}; description{{?}}; price{{?}} }}</string>
      </property>
      <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
       <bool>true</bool>

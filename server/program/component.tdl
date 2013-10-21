@@ -20,8 +20,8 @@ BEGIN
 	INTO . DO preprocComponentDefaultValues( . );	-- get default values for non defined things
 END
 BEGIN
-	DO INSERT INTO Component( code, name, normalizedName, categoryID, manufacturerID, mfgCode, webPage, description, price )
-		VALUES ( $(code), $(name), $(normalizedName), convert_to_integer($(category/id)), convert_to_integer($(manufacturer/id)), $(mfgCode), $(webPage), $(description), convert_to_numeric($(_price)));
+	DO INSERT INTO Component( code, name, normalizedName, categoryID, manufacturerID, mfgCode, webPage, description, price, pricecurrency)
+		VALUES ( $(code), $(name), $(normalizedName), convert_to_integer($(category/id)), convert_to_integer($(manufacturer/id)), $(mfgCode), $(webPage), $(description), convert_to_numeric($(_price)), $(_priceCurrency));
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Component WHERE normalizedName = $(normalizedName);
 	FOREACH picture DO INSERT INTO ComponentPicture( componentID, pictureID ) VALUES( $1, $(id) );
 	DO DELETE FROM ComponentPicture WHERE pictureID IS NULL;
