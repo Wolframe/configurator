@@ -11,7 +11,7 @@ function preprocComponentDefaultValues( node_ )
 		rt["_price"] = node["price"]
 	end
 	if not node["priceCurrency"] then
-		rt["_priceCurrency"] = 'E'
+		rt["_priceCurrency"] = 'EUR'
 	else
 		rt["_priceCurrency"] = node["priceCurrency"]
 	end
