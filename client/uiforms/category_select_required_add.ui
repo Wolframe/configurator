@@ -21,7 +21,7 @@
    <string>RecipeCategoryEdit category { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
   </property>
   <property name="answer" stdset="0">
-   <string>RecipeCategoryEdit category { id={category.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
+   <string>RecipeCategoryEdit category { id={?}; minQuantity {{min}}; maxQuantity {{max}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
