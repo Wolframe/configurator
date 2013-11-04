@@ -35,7 +35,7 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>add_feature_required</string>
+        <string>edit_feature_required</string>
        </property>
        <property name="state:enabled" stdset="0">
         <string>{main.selected}&gt;0</string>

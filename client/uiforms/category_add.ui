@@ -187,16 +187,19 @@
         <bool>false</bool>
        </property>
        <property name="dataslot" stdset="0">
-        <string>add_feature_provided ({main.widgetid}_feature_provided)</string>
+        <string>add_feature_provided ({main.widgetid}_feature_provided), edit_feature_provided ({main.widgetid}_feature_provided)</string>
        </property>
        <property name="action:add_feature_provided" stdset="0">
         <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; add[] { id={feature_provided_select.feature.selected}; minQuantity {{feature_provided_select.min}}; maxQuantity {{feature_provided_select.max}} } }</string>
+       </property>
+       <property name="action:edit_feature_provided" stdset="0">
+        <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; add[] { id={feature_provided_select.id}; minQuantity {{feature_provided_select.min}}; maxQuantity {{feature_provided_select.max}} } }</string>
        </property>
        <property name="link:feature_provided_select" stdset="0">
         <string>{main.widgetid}_feature_provided</string>
        </property>
        <property name="answer" stdset="0">
-        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }</string>
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }}</string>
        </property>
        <property name="action:remove_feature_provided" stdset="0">
         <string>CategoryFeatureListRequest features { feature[] { id={main.provided_features.row.id:?}; minQuantity {{main.provided_features.row.min:?}}; maxQuantity{{main.provided_features.row.max:?}} }; remove[] { id = {selected} } }</string>
@@ -314,16 +317,19 @@
         <bool>false</bool>
        </property>
        <property name="dataslot" stdset="0">
-        <string>add_feature_required ({main.widgetid}_feature_required)</string>
+        <string>add_feature_required ({main.widgetid}_feature_required), edit_feature_required ({main.widgetid}_feature_required)</string>
        </property>
        <property name="action:add_feature_required" stdset="0">
         <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; add[] { id={feature_required_select.feature.selected}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
+       </property>
+       <property name="action:edit_feature_required" stdset="0">
+        <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; add[] { id={feature_required_select.id}; minQuantity {{feature_required_select.min}}; maxQuantity {{feature_required_select.max}} } }</string>
        </property>
        <property name="link:feature_required_select" stdset="0">
         <string>{main.widgetid}_feature_required</string>
        </property>
        <property name="answer" stdset="0">
-        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }</string>
+        <string>CategoryFeatures CategoryFeatures {CategoryFeature[] {id={row.id}; name{{row.name}}; minQuantity{{row.min}}; maxQuantity{{row.max}} }}</string>
        </property>
        <property name="action:remove_feature_required" stdset="0">
         <string>CategoryFeatureListRequest features { feature[] { id={main.required_features.row.id:?}; minQuantity {{main.required_features.row.min:?}}; maxQuantity{{main.required_features.row.max:?}} }; remove[] { id = {selected} } }</string>

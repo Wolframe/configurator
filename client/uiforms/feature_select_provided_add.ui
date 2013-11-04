@@ -17,12 +17,6 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/chart_organisation.png</normaloff>:/images/chart_organisation.png</iconset>
   </property>
-  <property name="action" stdset="0">
-   <string>CategoryFeatureEdit feature { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
-  </property>
-  <property name="answer" stdset="0">
-   <string>CategoryFeatureEdit feature { id={main.selected}; minQuantity {{min}}; maxQuantity {{max}} }</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -92,7 +86,7 @@
         <string>add_feature_provided</string>
        </property>
        <property name="state:enabled" stdset="0">
-        <string>{main.selected}&gt;0</string>
+        <string>{main.feature.selected}&gt;0</string>
        </property>
       </widget>
      </item>

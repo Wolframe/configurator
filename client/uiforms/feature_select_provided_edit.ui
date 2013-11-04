@@ -35,10 +35,10 @@
         <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>add_feature_provided</string>
+        <string>edit_feature_provided</string>
        </property>
        <property name="state:enabled" stdset="0">
-        <string>{main.selected}&gt;0</string>
+        <string>{main.id}&gt;0</string>
        </property>
       </widget>
      </item>
