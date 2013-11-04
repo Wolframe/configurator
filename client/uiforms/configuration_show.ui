@@ -17,7 +17,7 @@
    <string>ConfigurationRequest configuration {id={id}}</string>
   </property>
   <property name="answer" stdset="0">
-   <string>Configuration configuration {id={?}; name{{main.name}}; description{{main.description}}; category {id={?}; {main.category} }; comment {{main.comment}}; recipe { id={?}; {main.recipe} }; picture { id={?}; thumbnail {{picture.base64}} }; component[] { id={component.row.id}; code {{component.row.code:?}}; name{{component.row.name}}; description{{?}}; categoryName{{component.row.categoryName:?}};  mfgCode{{?}}; quantity{{component.row.quantity}}; price{{component.row.price}} }
+   <string>Configuration configuration {id={?}; name{{main.name}}; description{{main.description}}; category {id={?}; {main.category} }; comment {{main.comment}}; recipe { id={?}; {main.recipe} }; picture { id={?}; thumbnail {{picture.base64}} }; component[] { id={component.row.id}; code {{component.row.code:?}}; name{{component.row.name}}; description{{?}}; categoryName{{component.row.categoryName:?}};  mfgCode{{?}}; quantity{{component.row.quantity}}; price{{component.row.price}} } }
 </string>
   </property>
   <layout class="QFormLayout" name="formLayout">
