@@ -32,7 +32,7 @@
 ************************************************************************/
 
 #include "ConfiguratorPlugin.hpp"
-
+#include "FormPluginRequestHeader.hpp"
 #include <QXmlStreamWriter>
 #include <QByteArray>
 #include <QDebug>
@@ -506,8 +506,7 @@ QWidget *ConfiguratorPlugin::createForm( const FormCall &formCall, DataLoader *_
 	m_parent = _parent;
 	
 	ConfiguratorWidget *widget = new ConfiguratorWidget( this, formCall, m_debug, _globals, _parent );
-	QString winId = QString::number( (int)widget->winId( ) );
-	m_widgets.insert( winId, widget );
+	m_widgets.insert( widget->winId(), widget );
 
 	connect( widget, SIGNAL( reload( ) ), _parent, SLOT( reload( ) ) );
 	
@@ -517,24 +516,23 @@ QWidget *ConfiguratorPlugin::createForm( const FormCall &formCall, DataLoader *_
 void ConfiguratorPlugin::sendRequest( WId wid, const QString &widgetCmd, const QByteArray &_request )
 {
 	QString cmd; // TODO: how to initialize this one? With what?
-	QString id = QString::number( (int)wid );
-	QString tag = QString( "%1:%2:%3" ).arg( id ).arg( m_tagCounter++ ).arg( widgetCmd );
-
-	m_dataLoader->datarequest( cmd, tag, _request );	
+	FormPluginRequestHeader hdr( wid, widgetCmd, name());
+	m_dataLoader->datarequest( cmd, hdr.toString(), _request );	
 }
 
 void ConfiguratorPlugin::gotAnswer( const QString& _tag, const QByteArray& _data )
 {
-	QStringList parts = _tag.split( ':' );
-	QHash<QString, ConfiguratorWidget *>::const_iterator it = m_widgets.find( parts[0] );
+	FormPluginRequestHeader hdr( _tag);
+
+	QHash<WId, ConfiguratorWidget *>::const_iterator it = m_widgets.find( hdr.recipientid);
 	if( it == m_widgets.end( ) ) {
-		qDebug( ) << "Unknown tag" << _tag << ", don't know where to deliver the message";
+		qWarning( ) << "Unknown tag" << _tag << ", don't know where to deliver the message";
 		return;
 	}
 	
 	ConfiguratorWidget *widget = *it;
 	if( widget ) {
-		widget->gotAnswer( parts[2], _data );
+		widget->gotAnswer( hdr.command, _data );
 	}
 }
 

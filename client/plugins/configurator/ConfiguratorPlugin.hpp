@@ -137,7 +137,7 @@ class ConfiguratorPlugin : public QObject, public FormPluginInterface
 		
 	private:
 		QWidget *m_parent;
-		QHash<QString, ConfiguratorWidget *> m_widgets;
+		QHash<WId, ConfiguratorWidget *> m_widgets;
 		DataLoader *m_dataLoader;
 		int m_tagCounter;
 		bool m_debug;
