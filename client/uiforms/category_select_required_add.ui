@@ -17,12 +17,6 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/folders.png</normaloff>:/images/folders.png</iconset>
   </property>
-  <property name="action" stdset="0">
-   <string>RecipeCategoryEdit category { id={main.id}; minQuantity {{main.minQuantity}}; maxQuantity {{main.maxQuantity}} }</string>
-  </property>
-  <property name="answer" stdset="0">
-   <string>RecipeCategoryEdit category { id={?}; minQuantity {{min}}; maxQuantity {{max}} }</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -49,6 +43,9 @@
      </property>
      <property name="action" stdset="0">
       <string notr="true">CategoryHierarchyRequest category {id=1}</string>
+     </property>
+     <property name="answer" stdset="0">
+      <string notr="true">CategoryHierarchy tree {item[] {id={item.id}; name{{item.name}}; description{{?}}; ^item[]}}</string>
      </property>
      <attribute name="headerDefaultSectionSize">
       <number>250</number>

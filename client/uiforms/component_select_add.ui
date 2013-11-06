@@ -17,12 +17,6 @@
    <iconset resource="../configurator.qrc">
     <normaloff>:/images/building.png</normaloff>:/images/building.png</iconset>
   </property>
-  <property name="action" stdset="0">
-   <string>RecipeComponentEdit component { id={main.id}; quantity {{main.quantity}} }</string>
-  </property>
-  <property name="answer" stdset="0">
-   <string>RecipeComponentEdit component { id={component.selected}; quantity {{quantity}} }</string>
-  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="2">
     <widget class="QTableWidget" name="component">

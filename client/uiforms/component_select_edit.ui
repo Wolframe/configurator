@@ -21,7 +21,7 @@
    <string>RecipeComponentEdit component { id={main.id}; quantity {{main.quantity}} }</string>
   </property>
   <property name="answer" stdset="0">
-   <string>RecipeComponentEdit component { id={component.selected}; quantity {{quantity}} }</string>
+   <string>RecipeComponentEdit component { id={?}; quantity {{quantity}} }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0">
@@ -35,10 +35,7 @@
         <string>_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>add_component_required</string>
-       </property>
-       <property name="state:enabled" stdset="0">
-        <string>{component.selected}&gt;0</string>
+        <string>edit_component_required</string>
        </property>
       </widget>
      </item>

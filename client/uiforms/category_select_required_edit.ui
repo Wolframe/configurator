@@ -50,9 +50,6 @@
        <property name="datasignal:clicked" stdset="0">
         <string>edit_category_required</string>
        </property>
-       <property name="state:enabled" stdset="0">
-        <string>{category.selected}&gt;0</string>
-       </property>
       </widget>
      </item>
      <item>
