@@ -86,7 +86,7 @@ class ExportPlugin : public QObject, public FormPluginInterface
 		void sendRequest( WId wid, const QByteArray &_request );
 
 	private:
-		QHash<QString, ExportWidget *> m_widgets;
+		QHash<WId, ExportWidget *> m_widgets;
 		DataLoader *m_dataLoader;
 		int m_tagCounter;
 		bool m_debug;

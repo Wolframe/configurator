@@ -32,7 +32,7 @@
 ************************************************************************/
 
 #include "ExportPlugin.hpp"
-
+#include "FormPluginRequestHeader.hpp"
 #include <QDebug>
 #include <QByteArray>
 #include <QGridLayout>
@@ -174,8 +174,7 @@ QWidget *ExportPlugin::createForm( const FormCall &_formCall, DataLoader *_dataL
 	m_dataLoader = _dataLoader;
 	
 	ExportWidget *widget = new ExportWidget( this, _formCall, _parent );
-	QString winId = QString::number( (int)widget->winId( ) );
-	m_widgets.insert( winId, widget );
+	m_widgets.insert( widget->winId( ), widget );
 	
 	return widget;
 }
@@ -184,16 +183,16 @@ void ExportPlugin::sendRequest( WId wid, const QByteArray &_request )
 {
 	// TODO: how to initialize this one? With what?
 	QString cmd;
-	QString id = QString::number( (int)wid );
-	QString tag = QString( "%1:%2" ).arg( id ).arg( m_tagCounter++ );
-
-	m_dataLoader->datarequest( cmd, tag, _request );	
+	FormPluginRequestHeader hdr( wid, "", name());
+	m_dataLoader->datarequest( cmd, hdr.toString(), _request );	
 }
 
 void ExportPlugin::gotAnswer( const QString& _tag, const QByteArray& _data )
 {
+	FormPluginRequestHeader hdr( _tag);
+
 	QStringList parts = _tag.split( ':' );
-	QHash<QString, ExportWidget *>::const_iterator it = m_widgets.find( parts[0] );
+	QHash<WId, ExportWidget*>::const_iterator it = m_widgets.find( hdr.recipientid );
 	if( it == m_widgets.end( ) ) {
 		qDebug( ) << "Unknown tag" << _tag << ", don't know where to deliver the message";
 		return;
@@ -207,13 +206,14 @@ void ExportPlugin::gotAnswer( const QString& _tag, const QByteArray& _data )
 
 void ExportPlugin::gotError( const QString& _tag, const QByteArray& _error )
 {
-	QStringList parts = _tag.split( ':' );
-	QHash<QString, ExportWidget *>::const_iterator it = m_widgets.find( parts[0] );
+	FormPluginRequestHeader hdr( _tag);
+
+	QHash<WId, ExportWidget*>::const_iterator it = m_widgets.find( hdr.recipientid );
 	if( it == m_widgets.end( ) ) {
 		qDebug( ) << "Unknown tag" << _tag << ", don't know where to deliver the error";
 		return;
 	}
-	
+
 	ExportWidget *widget = *it;
 	if( widget ) {
 		widget->gotError( _error );
