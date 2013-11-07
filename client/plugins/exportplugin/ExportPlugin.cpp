@@ -174,7 +174,7 @@ QWidget *ExportPlugin::createForm( const FormCall &_formCall, DataLoader *_dataL
 	m_dataLoader = _dataLoader;
 	
 	ExportWidget *widget = new ExportWidget( this, _formCall, _parent );
-	m_widgets.insert( widget->winId( ), widget );
+	m_widgets.insert( QString::number((int)widget->winId( ) ), widget );
 	
 	return widget;
 }
@@ -192,7 +192,7 @@ void ExportPlugin::gotAnswer( const QString& _tag, const QByteArray& _data )
 	FormPluginRequestHeader hdr( _tag);
 
 	QStringList parts = _tag.split( ':' );
-	QHash<WId, ExportWidget*>::const_iterator it = m_widgets.find( hdr.recipientid );
+	QHash<QString, ExportWidget*>::const_iterator it = m_widgets.find( hdr.recipientid );
 	if( it == m_widgets.end( ) ) {
 		qDebug( ) << "Unknown tag" << _tag << ", don't know where to deliver the message";
 		return;
@@ -208,7 +208,7 @@ void ExportPlugin::gotError( const QString& _tag, const QByteArray& _error )
 {
 	FormPluginRequestHeader hdr( _tag);
 
-	QHash<WId, ExportWidget*>::const_iterator it = m_widgets.find( hdr.recipientid );
+	QHash<QString, ExportWidget*>::const_iterator it = m_widgets.find( hdr.recipientid );
 	if( it == m_widgets.end( ) ) {
 		qDebug( ) << "Unknown tag" << _tag << ", don't know where to deliver the error";
 		return;

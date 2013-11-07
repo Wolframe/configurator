@@ -506,7 +506,7 @@ QWidget *ConfiguratorPlugin::createForm( const FormCall &formCall, DataLoader *_
 	m_parent = _parent;
 	
 	ConfiguratorWidget *widget = new ConfiguratorWidget( this, formCall, m_debug, _globals, _parent );
-	m_widgets.insert( widget->winId(), widget );
+	m_widgets.insert( QString::number( (int)widget->winId( ) ), widget );
 
 	connect( widget, SIGNAL( reload( ) ), _parent, SLOT( reload( ) ) );
 	
@@ -524,7 +524,7 @@ void ConfiguratorPlugin::gotAnswer( const QString& _tag, const QByteArray& _data
 {
 	FormPluginRequestHeader hdr( _tag);
 
-	QHash<WId, ConfiguratorWidget *>::const_iterator it = m_widgets.find( hdr.recipientid);
+	QHash<QString, ConfiguratorWidget *>::const_iterator it = m_widgets.find( hdr.recipientid);
 	if( it == m_widgets.end( ) ) {
 		qWarning( ) << "Unknown tag" << _tag << ", don't know where to deliver the message";
 		return;
