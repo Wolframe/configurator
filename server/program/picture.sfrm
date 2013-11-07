@@ -1,6 +1,6 @@
 STRUCT PictureTag
 {
-	id @int
+	id ?@int
 	_ ?string
 }
 
