@@ -14,7 +14,7 @@ BEGIN
 		ON PictureTag.tagID = TagPath.ID
 		WHERE coalesce( TagPath.normalizedName, '' ) like $(search/key)
 		GROUP BY Picture.ID, Picture.thumbnail, Picture.caption, Picture.info,
-			Picture.width, Picture.height, Picture.image
+			Picture.width, Picture.height, Picture.image, Picture.orderNumber
 		ORDER BY Picture.orderNumber;
 END
 
