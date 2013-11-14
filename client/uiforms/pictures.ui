@@ -16,6 +16,9 @@
     <height>0</height>
    </size>
   </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>Manage pictures</string>
   </property>
@@ -154,6 +157,15 @@
      </property>
      <property name="row:height" stdset="0">
       <UInt>50</UInt>
+     </property>
+     <property name="dropmove" stdset="0">
+      <string notr="true">ReorderPictureInsertAfter move {srcid{{dragobj.selected}}; dstid{{dropid}} }</string>
+     </property>
+     <property name="datasignal:drop" stdset="0">
+      <string notr="true">picture</string>
+     </property>
+     <property name="datasignal:drag" stdset="0">
+      <string notr="true">picture</string>
      </property>
      <attribute name="horizontalHeaderDefaultSectionSize">
       <number>200</number>

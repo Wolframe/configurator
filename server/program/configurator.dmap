@@ -14,6 +14,7 @@ PictureAttributeRequest=selectPictureAttributes(libxml2):PictureAttributes;
 PictureThumbnailListRequest=getPictureThumbnailList(libxml2):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(libxml2):PictureThumbnail;
 PictureTagSetRequest=selectPictureTagSet(libxml2):TagList;
+ReorderPictureInsertAfter=changePictureOrderInsertAfter(libxml2);
 
 createFeature=addFeature(libxml2);
 updateFeature=updateFeature(libxml2);

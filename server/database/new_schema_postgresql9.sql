@@ -59,6 +59,7 @@ CREATE VIEW TagPath AS
 --
 CREATE TABLE Picture	(
 	ID		SERIAL	NOT NULL PRIMARY KEY,
+	orderNumber	INT	NOT NULL,
 	caption		TEXT,
 	info		TEXT,
 	width		INT,

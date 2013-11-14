@@ -200,3 +200,13 @@ FORM PictureAttributes
 	}
 }
 
+FORM ReorderPictureInsertAfter
+{
+	move
+	{
+		srcid !int
+		dstid !int
+	}
+}
+
+
