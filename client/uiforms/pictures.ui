@@ -159,7 +159,7 @@
       <UInt>50</UInt>
      </property>
      <property name="dropmove" stdset="0">
-      <string notr="true">ReorderPictureInsertAfter move {srcid{{dragobj.selected}}; dstid{{dropid}} }</string>
+      <string notr="true">ReorderPicture move {srcid{{dragobj.selected}}; dstid{{dropid}} }</string>
      </property>
      <property name="datasignal:drop" stdset="0">
       <string notr="true">picture</string>

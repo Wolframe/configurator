@@ -13,7 +13,9 @@ BEGIN
 	DO UPDATE Category SET lft = lft + 2 WHERE lft > $1;
 	DO INSERT INTO Category (parentID, name, normalizedName, description, lft, rgt) VALUES ($(_parentID), $(name), $(normalizedName), $(description), $1, $1+1);
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Category WHERE normalizedName = $(normalizedName) AND parentID = $(_parentID);
-	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $1, $(id) );
+	KEEP AS newitem;
+	DO SELECT MAX(orderNumber) AS newOrderNumber FROM CategoryPicture WHERE categoryID = $newitem.ID;
+	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $newitem.ID, $(id), $newOrderNumber );
 	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
 	FOREACH features_required/CategoryFeature DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
@@ -95,7 +97,8 @@ BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM CategoryPicture, Picture
 		WHERE CategoryPicture.pictureID = Picture.ID
-		AND CategoryPicture.categoryID = $(id);
+		AND CategoryPicture.categoryID = $(id)
+		ORDER BY CategoryPicture.orderNumber;
 END
 
 TRANSACTION selectCategoryByName -- (name)
@@ -169,3 +172,39 @@ BEGIN
 			$(minQuantity) AS "minQuantity",
 			$(maxQuantity) AS "maxQuantity";
 END
+
+
+TRANSACTION changeCategoryPictureOrder
+-- Implements drag/drop of a single picture of a category to another place in the list
+-- Inserts a picture moved with id 'srcid' before or after the picture with id 'dstid'
+--   when the move is upwards then the picture is inserted before the drop target
+--   when the move is downwards then the picture is inserted after the drop target
+BEGIN
+	DO SELECT orderNumber FROM CategoryPicture WHERE pictureID = $(srcid) AND categoryID = $(categoryid);
+	KEEP AS src;
+	DO SELECT orderNumber FROM CategoryPicture WHERE pictureID = $(dstid) AND categoryID = $(categoryid);
+	KEEP AS dst;
+
+	-- [A] Prepare move:
+	-- 1.Case)  |-------[dst]---------------[src]-------|
+	--                       |<---------------*
+	DO UPDATE CategoryPicture SET orderNumber = orderNumber + 1
+		WHERE $dst.orderNumber < $src.orderNumber + 0
+		AND   categoryID = $(categoryid)
+		AND   orderNumber >= $dst.orderNumber
+		AND   orderNumber < $src.orderNumber;
+	-- 2.Case)  |-------[src]---------------[dst]-------|
+	--                    *------------------>|
+	DO UPDATE CategoryPicture SET orderNumber = orderNumber - 1
+		WHERE $dst.orderNumber > $src.orderNumber + 0
+		AND   categoryID = $(categoryid)
+		AND   orderNumber <= $dst.orderNumber
+		AND   orderNumber > $src.orderNumber;
+
+	-- [B] Make move:
+	DO UPDATE CategoryPicture SET orderNumber = $dst.orderNumber
+		WHERE pictureID = $(srcid)
+		AND   categoryID = $(categoryid)
+		AND   NOT $dst.orderNumber = $src.orderNumber;
+END
+

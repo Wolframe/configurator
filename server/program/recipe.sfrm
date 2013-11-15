@@ -194,3 +194,15 @@ FORM RecipeComponentList
 		}
 	}
 }
+
+FORM RecipeReorderPicture
+{
+	move
+	{
+		recipeid !@int
+		srcid !int
+		dstid !int
+	}
+}
+
+

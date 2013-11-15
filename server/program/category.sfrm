@@ -125,3 +125,15 @@ FORM CategoryFeatureList
 		}
 	}
 }
+
+FORM CategoryReorderPicture
+{
+	move
+	{
+		categoryid !@int
+		srcid !int
+		dstid !int
+	}
+}
+
+

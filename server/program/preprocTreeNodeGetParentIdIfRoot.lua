@@ -9,9 +9,9 @@ function preprocTreeNodeGetParentIdIfRoot( node_ )
 	local rt = {}
 	local node = node_:table()
 	if node["root"] and node["root"] == "true" then
-		rt["_parentID"] = 1
+		rt[ "_parentID"] = 1
 	else
-		rt["_parentID"] = node["parentID"]
+		rt[ "_parentID"] = node["parentID"]
 	end
 	return rt
 end

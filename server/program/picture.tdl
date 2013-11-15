@@ -140,7 +140,7 @@ BEGIN
 END
 
 
-TRANSACTION changePictureOrderInsertAfter
+TRANSACTION changePictureOrder
 -- Implements drag/drop of a single picture to another place in the list
 -- Inserts a picture moved with id 'srcid' before or after the picture with id 'dstid'
 --   when the move is upwards then the picture is inserted before the drop target

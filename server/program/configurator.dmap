@@ -14,7 +14,7 @@ PictureAttributeRequest=selectPictureAttributes(libxml2):PictureAttributes;
 PictureThumbnailListRequest=getPictureThumbnailList(libxml2):PictureThumbnailList;
 PictureThumbnailRequest=getPictureThumbnail(libxml2):PictureThumbnail;
 PictureTagSetRequest=selectPictureTagSet(libxml2):TagList;
-ReorderPictureInsertAfter=changePictureOrderInsertAfter(libxml2);
+ReorderPicture=changePictureOrder(libxml2);
 
 createFeature=addFeature(libxml2);
 updateFeature=updateFeature(libxml2);
@@ -22,6 +22,7 @@ deleteFeature=deleteFeature(libxml2);
 FeatureRequest=selectFeature(libxml2):Feature;
 FeatureHierarchyRequest=selectFeatureTree(libxml2):FeatureHierarchy;
 FeaturePictureListRequest=selectFeaturePictures(libxml2):PictureThumbnailList;
+FeatureReorderPicture=changeFeaturePictureOrder(libxml2);
 
 createCategory=addCategory(libxml2);
 updateCategory=updateCategory(libxml2);
@@ -31,6 +32,7 @@ CategoryHierarchyRequest=selectCategoryTree(libxml2):CategoryHierarchy;
 CategoryPictureListRequest=selectCatogeryPictures(libxml2):PictureThumbnailList;
 CategoryFeatureListRequest=selectCategoryFeatureList(libxml2):CategoryFeatureList;
 CategoryFeatureEdit=selectCategoryFeature(libxml2):CategoryFeatureEdit;
+CategoryReorderPicture=changeCategoryPictureOrder(libxml2);
 
 createComponent=addComponent(libxml2);
 updateComponent=updateComponent(libxml2);
@@ -58,6 +60,7 @@ RecipeCategoryListRequest=selectRecipeCategoryList(libxml2):RecipeCategoryList;
 RecipeCategoryEdit=selectRecipeCategory(libxml2):RecipeCategoryEdit;
 RecipeComponentListRequest=selectRecipeComponentList(libxml2):RecipeComponentList;
 RecipeComponentEdit=selectRecipeComponent(libxml2):RecipeComponentEdit;
+RecipeReorderPicture=changeRecipePictureOrder(libxml2);
 
 createConfiguration=addConfiguration(libxml2);
 updateConfiguration=updateConfiguration(libxml2);

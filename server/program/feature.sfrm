@@ -58,3 +58,14 @@ FORM FeaturePictureListRequest
 	}
 }
 
+FORM FeatureReorderPicture
+{
+	move
+	{
+		featureid !@int
+		srcid !int
+		dstid !int
+	}
+}
+
+

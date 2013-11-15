@@ -10,6 +10,9 @@
     <height>296</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>Edit feature</string>
   </property>
@@ -115,6 +118,9 @@
     <layout class="QFormLayout" name="formLayout_4">
      <item row="1" column="1">
       <widget class="QListWidget" name="pictures">
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
        <property name="iconSize">
         <size>
          <width>50</width>
@@ -144,6 +150,9 @@
        </property>
        <property name="action:exclude_picture" stdset="0">
         <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+       </property>
+       <property name="dropmove" stdset="0">
+        <string notr="true">FeatureReorderPicture move {featureid={main.id}; srcid{{dragobj.selected}}; dstid{{dropid}} }</string>
        </property>
       </widget>
      </item>

@@ -120,6 +120,9 @@
          <height>100</height>
         </size>
        </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
        <property name="lineWidth">
         <number>1</number>
        </property>
@@ -164,6 +167,9 @@
        </property>
        <property name="action:exclude_picture" stdset="0">
         <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+       </property>
+       <property name="dropmove" stdset="0">
+        <string notr="true">CategoryReorderPicture move {categoryid={main.id}; srcid{{dragobj.selected}}; dstid{{dropid}} }</string>
        </property>
       </widget>
      </item>

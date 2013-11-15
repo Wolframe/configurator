@@ -13,7 +13,9 @@ BEGIN
 	DO UPDATE Feature SET lft = lft + 2 WHERE lft > $1;
 	DO INSERT INTO Feature (parentID, name, normalizedName, description, lft, rgt) VALUES ($(_parentID), $(name), $(normalizedName), $(description), $1, $1+1);
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Feature WHERE normalizedName = $(normalizedName) AND parentID = $(_parentID);
-	FOREACH pictures/picture DO INSERT INTO FeaturePicture( featureID, pictureID ) VALUES( $1, $(id) );
+	KEEP AS newitem;
+	DO SELECT MAX(orderNumber) AS newOrderNumber FROM FeaturePicture WHERE featureID = $newitem.ID;
+	FOREACH pictures/picture DO INSERT INTO FeaturePicture( featureID, pictureID, orderNumber ) VALUES( $newitem.ID, $(id), $newOrderNumber );
 	DO DELETE FROM FeaturePicture WHERE pictureID IS NULL;
 END
 
@@ -69,7 +71,8 @@ BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM FeaturePicture, Picture
 		WHERE FeaturePicture.pictureID = Picture.ID
-		AND FeaturePicture.featureID = $(id);
+		AND FeaturePicture.featureID = $(id)
+		ORDER BY FeaturePicture.orderNumber;
 END
 
 TRANSACTION selectFeatureByName -- (name)
@@ -111,4 +114,40 @@ BEGIN
 	INTO name print "feature";
 	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM Feature AS P1, Feature AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END
+
+
+TRANSACTION changeFeaturePictureOrder
+-- Implements drag/drop of a single picture of a feature to another place in the list
+-- Inserts a picture moved with id 'srcid' before or after the picture with id 'dstid'
+--   when the move is upwards then the picture is inserted before the drop target
+--   when the move is downwards then the picture is inserted after the drop target
+BEGIN
+	DO SELECT orderNumber FROM FeaturePicture WHERE pictureID = $(srcid) AND featureID = $(featureid);
+	KEEP AS src;
+	DO SELECT orderNumber FROM FeaturePicture WHERE pictureID = $(dstid) AND featureID = $(featureid);
+	KEEP AS dst;
+
+	-- [A] Prepare move:
+	-- 1.Case)  |-------[dst]---------------[src]-------|
+	--                       |<---------------*
+	DO UPDATE FeaturePicture SET orderNumber = orderNumber + 1
+		WHERE $dst.orderNumber < $src.orderNumber + 0
+		AND   FeatureID = $(featureid)
+		AND   orderNumber >= $dst.orderNumber
+		AND   orderNumber < $src.orderNumber;
+	-- 2.Case)  |-------[src]---------------[dst]-------|
+	--                    *------------------>|
+	DO UPDATE FeaturePicture SET orderNumber = orderNumber - 1
+		WHERE $dst.orderNumber > $src.orderNumber + 0
+		AND   featureID = $(featureid)
+		AND   orderNumber <= $dst.orderNumber
+		AND   orderNumber > $src.orderNumber;
+
+	-- [B] Make move:
+	DO UPDATE FeaturePicture SET orderNumber = $dst.orderNumber
+		WHERE pictureID = $(srcid)
+		AND   featureID = $(featureid)
+		AND   NOT $dst.orderNumber = $src.orderNumber;
+END
+
 

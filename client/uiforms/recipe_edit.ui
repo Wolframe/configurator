@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>711</width>
-    <height>302</height>
+    <height>313</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -430,6 +430,9 @@
          <height>100</height>
         </size>
        </property>
+       <property name="acceptDrops">
+        <bool>true</bool>
+       </property>
        <property name="lineWidth">
         <number>1</number>
        </property>
@@ -474,6 +477,9 @@
        </property>
        <property name="action:exclude_picture" stdset="0">
         <string>PictureThumbnailListRequest pictures {picture[]{id={main.pictures.unselected}}}</string>
+       </property>
+       <property name="dropmove" stdset="0">
+        <string notr="true">RecipeReorderPicture move {recipeid={main.id}; srcid{{dragobj.selected}}; dstid{{dropid}} }</string>
        </property>
       </widget>
      </item>
