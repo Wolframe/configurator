@@ -1,0 +1,74 @@
+
+TEMPLATE <ListTable,ListId,ReferenceId>
+SUBROUTINE listLocalMoveElement( srcid, dstid, referenceid)
+-- Implements drag/drop in a list implemented in <ListTable> with ID <ListId>
+--     and the restriction $PARAM.referenceid=ListTable.ReferenceId
+-- Inserts an item moved with id 'srcid' before or after the item with id 'dstid'
+-- The ordering key is named 'orderNumber' and assumed to be an INTEGER
+--   when the move is upwards then the item is inserted before the drop target
+--   when the move is downwards then the item is inserted after the drop target
+BEGIN
+	DO SELECT orderNumber FROM ListTable WHERE ListId = $PARAM.srcid AND ReferenceId = $PARAM.referenceid;
+	KEEP AS srcrec;
+	DO SELECT orderNumber FROM ListTable WHERE ListId = $PARAM.dstid AND ReferenceId = $PARAM.referenceid;
+	KEEP AS dstrec;
+
+	-- [A] Prepare move:
+	-- 1.Case)  |-------[dst]---------------[src]-------|
+	--                       |<---------------*
+	DO UPDATE ListTable SET orderNumber = orderNumber + 1
+		WHERE $dstrec.orderNumber < $srcrec.orderNumber + 0
+		AND   ReferenceId = $PARAM.referenceid
+		AND   orderNumber >= $dstrec.orderNumber
+		AND   orderNumber < $srcrec.orderNumber;
+	-- 2.Case)  |-------[src]---------------[dst]-------|
+	--                    *------------------>|
+	DO UPDATE ListTable SET orderNumber = orderNumber - 1
+		WHERE $dstrec.orderNumber > $srcrec.orderNumber + 0
+		AND   ReferenceId = $PARAM.referenceid
+		AND   orderNumber <= $dstrec.orderNumber
+		AND   orderNumber > $srcrec.orderNumber;
+
+	-- [B] Make move:
+	DO UPDATE ListTable SET orderNumber = $dstrec.orderNumber
+		WHERE ListId = $PARAM.srcid
+		AND   ReferenceId = $PARAM.referenceid
+		AND   NOT $dstrec.orderNumber = $srcrec.orderNumber;
+END
+
+
+TEMPLATE <ListTable,ListId>
+SUBROUTINE listGlobalMoveElement( srcid, dstid)
+-- Implements drag/drop in a global list implemented in <ListTable> with ID <ListId> (no local restriction)
+-- Inserts an item moved with id 'srcid' before or after the item with id 'dstid'
+-- The ordering key is named 'orderNumber' and assumed to be an INTEGER
+--   when the move is upwards then the item is inserted before the drop target
+--   when the move is downwards then the item is inserted after the drop target
+BEGIN
+	DO SELECT orderNumber FROM ListTable WHERE ListId = $PARAM.srcid;
+	KEEP AS srcrec;
+	DO SELECT orderNumber FROM ListTable WHERE ListId = $PARAM.dstid;
+	KEEP AS dstrec;
+
+	-- [A] Prepare move:
+	-- 1.Case)  |-------[dst]---------------[src]-------|
+	--                       |<---------------*
+	DO UPDATE ListTable SET orderNumber = orderNumber + 1
+		WHERE $dstrec.orderNumber < $srcrec.orderNumber + 0
+		AND   orderNumber >= $dstrec.orderNumber
+		AND   orderNumber < $srcrec.orderNumber;
+	-- 2.Case)  |-------[src]---------------[dst]-------|
+	--                    *------------------>|
+	DO UPDATE ListTable SET orderNumber = orderNumber - 1
+		WHERE $dstrec.orderNumber > $srcrec.orderNumber + 0
+		AND   orderNumber <= $dstrec.orderNumber
+		AND   orderNumber > $srcrec.orderNumber;
+
+	-- [B] Make move:
+	DO UPDATE ListTable SET orderNumber = $dstrec.orderNumber
+		WHERE ListId = $PARAM.srcid
+		AND   NOT $dstrec.orderNumber = $srcrec.orderNumber;
+END
+
+
+

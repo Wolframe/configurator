@@ -1,3 +1,6 @@
+INCLUDE dragAndDrop.tdl
+INCLUDE treeOperations.tdl
+
 --
 -- addCategory
 --
@@ -175,36 +178,7 @@ END
 
 
 TRANSACTION changeCategoryPictureOrder
--- Implements drag/drop of a single picture of a category to another place in the list
--- Inserts a picture moved with id 'srcid' before or after the picture with id 'dstid'
---   when the move is upwards then the picture is inserted before the drop target
---   when the move is downwards then the picture is inserted after the drop target
 BEGIN
-	DO SELECT orderNumber FROM CategoryPicture WHERE pictureID = $(srcid) AND categoryID = $(categoryid);
-	KEEP AS src;
-	DO SELECT orderNumber FROM CategoryPicture WHERE pictureID = $(dstid) AND categoryID = $(categoryid);
-	KEEP AS dst;
-
-	-- [A] Prepare move:
-	-- 1.Case)  |-------[dst]---------------[src]-------|
-	--                       |<---------------*
-	DO UPDATE CategoryPicture SET orderNumber = orderNumber + 1
-		WHERE $dst.orderNumber < $src.orderNumber + 0
-		AND   categoryID = $(categoryid)
-		AND   orderNumber >= $dst.orderNumber
-		AND   orderNumber < $src.orderNumber;
-	-- 2.Case)  |-------[src]---------------[dst]-------|
-	--                    *------------------>|
-	DO UPDATE CategoryPicture SET orderNumber = orderNumber - 1
-		WHERE $dst.orderNumber > $src.orderNumber + 0
-		AND   categoryID = $(categoryid)
-		AND   orderNumber <= $dst.orderNumber
-		AND   orderNumber > $src.orderNumber;
-
-	-- [B] Make move:
-	DO UPDATE CategoryPicture SET orderNumber = $dst.orderNumber
-		WHERE pictureID = $(srcid)
-		AND   categoryID = $(categoryid)
-		AND   NOT $dst.orderNumber = $src.orderNumber;
+	DO listLocalMoveElement<CategoryPicture,pictureID,categoryID>( $(srcid), $(dstid), $(categoryid));
 END
 

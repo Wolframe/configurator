@@ -1,3 +1,5 @@
+INCLUDE dragAndDrop.tdl
+
 TRANSACTION selectRecipeList
 BEGIN
 	INTO recipe DO
@@ -165,36 +167,7 @@ END
 
 
 TRANSACTION changeRecipePictureOrder
--- Implements drag/drop of a single picture of a recipe to another place in the list
--- Inserts a picture moved with id 'srcid' before or after the picture with id 'dstid'
---   when the move is upwards then the picture is inserted before the drop target
---   when the move is downwards then the picture is inserted after the drop target
 BEGIN
-	DO SELECT orderNumber FROM RecipePicture WHERE pictureID = $(srcid) AND recipeID = $(recipeid);
-	KEEP AS src;
-	DO SELECT orderNumber FROM RecipePicture WHERE pictureID = $(dstid) AND recipeID = $(recipeid);
-	KEEP AS dst;
-
-	-- [A] Prepare move:
-	-- 1.Case)  |-------[dst]---------------[src]-------|
-	--                       |<---------------*
-	DO UPDATE RecipePicture SET orderNumber = orderNumber + 1
-		WHERE $dst.orderNumber < $src.orderNumber + 0
-		AND   recipeID = $(recipeid)
-		AND   orderNumber >= $dst.orderNumber
-		AND   orderNumber < $src.orderNumber;
-	-- 2.Case)  |-------[src]---------------[dst]-------|
-	--                    *------------------>|
-	DO UPDATE RecipePicture SET orderNumber = orderNumber - 1
-		WHERE $dst.orderNumber > $src.orderNumber + 0
-		AND   recipeID = $(recipeid)
-		AND   orderNumber <= $dst.orderNumber
-		AND   orderNumber > $src.orderNumber;
-
-	-- [B] Make move:
-	DO UPDATE RecipePicture SET orderNumber = $dst.orderNumber
-		WHERE pictureID = $(srcid)
-		AND   recipeID = $(recipeid)
-		AND   NOT $dst.orderNumber = $src.orderNumber;
+	DO listLocalMoveElement<RecipePicture,pictureID,recipeID>( $(srcid), $(dstid), $(recipeid));
 END
 
