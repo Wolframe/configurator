@@ -1,37 +1,24 @@
 INCLUDE treeOperations.tdl
 
---
--- addTag
---
-TRANSACTION addTag -- (?parentID, name, description)
+TRANSACTION addTag
 PREPROCESS
 BEGIN
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
 	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
 END
 BEGIN
-	DO NONEMPTY UNIQUE SELECT rgt FROM Tag WHERE ID = $(_parentID);
-	DO UPDATE Tag SET rgt = rgt + 2 WHERE rgt >= $1;
-	DO UPDATE Tag SET lft = lft + 2 WHERE lft > $1;
-	DO INSERT INTO Tag (parentID, name, normalizedName, description, lft, rgt) VALUES ($(_parentID), $(name), $(normalizedName), $(description), $1, $1+1);
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Tag WHERE normalizedName = $(normalizedName);
+	INTO . DO treeAddNode<Tag>( $(_parentID), $(name), $(normalizedName));
+	DO UPDATE Tag SET description = $(description) WHERE ID = $RESULT.ID;
 END
 
---
--- deleteTag
---
-TRANSACTION deleteTag -- (id)
+
+TRANSACTION deleteTag
 BEGIN
-	DO NONEMPTY UNIQUE SELECT lft,rgt,rgt-lft+1 AS width FROM Tag WHERE ID = $(id) AND ID != '1';
-	DO DELETE FROM Tag WHERE lft >= $1 AND lft <= $2;
-	DO UPDATE Tag SET lft = lft-$3 WHERE lft>$2;
-	DO UPDATE Tag SET rgt = rgt-$3 WHERE rgt>$2;
+	DO treeDeleteNode<Tag>( $(id));
 END
 
---
--- updateTag
---
-TRANSACTION updateTag -- (id, name, description)
+
+TRANSACTION updateTag
 PREPROCESS
 BEGIN
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
@@ -40,17 +27,14 @@ BEGIN
 	DO UPDATE Tag SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 END
 
---
--- selectTag                 :Get the tag
--- selectTagByName           :Get the tag by name
--- selectTagList             :Get a list of categories
---
-TRANSACTION selectTag -- (id)
+
+TRANSACTION selectTag
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE ID = $(id);
 END
 
-TRANSACTION selectTagByName -- (name)
+
+TRANSACTION selectTagByName
 PREPROCESS
 BEGIN
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
@@ -59,7 +43,21 @@ BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE normalizedName = $(normalizedName);
 END
 
-TRANSACTION selectTagSet -- (/tag/id)
+
+TRANSACTION selectTopTag
+BEGIN
+	DO treeSelectTopNodes<Tag>( $(id));
+END
+
+
+TRANSACTION selectTagTree
+RESULT FILTER resfilterTreeView
+BEGIN
+	DO treeSelectSubNodes<Tag>( $(id));
+END
+
+
+TRANSACTION selectTagSet
 BEGIN
 	DO createIdList();
 	DO createIdUnion();
@@ -76,21 +74,4 @@ BEGIN
 	DO dropIdUnion();
 END
 
---
--- selectTopTag       :Get the parents of a tag
---
-TRANSACTION selectTopTag -- (id)
-BEGIN
-	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
-END
-
---
--- selectTagTree       :Get the tag tree
---
-TRANSACTION selectTagTree -- (id)
-RESULT FILTER resfilterTreeView
-BEGIN
-	INTO name print "tag";
-	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM Tag AS P1, Tag AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
-END
 

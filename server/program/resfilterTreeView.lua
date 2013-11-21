@@ -1,7 +1,7 @@
 
 --\brief Local function resfilterTreeView
 --		Recursiv build of the node of a tree
-local function map_tree_node( treenodes, nodeid, tagname)
+local function map_tree_node( treenodes, nodeid)
 	local tree = nil
 	if treenodes[ nodeid ] then
 		tree = { id = nodeid, name = treenodes[ nodeid ].name}
@@ -13,7 +13,7 @@ local function map_tree_node( treenodes, nodeid, tagname)
 		end
 		local children = {}
 		for i,v in pairs( treenodes[ nodeid].children) do
-			local childnode = map_tree_node( treenodes, v, tagname)
+			local childnode = map_tree_node( treenodes, v)
 			table.insert( children, childnode)
 		end
 		if #children > 0 then
@@ -43,9 +43,9 @@ end
 --
 function resfilterTreeView( tree_)
 	local tree = tree_:table()
+	logger.printc( "RESULT LIST ", tree)
 	local id2nodemap = {}
 	local parentmap = {}
-	local tagname = tree[ "name"]
 	local treenodes = tree[ "node"]
 
 	if not treenodes then
@@ -75,7 +75,7 @@ function resfilterTreeView( tree_)
 				table.insert( id2nodemap[ v.parentID ].children, i )
 			end
 		end
-		local rt = map_tree_node( id2nodemap, rootID, tagname);
+		local rt = map_tree_node( id2nodemap, rootID);
 		return {item = rt[ "item"]}
 	else
 		return {}
