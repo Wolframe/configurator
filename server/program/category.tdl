@@ -158,6 +158,7 @@ END
 
 
 TRANSACTION changeCategoryPictureOrder
+-- Implementation of drag&drop (move) in category picture list
 BEGIN
 	DO listLocalMoveElement<CategoryPicture,pictureID,categoryID>( $(srcid), $(dstid), $(categoryid));
 END

@@ -1,3 +1,6 @@
+INCLUDE dragAndDrop.tdl
+
+
 TRANSACTION selectPictureList
 PREPROC
 	FOREACH search INTO key DO preprocSearchQueryString( . );	-- call 'name' normalizer
@@ -90,13 +93,11 @@ PREPROC
 	INTO . DO preprocImage( . );	-- call image preprocessing
 ENDPROC
 BEGIN
-	DO SELECT MAX(orderNumber) FROM Picture;
+	DO SELECT COALESCE( MAX(orderNumber), 1) FROM Picture;
 	DO INSERT INTO Picture( caption, info, image, width, height, thumbnail, orderNumber )
 		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail), $1+1 );
 	DO NONEMPTY UNIQUE getLastPictureID( );
-	FOREACH tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(id) );
-	DO DELETE FROM PictureTag WHERE tagID IS NULL;
-	DO DELETE FROM PictureTag WHERE pictureID IS NULL;
+	FOREACH tags/tag/id DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(.) );
 END
 
 TRANSACTION deletePicture -- (id)
@@ -138,31 +139,9 @@ END
 
 
 TRANSACTION changePictureOrder
--- Implements drag/drop of a single picture to another place in the list
--- Inserts a picture moved with id 'srcid' before or after the picture with id 'dstid'
---   when the move is upwards then the picture is inserted before the drop target
---   when the move is downwards then the picture is inserted after the drop target
+-- Implementation of drag&drop (move) in global picture list
 BEGIN
-	DO SELECT orderNumber FROM Picture WHERE ID = $(srcid);
-	KEEP AS src;
-	DO SELECT orderNumber FROM Picture WHERE ID = $(dstid);
-	KEEP AS dst;
-
-	-- [A] Prepare move:
-	-- 1.Case)  |-------[dst]---------------[src]-------|
-	--                       |<---------------*
-	DO UPDATE Picture SET orderNumber = orderNumber + 1
-		WHERE $dst.orderNumber < $src.orderNumber + 0
-		AND   orderNumber >= $dst.orderNumber
-		AND   orderNumber < $src.orderNumber;
-	-- 2.Case)  |-------[src]---------------[dst]-------|
-	--                    *------------------>|
-	DO UPDATE Picture SET orderNumber = orderNumber - 1
-		WHERE $dst.orderNumber > $src.orderNumber + 0
-		AND   orderNumber <= $dst.orderNumber
-		AND   orderNumber > $src.orderNumber;
-
-	-- [B] Make move:
-	DO UPDATE Picture SET orderNumber = $dst.orderNumber WHERE ID = $(srcid) AND NOT $dst.orderNumber = $src.orderNumber;
+	DO listGlobalMoveElement<Picture,ID>( $(srcid), $(dstid));
 END
+
 

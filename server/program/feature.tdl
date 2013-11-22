@@ -96,6 +96,7 @@ END
 
 
 TRANSACTION changeFeaturePictureOrder
+-- Implementation of drag&drop (move) in feature picture list
 BEGIN
 	DO listLocalMoveElement<FeaturePicture,pictureID,featureID>( $(srcid), $(dstid), $(featureid));
 END
