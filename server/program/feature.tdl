@@ -1,7 +1,7 @@
 INCLUDE dragAndDrop.tdl
 INCLUDE treeOperations.tdl
 
-TRANSACTION addFeature -- (?parentID, name, description, pictures/picture/id)
+TRANSACTION addFeature
 PREPROC
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
 	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
@@ -13,14 +13,14 @@ BEGIN
 END
 
 
-TRANSACTION deleteFeature -- (id)
+TRANSACTION deleteFeature
 BEGIN
 	DO DELETE FROM FeaturePicture WHERE featureID = $(id);
 	DO treeDeleteNode<Feature>( $(id));
 END
 
 
-TRANSACTION updateFeature -- (id, name, description, pictures/picture/id)
+TRANSACTION updateFeature
 PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
 ENDPROC

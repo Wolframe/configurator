@@ -2,7 +2,7 @@ STRUCT TagContent
 {
 	id @int
 	parentID ?@int
-	name string
+	name ?string
 	description ?string
 }
 
@@ -11,12 +11,27 @@ STRUCT TagReference
 	id @int
 }
 
+FORM createTag
+{
+	tag TagReference
+}
+
 FORM deleteTag
 {
 	tag TagReference
 }
 
 FORM updateTag
+{
+	tag TagContent
+}
+
+FORM TagRequest
+{
+	tag TagReference
+}
+
+FORM TagHierarchyRequest
 {
 	tag TagContent
 }

@@ -200,7 +200,7 @@ FORM PictureAttributes
 	}
 }
 
-FORM ReorderPictureInsertAfter
+FORM ReorderPicture
 {
 	move
 	{

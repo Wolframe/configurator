@@ -79,6 +79,16 @@ FORM deleteCategory
 	_ BaseCategoryRequest
 }
 
+FORM CategoryHierarchyRequest
+{
+	_ BaseCategoryRequest
+}
+
+FORM CategoryRequest
+{
+	_ BaseCategoryRequest
+}
+
 FORM CategoryPictureListRequest
 {
 	_ BaseCategoryRequest

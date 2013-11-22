@@ -125,7 +125,6 @@ END
 
 -- coalesce necessary because of the way NULL, '', '    ' is demarshalled
 -- in the client (keyword trim, empty element handling, 
--- CRITICAL: array size do not match != 4 3)
 TRANSACTION selectConfiguredComponents
 BEGIN
 	INTO component DO

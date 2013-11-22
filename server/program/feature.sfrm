@@ -6,17 +6,22 @@ STRUCT PictureArray
 	}
 }
 
+STRUCT FeatureContent
+{
+	parentID ?@int
+	root ?string
+	name string
+	description ?string
+	used_categories ?string
+	pictures ?PictureArray
+}
+
 FORM Feature
 {
 	feature
 	{
 		id @int
-		parentID ?@int
-		root ?string
-		name string
-		description ?string
-		used_categories ?string
-		pictures ?PictureArray
+		_ FeatureContent
 	}
 }
 
@@ -30,7 +35,35 @@ FORM deleteFeature
 
 FORM updateFeature
 {
-	_ Feature
+	feature
+	{
+		id @int
+		_ FeatureContent
+	}
+}
+
+FORM createFeature
+{
+	feature
+	{
+		_ FeatureContent
+	}
+}
+
+FORM FeatureHierarchyRequest
+{
+	feature
+	{
+		id @int
+	}
+}
+
+FORM FeatureRequest
+{
+	feature
+	{
+		id @int
+	}
 }
 
 FORM FeatureHierarchyNode
