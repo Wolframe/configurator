@@ -20,14 +20,14 @@ BEGIN
 		WHERE $dstrec.orderNumber < $srcrec.orderNumber + 0
 		AND   ReferenceId = $PARAM.referenceid
 		AND   orderNumber >= $dstrec.orderNumber
-		AND   orderNumber < $srcrec.orderNumber;
+		AND   orderNumber <= $srcrec.orderNumber;
 	-- 2.Case)  |-------[src]---------------[dst]-------|
 	--                    *------------------>|
 	DO UPDATE ListTable SET orderNumber = orderNumber - 1
 		WHERE $dstrec.orderNumber > $srcrec.orderNumber + 0
 		AND   ReferenceId = $PARAM.referenceid
 		AND   orderNumber <= $dstrec.orderNumber
-		AND   orderNumber > $srcrec.orderNumber;
+		AND   orderNumber >= $srcrec.orderNumber;
 
 	-- [B] Make move:
 	DO UPDATE ListTable SET orderNumber = $dstrec.orderNumber
@@ -56,13 +56,13 @@ BEGIN
 	DO UPDATE ListTable SET orderNumber = orderNumber + 1
 		WHERE $dstrec.orderNumber < $srcrec.orderNumber + 0
 		AND   orderNumber >= $dstrec.orderNumber
-		AND   orderNumber < $srcrec.orderNumber;
+		AND   orderNumber <= $srcrec.orderNumber;
 	-- 2.Case)  |-------[src]---------------[dst]-------|
 	--                    *------------------>|
 	DO UPDATE ListTable SET orderNumber = orderNumber - 1
 		WHERE $dstrec.orderNumber > $srcrec.orderNumber + 0
 		AND   orderNumber <= $dstrec.orderNumber
-		AND   orderNumber > $srcrec.orderNumber;
+		AND   orderNumber >= $srcrec.orderNumber;
 
 	-- [B] Make move:
 	DO UPDATE ListTable SET orderNumber = $dstrec.orderNumber

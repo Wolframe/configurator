@@ -1,60 +1,52 @@
 INCLUDE dragAndDrop.tdl
 INCLUDE treeOperations.tdl
 
---
--- addFeature
---
 TRANSACTION addFeature -- (?parentID, name, description, pictures/picture/id)
-PREPROCESS
-BEGIN
+PREPROC
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
 	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
-END
+ENDPROC
 BEGIN
-	DO NONEMPTY UNIQUE SELECT rgt FROM Feature WHERE ID = $(_parentID);
-	DO UPDATE Feature SET rgt = rgt + 2 WHERE rgt >= $1;
-	DO UPDATE Feature SET lft = lft + 2 WHERE lft > $1;
-	DO INSERT INTO Feature (parentID, name, normalizedName, description, lft, rgt) VALUES ($(_parentID), $(name), $(normalizedName), $(description), $1, $1+1);
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Feature WHERE normalizedName = $(normalizedName) AND parentID = $(_parentID);
-	KEEP AS newitem;
-	DO SELECT MAX(orderNumber) AS newOrderNumber FROM FeaturePicture WHERE featureID = $newitem.ID;
-	FOREACH pictures/picture DO INSERT INTO FeaturePicture( featureID, pictureID, orderNumber ) VALUES( $newitem.ID, $(id), $newOrderNumber );
-	DO DELETE FROM FeaturePicture WHERE pictureID IS NULL;
+	INTO . DO treeAddNode<Feature>( $(_parentID), $(name), $(normalizedName));
+	DO UPDATE Feature SET description = $(description) WHERE ID = $ID;
+	FOREACH pictures/picture/id DO INSERT INTO FeaturePicture( featureID, pictureID, orderNumber ) VALUES( $ID, $(.), $# );
 END
 
---
--- deleteFeature
---
+
 TRANSACTION deleteFeature -- (id)
 BEGIN
-	DO NONEMPTY UNIQUE SELECT lft,rgt,rgt-lft+1 AS width FROM Feature WHERE ID = $(id) AND ID != '1';
 	DO DELETE FROM FeaturePicture WHERE featureID = $(id);
-	DO DELETE FROM Feature WHERE lft >= $1 AND lft <= $2;
-	DO UPDATE Feature SET lft = lft-$3 WHERE lft>$2;
-	DO UPDATE Feature SET rgt = rgt-$3 WHERE rgt>$2;
+	DO treeDeleteNode<Feature>( $(id));
 END
 
---
--- updateFeature
---
+
 TRANSACTION updateFeature -- (id, name, description, pictures/picture/id)
-PREPROCESS
-BEGIN
+PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
-END
+ENDPROC
 BEGIN
 	DO UPDATE Feature SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM FeaturePicture WHERE featureID = $(id);
-	FOREACH pictures/picture DO INSERT INTO FeaturePicture( featureID, pictureID ) VALUES( $(/id), $(id) );
-	DO DELETE FROM FeaturePicture WHERE pictureID IS NULL;
+	FOREACH pictures/picture/id DO INSERT INTO FeaturePicture( featureID, pictureID, orderNumber ) VALUES( $(/id), $(.), $# );
 END
 
---
--- selectFeature                 :Get the feature
--- selectFeatureByName           :Get the feature by name
--- selectFeatureList             :Get a list of categories
---
-TRANSACTION selectFeature -- (id)
+
+TRANSACTION selectTopFeature
+-- Get the parents of a feature
+BEGIN
+	DO treeSelectTopNodes<Feature>( $(id));
+END
+
+
+TRANSACTION selectFeatureTree
+-- Get the feature sub tree with node ID passed as 'id'
+RESULT FILTER resfilterTreeView
+BEGIN
+	DO treeSelectSubNodes<Feature>( $(id));
+END
+
+
+TRANSACTION selectFeature
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT Feature.ID AS id, Feature.parentID AS "parentID",
@@ -69,7 +61,8 @@ BEGIN
 		GROUP BY Feature.ID, Feature.parentID, Feature.name, Feature.description;
 END
 
-TRANSACTION selectFeaturePictures -- (id)
+
+TRANSACTION selectFeaturePictures
 BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM FeaturePicture, Picture
@@ -78,11 +71,11 @@ BEGIN
 		ORDER BY FeaturePicture.orderNumber;
 END
 
-TRANSACTION selectFeatureByName -- (name)
-PREPROCESS
-BEGIN
+
+TRANSACTION selectFeatureByName
+PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
-END
+ENDPROC
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT ID AS id, parentID AS "parentID", name,
@@ -93,29 +86,12 @@ BEGIN
 		WHERE FeaturePicture.featureID = $1;
 END
 
-TRANSACTION selectFeatureSet -- (/feature/id)
+
+TRANSACTION selectFeatureSet
 BEGIN
 	FOREACH /feature INTO feature DO NONEMPTY UNIQUE
 		SELECT ID AS id, name, description
 			FROM Feature WHERE ID = $(id) ORDER BY ID;
-END
-
---
--- selectTopFeature       :Get the parents of a feature
---
-TRANSACTION selectTopFeature -- (id)
-BEGIN
-	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.description FROM Feature AS P1, Feature AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
-END
-
---
--- selectFeatureTree       :Get the feature tree
---
-TRANSACTION selectFeatureTree -- (id)
-RESULT FILTER resfilterTreeView
-BEGIN
-	INTO name print "feature";
-	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM Feature AS P1, Feature AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
 END
 
 

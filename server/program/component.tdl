@@ -14,11 +14,10 @@ BEGIN
 END
 
 TRANSACTION addComponent
-PREPROCESS
-BEGIN
+PREPROC
 	INTO normalizedName DO name( name );		-- call 'name' normalizer
 	INTO . DO preprocComponentDefaultValues( . );	-- get default values for non defined things
-END
+ENDPROC
 BEGIN
 	DO INSERT INTO Component( code, name, normalizedName, categoryID, manufacturerID, mfgCode, webPage, description, price, pricecurrency)
 		VALUES ( $(code), $(name), $(normalizedName), convert_to_integer($(category/id)), convert_to_integer($(manufacturer/id)), $(mfgCode), $(webPage), $(description), convert_to_numeric($(_price)), $(_priceCurrency));
@@ -34,11 +33,10 @@ BEGIN
 END
 
 TRANSACTION updateComponent
-PREPROCESS
-BEGIN
+PREPROC
 	INTO normalizedName DO name( name );		-- call 'name' normalizer
 	INTO . DO preprocComponentDefaultValues( . );	-- get default values for non defined things
-END
+ENDPROC
 BEGIN
 	DO DELETE FROM ComponentPicture WHERE componentID = $(id);
 	DO UPDATE Component SET code=$(code), name=$(name), normalizedName=$(normalizedName),

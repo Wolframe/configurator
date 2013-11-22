@@ -1,25 +1,19 @@
 INCLUDE dragAndDrop.tdl
 INCLUDE treeOperations.tdl
 
---
--- addCategory
---
-TRANSACTION addCategory -- (?parentID, name, description, pictures/picture/id)
-PREPROCESS
-BEGIN
+
+TRANSACTION addCategory
+PREPROC
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
 	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
-END
+ENDPROC
 BEGIN
-	DO NONEMPTY UNIQUE SELECT rgt FROM Category WHERE ID = $(_parentID);
-	DO UPDATE Category SET rgt = rgt + 2 WHERE rgt >= $1;
-	DO UPDATE Category SET lft = lft + 2 WHERE lft > $1;
-	DO INSERT INTO Category (parentID, name, normalizedName, description, lft, rgt) VALUES ($(_parentID), $(name), $(normalizedName), $(description), $1, $1+1);
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS "ID" from Category WHERE normalizedName = $(normalizedName) AND parentID = $(_parentID);
+	INTO . DO treeAddNode<Category>( $(_parentID), $(name), $(normalizedName));
 	KEEP AS newitem;
-	DO SELECT MAX(orderNumber) AS newOrderNumber FROM CategoryPicture WHERE categoryID = $newitem.ID;
-	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $newitem.ID, $(id), $newOrderNumber );
-	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
+	DO UPDATE Category SET description = $(description) WHERE ID = $newitem.ID;
+
+	FOREACH pictures/picture/id DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $newitem.ID, $(.), $# );
+
 	FOREACH features_required/CategoryFeature DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
 			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
@@ -28,33 +22,27 @@ BEGIN
 			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
---
--- deleteCategory
---
-TRANSACTION deleteCategory -- (id)
+
+TRANSACTION deleteCategory
 BEGIN
-	DO NONEMPTY UNIQUE SELECT lft,rgt,rgt-lft+1 AS width FROM Category WHERE ID = $(id) AND ID != '1';
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
 	DO DELETE FROM CategRequires WHERE categoryID = $(id);
 	DO DELETE FROM CategProvides WHERE categoryID = $(id);
-	DO DELETE FROM Category WHERE lft >= $1 AND lft <= $2;
-	DO UPDATE Category SET lft = lft-$3 WHERE lft>$2;
-	DO UPDATE Category SET rgt = rgt-$3 WHERE rgt>$2;
+	DO treeDeleteNode<Category>( $(id));
 END
 
---
--- updateCategory
---
-TRANSACTION updateCategory -- (id, name, description, pictures/picture/id)
-PREPROCESS
-BEGIN
+
+TRANSACTION updateCategory
+PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
-END
+ENDPROC
 BEGIN
 	DO UPDATE Category SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
-	FOREACH pictures/picture DO INSERT INTO CategoryPicture( categoryID, pictureID ) VALUES( $(/id), $(id) );
-	DO DELETE FROM CategoryPicture WHERE pictureID IS NULL;
+
+	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
+	FOREACH pictures/picture/id DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $(/id), $(.), $# );
+
 	DO DELETE FROM CategRequires WHERE categoryID = $(id);
 	DO DELETE FROM CategProvides WHERE categoryID = $(id);
 	FOREACH features_required/CategoryFeature DO
@@ -65,12 +53,8 @@ BEGIN
 			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
 
---
--- selectCategory                 :Get the category
--- selectCategoryByNormalizedName :Get the category by name
--- selectCategoryList             :Get a list of categories
---
-TRANSACTION selectCategory -- (id)
+
+TRANSACTION selectCategory
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
 		description
@@ -95,7 +79,8 @@ BEGIN
 		AND featureID = Feature.ID;
 END
 
-TRANSACTION selectCatogeryPictures -- (id)
+
+TRANSACTION selectCatogeryPictures
 BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM CategoryPicture, Picture
@@ -104,11 +89,11 @@ BEGIN
 		ORDER BY CategoryPicture.orderNumber;
 END
 
-TRANSACTION selectCategoryByName -- (name)
-PREPROCESS
-BEGIN
+
+TRANSACTION selectCategoryByName
+PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
-END
+ENDPROC
 BEGIN
 	INTO . DO NONEMPTY UNIQUE
 		SELECT ID AS id, parentID AS "parentID", name,
@@ -120,35 +105,30 @@ BEGIN
 			WHERE CategoryPicture.categoryID = $1;
 END
 
-TRANSACTION selectCategorySet -- (/category/id)
+TRANSACTION selectCategorySet
 BEGIN
 	FOREACH /category INTO category DO NONEMPTY UNIQUE
 		SELECT ID AS "ID", name, description
 			FROM Category WHERE ID = $(id) ORDER BY ID;
 END
 
---
--- selectTopCategory       :Get the parents of a category
---
-TRANSACTION selectTopCategory -- (id)
+
+TRANSACTION selectTopCategory
 BEGIN
-	INTO node DO SELECT P2.ID AS "ID",P2.parentID AS "parentID",P2.name,P2.description FROM category AS P1, category AS P2 WHERE P1.lft > P2.lft AND P1.lft < P2.rgt AND P1.ID = $(id) ORDER BY P2.ID;
+	DO treeSelectTopNodes<Category>( $(id));
 END
 
---
--- selectCategoryTree       :Get the category tree
---
-TRANSACTION selectCategoryTree -- (id)
+
+TRANSACTION selectCategoryTree
+-- Get the category sub tree with node ID passed as 'id'
 RESULT FILTER resfilterTreeView
 BEGIN
-	INTO name print "category";
-	INTO node DO SELECT P1.ID AS "ID",P1.parentID AS "parentID",P1.name,P1.description FROM category AS P1, category AS P2 WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P2.ID = $(id) ORDER BY P1.ID;
+	DO treeSelectSubNodes<Category>( $(id));
 END
 
---
--- selectCategoryFeaturesRequired : temporay relation storage for annotated category/feature relations
---
+
 TRANSACTION selectCategoryFeatureList
+-- temporay relation storage for annotated category/feature relations
 BEGIN
 	DO createFeatureIDlist();
 	FOREACH /feature DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),convert_to_integer($(minQuantity)),convert_to_integer($(maxQuantity)));

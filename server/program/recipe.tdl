@@ -14,10 +14,9 @@ BEGIN
 END
 
 TRANSACTION addRecipe
-PREPROCESS
-BEGIN
+PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
-END
+ENDPROC
 BEGIN
 	DO INSERT INTO Recipe( name, normalizedName, description, categoryID, creationDate, comment )
 		VALUES ( $(name), $(normalizedName), $(description), $(category/id), datetime('now'), $(comment) );
@@ -35,10 +34,9 @@ BEGIN
 END
 
 TRANSACTION updateRecipe
-PREPROCESS
-BEGIN
+PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
-END
+ENDPROC
 BEGIN
 	DO DELETE FROM RecipePicture WHERE recipeID = $(id);
 	DO UPDATE Recipe SET name=$(name), normalizedName=$(normalizedName),
