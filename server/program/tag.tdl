@@ -3,10 +3,9 @@ INCLUDE treeOperations.tdl
 TRANSACTION addTag
 PREPROC
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
-	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
 ENDPROC
 BEGIN
-	INTO . DO treeAddNode<Tag>( $(_parentID), $(name), $(normalizedName));
+	INTO . DO treeAddNode<Tag>( $(parentID), $(name), $(normalizedName));
 	DO UPDATE Tag SET description = $(description) WHERE ID = $RESULT.ID;
 END
 
@@ -38,12 +37,6 @@ PREPROC
 ENDPROC
 BEGIN
 	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID",name,description FROM Tag WHERE normalizedName = $(normalizedName);
-END
-
-
-TRANSACTION selectTopTag
-BEGIN
-	DO treeSelectTopNodes<Tag>( $(id));
 END
 
 

@@ -1,109 +1,55 @@
-FORM ConfiguredComponentsFixRequest
+STRUCT ConfigurationComponentContent
+{
+	id @int
+	componentID @int
+	quantity int
+}
+
+
+FORM ConfigurationComponentDef
+{
+	component
+	{
+		_ ConfigurationComponentContent
+	}
+}
+
+
+FORM ConfigurationComponentRef
 {
 	component
 	{
 		id @int
-		configID @int
+		componentID @int
 	}
 }
 
-FORM ConfiguredComponentsUserRequest
+
+STRUCT ConfigurationRequiredCategoryContent
 {
-	component
-	{
-		id @int
-		configID @int
-	}
+	name string
+	minQuantity string
+	maxQuantity string
+	componentID int
+	componentName string
+	componentCategory string
 }
 
-FORM ConfiguredComponentsFix
-{
-	list
-	{
-		component []
-		{
-			id @int
-			code string
-			name string
-			categoryName string
-			manufacturerName ?string
-			mfgCode ?string
-			webPage ?string
-			description ?string
-			quantity int
-			price float
-		}
-	}
-}
 
-FORM ConfiguredComponentsUser
+FORM ConfigurationRequiredFeatureCategoryList
 {
-	list
-	{
-		component []
-		{
-			id @int
-			code string
-			name string
-			categoryName string
-			manufacturerName ?string
-			mfgCode ?string
-			webPage ?string
-			description ?string
-			quantity int
-			price float
-			featureMinQuantity int
-			featureMaxQuantity int
-		}
-	}
-}
-
-FORM ConfiguratorRequiredFeaturesRequest
-{
-	configuration
-	{
-		id @int
-		configID @int
-	}
-}
-
-FORM ConfiguratorRequiredFeatures
-{
-	list
+	categories
 	{
 		category []
 		{
-			id int
-			name string
-			minQuantity string
-			maxQuantity string
-			componentID int
-			componentName string
-			componentCategory string
+			id @int
+			_ ConfigurationRequiredCategoryContent
 		}
 	}
 }
 
-FORM ConfiguratorAddComponentRequest
-{
-	configuration
-	{
-		id int
-		componentID int
-		quantity int
-	}
-}
 
-FORM ConfiguratorDeleteComponentRequest
-{
-	configuration
-	{
-		id int
-		componentID int
-	}
-}
-
-FORM LastConfigurationIDRequest
+FORM getLastConfigurationID
 {
 	configuration
 	{
@@ -111,3 +57,4 @@ FORM LastConfigurationIDRequest
 		configID ?@int
 	}
 }
+

@@ -107,7 +107,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">feature_add?id={feature.selected:1}&amp;root.selected={feature.selected:no:yes}</string>
+        <string notr="true">feature_add?id={feature.selected:1}&amp;root.selected={feature.selected:'no':'yes'}</string>
        </property>
       </widget>
      </item>

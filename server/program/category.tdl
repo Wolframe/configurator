@@ -5,10 +5,9 @@ INCLUDE treeOperations.tdl
 TRANSACTION addCategory
 PREPROC
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
-	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
 ENDPROC
 BEGIN
-	INTO . DO treeAddNode<Category>( $(_parentID), $(name), $(normalizedName));
+	INTO . DO treeAddNode<Category>( $(parentID), $(name), $(normalizedName));
 	KEEP AS newitem;
 	DO UPDATE Category SET description = $(description) WHERE ID = $newitem.ID;
 
@@ -80,7 +79,7 @@ BEGIN
 END
 
 
-TRANSACTION selectCatogeryPictures
+TRANSACTION selectCategoryThumbnailList
 BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM CategoryPicture, Picture
@@ -110,12 +109,6 @@ BEGIN
 	FOREACH /category INTO category DO NONEMPTY UNIQUE
 		SELECT ID AS "ID", name, description
 			FROM Category WHERE ID = $(id) ORDER BY ID;
-END
-
-
-TRANSACTION selectTopCategory
-BEGIN
-	DO treeSelectTopNodes<Category>( $(id));
 END
 
 

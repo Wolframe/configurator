@@ -1,4 +1,4 @@
-STRUCT ComponentFeatureStruct
+STRUCT ComponentFeatureContent
 {
 	id @int
 	name string
@@ -6,52 +6,56 @@ STRUCT ComponentFeatureStruct
 	maxQuantity int
 }
 
-FORM Component
+
+STRUCT Reference
+{
+	id @int
+	_ ?string
+}
+
+
+STRUCT ComponentContent
+{
+	code string
+	name string
+	category Reference
+	manufacturer ?Reference
+	mfgCode ?string
+	webPage ?string
+	description ?string
+	price ?float
+}
+
+
+STRUCT ComponentComplete
+{
+	_ ComponentContent
+	picture Reference[]
+	features_required ComponentFeatureContent[]
+	features_provided ComponentFeatureContent[]
+}
+
+
+FORM ComponentNew
 {
 	component
 	{
-		id ?@int
-		code string
-		name string
-		category {
-			id ?@int
-			_ ?string
-		}
-		manufacturer {
-			id ?@int
-			_ ?string
-		}
-		mfgCode ?string
-		webPage ?string
-		description ?string
-		price ?float
-		picture []
-		{
-			id @int
-			_ ?string
-		}
-		features_required ?
-		{
-			ComponentFeature ComponentFeatureStruct[]
-		}
-		features_provided ?
-		{
-			ComponentFeature ComponentFeatureStruct[]
-		}
+		_ ComponentContent
 	}
 }
 
-FORM createComponent
+
+FORM ComponentDef
 {
-	_ Component
+	component
+	{
+		id @int
+		_ ComponentComplete
+	}
 }
 
-FORM updateComponent
-{
-	_ Component
-}
 
-FORM BaseComponentRequest
+FORM ComponentRef
 {
 	component
 	{
@@ -59,82 +63,41 @@ FORM BaseComponentRequest
 	}
 }
 
-FORM DeleteComponentRequest
-{
-	_ BaseComponentRequest
-}
 
-FORM ComponentPictureListRequest
-{
-	_ BaseComponentRequest
-}
-
-FORM ComponentListRequest
+FORM ComponentSearch
 {
 	component
 	{
+		search ?string
 	}
 }
 
-FORM ComponentRequest
-{
-	_ BaseComponentRequest
-}
 
 FORM ComponentList
 {
-	list
+	components
 	{
-		component []
+		component[]
 		{
 			id @int
-			code string
-			name string
-			categoryName string
-			manufacturerName string
-			mfgCode string
-			webPage string
-			description string
-			price ?float
+			_ ComponentContent
 		}
 	}
 }
 
-FORM ComponentFeatureListRequest
+
+FORM ComponentFeature
 {
-	features
-	{
-		feature []
-		{
-			id @int
-			minQuantity int
-			maxQuantity int
-		}
-		add []
-		{
-			id @int
-			minQuantity int
-			maxQuantity int
-		}
-		remove []
-		{
-			id @int
-		}
-	}
+	feature ComponentFeatureContent
 }
 
-FORM ComponentFeatureEdit
-{
-	feature
-	{
-		_ ComponentFeatureStruct
-	}
-}
 
 FORM ComponentFeatureList
 {
-	ComponentFeatures
+	features
 	{
-		ComponentFeature ComponentFeatureStruct[]
+		feature ComponentFeatureContent[]
 	}
 }
+
+

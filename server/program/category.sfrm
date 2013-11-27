@@ -1,4 +1,40 @@
-FORM CategoryFeature
+STRUCT CategoryContent
+{
+	parentID @int
+	name string
+	description ?string
+}
+
+
+FORM CategoryNew
+{
+	category
+	{
+		_ CategoryContent
+	}
+}
+
+
+FORM CategoryDef
+{
+	category
+	{
+		id @int
+		_ CategoryContent
+	}
+}
+
+
+FORM CategoryRef
+{
+	category
+	{
+		id @int
+	}
+}
+
+
+STRUCT CategoryFeatureContent
 {
 	id @int
 	name ?string
@@ -6,57 +42,47 @@ FORM CategoryFeature
 	maxQuantity int
 }
 
-FORM Category
+
+FORM CategoryFeature
+{
+	feature CategoryFeatureContent
+}
+
+
+FORM CategoryFeatureList
+{
+	features
+	{
+		feature CategoryFeatureContent[]
+	}
+}
+
+
+STRUCT CategoryPictureRef
+{
+	id ?@int
+}
+
+
+FORM CategoryComplete
 {
 	category
 	{
 		id ?@int
-		parentID ?@int
-		root ?string
-		name string
-		description ?string
-		pictures ?
-		{
-			picture []
-			{
-				id @int
-			}
-		}
-		features_required ?
-		{
-			CategoryFeature []
-			{
-				_ CategoryFeature
-			}
-		}
-		features_provided ?
-		{
-			CategoryFeature []
-			{
-				_ CategoryFeature
-			}
-		}
+		picture CategoryPictureRef[]
+		feature_required CategoryFeatureContent[]
+		feature_provided CategoryFeatureContent[]
 	}
 }
 
-FORM createCategory
-{
-	_ Category
-}
-
-FORM updateCategory
-{
-	_ Category
-}
 
 FORM CategoryHierarchyNode
 {
 	id @int
-	parentID ?@int
-	name string
-	description ?string
+	_ CategoryContent
 	item ^CategoryHierarchyNode[]
 }
+
 
 FORM CategoryHierarchy
 {
@@ -66,77 +92,8 @@ FORM CategoryHierarchy
 	}
 }
 
-FORM BaseCategoryRequest
-{
-	category
-	{
-		id @int
-	}
-}
 
-FORM deleteCategory
-{
-	_ BaseCategoryRequest
-}
-
-FORM CategoryHierarchyRequest
-{
-	_ BaseCategoryRequest
-}
-
-FORM CategoryRequest
-{
-	_ BaseCategoryRequest
-}
-
-FORM CategoryPictureListRequest
-{
-	_ BaseCategoryRequest
-}
-
-FORM CategoryFeatureListRequest
-{
-	features
-	{
-		feature []
-		{
-			id @int
-			minQuantity int
-			maxQuantity int
-		}
-		add []
-		{
-			id @int
-			minQuantity int
-			maxQuantity int
-		}
-		remove []
-		{
-			id @int
-		}
-	}
-}
-
-FORM CategoryFeatureEdit
-{
-	feature
-	{
-		_ CategoryFeature
-	}
-}
-
-FORM CategoryFeatureList
-{
-	CategoryFeatures
-	{
-		CategoryFeature []
-		{
-			_ CategoryFeature
-		}
-	}
-}
-
-FORM CategoryReorderPicture
+FORM CategoryPictureReorder
 {
 	move
 	{

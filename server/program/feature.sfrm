@@ -1,79 +1,57 @@
-STRUCT PictureArray
-{
-	picture []
-	{
-		id @int
-	}
-}
-
 STRUCT FeatureContent
 {
 	parentID ?@int
-	root ?string
 	name string
 	description ?string
+}
+
+
+FORM FeatureNew
+{
+	feature
+	{
+		_ FeatureContent
+	}
+}
+
+
+FORM FeatureDef
+{
+	feature
+	{
+		id @int
+		_ FeatureContent
+	}
+}
+
+
+FORM FeatureRef
+{
+	feature
+	{
+		id @int
+	}
+}
+
+
+STRUCT FeatureComplete
+{
+	_ FeatureContent
 	used_categories ?string
-	pictures ?PictureArray
-}
-
-FORM Feature
-{
-	feature
-	{
-		id @int
-		_ FeatureContent
-	}
-}
-
-FORM deleteFeature
-{
-	feature
+	pictures[]
 	{
 		id @int
 	}
 }
 
-FORM updateFeature
-{
-	feature
-	{
-		id @int
-		_ FeatureContent
-	}
-}
-
-FORM createFeature
-{
-	feature
-	{
-		_ FeatureContent
-	}
-}
-
-FORM FeatureHierarchyRequest
-{
-	feature
-	{
-		id @int
-	}
-}
-
-FORM FeatureRequest
-{
-	feature
-	{
-		id @int
-	}
-}
 
 FORM FeatureHierarchyNode
 {
 	id @int
-	parentID ?@int
-	name string
-	description ?string
+	_ FeatureContent
 	item ^FeatureHierarchyNode[]
 }
+
 
 FORM FeatureHierarchy
 {
@@ -83,15 +61,8 @@ FORM FeatureHierarchy
 	}
 }
 
-FORM FeaturePictureListRequest
-{
-	feature
-	{
-		id @int
-	}
-}
 
-FORM FeatureReorderPicture
+FORM FeaturePictureReorder
 {
 	move
 	{

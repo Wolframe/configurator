@@ -4,10 +4,9 @@ INCLUDE treeOperations.tdl
 TRANSACTION addFeature
 PREPROC
 	INTO normalizedName DO name( name );			-- call 'name' normalizer
-	INTO . DO preprocTreeNodeGetParentIdIfRoot( . );	-- get parentID attribute as _parentID
 ENDPROC
 BEGIN
-	INTO . DO treeAddNode<Feature>( $(_parentID), $(name), $(normalizedName));
+	INTO . DO treeAddNode<Feature>( $(parentID), $(name), $(normalizedName));
 	DO UPDATE Feature SET description = $(description) WHERE ID = $ID;
 	FOREACH pictures/picture/id DO INSERT INTO FeaturePicture( featureID, pictureID, orderNumber ) VALUES( $ID, $(.), $# );
 END
@@ -28,13 +27,6 @@ BEGIN
 	DO UPDATE Feature SET name = $(name), normalizedName = $(normalizedName), description = $(description) WHERE ID = $(id);
 	DO DELETE FROM FeaturePicture WHERE featureID = $(id);
 	FOREACH pictures/picture/id DO INSERT INTO FeaturePicture( featureID, pictureID, orderNumber ) VALUES( $(/id), $(.), $# );
-END
-
-
-TRANSACTION selectTopFeature
--- Get the parents of a feature
-BEGIN
-	DO treeSelectTopNodes<Feature>( $(id));
 END
 
 
@@ -62,7 +54,7 @@ BEGIN
 END
 
 
-TRANSACTION selectFeaturePictures
+TRANSACTION selectFeatureThumbnailList
 BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM FeaturePicture, Picture

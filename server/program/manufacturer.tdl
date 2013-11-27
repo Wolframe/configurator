@@ -1,13 +1,3 @@
-TRANSACTION selectManufacturerList
-BEGIN
-	INTO manufacturer DO
-		SELECT Manufacturer.ID AS "id", name, webPage AS "webPage", thumbnail
-		FROM Manufacturer
-		LEFT JOIN Picture
-		ON Manufacturer.logo = Picture.ID
-		ORDER BY Manufacturer.ID;
-END
-
 TRANSACTION addManufacturer
 PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
@@ -16,6 +6,7 @@ BEGIN
 	DO INSERT INTO Manufacturer( name, normalizedName, webPage, logo )
 		VALUES ( $(name), $(normalizedName), $(webPage), convert_to_integer($(picture/id)) );
 END
+
 
 TRANSACTION updateManufacturer
 PREPROC
@@ -26,10 +17,23 @@ BEGIN
 		WHERE ID=$(id);
 END
 
+
 TRANSACTION deleteManufacturer
 BEGIN
 	DO DELETE FROM Manufacturer WHERE ID = $(id);
 END
+
+
+TRANSACTION selectManufacturerList
+BEGIN
+	INTO manufacturer DO
+		SELECT Manufacturer.ID AS "id", name, webPage AS "webPage", thumbnail
+		FROM Manufacturer
+		LEFT JOIN Picture
+		ON Manufacturer.logo = Picture.ID
+		ORDER BY Manufacturer.ID;
+END
+
 
 TRANSACTION selectManufacturer
 BEGIN
@@ -45,7 +49,8 @@ BEGIN
 		WHERE Manufacturer.ID = $(id);
 END
 
-TRANSACTION selectManufacturerPicture -- (id)
+
+TRANSACTION selectManufacturerPicture
 BEGIN
 	INTO . DO
 		SELECT Picture.ID AS "id", thumbnail, caption
@@ -54,3 +59,4 @@ BEGIN
 		ON Manufacturer.logo = Picture.ID
 		WHERE Manufacturer.ID = $(id);
 END
+

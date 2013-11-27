@@ -1,4 +1,4 @@
-FORM RecipeCategory
+FORM RecipeCategoryContent
 {
 	id @int
 	name ?string
@@ -6,55 +6,42 @@ FORM RecipeCategory
 	maxQuantity int
 }
 
-FORM RecipeComponent
+
+FORM RecipeComponentContent
 {
 	id @int
 	name ?string
 	quantity int
 }
 
+
+STRUCT Reference
+{
+	id @int
+	_ ?string
+}
+
+
 STRUCT RecipeContent
 {
 	name string
 	description ?string
-	category ?
-	{
-		id ?@int
-		_ ?string
-	}
+	category ?Reference
 	creationDate ?string
 	comment ?string
-	picture []
-	{
-		id @int
-		_ ?string
-	}
-	categories_required ?
-	{
-		RecipeCategory []
-		{
-			_ RecipeCategory
-		}
-	}
-	components_required ?
-	{
-		RecipeComponent []
-		{
-			_ RecipeComponent
-		}
-	}
 }
 
-FORM Recipe
+
+STRUCT RecipeComplete
 {
-	recipe
-	{
-		id @int
-		_ RecipeContent
-	}
+	_ RecipeContent
+	picture Reference[]
+	categories_required RecipeCategoryContent[]
+	components_required RecipeComponentContent[]
 }
 
-FORM createRecipe
+
+FORM RecipeNew
 {
 	recipe
 	{
@@ -62,12 +49,18 @@ FORM createRecipe
 	}
 }
 
-FORM updateRecipe
+
+FORM RecipeDef
 {
-	_ Recipe
+	recipe
+	{
+		id @int
+		_ RecipeComplete
+	}
 }
 
-FORM BaseRecipeRequest
+
+FORM RecipeRef
 {
 	recipe
 	{
@@ -75,127 +68,63 @@ FORM BaseRecipeRequest
 	}
 }
 
-FORM DeleteRecipeRequest
-{
-	_ BaseRecipeRequest
-}
 
-FORM RecipePictureListRequest
-{
-	_ BaseRecipeRequest
-}
-
-FORM RecipeListRequest
+FORM RecipeSearch
 {
 	recipe
 	{
+		search ?string
 	}
 }
 
-FORM RecipeRequest
-{
-	_ BaseRecipeRequest
-}
 
 FORM RecipeList
 {
-	list
+	recipes
 	{
 		recipe []
 		{
 			id @int
-			name string
-			description ?string
-			categoryName ?string
-			creationDate ?string
-			comment ?string
+			_ RecipeDef
 		}
 	}
 }
 
-FORM RecipeCategoryListRequest
+
+FORM RecipeCategory
 {
-	categories
-	{
-		category []
-		{
-			id @int
-			minQuantity int
-			maxQuantity int
-		}
-		add []
-		{
-			id @int
-			minQuantity int
-			maxQuantity int
-		}
-		remove []
-		{
-			id @int
-		}
-	}
+	category RecipeCategoryContent
 }
 
-FORM RecipeCategoryEdit
-{
-	category
-	{
-		_ RecipeCategory
-	}
-}
 
 FORM RecipeCategoryList
 {
-	RecipeCategories
+	categories
 	{
-		RecipeCategory []
-		{
-			_ RecipeCategory
-		}
+		category RecipeCategoryContent[]
 	}
 }
 
-FORM RecipeComponentListRequest
-{
-	components
-	{
-		component []
-		{
-			id @int
-			quantity int
-		}
-		add []
-		{
-			id @int
-			quantity int
-		}
-		remove []
-		{
-			id @int
-		}
-	}
-}
 
-FORM RecipeComponentEdit
+FORM RecipeComponent
 {
 	component
 	{
-		_ RecipeComponent
+		_ RecipeComponentContent
 	}
 }
+
 
 FORM RecipeComponentList
 {
-	RecipeComponents
+	components
 	{
-		RecipeComponent []
-		{
-			_ RecipeComponent
-		}
+		component RecipeComponentContent[]
 	}
 }
 
-FORM RecipeReorderPicture
+
+FORM RecipePictureReorder
 {
 	move
 	{

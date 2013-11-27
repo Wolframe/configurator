@@ -1,15 +1,3 @@
-TRANSACTION selectConfigurationList
-BEGIN
-	INTO configuration DO
-		SELECT Configuration.ID AS "id", Configuration.name AS "name",
-			Configuration.description,
-			Category.name AS "categoryName",
-			comment
-		FROM Configuration, Category
-		WHERE Configuration.categoryID = Category.ID
-		ORDER By Configuration.ID;
-END
-
 TRANSACTION addConfiguration
 BEGIN
 	DO INSERT INTO Configuration( name, description, comment, recipeID )
@@ -25,10 +13,6 @@ BEGIN
 	INTO configuration DO NONEMPTY UNIQUE getLastConfigurationID( );
 END
 
-TRANSACTION getLastConfigurationID
-BEGIN
-	INTO . DO NONEMPTY UNIQUE SELECT MAX(id) AS "id" FROM Configuration;
-END
 
 TRANSACTION updateConfiguration
 BEGIN
@@ -38,11 +22,32 @@ BEGIN
 		WHERE ID=$(id);
 END
 
+
 TRANSACTION deleteConfiguration
 BEGIN
 	DO DELETE FROM ConfigComponent WHERE configID = $(id);
 	DO DELETE FROM Configuration WHERE ID = $(id);
 END
+
+
+TRANSACTION getLastConfigurationID
+BEGIN
+	INTO . DO NONEMPTY UNIQUE SELECT MAX(id) AS "id" FROM Configuration;
+END
+
+
+TRANSACTION selectConfigurationList
+BEGIN
+	INTO configuration DO
+		SELECT Configuration.ID AS "id", Configuration.name AS "name",
+			Configuration.description,
+			Category.name AS "categoryName",
+			comment
+		FROM Configuration, Category
+		WHERE Configuration.categoryID = Category.ID
+		ORDER By Configuration.ID;
+END
+
 
 TRANSACTION selectConfiguration
 BEGIN
@@ -91,7 +96,8 @@ BEGIN
 			WHERE Configuration.ID = $(id);
 END
 
-TRANSACTION selectConfiguredComponentsFix
+
+TRANSACTION selectConfigurationComponentListFix
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
@@ -102,11 +108,12 @@ BEGIN
 			FROM ConfigComponent, Category, Component
 			WHERE Component.ID = ConfigComponent.componentID
 			AND Component.categoryID = Category.ID
-			AND configID = $(configID)
+			AND configID = $(id)
 			AND fromRecipe = '1';
 END
 
-TRANSACTION selectConfiguredComponentsUser
+
+TRANSACTION selectConfigurationComponentListUser
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
@@ -119,13 +126,14 @@ BEGIN
 			FROM ConfigComponent, Category, Component
 			WHERE Component.ID = ConfigComponent.componentID
 			AND Component.categoryID = Category.ID
-			AND configID = $(configID)
+			AND configID = $(id)
 			AND fromRecipe = '0';
 END
 
+
+TRANSACTION selectConfigurationComponentList
 -- coalesce necessary because of the way NULL, '', '    ' is demarshalled
 -- in the client (keyword trim, empty element handling, 
-TRANSACTION selectConfiguredComponents
 BEGIN
 	INTO component DO
 		SELECT Component.ID AS "id", code, Component.name AS "name",
@@ -136,5 +144,6 @@ BEGIN
 			FROM ConfigComponent, Component, Category
 			WHERE Component.ID = ConfigComponent.componentID
 			AND Component.categoryID = Category.ID
-			AND configID = $(configID);
+			AND configID = $(id);
 END
+

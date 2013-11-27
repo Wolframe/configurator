@@ -39,13 +39,16 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string>createFeature feature {parentID={main.id}; root { {main.root.yes} }; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}} }</string>
+        <string notr="true">createFeature feature {parentID={parentID}; root { {main.root.yes} }; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}} }</string>
        </property>
        <property name="form" stdset="0">
-        <string>_CLOSE_</string>
+        <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>features</string>
+        <string notr="true">features</string>
+       </property>
+       <property name="parentID" stdset="0">
+        <string notr="true">{main.root.yes.checked:1:main.id}</string>
        </property>
       </widget>
      </item>

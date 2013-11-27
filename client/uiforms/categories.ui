@@ -29,7 +29,7 @@
         <string>Add</string>
        </property>
        <property name="form" stdset="0">
-        <string notr="true">category_add?id={category.selected:1}&amp;root.selected={category.selected:no:yes}</string>
+        <string notr="true">category_add?id={category.selected:1}&amp;root.selected={category.selected:'no':'yes'}</string>
        </property>
       </widget>
      </item>

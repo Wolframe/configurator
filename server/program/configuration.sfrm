@@ -1,117 +1,132 @@
-STRUCT CategoryRef
+STRUCT Reference
 {
 	id @int
 	_ string
 }
 
-STRUCT PictureRef
+
+STRUCT ComponentContent
 {
-	id @int
-	thumbnail ?string
+	code string
+	name string
+	categoryName string
+	mfgCode ?string
+	description string
+	price float
+	quantity ?int
 }
 
-STRUCT RecipeRef
+
+STRUCT ConfigurationContent
 {
-	id @int
-	_ ?string	
+	name ?string
+	description ?string
+	category ?Reference
+	comment ?string
 }
 
-FORM Configuration
+
+STRUCT ConfigurationComplete
+{
+	_ ConfigurationContent
+	recipe ?Reference
+	component [] {
+		id @int
+		_ ComponentContent
+	}
+	picture ?Reference
+}
+
+
+FORM ConfigurationNew
 {
 	configuration
 	{
-		id ?@int
-		name ?string
-		description ?string
-		category ?CategoryRef
-		comment ?string
-		recipe ?RecipeRef
-		component [] {
-			id @int
-			code string
-			name string
-			categoryName string
-			mfgCode ?string
-			description string
-			price float
-			quantity ?int
-		}
-		picture ?PictureRef
+		_ ConfigurationContent
 	}
 }
 
-FORM createConfiguration
-{
-	_ Configuration
-}
 
-FORM updateConfiguration
-{
-	_ Configuration
-}
-
-FORM BaseConfigurationRequest
+FORM ConfigurationDef
 {
 	configuration
 	{
-		id ?@int
+		id @int
+		_ ConfigurationComplete
 	}
 }
 
-FORM DeleteConfigurationRequest
+
+FORM ConfigurationRef
 {
-	_ BaseConfigurationRequest
+	configuration
+	{
+		id @int
+	}
 }
 
-FORM ConfigurationListRequest
+
+FORM ConfigurationSearch
 {
-	_ BaseConfigurationRequest
+	component
+	{
+		search ?string
+	}
 }
 
-FORM ConfigurationRequest
-{
-	_ BaseConfigurationRequest
-}
 
 FORM ConfigurationList
 {
-	list
+	configuration
 	{
 		configuration []
 		{
 			id @int
-			name string
-			description string
-			categoryName string
-			comment string
+			_ ConfigurationContent
 		}
 	}
 }
 
-FORM ConfiguredComponentsRequest
-{
-	component
-	{
-		id @int
-		configID @int
-	}
-}
 
-FORM ConfiguredComponents
+FORM ConfigurationComponentList
 {
-	list
+	components
 	{
 		component []
 		{
 			id @int
-			code string
-			form string
-			name string
-			categoryName string
-			mfgCode string
-			description string
-			quantity int
-			price float
+			_ ComponentContent
 		}
 	}
 }
+
+FORM ConfigurationComponentListFix
+{
+	components
+	{
+		component []
+		{
+			id @int
+			_ ComponentContent
+			webPage ?string
+		}
+	}
+}
+
+FORM ConfigurationComponentListUser
+{
+	components
+	{
+		component []
+		{
+			id @int
+			_ ComponentContent
+			manufacturerName ?string
+			webPage ?string
+			featureMinQuantity int
+			featureMaxQuantity int
+		}
+	}
+}
+
+

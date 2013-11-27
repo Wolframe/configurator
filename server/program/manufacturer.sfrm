@@ -1,53 +1,37 @@
-FORM Manufacturer
+STRUCT PictureReference
+{
+	id @int
+}
+
+
+STRUCT ManufacturerContent
+{
+	name string
+	webPage ?string
+	picture ?PictureReference
+}
+
+
+FORM ManufacturerNew
+{
+	manufacturer
+	{
+		_ ManufacturerContent
+	}
+}
+
+
+FORM ManufacturerDef
 {
 	manufacturer
 	{
 		id @int
-		name string
-		webPage ?string
-		picture ?
-		{
-			id ?@int
-		}
+		_ ManufacturerContent
 	}
 }
 
-FORM ManufacturerPictureRequest
-{
-	manufacturer
-	{
-		id @int
-	}
-}
 
-FORM updateManufacturer
-{
-	manufacturer
-	{
-		id @int
-		name string
-		webPage ?string
-		picture ?
-		{
-			id ?@int
-		}
-	}
-}
-
-FORM addManufacturer
-{
-	manufacturer
-	{
-		name string
-		webPage ?string
-		picture ?
-		{
-			id ?@int
-		}
-	}
-}
-
-FORM BaseManufacturerRequest
+FORM ManufacturerRef
 {
 	manufacturer
 	{
@@ -55,33 +39,27 @@ FORM BaseManufacturerRequest
 	}
 }
 
-FORM DeleteManufacturerRequest
-{
-	_ BaseManufacturerRequest
-}
 
-FORM ManufacturerListRequest
+FORM ManufacturerSearch
 {
 	manufacturer
 	{
+		search ?string
 	}
 }
 
-FORM ManufacturerRequest
-{
-	_ BaseManufacturerRequest
-}
 
 FORM ManufacturerList
 {
-	list
+	manufacturers
 	{
 		manufacturer []
 		{
 			id @int
-			name string
-			webPage ?string
-			thumbnail ?string
+			_ ManufacturerContent
 		}
 	}
 }
+
+
+

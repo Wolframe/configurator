@@ -1,18 +1,5 @@
 INCLUDE dragAndDrop.tdl
 
-TRANSACTION selectRecipeList
-BEGIN
-	INTO recipe DO
-		SELECT Recipe.ID AS "id", Recipe.name AS "name",
-			Recipe.description,
-			Category.name AS "categoryName",
-			creationDate AS "creationDate", comment
-		FROM Recipe
-		LEFT JOIN Category
-		ON Recipe.categoryID = Category.ID
-		ORDER BY Recipe.ID;
-END
-
 TRANSACTION addRecipe
 PREPROC
 	INTO normalizedName DO name( name );	-- call 'name' normalizer
@@ -32,6 +19,7 @@ BEGIN
 		INSERT INTO RecipeComponent( recipeID, componentID, quantity )
 		VALUES( $1, $(id), convert_to_integer($(quantity)) );
 END
+
 
 TRANSACTION updateRecipe
 PREPROC
@@ -55,6 +43,7 @@ BEGIN
 		VALUES( $(/id), $(id), convert_to_integer($(quantity)) );
 END
 
+
 TRANSACTION deleteRecipe
 BEGIN
 	DO DELETE FROM RecipeContent WHERE recipeID = $(id);
@@ -62,6 +51,21 @@ BEGIN
 	DO DELETE FROM RecipePicture WHERE recipeID = $(id);
 	DO DELETE FROM Recipe WHERE ID = $(id);
 END
+
+
+TRANSACTION selectRecipeList
+BEGIN
+	INTO recipe DO
+		SELECT Recipe.ID AS "id", Recipe.name AS "name",
+			Recipe.description,
+			Category.name AS "categoryName",
+			creationDate AS "creationDate", comment
+		FROM Recipe
+		LEFT JOIN Category
+		ON Recipe.categoryID = Category.ID
+		ORDER BY Recipe.ID;
+END
+
 
 TRANSACTION selectRecipe
 BEGIN
@@ -94,7 +98,8 @@ BEGIN
 		AND componentID = Component.ID;
 END
 
-TRANSACTION selectRecipePictures -- (id)
+
+TRANSACTION selectRecipePictures
 BEGIN
 	INTO picture DO SELECT pictureID AS "id", thumbnail, caption
 		FROM RecipePicture, Picture
@@ -103,9 +108,7 @@ BEGIN
 		ORDER BY RecipePicture.orderNumber;
 END
 
---
--- selectRecipeCategoriesRequired : temporay relation storage for annotated category/feature relations
---
+
 TRANSACTION selectRecipeCategoryList
 BEGIN
 	DO createCategoryIDlist();
@@ -125,6 +128,7 @@ BEGIN
 	DO dropIdList();
 END
 
+
 TRANSACTION selectRecipeCategory
 BEGIN
 	INTO . DO
@@ -134,9 +138,7 @@ BEGIN
 			$(maxQuantity) AS "maxQuantity";
 END
 
---
--- selectRecipeComponentsRequired : temporay relation storage for annotated category/feature relations
---
+
 TRANSACTION selectRecipeComponentList
 BEGIN
 	DO createComponentIDlist();
@@ -154,6 +156,7 @@ BEGIN
 		WHERE Component.ID = IDlist.componentID;
 	DO dropIdList();
 END
+
 
 TRANSACTION selectRecipeComponent
 BEGIN

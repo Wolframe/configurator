@@ -1,7 +1,43 @@
 INCLUDE dragAndDrop.tdl
 
 
-TRANSACTION selectPictureList
+TRANSACTION addPicture
+PREPROC
+	INTO . DO preprocImage( . );	-- call image preprocessing
+ENDPROC
+BEGIN
+	DO SELECT COALESCE( MAX(orderNumber), 1) FROM Picture;
+	DO INSERT INTO Picture( caption, info, image, width, height, thumbnail, orderNumber )
+		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail), $1+1 );
+	DO NONEMPTY UNIQUE getLastPictureID( );
+	FOREACH tags/tag/id DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(.) );
+END
+
+
+TRANSACTION updatePicture
+PREPROC
+	INTO . DO preprocImage( . );	-- call image preprocessing
+ENDPROC
+BEGIN
+	DO UPDATE Picture SET
+		caption = $(caption), info = $(info), image = $(image),
+		width = $(width), height = $(height), thumbnail = $(thumbnail)
+		WHERE ID = $(id);
+	DO DELETE FROM PictureTag WHERE pictureID = $(id);
+	FOREACH tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/id), $(id) );
+	DO DELETE FROM PictureTag WHERE tagID IS NULL;
+	DO DELETE FROM PictureTag WHERE pictureID IS NULL;
+END
+
+
+TRANSACTION deletePicture
+BEGIN
+	DO DELETE FROM PictureTag WHERE PictureID = $(id);
+	DO DELETE FROM Picture WHERE ID = $(id);
+END
+
+
+TRANSACTION selectPicturePreviewList
 PREPROC
 	FOREACH search INTO key DO preprocSearchQueryString( . );	-- call 'name' normalizer
 ENDPROC
@@ -20,7 +56,8 @@ BEGIN
 		ORDER BY Picture.orderNumber;
 END
 
-TRANSACTION selectPicture -- (id)
+
+TRANSACTION selectPicture
 BEGIN
 	INTO . DO UNIQUE
 		SELECT Picture.ID AS "id", image, caption, coalesce( info, '' ) AS "info", width, height,
@@ -63,7 +100,8 @@ BEGIN
 		WHERE Picture.ID = $(id);
 END
 
-TRANSACTION selectPictureAttributes -- (id)
+
+TRANSACTION selectPictureAttributes
 BEGIN
 	INTO picture DO UNIQUE
 		SELECT Picture.ID AS "id", caption, coalesce( info, '' ) AS "info" FROM Picture
@@ -73,40 +111,8 @@ BEGIN
 		WHERE PictureTag.tagID = Tag.ID AND PictureTag.pictureID = Picture.ID AND Picture.ID = $(id);
 END
 
-TRANSACTION updatePicture -- (id, caption, info, image)
-PREPROC
-	INTO . DO preprocImage( . );	-- call image preprocessing
-ENDPROC
-BEGIN
-	DO UPDATE Picture SET
-		caption = $(caption), info = $(info), image = $(image),
-		width = $(width), height = $(height), thumbnail = $(thumbnail)
-		WHERE ID = $(id);
-	DO DELETE FROM PictureTag WHERE pictureID = $(id);
-	FOREACH tags/tag DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $(/id), $(id) );
-	DO DELETE FROM PictureTag WHERE tagID IS NULL;
-	DO DELETE FROM PictureTag WHERE pictureID IS NULL;
-END
 
-TRANSACTION addPicture -- (caption, info, image)
-PREPROC
-	INTO . DO preprocImage( . );	-- call image preprocessing
-ENDPROC
-BEGIN
-	DO SELECT COALESCE( MAX(orderNumber), 1) FROM Picture;
-	DO INSERT INTO Picture( caption, info, image, width, height, thumbnail, orderNumber )
-		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail), $1+1 );
-	DO NONEMPTY UNIQUE getLastPictureID( );
-	FOREACH tags/tag/id DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(.) );
-END
-
-TRANSACTION deletePicture -- (id)
-BEGIN
-	DO DELETE FROM PictureTag WHERE PictureID = $(id);
-	DO DELETE FROM Picture WHERE ID = $(id);
-END
-
-TRANSACTION selectPictureTagSet -- (id)
+TRANSACTION selectPictureTagList
 BEGIN
 	INTO tag DO SELECT PictureTag.tagID AS id, name
 		FROM PictureTag, TagPath
@@ -115,7 +121,8 @@ BEGIN
 		ORDER BY PictureTag.tagID;
 END
 
-TRANSACTION getPictureThumbnailList
+
+TRANSACTION selectPictureThumbnailList
 BEGIN
 	DO createIdList();
 	DO createIdUnion();
@@ -130,7 +137,8 @@ BEGIN
 	DO dropIdUnion();
 END
 
-TRANSACTION getPictureThumbnail
+
+TRANSACTION selectPictureThumbnail
 BEGIN
 	INTO . DO SELECT Picture.ID AS "id", thumbnail, caption
 		FROM Picture

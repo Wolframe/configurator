@@ -128,13 +128,16 @@
           <string>Add</string>
          </property>
          <property name="action" stdset="0">
-          <string notr="true">createTag tag {parentID={main.id}; root { {main.root.yes} }; name{{main.name}}; description{{main.description}}}</string>
+          <string notr="true">createTag tag {parentID={parentID}; name{{main.name}}; description{{main.description}}}</string>
          </property>
          <property name="form" stdset="0">
           <string notr="true">_CLOSE_</string>
          </property>
          <property name="datasignal:clicked" stdset="0">
-          <string>tag</string>
+          <string notr="true">tag</string>
+         </property>
+         <property name="parentID" stdset="0">
+          <string notr="true">{main.root.yes.checked:1:main.id}</string>
          </property>
         </widget>
        </item>

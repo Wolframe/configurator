@@ -4,30 +4,53 @@ STRUCT PictureTag
 	_ ?string
 }
 
-STRUCT PictureTagList
+
+STRUCT PictureContent
 {
-	tag []
+	image string
+	caption ?string
+	info ?string
+	tag PictureTag[]
+}
+
+
+FORM PictureRef
+{
+	picture
 	{
-		_ PictureTag
+		id ?@int
 	}
 }
 
-STRUCT PictureDefinition
+
+FORM PictureDef
 {
-	caption ?string
-	info ?string
-	image string
-	tags ?PictureTagList
+	picture
+	{
+		id ?@int
+		_ PictureContent
+	}
 }
+
+
+FORM PictureNew
+{
+	picture
+	{
+		_ PictureContent
+	}
+}
+
 
 STRUCT PictureProcessed
 {
-	_ PictureDefinition
+	_ PictureContent
 	thumbnail string
 	width int
 	height int
 	tagstring ?string
 }
+
 
 STRUCT PicturePreView
 {
@@ -36,6 +59,7 @@ STRUCT PicturePreView
 	info ?string
 	tagstring ?string
 }
+
 
 STRUCT PictureView
 {
@@ -52,50 +76,10 @@ FORM Picture
 	picture
 	{
 		id @int
-		caption ?string
-		info ?string
-		thumbnail ?string
-		image string
-		width int
-		height int
-		size int
-		tagstring ?string
-		used_categories ?string
-		used_features ?string
-		used_manufacturers ?string
-		used_components ?string
-		tags ?PictureTagList
+		_ PictureView
 	}
 }
 
-FORM createPicture
-{
-	picture
-	{
-		_ PictureDefinition
-	}
-}
-
-FORM updatePicture
-{
-	picture
-	{
-		id @int
-		_ PictureDefinition
-	}
-}
-
-FORM PictureList
-{
-	list
-	{
-		picture []
-		{
-			id @int
-			_ PictureProcessed
-		}
-	}
-}
 
 FORM PicturePreviewList
 {
@@ -109,30 +93,8 @@ FORM PicturePreviewList
 	}
 }
 
-FORM BasePictureRequest
-{
-	picture
-	{
-		id @int
-	}
-}
 
-FORM PictureAttributeRequest
-{
-	_ BasePictureRequest
-}
-
-FORM DeletePictureRequest
-{
-	_ BasePictureRequest
-}
-
-FORM PictureRequest
-{
-	_ BasePictureRequest
-}
-
-FORM PictureListRequest
+FORM PictureSearch
 {
 	picture
 	{
@@ -140,13 +102,15 @@ FORM PictureListRequest
 	}
 }
 
-FORM PictureThumbnailRequest
+
+FORM ThumbnailSearch
 {
 	picture
 	{
-		id @int
+		search ?string
 	}
 }
+
 
 FORM PictureThumbnail
 {
@@ -158,20 +122,6 @@ FORM PictureThumbnail
 	}
 }
 
-FORM PictureThumbnailListRequest
-{
-	pictures
-	{
-		picture []
-		{
-			id @int
-		}
-		add []
-		{
-			id @int
-		}
-	}
-}
 
 FORM PictureThumbnailList
 {
@@ -186,21 +136,20 @@ FORM PictureThumbnailList
 	}
 }
 
+
 FORM PictureAttributes
 {
-	attr
+	picture
 	{
-		picture
-		{
-			id @int
-			caption string
-			info string
-		}
+		id @int
+		caption string
+		info string
 		tag PictureTag[]
 	}
 }
 
-FORM ReorderPicture
+
+FORM PictureReorder
 {
 	move
 	{

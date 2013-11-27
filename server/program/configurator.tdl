@@ -1,30 +1,4 @@
-TRANSACTION selectRequiredFeaturesOld
-BEGIN
-	INTO category DO
-		SELECT DISTINCT
-			RecipeContent.categoryID AS "id",
-			Category.name as "name",
-			RecipeContent.minQuantity AS "minQuantity",
-			RecipeContent.maxQuantity AS "maxQuantity",
-			Component.ID as "componentID",
-			Component.name as "componentName",
-			ComponentCategory.name as "componentCategory"
-		FROM RecipeContent, Category, CategProvides,
-			ComponentProvides, Component, Configuration,
-			Category as ComponentCategory
-		WHERE RecipeContent.categoryID = Category.ID
-		AND CategProvides.categoryID = RecipeContent.categoryID
-		AND CategProvides.minQuantity >= RecipeContent.minQuantity
-		AND ComponentProvides.featureID = CategProvides.featureID
-		AND ComponentProvides.minQuantity >= CategProvides.minQuantity
-		AND Component.ID = ComponentProvides.componentID
-		AND Component.categoryID = ComponentCategory.ID
-		AND Component.ID NOT IN (SELECT componentID FROM ConfigComponent WHERE configID=$(configID) AND fromRecipe='0')
-		AND RecipeContent.recipeID = Configuration.recipeID
-		AND Configuration.ID = $(configID);
-END
-
-TRANSACTION selectRequiredFeatures
+TRANSACTION selectConfigurationRequiredFeatureCategoryList
 BEGIN
 INTO category DO
 	SELECT
@@ -44,30 +18,34 @@ INTO category DO
 -- remove all components which are hard-coded in the recipe
 	AND Component.ID NOT IN (
 		SELECT componentID FROM ConfigComponent
-			WHERE configID=$(configID) AND fromRecipe='1'
+			WHERE configID=$(id) AND fromRecipe='1'
 	)
 -- remove all components (for now, later, count quantities) which are
 -- directly of a certain category (i.e. laptop platform). The user
 -- picked them already
 	AND Component.categoryID NOT IN (
 		SELECT categoryID
-			FROM ConfigComponent,Component WHERE configID=$(configID)
+			FROM ConfigComponent,Component WHERE configID=$(id)
 			AND Component.ID=ConfigComponent.componentID
-                        AND fromRecipe='0')
+			AND fromRecipe='0')
 	AND RecipeContent.recipeID = Configuration.recipeID
-	AND Configuration.ID = $(configID)
+	AND Configuration.ID = $(id)
 	ORDER BY RecipeContent.categoryID;
 END
 
-TRANSACTION ConfiguratorAddComponent
+
+TRANSACTION addConfigurationComponent
 BEGIN
 	DO INSERT INTO ConfigComponent( configID, componentID, quantity, fromRecipe )
 		VALUES( $(id), $(componentID), $(quantity), '0' );
 END
 
-TRANSACTION ConfiguratorDeleteComponent
+
+TRANSACTION deleteConfigurationComponent
 BEGIN
 	DO DELETE FROM ConfigComponent
 		WHERE configID = $(id)
 		AND componentID = $(componentID);
 END
+
+

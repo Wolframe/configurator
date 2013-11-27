@@ -502,13 +502,16 @@
         <string>Add</string>
        </property>
        <property name="action" stdset="0">
-        <string>createCategory category {parentID={main.id}; root { {main.root.yes} }; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}}; features_required{CategoryFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
+        <string notr="true">createCategory category {parentID={parentID}; name{{main.name}}; description{{main.description}}; pictures {picture[] {id={main.pictures.id}}}; features_required{CategoryFeature[] {id={required_features.row.id:?}; name{{required_features.row.name:?}}; minQuantity{{required_features.row.min:?}}; maxQuantity{{required_features.row.max:?}} } }; features_provided{CategoryFeature[] {id={provided_features.row.id:?}; name{{provided_features.row.name:?}}; minQuantity{{provided_features.row.min:?}}; maxQuantity{{provided_features.row.max:?}} } } }</string>
        </property>
        <property name="form" stdset="0">
-        <string>_CLOSE_</string>
+        <string notr="true">_CLOSE_</string>
        </property>
        <property name="datasignal:clicked" stdset="0">
-        <string>categories</string>
+        <string notr="true">categories</string>
+       </property>
+       <property name="parentID" stdset="0">
+        <string notr="true">{main.root.yes.checked:1:main.id}</string>
        </property>
       </widget>
      </item>
