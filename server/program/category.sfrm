@@ -1,6 +1,5 @@
 STRUCT CategoryContent
 {
-	parentID @int
 	name string
 	description ?string
 }
@@ -10,6 +9,7 @@ FORM CategoryNew
 {
 	category
 	{
+		parentID @int
 		_ CategoryContent
 	}
 }
@@ -60,7 +60,7 @@ FORM CategoryFeatureList
 
 STRUCT CategoryPictureRef
 {
-	id ?@int
+	id @int
 }
 
 
@@ -68,7 +68,7 @@ FORM CategoryComplete
 {
 	category
 	{
-		id ?@int
+		id @int
 		picture CategoryPictureRef[]
 		feature_required CategoryFeatureContent[]
 		feature_provided CategoryFeatureContent[]

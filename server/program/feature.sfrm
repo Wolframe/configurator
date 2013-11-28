@@ -1,6 +1,5 @@
 STRUCT FeatureContent
 {
-	parentID ?@int
 	name string
 	description ?string
 }
@@ -10,6 +9,7 @@ FORM FeatureNew
 {
 	feature
 	{
+		parentID @int
 		_ FeatureContent
 	}
 }

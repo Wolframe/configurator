@@ -1,6 +1,5 @@
 STRUCT TagContent
 {
-	parentID @int
 	name string
 	description ?string
 }
@@ -8,8 +7,9 @@ STRUCT TagContent
 
 FORM TagNew
 {
-	Tag
+	tag
 	{
+		parentID @int
 		_ TagContent
 	}
 }
@@ -17,7 +17,7 @@ FORM TagNew
 
 FORM TagDef
 {
-	Tag
+	tag
 	{
 		id @int
 		_ TagContent
@@ -50,21 +50,15 @@ FORM TagHierarchy
 }
 
 
-FORM TagSetRequest
-{
-	tags
-	{
-		tag TagRef[]
-		add TagRef[]
-	}
-}
-
-
 FORM TagList
 {
 	tags
 	{
-		tag TagDef[]
+		tag[]
+		{
+			id @int
+			_ TagContent
+		}
 	}
 }
 

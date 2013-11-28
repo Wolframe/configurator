@@ -8,9 +8,6 @@ local function map_tree_node( treenodes, nodeid)
 		if treenodes[ nodeid ].description then
 			tree[ "description"] = treenodes[ nodeid ].description
 		end
-		if treenodes[ nodeid ].pictures then
-			tree[ "pictures"] = treenodes[ nodeid ].description
-		end
 		local children = {}
 		for i,v in pairs( treenodes[ nodeid].children) do
 			local childnode = map_tree_node( treenodes, v)
@@ -31,14 +28,12 @@ end
 --			{
 --				name		: name of the node
 --				description	: description of the node
---				pictures	: list of picture ids
 --				parentID	: id of the parent in the tree
 --				children	: list of children ids
 --			}
 --\return recursively defined list (*) of tree structure with
 --		name		: name of the node
 --		description	: description of the node
---		pictures	: list of picture ids
 --		item		: Array of child tree nodes (*)
 --
 function resfilterTreeView( tree_)
@@ -58,7 +53,7 @@ function resfilterTreeView( tree_)
 		end
 		local ti = tonumber( v.ID)
 		parentmap[ ti] = pi
-		table.insert( id2nodemap, ti, { name=v.name, description=v.description, pictures=v.pictures, parentID=pi, children = {} } )
+		table.insert( id2nodemap, ti, { name=v.name, description=v.description, parentID=pi, children = {} } )
 	end
 	local rootID = nil
 	for i,v in pairs( parentmap) do
