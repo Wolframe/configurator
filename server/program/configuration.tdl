@@ -1,3 +1,15 @@
+SUBROUTINE getLastConfigurationID
+DATABASE pgdb
+BEGIN
+	SELECT DISTINCT currval( pg_get_serial_sequence( 'picture', 'id'));
+END
+
+SUBROUTINE getLastConfigurationID
+DATABASE sqlitedb
+BEGIN
+	SELECT DISTINCT last_insert_rowid( ) AS "id" FROM Configuration AS id;
+END
+
 TRANSACTION addConfiguration
 BEGIN
 	DO INSERT INTO Configuration( name, description, comment, recipeID )

@@ -1,5 +1,17 @@
 INCLUDE dragAndDrop.tdl
 
+SUBROUTINE getLastPictureID
+DATABASE pgdb
+BEGIN
+	SELECT DISTINCT currval( pg_get_serial_sequence( 'picture', 'id'));
+END
+
+SUBROUTINE getLastPictureID
+DATABASE sqlitedb
+BEGIN
+	SELECT DISTINCT last_insert_rowid( ) AS "id" FROM Picture;
+END
+
 
 TRANSACTION addPicture
 PREPROC
