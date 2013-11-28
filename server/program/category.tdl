@@ -11,12 +11,12 @@ BEGIN
 	KEEP AS newitem;
 	DO UPDATE Category SET description = $(description) WHERE ID = $newitem.ID;
 
-	FOREACH pictures/picture/id DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $newitem.ID, $(.), $# );
+	FOREACH picture/id DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $newitem.ID, $(.), $# );
 
-	FOREACH features_required/CategoryFeature DO
+	FOREACH features_required DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
 			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
-	FOREACH features_provided/CategoryFeature DO
+	FOREACH features_provided DO
 		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
 			VALUES( $1, $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
@@ -40,14 +40,14 @@ BEGIN
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
 
 	DO DELETE FROM CategoryPicture WHERE categoryID = $(id);
-	FOREACH pictures/picture/id DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $(/id), $(.), $# );
+	FOREACH picture/id DO INSERT INTO CategoryPicture( categoryID, pictureID, orderNumber ) VALUES( $(/id), $(.), $# );
 
 	DO DELETE FROM CategRequires WHERE categoryID = $(id);
 	DO DELETE FROM CategProvides WHERE categoryID = $(id);
-	FOREACH features_required/CategoryFeature DO
+	FOREACH features_required DO
 		INSERT INTO CategRequires( categoryID, featureID, minQuantity, maxQuantity )
 			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
-	FOREACH features_provided/CategoryFeature DO
+	FOREACH features_provided DO
 		INSERT INTO CategProvides( categoryID, featureID, minQuantity, maxQuantity )
 			VALUES( $(/id), $(id), convert_to_integer($(minQuantity)), convert_to_integer($(maxQuantity)) );
 END
@@ -55,10 +55,17 @@ END
 
 TRANSACTION selectCategory
 BEGIN
-	INTO . DO NONEMPTY UNIQUE SELECT ID AS id,parentID AS "parentID", name,
+	INTO . DO NONEMPTY UNIQUE SELECT ID AS id, name,
 		description
 		FROM Category WHERE ID = $(id);
-	INTO features_required/CategoryFeature DO
+
+	INTO picture DO
+		SELECT CategoryPicture.pictureID AS id, Picture.thumbnail FROM CategoryPicture,Picture
+		WHERE CategoryPicture.categoryID = $(id)
+		AND Picture.ID = CategoryPicture.pictureID
+		ORDER BY CategoryPicture.orderNumber;
+
+	INTO features_required DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -67,7 +74,8 @@ BEGIN
 		FROM CategRequires, Feature
 		WHERE categoryID = $(id)
 		AND featureID = Feature.ID;
-	INTO features_provided/CategoryFeature DO
+
+	INTO features_provided DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -104,6 +112,7 @@ BEGIN
 			WHERE CategoryPicture.categoryID = $1;
 END
 
+
 TRANSACTION selectCategorySet
 BEGIN
 	FOREACH /category INTO category DO NONEMPTY UNIQUE
@@ -129,7 +138,7 @@ BEGIN
 	FOREACH /add DO DELETE FROM IDlist WHERE featureID=$(id);
 	FOREACH /add DO INSERT INTO IDlist (featureID, minQuantity, maxQuantity) VALUES ($(id),$(minQuantity),$(maxQuantity));
 	FOREACH /remove DO DELETE FROM IDlist WHERE featureID=$(id);
-	INTO CategoryFeature DO
+	INTO feature DO
 		SELECT
 			featureID AS "id",
 			Feature.name AS "name",
@@ -139,6 +148,7 @@ BEGIN
 		WHERE Feature.ID = IDlist.featureID;
 	DO dropIdList();
 END
+
 
 TRANSACTION selectCategoryFeature
 BEGIN

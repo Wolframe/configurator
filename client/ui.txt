@@ -1,0 +1,22 @@
+Add Category:
+[Add]
+	action = create: CategoryNew category {parentID={parentID}; name{{main.name}}; description{{main.description}}}
+	answer = CategoryRef category {id={main.newid}}
+	parentID = {main.root.yes.checked:1:main.id}
+	form = editCategory?id={main.newid}&parentwidgetid={widgetid}
+	datasignal:clicked = categorytree
+[Cancel]
+	form = _CLOSE_
+
+Edit Category:
+[Form]
+	action = select: CategoryRef category {id={main.id}}
+	answer = CategoryComplete category {id={?}; picture[] {id={main.pictures.item.id}; thumbnail{{main.pictures.item.image}}}; feature_required[] {id={main.features_required.item.id}; name{{main.features_required.item.name}}; minQuantity{{main.features_required.item.minQuantity}}; maxQuantity{{main.features_required.item.maxQuantity}}}; feature_provided[] {id={main.features_provided.item.id}; name{{main.features_provided.item.name}}; minQuantity{{main.features_provided.item.minQuantity}}; maxQuantity{{main.features_provided.item.maxQuantity}}}}
+	datasignal:loaded = close @ {main.parentwidgetid}
+[Ok]
+	form = _CLOSE_
+
+
+
+
+

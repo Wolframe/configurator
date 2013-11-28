@@ -58,9 +58,10 @@ FORM CategoryFeatureList
 }
 
 
-STRUCT CategoryPictureRef
+STRUCT CategoryPictureContent
 {
 	id @int
+	thumbnail string
 }
 
 
@@ -69,7 +70,8 @@ FORM CategoryComplete
 	category
 	{
 		id @int
-		picture CategoryPictureRef[]
+		_ CategoryContent
+		picture CategoryPictureContent[]
 		feature_required CategoryFeatureContent[]
 		feature_provided CategoryFeatureContent[]
 	}
