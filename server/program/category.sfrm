@@ -76,7 +76,7 @@ FORM CategoryComplete
 }
 
 
-FORM CategoryHierarchyNode
+STRUCT CategoryHierarchyNode
 {
 	id @int
 	_ CategoryContent
@@ -88,7 +88,7 @@ FORM CategoryHierarchy
 {
 	tree
 	{
-		item ^CategoryHierarchyNode[]
+		item CategoryHierarchyNode[]
 	}
 }
 

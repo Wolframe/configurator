@@ -34,7 +34,7 @@ FORM TagRef
 }
 
 
-FORM TagHierarchyNode
+STRUCT TagHierarchyNode
 {
 	_ TagContent
 	item ^TagHierarchyNode[]
@@ -45,7 +45,7 @@ FORM TagHierarchy
 {
 	tree
 	{
-		item ^TagHierarchyNode[]
+		item TagHierarchyNode[]
 	}
 }
 

@@ -45,7 +45,7 @@ STRUCT FeatureComplete
 }
 
 
-FORM FeatureHierarchyNode
+STRUCT FeatureHierarchyNode
 {
 	id @int
 	_ FeatureContent
@@ -57,7 +57,7 @@ FORM FeatureHierarchy
 {
 	tree
 	{
-		item ^FeatureHierarchyNode[]
+		item FeatureHierarchyNode[]
 	}
 }
 
