@@ -3,13 +3,13 @@ INCLUDE dragAndDrop.tdl
 SUBROUTINE getLastPictureID
 DATABASE pgdb
 BEGIN
-	SELECT DISTINCT currval( pg_get_serial_sequence( 'picture', 'id'));
+	DO NONEMPTY UNIQUE SELECT DISTINCT currval( pg_get_serial_sequence( 'picture', 'id'));
 END
 
 SUBROUTINE getLastPictureID
 DATABASE sqlitedb
 BEGIN
-	SELECT DISTINCT last_insert_rowid( ) AS "id" FROM Picture;
+	DO NONEMPTY UNIQUE SELECT DISTINCT last_insert_rowid( ) AS "id" FROM Picture;
 END
 
 
@@ -21,7 +21,7 @@ BEGIN
 	DO SELECT COALESCE( MAX(orderNumber), 1) FROM Picture;
 	DO INSERT INTO Picture( caption, info, image, width, height, thumbnail, orderNumber )
 		VALUES ($(caption), $(info), $(image), $(width), $(height), $(thumbnail), $1+1 );
-	DO NONEMPTY UNIQUE getLastPictureID( );
+	DO getLastPictureID( );
 	FOREACH tags/tag/id DO INSERT INTO PictureTag( pictureID, tagID ) VALUES( $1, $(.) );
 END
 

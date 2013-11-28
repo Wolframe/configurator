@@ -1,28 +1,28 @@
 SUBROUTINE getLastConfigurationID
 DATABASE pgdb
 BEGIN
-	SELECT DISTINCT currval( pg_get_serial_sequence( 'picture', 'id'));
+	DO NONEMPTY UNIQUE SELECT DISTINCT currval( pg_get_serial_sequence( 'picture', 'id'));
 END
 
 SUBROUTINE getLastConfigurationID
 DATABASE sqlitedb
 BEGIN
-	SELECT DISTINCT last_insert_rowid( ) AS "id" FROM Configuration AS id;
+	DO NONEMPTY UNIQUE SELECT DISTINCT last_insert_rowid( ) AS "id" FROM Configuration AS id;
 END
 
 TRANSACTION addConfiguration
 BEGIN
 	DO INSERT INTO Configuration( name, description, comment, recipeID )
 		VALUES( $(name), $(description), $(comment), $(recipe/id) );
-	DO NONEMPTY UNIQUE getLastConfigurationID( );
+	DO getLastConfigurationID( );
 	DO UPDATE Configuration SET categoryID =
 		(SELECT categoryID from Recipe WHERE ID=$(recipe/id) )
 		WHERE ID = $1;
-	DO NONEMPTY UNIQUE getLastConfigurationID( );
+	DO getLastConfigurationID( );
 	DO INSERT INTO ConfigComponent( configID, componentID, quantity, fromRecipe )
 		SELECT $1, componentID, quantity, '1' FROM RecipeComponent
 			WHERE RecipeComponent.recipeID = $(recipe/id);
-	INTO configuration DO NONEMPTY UNIQUE getLastConfigurationID( );
+	INTO configuration DO getLastConfigurationID( );
 END
 
 
